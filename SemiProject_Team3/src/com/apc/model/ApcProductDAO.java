@@ -95,15 +95,16 @@ public class ApcProductDAO {
 		
 		List<ApcProductDTO> list = new ArrayList<ApcProductDTO>();
 		
-		
 		try {
 			
 			openConn();
 			
-			sql = "select * from apc_products order by pno desc";
+			sql = "select * from apc_products where pcategory_fk = ? order by pno desc";
 			
 			pstmt = con.prepareStatement(sql);
 			
+			pstmt.setInt(1, 02);
+		
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -112,14 +113,28 @@ public class ApcProductDAO {
 				
 				dto.setPno(rs.getInt("pno"));
 				dto.setPname(rs.getString("pname"));
-				dto.setPcategory_fk(rs.getstring);
+				dto.setPcategory_fk(rs.getString("pcategory_fk"));
+				dto.setPimage(rs.getString("pimage"));
+				dto.setPqty(rs.getInt("pqty"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setPsize(rs.getString("psize"));
+				dto.setPcolor(rs.getString("pcolor"));
+				dto.setPicon(rs.getString("picon"));
+				dto.setPcontents(rs.getString("pcontents"));
+				dto.setMileage(rs.getInt("mileage"));
+				dto.setPinputdate(rs.getNString("pinputdate"));
+				
+				list.add(dto);
+				
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
 		}
 		
-		
+		return list;
 	} // apcProductWomenList() end
 	
 	
