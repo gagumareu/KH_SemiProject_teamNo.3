@@ -1,4 +1,14 @@
-@charset "EUC-KR";
+@charset "UTF-8";
 
 
 
+	html, body {
+	font-family: arial;
+	font-size: 58px;
+	height: 100vh;
+	margin:0px;
+
+	}
+	
+	
+	

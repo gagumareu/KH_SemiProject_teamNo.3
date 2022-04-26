@@ -12,9 +12,13 @@
 	font-size: 58px;
 	height: 100vh;
 	margin:0px;
-	
-	
+
 	}
+	
+	
+	
+	/************************/
+	
 	
 	#wrapper{
 	height: 100%;
@@ -22,6 +26,14 @@
 	grid-template-columns: 50% 50%;
 	
 	}
+	
+	#right_side{
+	width: 100%;
+	background-image: url('images/1.jpg');
+	background-size: cover;
+	background-position: center;
+	}
+	
 	
 	#right_side{
 	width: 100%;
@@ -83,31 +95,31 @@
 		
 			<div id="main_text">
 				<div id="main">
-					A.P.C
+					A.P.C.
 				</div>
 				
 				<div>
-					<a class="womenImage" href="<%=request.getContextPath() %>/apc_product_women_list">A.P.C WOMEN</a>
+					<a class="womenList" href="<%=request.getContextPath() %>/apc_product_women_category.do?no=1">A.P.C. WOMEN</a>
 				</div>
 				
 				<div>	
-					<a class="manImage" href="">A.P.C MEN</a>	
+					<a class="menList" href="">A.P.C. MEN</a>	
 				</div>
 				
 				<div>
-					<a href="#">A.P.C DENIM</a>
+					<a href="#">A.P.C. DENIM</a>
 				</div>
 				
 				<div>
-					<a href="#">A.P.C GOLF</a>
+					<a href="#">A.P.C. GOLF</a>
 				</div>
 				
 				<div>
-					<a href="#">A.P.C SURPLUS</a>
+					<a href="#">A.P.C. SURPLUS</a>
 				</div>
 				
 				<div>
-					<a href="#">A.P.C X JESSICA <br>OGDEN</a>
+					<a href="#">A.P.C. X JESSICA <br>OGDEN</a>
 				</div>
 				
 				

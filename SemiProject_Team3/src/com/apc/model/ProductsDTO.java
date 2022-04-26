@@ -1,6 +1,6 @@
 package com.apc.model;
 
-public class ApcProductDTO {
+public class ProductsDTO {
 
 	
 	private int pno;

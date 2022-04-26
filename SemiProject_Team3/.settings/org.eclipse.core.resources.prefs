@@ -1,4 +1,9 @@
 eclipse.preferences.version=1
+encoding//WebContent/include/shop_bottom.jsp=UTF-8
+encoding//WebContent/include/shop_top_left.jsp=UTF-8
+encoding//WebContent/include/shop_top_right.jsp=UTF-8
 encoding//WebContent/index.jsp=UTF-8
+encoding//WebContent/shop/shop_wCategory_list.jsp=UTF-8
+encoding//WebContent/shop/shop_wNew_list.jsp=UTF-8
 encoding//src/com/apc/controller/mapping.properties=UTF-8
 encoding/<project>=UTF-8

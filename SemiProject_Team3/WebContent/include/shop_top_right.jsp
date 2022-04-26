@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
@@ -41,15 +41,15 @@
 	
 	<div id="right_menu">
 		<ul>
-			<li><a href="#"><img src="images/bag1.png" width="20px">Àå¹Ù±¸´Ï</a></li>
-			<li><a href="#">³»°èÁ¤/·Î±×ÀÎ</a></li>
+			<li><a href="#"><img src="images/bag1.png" width="20px">ìž¥ë°”êµ¬ë‹ˆ</a></li>
+			<li><a href="#">ë‚´ê³„ì •/ë¡œê·¸ì¸</a></li>
 			<li>&nbsp;</li>
 			<li><a href="#">South Korea</a></li>
-			<li><a href="#">´º½º·¹ÅÍ</a></li>
-			<li><a href="#">°í°´¼¾ÅÍ</a></li>
-			<li><a href="#">¸ÅÀåÂ÷±â</a></li>
+			<li><a href="#">ë‰´ìŠ¤ë ˆí„°</a></li>
+			<li><a href="#">ê³ ê°ì„¼í„°</a></li>
+			<li><a href="#">ë§¤ìž¥ì°¾ê¸°</a></li>
 			<li>&nbsp;</li>
-			<li><a href="#">¾ÆÀÌµð·è¸ô</a></li>
+			<li><a href="#">ì•„ì´ë””ë£©ëª°</a></li>
 		
 		</ul>
 	</div>	

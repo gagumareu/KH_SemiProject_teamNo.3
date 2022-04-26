@@ -48,6 +48,34 @@
 	
 	}
 	
+	.navr_ul >:hover{
+	cursor: ponter;
+	color:pink;
+	}
+	
+	.dropDown{
+	display: flex;
+	flex-direction: column;
+	
+	}
+	
+	.dropDown li{
+	display: none;
+	}
+	
+	.dropDown li:hover{
+	display: block;
+	background-color: pink;
+	}
+	
+	.navr_ul > li:hover > .dropDown{
+	display: block
+	}
+	
+	.navr_ul li:hover .dropDown{
+	display:block;
+	
+	}
 	
 	
 	
@@ -58,14 +86,31 @@
 	<div id="navr">
 	
 		<ul id="navr_ul">
-			<li>Women</li>
+			<li>Women
+				<ul class="dropDown">
+					<li>New Arrivals</li>
+					<li>Permanent</li>
+					<li>Dresses</li>
+					<li>Outerwear</li>
+					<li>Jackets</li>
+					<li>Jeans</li>
+					<li>Pants</li>
+					<li>Skirts, Shors</li>
+					<li>T-Shirts, Tops</li>
+					<li>Blouses, Shirts</li>
+					<li>Knitwear</li>
+					<li>Sweatshirts</li>
+				</ul>
+			</li>
 			<li>Men</li>
 			<li>Denim</li>
 			<li>Golf</li>
 			<li>Objects</li>
 			<li>Surplus</li>
 			<li>A.P.C.X Jessica Ogden</li>
-			<li ><a id="search" href="#"><img src="images/search.png" width="20px" ><span>search</span></a></li>
+			<li>
+				<a id="search" href="#"><img src="images/search.png" width="20px" ><span>search</span></a>
+			</li>
 		</ul>
 		
 		

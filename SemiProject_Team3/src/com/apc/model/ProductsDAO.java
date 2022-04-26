@@ -11,9 +11,9 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import com.apc.model.ApcProductDAO;
+import com.apc.model.ProductsDAO;
 
-public class ApcProductDAO {
+public class ProductsDAO {
 
 	
 	Connection con = null;             // DB 연결하는 객체.
@@ -27,17 +27,17 @@ public class ApcProductDAO {
 	// 1단계 : 싱글톤 방식으로 객체를 만들기 위해서는 우선적으로
 	//        기본 생성자의 접근 제어자를 private 으로 선언해야 함.
 	// 2단계 : ApcProductDAO 객체를 정적 멤버로 선언해야 함. - static으로 선언해야 함.
-	private static ApcProductDAO instance = null;
+	private static ProductsDAO instance = null;
 	
 	
-	private ApcProductDAO() {   }  // 기본생성자.
+	private ProductsDAO() {   }  // 기본생성자.
 		
 	// 3단계 : 기본 생성자 대신에 싱글턴 객체를 return 해 주는 getInstance() 라는
 	//        메서드를 만들어서 여기에 접근하게 해야 함.
-	public static ApcProductDAO getInstance() {
+	public static ProductsDAO getInstance() {
 		
 		if(instance == null) {
-			instance = new ApcProductDAO();
+			instance = new ProductsDAO();
 		}
 		return instance;
 		
@@ -91,25 +91,25 @@ public class ApcProductDAO {
 	
 	
 	
-	public List<ApcProductDTO> apcProductWomenList(){
+	public List<ProductsDTO> apcProductWomenList(String name){
 		
-		List<ApcProductDTO> list = new ArrayList<ApcProductDTO>();
+		List<ProductsDTO> list = new ArrayList<ProductsDTO>();
 		
 		try {
 			
 			openConn();
 			
-			sql = "select * from apc_products where pcategory_fk = ? order by pno desc";
+			sql = "select * from apc_products where pcategory_fk = ? order by pinputdate desc";
 			
 			pstmt = con.prepareStatement(sql);
 			
-			pstmt.setInt(1, 02);
+			pstmt.setString(1, name);
 		
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
 				
-				ApcProductDTO dto = new ApcProductDTO();
+				ProductsDTO dto = new ProductsDTO();
 				
 				dto.setPno(rs.getInt("pno"));
 				dto.setPname(rs.getString("pname"));
@@ -122,7 +122,7 @@ public class ApcProductDAO {
 				dto.setPicon(rs.getString("picon"));
 				dto.setPcontents(rs.getString("pcontents"));
 				dto.setMileage(rs.getInt("mileage"));
-				dto.setPinputdate(rs.getNString("pinputdate"));
+				dto.setPinputdate(rs.getString("pinputdate"));
 				
 				list.add(dto);
 				
@@ -138,9 +138,55 @@ public class ApcProductDAO {
 	} // apcProductWomenList() end
 	
 	
-	
-	
-	
+
+	public int insertProduct(ProductsDTO dto) {
+		
+		int result = 0, count =0;
+		
+		
+		try {
+			openConn();
+			
+			sql = "select max(pno) from apc_products";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				count = rs.getInt(1) +1;
+			}
+			
+			sql ="insert into apc_products values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default, sysdate)";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, count);
+			pstmt.setString(2, dto.getPname());
+			pstmt.setString(3, dto.getPcategory_fk());
+			pstmt.setString(4, dto.getPimage());
+			pstmt.setInt(5, dto.getPqty());
+			pstmt.setInt(6, dto.getPrice());
+			pstmt.setString(7, dto.getPsize());
+			pstmt.setString(8, dto.getPcolor());
+			pstmt.setNString(9, dto.getPicon());
+			pstmt.setString(10, dto.getPcontents());
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+			
+		}
+		return result;
+		
+		
+		
+	} // insertProduct() end 
 	
 	
 	
