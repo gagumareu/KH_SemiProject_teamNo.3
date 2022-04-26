@@ -3,8 +3,8 @@
 create table apc_qa(
 
 
-	qa_no number(5) primary key					-- 문의게시글 번호
-	mem_no_fk number(5) not null, 			   	-- 게시글 작성자
+	qa_no number(5) primary key,				-- 문의게시글 번호
+	qa_memid number(5) not null, 			   	-- 회원아이디(회원,비회원)
 	qa_title varchar2(200) not null,    		-- 게시글 제목
 	qa_cont varchar2(1000),            	 		-- 게시글 내용
 	qa_pwd varchar2 (30),               		-- 게시글 작성/수정시 필요한 비밀번
@@ -15,6 +15,7 @@ create table apc_qa(
 	qa_step number(5),							-- 게시판 글 답변 단계 , 
 	qa_indent number(5)							-- 게시판 답변글 들여쓰기
 	
-	foreign key (mem_no_fk) references apc_member(mem_no)
 	
 );
+
+-- 20220426 수정 : qa_memno 삭제 , qa_memid 추가(외래키해제)
