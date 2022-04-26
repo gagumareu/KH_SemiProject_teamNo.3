@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+    
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,7 +70,7 @@
 		카테고리 코드
 		<select name="pCategory">
 			<option value="1w1n0000">
-			new arrivals
+			new arrivals[]
 			</option>
 			<option value="1w1s0000">
 			shoes

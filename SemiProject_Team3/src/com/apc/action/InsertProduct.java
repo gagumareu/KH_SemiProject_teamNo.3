@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.apc.controller.Action;
 import com.apc.controller.ActionForward;
-import com.apc.model.CategoryDAO;
-import com.apc.model.CategoryDTO;
 import com.apc.model.ProductsDAO;
 import com.apc.model.ProductsDTO;
 import com.oreilly.servlet.MultipartRequest;
@@ -49,7 +47,7 @@ public class InsertProduct implements Action {
 		dto.setPname(pName);
 		dto.setPcategory_fk(pCategory);
 		dto.setPqty(pQty);
-		dto.setPrice(pQty);
+		dto.setPrice(price);
 		dto.setPsize(pSize);
 		dto.setPcolor(pColor);
 		dto.setPicon(pIcon);

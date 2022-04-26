@@ -96,7 +96,7 @@ public class CategoryDAO {
 		try {
 			openConn();
 			
-			sql = "select * from apc_category where category_no = ? order by category_no";
+			sql = "select * from apc_category where category_no = ? order by category_code";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, no);

@@ -8,33 +8,57 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
+<style type="text/css">
+
+	.wrapper{
+	display: flex;
+	flex-direction: row;
+	
+	}
+	.wNewList{
+	width:20%;
+	}
+	.wNewList img{
+	width:100%;
+	}
+
+</style>
 </head>
 <body>
-	
-	<div>
-	A.P.C. WOMEN/NEW ARRIVALS
-	</div>
 	<c:set var="list" value="${womenList }"/>
 	
-	<c:if test="${!empty list }">
-	<div class="wNewList">
-		<c:forEach items="${list }" var="dto">
-			<a>
-				<img alt="" src="upload/${dto.getPimage() }">
-				<span>${dto.getPname() }</span>
-				<span>${dto.getPrice() }</span>
-			</a>
+	<div>
+	A.P.C. WOMEN/NEW ARRIVLAS
+	</div>
+	
+	<br>
+	
+	<div class="wrapper">
+	
+		
+		<c:if test="${!empty list }">
+			<c:forEach items="${list }" var="dto">
+				
+				<div class="wNewList">
+				<a>
+					<img alt="" src="upload/${dto.getPimage() }">
+					<span>${dto.getPname() }</span>
+					<span><fmt:formatNumber value="${dto.getPrice() }"/></span>
+				</a>
+			
+				</div>
+			</c:forEach>		
+		</c:if>
 		
 		
-		</c:forEach>
+		
+		<c:if test="${empty list }">
+			<h4>리스트에 품목이 없습니다.</h4>
+		
+		</c:if>
 	
 	
 	</div>
-	</c:if>
-	<c:if test="${empty list }">
-		<h4>리스트에 품목이 없습니다.</h4>
-	
-	</c:if>
 	
 </body>
 </html>

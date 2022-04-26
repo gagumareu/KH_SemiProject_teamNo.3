@@ -151,7 +151,7 @@ public class ProductsDAO {
 			
 			pstmt = con.prepareStatement(sql);
 			
-			pstmt.executeQuery();
+			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
 				

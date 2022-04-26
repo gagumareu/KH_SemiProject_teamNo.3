@@ -1,14 +1,65 @@
 @charset "UTF-8";
 
 
-
-	html, body {
-	font-family: arial;
-	font-size: 58px;
-	height: 100vh;
-	margin:0px;
-
+	
+	
+	#mainPage_wrapper{
+	height: 100%;
+	display: grid;
+	grid-template-columns: 50% 50%;
 	}
 	
+	/*********** warpper CSS end *************/
+	
+	
+	
+	#right_side{
+	width: 100%;
+	background-image: url('../images/1.jpg');
+	background-size: cover;
+	background-position: center;
+	}
+	
+	
+	
+	
+	/*********** right side CSS end   *************/
+	
+	
+	
+	
+	#left_side{
+	margin-left: 15px;
+	}
+	
+	
+	#left_text{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	height: 100%;
+	margin-left: 15px;
+	color: black;
+	font-weight:bold;
+	}
+	
+	
+	#left_text a {
+	text-decoration: none;
+	color: black;
+	font-weight:bold;
+	}
+	
+	li {
+	list-style-type: none;
+	}
+	
+	#left_text a:hover{
+	color: white;
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+	
+	}
+
+	/************ left side CSS end   ************/
 	
 	
