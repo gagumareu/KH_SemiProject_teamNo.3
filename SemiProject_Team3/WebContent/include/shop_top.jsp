@@ -12,11 +12,13 @@
 	width:100%;
 	position: absolute;
 	top:0px;
-	
 	display: flex;
-	
 	}
-
+	
+	li {
+	list-style-type: none;
+	}
+	
 
 	/********** include end **********/
 
@@ -30,7 +32,7 @@
 	
 	#navr_ul{
 	height: 20px;
-	
+	padding-left: 10px;
 	}
 	
 	
@@ -51,18 +53,6 @@
 	font-weight: bold;
 	padding: 0 38px 0px 0px;
 	}
-	
-	
-	span {
-	opacity: 0;
-
-	}
-	
-	span:hover{
-	opacity: 1;
-	
-	}
-	
 	
 	
 	.navr_ul >:hover{
@@ -96,6 +86,7 @@
 	
 	/********** left side end **********/
 	
+	
 	#right_menu{
 	margin-top: 10px;
 	width: 200px;
@@ -123,6 +114,16 @@
 	}
 	
 	/********** right side end **********/
+	
+	
+	
+	
+	.title{
+	position: absolute;
+	left: 0px;
+	
+	}
+	
 	
 </style>
 </head>
@@ -153,15 +154,11 @@
 			<li>Objects</li>
 			<li>Surplus</li>
 			<li>A.P.C.X Jessica Ogden</li>
-			<li>
+			<!--  <li>
 				<a id="search" href="#"><img src="images/search.png" width="20px" ><span>search</span></a>
-			</li>
+			</li>-->
 		</ul>
 	</div> <!-- navr end -->
-	
-	
-	
-	
 	
 	
 	<div id="right_menu">
@@ -178,6 +175,11 @@
 		
 		</ul>
 	</div>	<!--  right_menu end  -->
+	
+	
+	
+	
+	
 	
 	
 	</div> <!-- include_wrapper end -->

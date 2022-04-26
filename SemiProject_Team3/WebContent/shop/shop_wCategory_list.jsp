@@ -10,79 +10,97 @@
 <title>Insert title here</title>
 <style type="text/css">
 
-	#w_category_wrapper{
+	
+
+
+	.apcTitle{
+	margin-top: 50px;
+	font-size: 58px;
+	margin-left: 15px;
+	font-weight: bold;
+	width: 100%;
+	}
+	
+	.apcTitle > a{
+	color: black;
+	text-decoration: none;
+	}
+	
+	.apcTitle > a:hover{
+	color: white;
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+	}
+	
+	/*#w_category_wrapper{
 	height:100%;
 	display:flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: center;
 	
-	}
-	
-	
-	.title{
-	font-size: 58;
-	}
+	}*/
 
-	html, body {
-	font-family: arial;
-	font-size: 58px;
-	height: 100vh;
-	margin:0px;
-
-	}
-	
-	.cList{
-	width:27%;
-	
-	}
-	
-	.cList{
-	
-	}
-	
-	
 	
 	.cimaages > img{
 	width:100%;
-	text-decoration:none;;
 	
 	}
 	
+	
+
+	
+
 
 </style>
 
+	<link rel="stylesheet" href="../css/style.css">
+	
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" 
+	rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" 
+	crossorigin="anonymous">
 
 </head>
 <body>
 	
-	<div class="">
+	<jsp:include page="/include/shop_top.jsp"/>
+	<c:set var="list" value="${wCategory }"/>
+		
+	<div id="w_category_wrapper">
 	
-		<div class="title"><a href="#">A.P.C.</a></div>
-		
-		<c:set var="list" value="${wCategory }"/>
-		
-		<div id="w_category_wrapper">
-		
-			
-	
-			<c:if test="${!empty list }">
-				<c:forEach items="${list }" var="dto">			
-					<div class="cList">
-						<a class="cimaages" href="<%=request.getContextPath() %>/productWList.do?code=${dto.getCategory_code() }">
-							<img alt="" src="upload/${dto.getCategory_image() }">
-							<span>WOMEN/</span> <br>
-							<span>${dto.getCategory_name() }</span>
-						</a>
-					</div>
-				</c:forEach>
-			</c:if>
-			
-			
-			
-		</div>
-		
+	<div class="apcTitle">
+		<a href="<%=request.getContextPath() %>/index.jsp">A.P.C.</a> WOMEN
 	</div>
+	
+		<div class="container">
+			<div class="row row-cols-3">	
+				<c:if test="${!empty list }">
+					<c:forEach items="${list }" var="dto">	
+						
+			   			 <div class="col">
+			    			<a class="cimaages" href="<%=request.getContextPath() %>/productWList.do?code=${dto.getCategory_code() }">
+								<img alt="" src="upload/${dto.getCategory_image() }">
+							</a>
+								WOMEN/<br>
+								${dto.getCategory_name() }
+			  	 		 </div>
+		
+					</c:forEach>
+				</c:if>
+				
+				<c:if test="${empty list }">
+					<h4>검색된 품목이 없습니다:(</h4>
+				</c:if>
+		
+			</div> <!-- row row-cols-3 end -->
+		</div> <!-- container end -->
+		
+	</div> <!-- w_category_wrapper end -->
+		
+	
 
+	<jsp:include page="/include/shop_bottom.jsp"/>
+	
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
+	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>

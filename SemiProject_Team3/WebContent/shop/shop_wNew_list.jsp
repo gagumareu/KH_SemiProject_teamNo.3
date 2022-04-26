@@ -25,6 +25,9 @@
 </style>
 </head>
 <body>
+
+	<jsp:include page="/include/shop_top.jsp"/>
+
 	<c:set var="list" value="${womenList }"/>
 	
 	<div>
@@ -59,6 +62,8 @@
 	
 	
 	</div>
+	
+	<jsp:include page="/include/shop_bottom.jsp"/>
 	
 </body>
 </html>

@@ -6,7 +6,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-
+	body{
+	font-size: 58px;
+	}
 </style>
 
  <link rel="stylesheet" href="css/style.css">
@@ -20,13 +22,12 @@
 	<div id="mainPage_wrapper">
 		
 		<jsp:include page="include/shop_top.jsp"/>
-		
+				
 		<div id="left_side">
 					
 			<div id="left_text">
-				<div id="main_title">
-					A.P.C.
-				</div>
+			
+				<div id="main_title">A.P.C.</div> 
 				
 				<div>
 					<a class="womenList" href="<%=request.getContextPath() %>/apc_product_women_category.do?no=1">A.P.C. WOMEN</a>
