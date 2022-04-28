@@ -2,8 +2,9 @@
 
 create table apc_qa(
 
-
+	
 	qa_no number(5) primary key,				-- 문의게시글 번호
+	qa_category varchar2(100) not null,			-- qa게시판 카테고리  /20220428추가
 	qa_memid number(5) not null, 			   	-- 회원아이디(회원,비회원)
 	qa_title varchar2(200) not null,    		-- 게시글 제목
 	qa_cont varchar2(1000),            	 		-- 게시글 내용
