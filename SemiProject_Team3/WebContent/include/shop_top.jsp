@@ -49,7 +49,7 @@
 	
 	
 	#navr_ul > li{
-	font-size: 13px;
+	font-size: 14px;
 	font-weight: bold;
 	padding: 0 38px 0px 0px;
 	}
@@ -96,7 +96,7 @@
 	#right_menu>ul{
 	display:flex;
 	flex-direction:column;
-	font-size: 13px;
+	font-size: 12px;
 	}
 	
 	

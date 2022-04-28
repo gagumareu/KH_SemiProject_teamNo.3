@@ -52,7 +52,7 @@
 	
 	<br>
 	
-	<div class="women_arrivals_wrapper">
+	<div class="products_wrapper">
 	
 		<div class="apcTitle">
 			<a href="<%=request.getContextPath() %>/index.jsp">A.P.C.</a> 
@@ -81,7 +81,7 @@
 				</div> <!-- row row-cols-3 end -->
 			</div> <!-- container end -->
 
-	</div> <!-- women_arrivals_wrapper end -->
+	</div> <!-- products_wrapper end -->
 	
 	
 	

@@ -190,6 +190,50 @@ public class ProductsDAO {
 	
 	
 	
+	public ProductsDTO getProductDetail(int no) {
+		
+		ProductsDTO dto = new ProductsDTO();
+		
+		
+		try {
+			openConn();
+			
+			sql = "select * from apc_products where pno = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+						
+				dto.setPno(rs.getInt("pno"));
+				dto.setPname(rs.getString("pname"));
+				dto.setPcategory_fk(rs.getString("pcategory_fk"));
+				dto.setPimage(rs.getString("pimage"));
+				dto.setPqty(rs.getInt("pqty"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setPcolor(rs.getString("pcolor"));
+				dto.setPicon(rs.getString("picon"));
+				dto.setPcontents(rs.getString("pcontents"));
+				dto.setMileage(rs.getInt("mileage"));
+				dto.setPinputdate(rs.getString("pinputdate"));			
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			
+			closeConn(rs, pstmt, con);
+		}
+		
+		return dto;
+		
+		
+	} //getProductDetail() end
+	
+	
 	
 	
 	

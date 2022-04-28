@@ -13,7 +13,11 @@
 <title>Insert title here</title>
 <style type="text/css">
 
+	html, body{
 	
+		margin: 0px;
+		padding: 0px;
+	}
 
 
 	.apcTitle{
@@ -37,6 +41,7 @@
 	
 	.col > a > img{
 	width:100%;
+
 	}
 	
 	.container{

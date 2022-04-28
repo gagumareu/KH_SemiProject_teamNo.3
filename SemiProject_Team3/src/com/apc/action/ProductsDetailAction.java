@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.apc.controller.Action;
 import com.apc.controller.ActionForward;
 import com.apc.model.ProductsDAO;
+import com.apc.model.ProductsDTO;
 
 public class ProductsDetailAction implements Action {
 
@@ -15,15 +16,23 @@ public class ProductsDetailAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// TODO Auto-generated method stub
 		
-		String product_no = request.getParameter("no").trim();
+		int product_no = Integer.parseInt(request.getParameter("no").trim());
 		
 		ProductsDAO dao = ProductsDAO.getInstance();
 		
-		dao.getProductDetail(product_no);
+		ProductsDTO productDetail = dao.getProductDetail(product_no);
+		
+		request.setAttribute("Detail", productDetail);
+		
+		ActionForward forward = new ActionForward();
+		
+		forward.setRedirect(false);
+		
+		forward.setPath("product/product_detail.jsp");
 		
 		
 		
-		return null;
+		return forward;
 	}
 
 }
