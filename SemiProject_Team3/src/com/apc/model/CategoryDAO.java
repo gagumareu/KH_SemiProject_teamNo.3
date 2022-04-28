@@ -128,47 +128,7 @@ public class CategoryDAO {
 	} // getCategory() end
 	
 	
-	
-	public List<CategoryDTO> getWorMCategory(int no){
-		
-		List<CategoryDTO> list = new ArrayList<CategoryDTO>();
-		
-		try {
-			openConn();
-			
-			sql = "select * from apc_category where category_no =  ?";
-			
-			pstmt = con.prepareStatement(sql);
-			
-			pstmt.setInt(1, no);
-			
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				
-				CategoryDTO dto = new CategoryDTO();
-				
-				dto.setCategory_no(rs.getInt("category_no"));
-				dto.setCategory_code(rs.getString("category_code"));
-				dto.setCategory_name(rs.getString("category_name"));
-				dto.setCategory_image(rs.getString("category_image"));
-				
-				list.add(dto);
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			closeConn(rs, pstmt, con);
-		}
-		
-		return list;
 
-		
-	} // womenCategoryList() end 
-	
-	
-	
 	
 	public int inputCategory(CategoryDTO dto) {
 		
@@ -257,19 +217,19 @@ public class CategoryDAO {
 		
 		if(code.length() > 1) {  // 골프 3w0.., 3m0.., 3a0..인 경우
 			
-			
 			try {
 				
 				openConn();
 				
-				sql ="select * from apc_category wehre category_code like ?"
-						+ " and category_code not like ? ";
+				sql ="select * from apc_category where category_code like ? "
+						+ " and category_code not like ? and category_code not like ? ";
 				
 				pstmt = con.prepareStatement(sql);
 				
 				// 골프 카테고리 목록 불러오기 (상품 목록이 아닌 품목은 제외시키기)
 				pstmt.setString(1, code.substring(0, 2)+"%"); 
-				pstmt.setString(2, code+"_000000");
+				pstmt.setString(2, "_0000000");
+				pstmt.setString(3, "__000000");
 				
 				rs = pstmt.executeQuery();
 				

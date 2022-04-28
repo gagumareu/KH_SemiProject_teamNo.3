@@ -8,7 +8,6 @@
 <style type="text/css">
 
 	#footer{
-	
 	background-color: black;
 	color: white;
 	padding-left: 17px;
@@ -16,7 +15,7 @@
 	flex-direction: column;
 	justify-content: space-between;
 	flex-wrap: wrap;
-	
+
 	}
 	
 	
@@ -81,19 +80,19 @@
 	
 		<div class="addr"> 
 			
-				<div>»óÈ£:</div> <span>&nbsp;</span> <div>(ÁÖ)¾ÆÀÌµð·è ´ëÇ¥ :</div> <span>&nbsp;</span><div>±èÀçÇ³ ÁÖ¼Ò : </div><span>&nbsp;</span>
-				<div>¼­¿ï</div> <span>&nbsp;</span><div>°­³²±¸</div><span>&nbsp;</span>
-				 <div>°­³²´ë·Î</div> <span>&nbsp;</span><div>580</div><span>&nbsp;</span> <div>8Ãþ</div><span>&nbsp;</span> <div>¹°·ù¼¾ÅÍ :</div><span>&nbsp;</span>
-				  <div>°æ±âµµ</div> <span>&nbsp;</span><div>ÆòÅÃ½Ã</div><span>&nbsp;</span>
-				  <div>¼­Åº¸é</div><span>&nbsp;</span> <div>¼­Åº2·Î</div><span>&nbsp;</span> <div>97</div>
+				<div>ï¿½ï¿½È£:</div> <span>&nbsp;</span> <div>(ï¿½ï¿½)ï¿½ï¿½ï¿½Ìµï¿½ï¿½ ï¿½ï¿½Ç¥ :</div> <span>&nbsp;</span><div>ï¿½ï¿½ï¿½ï¿½Ç³ ï¿½Ö¼ï¿½ : </div><span>&nbsp;</span>
+				<div>ï¿½ï¿½ï¿½ï¿½</div> <span>&nbsp;</span><div>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</div><span>&nbsp;</span>
+				 <div>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</div> <span>&nbsp;</span><div>580</div><span>&nbsp;</span> <div>8ï¿½ï¿½</div><span>&nbsp;</span> <div>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ :</div><span>&nbsp;</span>
+				  <div>ï¿½ï¿½âµµ</div> <span>&nbsp;</span><div>ï¿½ï¿½ï¿½Ã½ï¿½</div><span>&nbsp;</span>
+				  <div>ï¿½ï¿½Åºï¿½ï¿½</div><span>&nbsp;</span> <div>ï¿½ï¿½Åº2ï¿½ï¿½</div><span>&nbsp;</span> <div>97</div>
 			
 				<br> <br>
-				<div>»ç¾÷ÀÚµî·Ï¹øÈ£ :</div><span>&nbsp;</span> <div>211-81-39521</div> <span>&nbsp;</span><div>»ç¾÷ÀÚÁ¤º¸È®ÀÎ</div><span>&nbsp;</span>
-				 <div>Åë½ÅÆÇ¸Å¾÷½Å°í¹øÈ£ : </div><span></span>
-				<div>2009-¼­¿ï°­³²-02143 </div> <span>&nbsp;</span><div>°³ÀÎÁ¤º¸°ü¸®ÀÚ : </div> <span>&nbsp;</span><div>¼ÛÇÏ¿µ ÀüÈ­¹øÈ£ : </div>
+				<div>ï¿½ï¿½ï¿½ï¿½Úµï¿½Ï¹ï¿½È£ :</div><span>&nbsp;</span> <div>211-81-39521</div> <span>&nbsp;</span><div>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È®ï¿½ï¿½</div><span>&nbsp;</span>
+				 <div>ï¿½ï¿½ï¿½ï¿½Ç¸Å¾ï¿½ï¿½Å°ï¿½ï¿½È£ : </div><span></span>
+				<div>2009-ï¿½ï¿½ï¿½ï°­ï¿½ï¿½-02143 </div> <span>&nbsp;</span><div>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : </div> <span>&nbsp;</span><div>ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½È­ï¿½ï¿½È£ : </div>
 				<span>&nbsp;</span> <div>1833-2250</div>
 						<div>
-				ÆÑ½º¹øÈ£ ; 02-547-6363
+				ï¿½Ñ½ï¿½ï¿½ï¿½È£ ; 02-547-6363
 			</div>
 		
 		</div>
@@ -105,24 +104,24 @@
 			</ul>
 			
 			<ul>
-				<li>ÁöºÒ¹æ¹ý</li>
-				<li>»óÇ°¹è¼Û</li>
+				<li>ï¿½ï¿½ï¿½Ò¹ï¿½ï¿½</li>
+				<li>ï¿½ï¿½Ç°ï¿½ï¿½ï¿½</li>
 			</ul>
 			
 			<ul>
-				<li>¹ÝÇ°±³È¯</li>
-				<li>°øÁö»çÇ×</li>
+				<li>ï¿½ï¿½Ç°ï¿½ï¿½È¯</li>
+				<li>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</li>
 			</ul>
 			
 			<ul>
-				<li>ÀÌ¿ë¾à°ü</li>
-				<li>Ã¤¹«Áö±Þº¸Áõ</li>
+				<li>ï¿½Ì¿ï¿½ï¿½ï¿½</li>
+				<li>Ã¤ï¿½ï¿½ï¿½ï¿½ï¿½Þºï¿½ï¿½ï¿½</li>
 			</ul>
 		</div>
 		
 		<div class="new">
-		NEWSLETTER : A.P.C.ÀÇ »õ·Î¿î ÄÃ·º¼Ç, ÀÌº¥Æ®, ¼¼ÀÏ ¼Ò½ÄÀ» ¹Þ¾Æº¼ ¼ö ÀÖ½À´Ï´Ù. ´º½º·¹ÅÍ±¸µ¶½ÅÃ»
-	ÀÌ¿ë¾È³» °³ÀÎÁ¤º¸Ã³¸®¹æÄ§
+		NEWSLETTER : A.P.C.ï¿½ï¿½ ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½, ï¿½Ìºï¿½Æ®, ï¿½ï¿½ï¿½ï¿½ ï¿½Ò½ï¿½ï¿½ï¿½ ï¿½Þ¾Æºï¿½ ï¿½ï¿½ ï¿½Ö½ï¿½ï¿½Ï´ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í±ï¿½ï¿½ï¿½ï¿½ï¿½Ã»
+	ï¿½Ì¿ï¿½È³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã³ï¿½ï¿½ï¿½ï¿½Ä§
 		
 		
 		</div> 

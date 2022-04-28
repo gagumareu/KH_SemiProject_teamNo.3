@@ -20,8 +20,45 @@
 
 	.category_main_wrapper{
 		margin-top: 100px;
+		width: 100%;
+		margin-bottom: 540px;
 	}
 
+	a{
+	padding: 10px;
+	}
+	
+	.golf_image_main{
+	with: 100%;
+	margin: 10px 0px;
+	}
+	.golf_image_main > img{
+	with: 100%;
+	}
+	
+	
+	.gofl_category a {
+	width: 80%;
+	}
+	
+	.golf_category_div {
+	width: 100%;
+	margin: 0px 3px;
+	}
+	
+	
+	
+	.golf_category_div > a > img{
+	width: 100%;
+	}
+	
+	.gofl_category{
+	width: 100%;
+	height: 100px;
+	display: flex;
+	}
+	
+	
 </style>
 
 </head>
@@ -29,31 +66,37 @@
 
 	<jsp:include page="/include/shop_top.jsp"/>
 
-		
-	<div class="category_main_wrapper">
+			
+	<div class="category_main_wrapper" >
+	
+	<div class="golf_image_main">
+		<img class="main_image" src="images/golf_main.jpg">
+	
+	</div>
+	
+	<div class="gofl_category">
 	
 		<c:set var="list" value="${List }"/>
 		<c:if test="${!empty list }">
 			
-			<div>
+			<div class="golf_category_div left">
 				<a href="<%=request.getContextPath() %>/2nd_category.do?code=${list[0].getCategory_code() }">
-					GOLF/ WOMEN
+					<img alt="" src="images/golf_left.jpg">
 				</a>
 			</div>
 			
-			<div>
+			<div class="golf_category_div center">
 				<a href="<%=request.getContextPath() %>/2nd_category.do?code=${list[1].getCategory_code() }">
-					GOLF/ MEN
+					<img alt="" src="images/golf_center.jpg">
 				</a>
 			</div>
 			
-			<div>
-				<a href="<%=request.getContextPath() %>/2nd_category.do?code=${list[2].getCategory_code() }">
-					GOLF/ GOLF
+			<div class="golf_category_div right">
+				<a href="<%=request.getContextPath() %>/2nd_category.do?code=${list[2].getCategory_code() }">					
+					<img alt="" src="images/golf_right.jpg">
 				</a>
 			</div>
-		
-		
+			
 		</c:if> 
 		
 		<c:if test="${empty list }">
@@ -61,7 +104,11 @@
 		
 		</c:if>
 		
-		</div> <!-- category_main_wrapper end -->
+		
+		
+	</div>  <!-- golf category end -->
+		
+	</div> <!-- category_main_wrapper end -->
 	
 	
 	

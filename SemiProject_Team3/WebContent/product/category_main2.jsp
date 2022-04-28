@@ -77,7 +77,7 @@
 			    			<a href="<%=request.getContextPath() %>/product_list.do?code=${dto.getCategory_code() }">
 								<img alt="" src="upload/${dto.getCategory_image() }">
 							</a>
-								WOMEN/<br>
+								<br>
 								${dto.getCategory_name() }
 			  	 		 </div>
 		
