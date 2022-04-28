@@ -91,7 +91,7 @@ public class ProductsDAO {
 	
 	
 	
-	public List<ProductsDTO> apcProductWomenList(String name){
+	public List<ProductsDTO> getProductList(String name){
 		
 		List<ProductsDTO> list = new ArrayList<ProductsDTO>();
 		

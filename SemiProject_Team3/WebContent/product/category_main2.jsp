@@ -1,7 +1,10 @@
+<%@page import="java.util.Set"%>
+<%@page import="com.apc.model.CategoryDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="EUC-KR"%>
     
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+  
     
 <!DOCTYPE html>
 <html>
@@ -30,23 +33,16 @@
 	color: white;
 	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 	}
-	
-	/*#w_category_wrapper{
-	height:100%;
-	display:flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: center;
-	
-	}*/
 
 	
-	.cimaages > img{
+	.col > a > img{
 	width:100%;
-	
 	}
 	
-	
+	.container{
+	margin: 0px;
+	width: 100%;
+	}
 
 	
 
@@ -63,12 +59,13 @@
 <body>
 	
 	<jsp:include page="/include/shop_top.jsp"/>
-	<c:set var="list" value="${wCategory }"/>
+	
+	<c:set var="list" value="${List }"/>
 		
-	<div id="w_category_wrapper">
+	<div id="category_wrapper">
 	
 	<div class="apcTitle">
-		<a href="<%=request.getContextPath() %>/index.jsp">A.P.C.</a> WOMEN
+		<a href="<%=request.getContextPath() %>/index.jsp">A.P.C.</a>
 	</div>
 	
 		<div class="container">
@@ -77,7 +74,7 @@
 					<c:forEach items="${list }" var="dto">	
 						
 			   			 <div class="col">
-			    			<a class="cimaages" href="<%=request.getContextPath() %>/productWList.do?code=${dto.getCategory_code() }">
+			    			<a href="<%=request.getContextPath() %>/product_list.do?code=${dto.getCategory_code() }">
 								<img alt="" src="upload/${dto.getCategory_image() }">
 							</a>
 								WOMEN/<br>
@@ -94,7 +91,7 @@
 			</div> <!-- row row-cols-3 end -->
 		</div> <!-- container end -->
 		
-	</div> <!-- w_category_wrapper end -->
+	</div> <!-- category_wrapper end -->
 		
 	
 

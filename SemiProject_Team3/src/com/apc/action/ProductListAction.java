@@ -8,29 +8,28 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.apc.controller.Action;
 import com.apc.controller.ActionForward;
-import com.apc.model.CategoryDAO;
-import com.apc.model.CategoryDTO;
+import com.apc.model.ProductsDAO;
+import com.apc.model.ProductsDTO;
 
-public class ApcWomenCategory implements Action {
+public class ProductListAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// TODO Auto-generated method stub
 		
+		String code = request.getParameter("code").trim();
 		
-		int no = Integer.parseInt(request.getParameter("no"));
+		ProductsDAO dao = ProductsDAO.getInstance();
 		
-		CategoryDAO dao = CategoryDAO.getInstance();
+		List<ProductsDTO> dto = dao.getProductList(code);
 		
-		List<CategoryDTO> list = dao.womenCategory(no);
-		
-		request.setAttribute("wCategory", list);
+		request.setAttribute("productList", dto);
 		
 		ActionForward forward = new ActionForward();
 		
 		forward.setRedirect(false);
 		
-		forward.setPath("shop/shop_wCategory_list.jsp");
+		forward.setPath("product/product_list.jsp");
 		
 		return forward;
 	}

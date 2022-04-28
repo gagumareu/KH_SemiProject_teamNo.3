@@ -1,5 +1,21 @@
+<%@page import="com.apc.model.CategoryDTO"%>
+<%@page import="com.apc.model.CategoryDAO"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.Set"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
+    <%
+    	CategoryDAO dao = CategoryDAO.getInstance();
+    
+    	List<CategoryDTO> list = dao.getCategory();
+    	
+    	pageContext.setAttribute("List", list);
+    
+    %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +34,7 @@
 </head>
 <body>
 
-
+	<c:set var="list" value="${List }"></c:set>
 	<div id="mainPage_wrapper">
 		
 		<jsp:include page="include/shop_top.jsp"/>
@@ -30,11 +46,11 @@
 				<div id="main_title">A.P.C.</div> 
 				
 				<div>
-					<a class="womenList" href="<%=request.getContextPath() %>/apc_product_women_category.do?no=1">A.P.C. WOMEN</a>
+					<a class="womenList" href="<%=request.getContextPath() %>/category.do?code=${list[0].getCategory_code() }">A.P.C. WOMEN</a>
 				</div>
 				
 				<div>	
-					<a class="menList" href="">A.P.C. MEN</a>	
+					<a class="menList" href="<%=request.getContextPath() %>/category.do?code=${list[1].getCategory_code() }">A.P.C. MEN</a>	
 				</div>
 				
 				<div>
@@ -42,7 +58,7 @@
 				</div>
 				
 				<div>
-					<a href="#">A.P.C. GOLF</a>
+					<a href="<%=request.getContextPath() %>/category.do?code=${list[2].getCategory_code() }">A.P.C. GOLF</a>
 				</div>
 				
 				<div>

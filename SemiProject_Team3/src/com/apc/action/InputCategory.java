@@ -54,7 +54,7 @@ public class InputCategory implements Action {
 		
 		if(check > 0) {
 			forward.setRedirect(false);
-			forward.setPath("shop/shop_wCategory_list.jsp");
+			forward.setPath("product/product_list.jsp");
 			
 		}else {
 			out.println("<script>");
