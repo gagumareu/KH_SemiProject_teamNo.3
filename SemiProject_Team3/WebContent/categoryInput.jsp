@@ -75,12 +75,12 @@
 			none
 			</option>
 			<option value="1w1n0000">
-			new arrivals
+			new arrivals 1w1n0000
 			</option>
-			<option value="1w1s0000">
+			<option value="1wcs0000">
 			shoes
 			</option>
-			<option value="1w1b0000">
+			<option value="1wbb0000">
 			bags
 			</option>
 		
@@ -94,13 +94,13 @@
 			none
 			</option>
 			<option value="2man0000">
-			new arrivals
+			new arrivals 2man0000
 			</option>
 			<option value="2mbt0000">
-			top
+			top 2mbt0000
 			</option>
 			<option value="2mcp0000">
-			pants
+			pants 2mcp0000
 			</option>
 		
 		</select>

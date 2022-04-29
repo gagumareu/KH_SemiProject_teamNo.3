@@ -18,22 +18,25 @@
 
 <style type="text/css">
 
+	
 	.category_main_wrapper{
-		margin-top: 100px;
+	display: grid;
+		grid: 1;
+		
 		width: 100%;
-		margin-bottom: 540px;
 	}
+	
 
 	a{
 	padding: 10px;
 	}
 	
 	.golf_image_main{
-	with: 100%;
 	margin: 10px 0px;
 	}
-	.golf_image_main > img{
-	with: 100%;
+	
+	.main_image {
+		width: 100%;
 	}
 	
 	
@@ -58,6 +61,9 @@
 	display: flex;
 	}
 	
+	.contents{
+		width: 100%
+	}
 	
 </style>
 
@@ -65,54 +71,61 @@
 <body>
 
 	<jsp:include page="/include/shop_top.jsp"/>
+	<jsp:include page="/include/shop_top_right.jsp"/>
 
 			
 	<div class="category_main_wrapper" >
+		
+		
+		<div class="golf_image_main">
+			<img class="main_image" src="images/golf_main.jpg">
+		</div>
 	
-	<div class="golf_image_main">
-		<img class="main_image" src="images/golf_main.jpg">
-	
-	</div>
-	
-	<div class="gofl_category">
-	
-		<c:set var="list" value="${List }"/>
-		<c:if test="${!empty list }">
+		<div class="gofl_category">
+		
+			<c:set var="list" value="${List }"/>
+				<c:if test="${!empty list }">
+				
+					<div class="golf_category_div left">
+						<a href="<%=request.getContextPath() %>/2nd_category.do?code=${list[0].getCategory_code() }">
+							<img alt="" src="images/golf_left.jpg">
+						</a>
+					</div>
+					
+					<div class="golf_category_div center">
+						<a href="<%=request.getContextPath() %>/2nd_category.do?code=${list[1].getCategory_code() }">
+							<img alt="" src="images/golf_center.jpg">
+						</a>
+					</div>
+					
+					<div class="golf_category_div right">
+						<a href="<%=request.getContextPath() %>/2nd_category.do?code=${list[2].getCategory_code() }">					
+							<img alt="" src="images/golf_right.jpg">
+						</a>
+					</div>
+					
+				</c:if> 
 			
-			<div class="golf_category_div left">
-				<a href="<%=request.getContextPath() %>/2nd_category.do?code=${list[0].getCategory_code() }">
-					<img alt="" src="images/golf_left.jpg">
-				</a>
-			</div>
+				<c:if test="${empty list }">
+					<h2>품목이 없습니다</h2>
+				
+				</c:if>
 			
-			<div class="golf_category_div center">
-				<a href="<%=request.getContextPath() %>/2nd_category.do?code=${list[1].getCategory_code() }">
-					<img alt="" src="images/golf_center.jpg">
-				</a>
-			</div>
 			
-			<div class="golf_category_div right">
-				<a href="<%=request.getContextPath() %>/2nd_category.do?code=${list[2].getCategory_code() }">					
-					<img alt="" src="images/golf_right.jpg">
-				</a>
-			</div>
 			
-		</c:if> 
-		
-		<c:if test="${empty list }">
-			<h2>품목이 없습니다</h2>
-		
-		</c:if>
+			</div>  <!-- golf category end -->
+			
 		
 		
+	<!--<jsp:include page="/include/shop_bottom.jsp"/> -->
 		
-	</div>  <!-- golf category end -->
 		
 	</div> <!-- category_main_wrapper end -->
 	
+		
 	
 	
-	<jsp:include page="/include/shop_bottom.jsp"/>
+	
 	
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

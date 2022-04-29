@@ -47,6 +47,7 @@
 <body>
 
 	<jsp:include page="/include/shop_top.jsp"/>
+	<jsp:include page="/include/shop_top_right.jsp"/>
 
 	<c:set var="list" value="${productList }"/>
 	
@@ -75,7 +76,7 @@
 					</c:if>
 					
 					<c:if test="${empty list }">
-						<h4>ê²€ìƒ‰ëœ í’ˆëª©ì´ ì—†ìŠµë‹ˆë‹¤:(</h4>
+						<h4>°Ë»öµÈ Ç°¸ñÀÌ ¾ø½À´Ï´Ù:(</h4>
 					</c:if>
 			
 				</div> <!-- row row-cols-3 end -->

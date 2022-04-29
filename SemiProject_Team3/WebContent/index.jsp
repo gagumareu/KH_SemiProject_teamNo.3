@@ -23,7 +23,8 @@
 <title>Insert title here</title>
 <style type="text/css">
 	body{
-	font-size: 58px;
+		font-size: 60px;
+		font-weight: bold;
 	}
 </style>
 
@@ -38,19 +39,22 @@
 	<div id="mainPage_wrapper">
 		
 		<jsp:include page="include/shop_top.jsp"/>
+		<jsp:include page="include/shop_top_right.jsp"/>
 				
 		<div id="left_side">
 					
 			<div id="left_text">
 			
-				<div id="main_title">A.P.C.</div> 
+				<div id="main_title">
+				A.P.C.
+				</div> 
 				
 				<div>
-					<a class="womenList" href="<%=request.getContextPath() %>/category.do?code=${list[0].getCategory_code() }">A.P.C. WOMEN</a>
+					<a class="wCategory" href="<%=request.getContextPath() %>/category.do?code=${list[0].getCategory_code() }">A.P.C. WOMEN</a>
 				</div>
 				
 				<div>	
-					<a class="menList" href="<%=request.getContextPath() %>/category.do?code=${list[1].getCategory_code() }">A.P.C. MEN</a>	
+					<a class="mCategory" href="<%=request.getContextPath() %>/category.do?code=${list[1].getCategory_code() }">A.P.C. MEN</a>	
 				</div>
 				
 				<div>
@@ -58,7 +62,7 @@
 				</div>
 				
 				<div>
-					<a href="<%=request.getContextPath() %>/category.do?code=${list[2].getCategory_code() }">A.P.C. GOLF</a>
+					<a class="gCategory" href="<%=request.getContextPath() %>/category.do?code=${list[2].getCategory_code() }">A.P.C. GOLF</a>
 				</div>
 				
 				<div>
@@ -70,10 +74,11 @@
 				</div>
 			</div>
 		</div>
-		
 
 		<div id="right_side">
 		
+			<img class="right_image-1" alt="" src="images/1mN4TpY4ng.jpg">
+			
 			
 		</div> <!-- right_side end -->
 		

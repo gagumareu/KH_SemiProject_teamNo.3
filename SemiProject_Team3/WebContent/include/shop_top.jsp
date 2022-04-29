@@ -8,16 +8,21 @@
 <style type="text/css">
 
 
-	.include_wrapper{
+	/*.include_wrapper{
 	width:100%;
-	position: absolute;
 	top:0px;
 	display: flex;
-	}
+	}  */
 	
 	li {
-	list-style-type: none;
+		list-style-type: none;
 	}
+	
+	.seach_text{
+		display: none;
+	
+	}
+	
 	
 
 	/********** include end **********/
@@ -25,110 +30,97 @@
 
 	
 	#navr{
-	margin: 10px 0px 0px 10px;
-	width: 200%;
-	display: flex;
+		margin: 10px 0px 0px 10px;
+		display: flex;
+		position: absolute;
+		top: 0px;
 	}
 	
 	#navr_ul{
-	height: 20px;
-	padding-left: 10px;
+		height: 20px;
+		padding-left: 10px;
 	}
 	
 	
 	ul {
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-start;
-	/*justify-content: space-evenly;*/
-	padding-left: 0px;
-	margin: 0px;
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		/*justify-content: space-evenly;*/
+		padding-left: 0px;
+		margin: 0px;
 	
 	
 	}
 	
 	
 	#navr_ul > li{
-	font-size: 14px;
-	font-weight: bold;
-	padding: 0 38px 0px 0px;
+		font-size: 14px;
+		font-weight: bold;
+		padding: 0 38px 0px 0px;
 	}
 	
-	
+	/** 상단 메뉴바 호버 처리 해야됌 */
 	.navr_ul >:hover{
-	cursor: ponter;
-	color:pink;
+		cursor: ponter;
+		color:pink;
 	}
 	
 	.dropDown{
-	display: flex;
-	flex-direction: column;
+		display: flex;
+		flex-direction: column;
 	
 	}
 	
 	.dropDown li{
-	display: none;
+		display: none;
 	}
 	
 	.dropDown li:hover{
-	display: block;
-	background-color: pink;
+		display: block;
+		background-color: pink;
 	}
 	
 	.navr_ul > li:hover > .dropDown{
-	display: block
+		display: block
 	}
 	
 	.navr_ul li:hover .dropDown{
-	display:block;
+		display:block;
 	
 	}
 	
 	/********** left side end **********/
 	
-	
-	#right_menu{
-	margin-top: 10px;
-	width: 200px;
-	
-	}
-	
-	#right_menu>ul{
-	display:flex;
-	flex-direction:column;
-	font-size: 12px;
-	}
-	
-	
-	#right_menu ul> li > a{
-	text-decoration: none;
-	color: black;
-	}
-	
-	#right_menu >ul > li > a:hover{
-	text-decoration: underline;
-	}
-	
-	.hello:hover{
-	text-decoration: underline;
-	}
-	
-	/********** right side end **********/
-	
-	
-	
+
 	
 	.title{
-	position: absolute;
-	left: 0px;
+		position: absolute;
+		left: 0px;
 	
 	}
+	
+
 	
 	
 </style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script type="text/javascript">
+
+	$(function(){
+		$(".search_icon").on("click", function(){
+			let date = $("");
+			$().text(date);
+			alert(date);
+		});
+		
+	});
+
+
+</script>
 </head>
 <body>
-	<div class="include_wrapper"> 
+	
 	
 	<div id="navr">
 		<ul id="navr_ul">
@@ -154,35 +146,17 @@
 			<li>Objects</li>
 			<li>Surplus</li>
 			<li>A.P.C.X Jessica Ogden</li>
-			<!--  <li>
-				<a id="search" href="#"><img src="images/search.png" width="20px" ><span>search</span></a>
-			</li>-->
+			<li>
+				<img class="search_icon" src="images/icon-search-bold.svg" width="18px"><span class="seach_text">search</span>
+			</li>
 		</ul>
 	</div> <!-- navr end -->
 	
 	
-	<div id="right_menu">
-		<ul>
-			<li><a href="#"><img src="images/bag1.png" width="20px">장바구니</a></li>
-			<li><a href="#">내계정/로그인</a></li>
-			<li>&nbsp;</li>
-			<li><a href="#">South Korea</a></li>
-			<li><a href="#">뉴스레터</a></li>
-			<li><a href="#">고객센터</a></li>
-			<li><a href="#">매장찾기</a></li>
-			<li>&nbsp;</li>
-			<li><a href="#">아이디룩몰</a></li>
-		
-		</ul>
-	</div>	<!--  right_menu end  -->
 	
 	
 	
 	
-	
-	
-	
-	</div> <!-- include_wrapper end -->
 
 </body>
 </html>

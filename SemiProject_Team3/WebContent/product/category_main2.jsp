@@ -44,13 +44,22 @@
 
 	}
 	
+	.col{
+	width: 800px;
+	}
+	
 	.container{
 	margin: 0px;
 	width: 100%;
 	}
 
+	.row{
+	}
 	
+	.container{
+	}
 
+	
 
 </style>
 
@@ -64,37 +73,37 @@
 <body>
 	
 	<jsp:include page="/include/shop_top.jsp"/>
+	<jsp:include page="/include/shop_top_right.jsp"/>
 	
 	<c:set var="list" value="${List }"/>
-		
+
+
+
 	<div id="category_wrapper">
 	
-	<div class="apcTitle">
-		<a href="<%=request.getContextPath() %>/index.jsp">A.P.C.</a>
-	</div>
-	
-		<div class="container">
-			<div class="row row-cols-3">	
-				<c:if test="${!empty list }">
-					<c:forEach items="${list }" var="dto">	
+		<div class="apcTitle">
+			<a href="<%=request.getContextPath() %>/index.jsp">A.P.C.</a>
+		</div>
+			<c:if test="${!empty list }">
+				<div class="container">
+					<div class="row row-cols-3">	
+						<c:forEach items="${list }" var="dto">	
+				   			<div class="col">
+				    			<a href="<%=request.getContextPath() %>/product_list.do?code=${dto.getCategory_code() }">
+									<img alt="" src="upload/${dto.getCategory_image() }">
+								</a>
+									<br>
+									${dto.getCategory_name() }
+				  	 		 </div>
+						</c:forEach>
+					</div> <!-- row row-cols-3 end -->
+				</div> <!-- container end -->
+			</c:if>		
 						
-			   			 <div class="col">
-			    			<a href="<%=request.getContextPath() %>/product_list.do?code=${dto.getCategory_code() }">
-								<img alt="" src="upload/${dto.getCategory_image() }">
-							</a>
-								<br>
-								${dto.getCategory_name() }
-			  	 		 </div>
+			<c:if test="${empty list }">
+				<h4>검색된 품목이 없습니다:(</h4>
+			</c:if>
 		
-					</c:forEach>
-				</c:if>
-				
-				<c:if test="${empty list }">
-					<h4>검색된 품목이 없습니다:(</h4>
-				</c:if>
-		
-			</div> <!-- row row-cols-3 end -->
-		</div> <!-- container end -->
 		
 	</div> <!-- category_wrapper end -->
 		

@@ -2,11 +2,11 @@
 
 
 	
-	
 	#mainPage_wrapper{
 	height: 100%;
 	display: grid;
 	grid-template-columns: 50% 50%;
+	
 	}
 	
 	/*********** warpper CSS end *************/
@@ -15,12 +15,21 @@
 	
 	#right_side{
 	width: 100%;
-	background-image: url('../images/1.jpg');
-	background-size: cover;
-	background-position: center;
+	
 	grid-column: 2;
+	
 	}
 	
+	.right_image-1{
+		width: 100%;
+		height: 100%
+	}
+	
+	.wCategory{
+		
+		
+	
+	}
 	
 	
 	
@@ -43,8 +52,6 @@
 	height: 100%;
 	margin-left: 15px;
 	color: black;
-	font-weight:bold;
-	padding: 20px 0px;
 	}
 	
 	
@@ -52,7 +59,6 @@
 	text-decoration: none;
 	color: black;
 	font-weight:bold;
-	font-size: 58px;
 	}
 	
 	li {
@@ -62,7 +68,6 @@
 	#left_text a:hover{
 	color: white;
 	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-	font-size: 60px;
 	}
 
 	/************ left side CSS end   ************/

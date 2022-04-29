@@ -11,56 +11,101 @@
 <title>Insert title here</title>
 <style type="text/css">
 
- 	.detail_wrapper{
-	 	margin-top: 150px;
-	 	display: flex;
-	 	flex-directin: column;
- 
-	}
 
 	html, body{
 		margin:0px;
 		padding: 0px;
 	}
 	
+	
+ 	.detail_wrapper{
+	 	margin: 150px 20px 0px 20px;
+	 	display: grid;
+	 	grid-template-column: 200px 100%;
+ 		
+	}
+
+	/************************************/	
+	
+	
+	.product_contents{
+		grid-column: 1;
+		width: 200px;
+		font-size: 0.8em;
+
+	}
+		
+	/*************************************/	
+	
+	.product_images {
+		grid-column: 2;
+	
+	}
+	
+	.product_image{
+		width: 100%;
+		
+	}
+	
+	
+	/*
+	.product_images {
+		grid-column: 2;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+	
+	.product_image{
+		width: 50%;
+		
+	}
 	.product_image > img{
 		width: 100%;
 	}
-	
+	*/
 </style>
 </head>
 <body>
 	
 	<jsp:include page="../include/shop_top.jsp"/>
+	<jsp:include page="../include/shop_top_right.jsp"/>
 	
 	<c:set var="dto" value="${Detail }"/>
+	
 	<div class="detail_wrapper">
-	
-	
+
 		
 		<div class="product_contents">
+		
+			<hr>
 			<div>
-				${dto.getPname() }
+				<strong>${dto.getPname() }</strong>
 			</div>
 			<br>
+			
 			<div>
 				${dto.getPcontents() }
 			</div>
 			<br>
+			
 			<div>
 				<fmt:formatNumber value="${dto.getPrice() }"/>원
 			</div>
+			
 			<div>
 				색상 &nsp; ${dto.getPcolor() }
 				<br>
 				[ 각 컬러별 색상 링크 만들어야 함 ]
 			</div>
+			
 			<div>
-				사이즈 [ 사이즈는 생각 해야  :( ]
+				사이즈 [ 사이즈는  :( ]
 			</div>
 			
 			<div>
-				수량 &nsp; <input type="number" min="1" max="8">
+				수량 [DB에 저장된 수량을 select로 보여주기] <input type="number" min="1" max="8">
 			</div>
 			
 			<div>
@@ -86,13 +131,12 @@
 	
 	
 	
-		<div class="product_contents">
+		<div class="product_images">
 		
 			<div class="product_image">
 				<img alt="" src="<%=request.getContextPath() %>/upload/${dto.getPimage() }">
 			</div>
-		
-		
+
 		
 		</div> <!-- product_contents end -->
 	
