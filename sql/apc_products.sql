@@ -4,7 +4,7 @@ create table apc_products (
 
 	pno number(5) primary key,				--상품번호
 	pname varchar2(50) not null,			--상품명
-	pproducts_fk varchar2(8) not null,		--카테고리코드
+	pcategory_fk varchar2(8) not null,		--카테고리코드
 	pimage varchar2(100),					--상품이미지(상품파일명)
 	pqty number(5) default 0,				--상품 수량
 	price number(10) default 0,				--가격
@@ -15,6 +15,6 @@ create table apc_products (
 	mileage number(6) default 0,			--상품 마일리지
 	pinputdate date, 						--입고일
 	
-	foreign key (pproducts_fk) references apc_products(products_code) 
+	foreign key (pcategory_fk) references apc_category(category_code) 
 );
 

@@ -4,7 +4,7 @@
 create table apc_qa_category(
 
 	category_code varchar2(100) primary key, 	    -- 카테고리 번호
-	category_name varchar2(100) not null,	-- 카테고리 이름 
+	category_name varchar2(100) not null	-- 카테고리 이름 
 	
 	
 );
