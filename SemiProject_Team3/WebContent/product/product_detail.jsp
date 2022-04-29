@@ -74,6 +74,8 @@
 	
 	<c:set var="dto" value="${Detail }"/>
 	
+	<c:set var="snc" value="${sNcList }"/>
+	
 	<div class="detail_wrapper">
 
 		
@@ -95,17 +97,38 @@
 			</div>
 			
 			<div>
-				색상 &nsp; ${dto.getPcolor() }
-				<br>
-				[ 각 컬러별 색상 링크 만들어야 함 ]
+				색상
+			</div>
+			<div>
+			
+				<c:forEach items="${snc }" var="c">
+					<a href="#">${c.getPcolor() }</a>
+				
+				</c:forEach>
+				
+				
+			</div>
+			
+			
+			<div>
+				사이즈 
 			</div>
 			
 			<div>
-				사이즈 [ 사이즈는  :( ]
-			</div>
-			
-			<div>
-				수량 [DB에 저장된 수량을 select로 보여주기] <input type="number" min="1" max="8">
+								
+				<select>
+				
+					<c:forEach items="${snc }" var="s">
+						<option>
+							${s.getPsize() }
+						</option>
+					</c:forEach>
+				
+				
+				</select>
+				
+		
+				
 			</div>
 			
 			<div>

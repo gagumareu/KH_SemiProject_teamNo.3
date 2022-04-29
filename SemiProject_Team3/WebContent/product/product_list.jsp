@@ -65,7 +65,7 @@
 						<c:forEach items="${list }" var="dto">	
 							
 				   			 <div class="col">
-				    			<a href="<%=request.getContextPath() %>/product_content.do?no=${dto.getPno() }">
+				    			<a href="<%=request.getContextPath() %>/product_content.do?no=${dto.getPno() }&name=${dto.getPname() }">
 									<img alt="" src="upload/${dto.getPimage() }">
 									<span>${dto.getPname() }</span>
 									<span><fmt:formatNumber value="${dto.getPrice() }"/></span>

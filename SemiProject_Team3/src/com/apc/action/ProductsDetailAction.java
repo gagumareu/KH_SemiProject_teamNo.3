@@ -1,6 +1,7 @@
 package com.apc.action;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,12 +18,17 @@ public class ProductsDetailAction implements Action {
 		// TODO Auto-generated method stub
 		
 		int product_no = Integer.parseInt(request.getParameter("no").trim());
+		String product_name = request.getParameter("name").trim();
 		
 		ProductsDAO dao = ProductsDAO.getInstance();
+		
+		List<ProductsDTO> sNcList = dao.getSizeAndColor(product_name);
 		
 		ProductsDTO productDetail = dao.getProductDetail(product_no);
 		
 		request.setAttribute("Detail", productDetail);
+		
+		request.setAttribute("sNcList", sNcList);
 		
 		ActionForward forward = new ActionForward();
 		

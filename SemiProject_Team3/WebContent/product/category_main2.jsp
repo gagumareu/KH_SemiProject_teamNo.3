@@ -89,7 +89,7 @@
 					<div class="row row-cols-3">	
 						<c:forEach items="${list }" var="dto">	
 				   			<div class="col">
-				    			<a href="<%=request.getContextPath() %>/product_list.do?code=${dto.getCategory_code() }">
+				    			<a href="<%=request.getContextPath() %>/product_list.do?code=${dto.getCategory_code() } ">
 									<img alt="" src="upload/${dto.getCategory_image() }">
 								</a>
 									<br>

@@ -91,7 +91,7 @@ public class ProductsDAO {
 	
 	
 	
-	public List<ProductsDTO> getProductList(String name){
+	public List<ProductsDTO> getProductList(String code){
 		
 		List<ProductsDTO> list = new ArrayList<ProductsDTO>();
 		
@@ -99,11 +99,12 @@ public class ProductsDAO {
 			
 			openConn();
 			
+
 			sql = "select * from apc_products where pcategory_fk = ? order by pinputdate desc";
 			
 			pstmt = con.prepareStatement(sql);
 			
-			pstmt.setString(1, name);
+			pstmt.setString(1, code);
 		
 			rs = pstmt.executeQuery();
 			
@@ -125,10 +126,10 @@ public class ProductsDAO {
 				dto.setPinputdate(rs.getString("pinputdate"));
 				
 				list.add(dto);
-				
 			}
+			
+				
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			closeConn(rs, pstmt, con);
@@ -244,7 +245,7 @@ public class ProductsDAO {
 			openConn();
 			
 			sql ="select * from apc_products where upper(pname) like upper(?) "
-					+ " and lower(pname) like lower(?) ";
+					+ " and lower(pname) like lower(?) order by pcategory_fk";
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -289,6 +290,53 @@ public class ProductsDAO {
 	
 	
 	
+	
+	public List<ProductsDTO> getSizeAndColor(String name){
+		
+		List<ProductsDTO> list = new ArrayList<ProductsDTO>();
+		
+		openConn();
+		
+		sql ="select * from apc_products where pname = ?";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, name);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				ProductsDTO dto = new ProductsDTO();
+				
+				dto.setPno(rs.getInt("pno"));
+				dto.setPname(rs.getString("pname"));
+				dto.setPcategory_fk(rs.getString("pcategory_fk"));
+				dto.setPimage(rs.getString("pimage"));
+				dto.setPqty(rs.getInt("pqty"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setPsize(rs.getString("psize"));
+				dto.setPcolor(rs.getNString("pcolor"));
+				dto.setPicon(rs.getString("picon"));
+				dto.setPcontents(rs.getString("pcontents"));
+				dto.setMileage(rs.getInt("mileage"));
+				dto.setPinputdate(rs.getString("pinputdate"));
+				
+				list.add(dto);
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		return list;
+		
+		
+	} // getProductSize() end 
 	
 	
 	
