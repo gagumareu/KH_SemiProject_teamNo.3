@@ -127,8 +127,8 @@ public class ProductsDAO {
 				
 				list.add(dto);
 			}
-			
 				
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {

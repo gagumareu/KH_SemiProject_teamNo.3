@@ -11,11 +11,10 @@
 	.footer{
 		background-color: black;
 		color: white;
+		padding-left: 17px;
 		display:flex; 
 		flex-direction: column;
 		justify-content: space-between;
-		clear: both;
-		padding: 10px 0px 10px 17;
 	}
 	
 	

@@ -20,49 +20,60 @@
 
 	
 	.category_main_wrapper{
-	display: grid;
-		grid: 1;
-		
+		display: flex;
+		flex-direction: column;
 		width: 100%;
+		flex: 1;
+	}
+	
+	
+	.main_image{
+		margin-bottom: 5px;
+	}
+		
+	.main_image > img{
+		width: 100%;
+	}
+	
+	
+	
+	/****** category ***********/
+	
+	.cetegory_wrpper {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		margin-bottom: 10px;
+		
+	}
+	
+	
+	.category_image > a > img{
+		width: 99%;
+		
+	}
+	
+	.cImage_center{
 	}
 	
 
-	a{
-	padding: 10px;
-	}
+	/********************************/
 	
-	.golf_image_main{
-	margin: 10px 0px;
-	}
-	
-	.main_image {
-		width: 100%;
-	}
-	
-	
-	.gofl_category a {
-	width: 80%;
-	}
-	
-	.golf_category_div {
-	width: 100%;
-	margin: 0px 3px;
-	}
-	
-	
-	
-	.golf_category_div > a > img{
+	.apcTitle{
+	margin-top: 50px;
+	font-size: 58px;
+	margin-left: 15px;
+	font-weight: bold;
 	width: 100%;
 	}
 	
-	.gofl_category{
-	width: 100%;
-	height: 100px;
-	display: flex;
+	.apcTitle > a{
+	color: black;
+	text-decoration: none;
 	}
 	
-	.contents{
-		width: 100%
+	.apcTitle > a:hover{
+	color: white;
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 	}
 	
 </style>
@@ -75,32 +86,35 @@
 
 			
 	<div class="category_main_wrapper" >
+	
+		<div class="apcTitle">
+			<a href="<%=request.getContextPath() %>/index.jsp">A.P.C.</a>
+		</div>
 		
-		
-		<div class="golf_image_main">
+	
+		<div class="main_image">
 			<img class="main_image" src="images/golf_main.jpg">
 		</div>
-	
-		<div class="gofl_category">
 		
+		<div class="cetegory_wrpper">	
 			<c:set var="list" value="${List }"/>
 				<c:if test="${!empty list }">
 				
-					<div class="golf_category_div left">
+					<div class="category_image left">
 						<a href="<%=request.getContextPath() %>/2nd_category.do?code=${list[0].getCategory_code() }">
 							<img alt="" src="images/golf_left.jpg">
 						</a>
 					</div>
 					
-					<div class="golf_category_div center">
+					<div class="category_image center">
 						<a href="<%=request.getContextPath() %>/2nd_category.do?code=${list[1].getCategory_code() }">
-							<img alt="" src="images/golf_center.jpg">
+							<img class="cImage_center" alt="" src="images/golf_center.jpg">
 						</a>
 					</div>
 					
-					<div class="golf_category_div right">
+					<div class="category_image right">
 						<a href="<%=request.getContextPath() %>/2nd_category.do?code=${list[2].getCategory_code() }">					
-							<img alt="" src="images/golf_right.jpg">
+							<img class="cImage_right" alt="" src="images/golf_right.jpg">
 						</a>
 					</div>
 					
@@ -110,14 +124,14 @@
 					<h2>품목이 없습니다</h2>
 				
 				</c:if>
+		</div> <!-- cetegory_wrpper end -->
 			
 			
 			
-			</div>  <!-- golf category end -->
 			
 		
 		
-	<!--<jsp:include page="/include/shop_bottom.jsp"/> -->
+	<jsp:include page="/include/shop_bottom.jsp"/> 
 		
 		
 	</div> <!-- category_main_wrapper end -->

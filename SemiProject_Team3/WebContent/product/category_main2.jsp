@@ -13,12 +13,10 @@
 <title>Insert title here</title>
 <style type="text/css">
 
-	html, body{
 	
-		margin: 0px;
-		padding: 0px;
-	}
 
+
+	/* ****************공통으로 링크걸  css*******/
 
 	.apcTitle{
 	margin-top: 50px;
@@ -38,6 +36,10 @@
 	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 	}
 
+	/* ****************공통으로 링크걸  css*******/
+	
+	
+	
 	
 	.col > a > img{
 	width:100%;
@@ -77,13 +79,14 @@
 	
 	<c:set var="list" value="${List }"/>
 
-
+						
 
 	<div id="category_wrapper">
 	
 		<div class="apcTitle">
 			<a href="<%=request.getContextPath() %>/index.jsp">A.P.C.</a>
 		</div>
+		
 			<c:if test="${!empty list }">
 				<div class="container">
 					<div class="row row-cols-3">	
@@ -105,11 +108,17 @@
 			</c:if>
 		
 		
+		
+		<jsp:include page="/include/shop_bottom.jsp"/>
+		
+		
 	</div> <!-- category_wrapper end -->
 		
 	
 
-	<jsp:include page="/include/shop_bottom.jsp"/>
+	
+	
+	
 	
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
