@@ -132,6 +132,15 @@
 			</div>
 			
 			<div>
+				 수량
+				 <select>
+				 	<option>
+				 		
+				 	</option>
+				 </select>
+			</div>
+			
+			<div>
 				적립금 &nsp; ${dto.getMileage() }
 			</div>
 			

@@ -15,7 +15,7 @@
 		flex-direction: column;
 		justify-content: space-between;
 		clear: both;
-		padding: 10px 0px 10px 17;
+		padding: 10px 0px 10px 17px;;
 	}
 	
 	

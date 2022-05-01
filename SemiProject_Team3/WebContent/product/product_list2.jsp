@@ -47,11 +47,6 @@
 		
 	}
 	
-	.Products_list{
-		display: grid;
-		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-	}
-	
 </style>
 
 	<link rel="stylesheet" href="../css/style.css">
@@ -76,16 +71,19 @@
 			<a href="<%=request.getContextPath() %>/index.jsp">A.P.C.</a> 
 		</div>
 		
-			<div class="Products_list">
+			<div class="container">
+				<div class="row row-cols-6">	
 					<c:if test="${!empty list }">
 						<c:forEach items="${list }" var="dto">	
-							<div class="product">
+							
+				   			 <div class="col">
 				    			<a href="<%=request.getContextPath() %>/product_content.do?no=${dto.getPno() }&name=${dto.getPname() }">
-									<img alt="" src="upload/${dto.getPimage() }" width="100%">
+									<img alt="" src="upload/${dto.getPimage() }">
 									<span>${dto.getPname() }</span>
 									<span><fmt:formatNumber value="${dto.getPrice() }"/></span>
 								</a>
-							</div>
+				  	 		 </div>
+			
 						</c:forEach>
 					</c:if>
 					
@@ -93,7 +91,8 @@
 						<h4>검색된 품목이 없습니다:(</h4>
 					</c:if>
 			
-			</div> <!-- Products_list end -->
+				</div> <!-- row row-cols-3 end -->
+			</div> <!-- container end -->
 
 	</div> <!-- products_wrapper end -->
 	

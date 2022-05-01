@@ -19,21 +19,21 @@
 	/* ****************공통으로 링크걸  css*******/
 
 	.apcTitle{
-		margin-top: 50px;
-		font-size: 58px;
-		margin-left: 15px;
-		font-weight: bold;
-		width: 100%;
+	margin-top: 50px;
+	font-size: 58px;
+	margin-left: 15px;
+	font-weight: bold;
+	width: 100%;
 	}
 	
 	.apcTitle > a{
-		color: black;
-		text-decoration: none;
+	color: black;
+	text-decoration: none;
 	}
 	
 	.apcTitle > a:hover{
-		color: white;
-		text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+	color: white;
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 	}
 
 	/* ****************공통으로 링크걸  css*******/
@@ -42,21 +42,27 @@
 	
 	
 	.col > a > img{
-		width:100%;
+	width:100%;
 
 	}
 	
 	.col{
-		width: 800px;
+	width: 800px;
 	}
 	
+	.container{
+	margin: 0px;
+	width: 100%;
+	}
+
+	.row{
+	}
 	
+	.container{
+	}
+
 	
-	.contents{
-		display: grid;
-		grid-template-columns: 1fr 1fr 1fr;
-	
-	
+
 </style>
 
 	<link rel="stylesheet" href="../css/style.css">
@@ -82,17 +88,19 @@
 		</div>
 		
 			<c:if test="${!empty list }">
-				<div class="contents">
+				<div class="container">
+					<div class="row row-cols-3">	
 						<c:forEach items="${list }" var="dto">	
-				   			<div class="content">
+				   			<div class="col">
 				    			<a href="<%=request.getContextPath() %>/product_list.do?code=${dto.getCategory_code() } ">
-									<img class="content_image" alt="" src="upload/${dto.getCategory_image() }" width="100%" >
+									<img alt="" src="upload/${dto.getCategory_image() }">
 								</a>
 									<br>
 									${dto.getCategory_name() }
-				  	 		</div>
+				  	 		 </div>
 						</c:forEach>
-				</div> 
+					</div> <!-- row row-cols-3 end -->
+				</div> <!-- container end -->
 			</c:if>		
 						
 			<c:if test="${empty list }">
