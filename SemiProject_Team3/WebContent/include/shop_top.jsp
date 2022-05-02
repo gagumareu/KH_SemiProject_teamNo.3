@@ -8,11 +8,7 @@
 <style type="text/css">
 
 
-	/*.include_wrapper{
-	width:100%;
-	top:0px;
-	display: flex;
-	}  */
+	
 	
 	li {
 		list-style-type: none;
@@ -33,7 +29,7 @@
 		margin: 10px 0px 0px 10px;
 		display: flex;
 		position: absolute;
-		top: 0px;
+		
 	}
 	
 	#navr_ul{
@@ -60,63 +56,60 @@
 		padding: 0 38px 0px 0px;
 	}
 	
-	/** 상단 메뉴바 호버 처리 해야됌 */
-	.navr_ul >:hover{
-		cursor: ponter;
-		color:pink;
-	}
 	
+	
+	/********** 상단 메뉴바 호버 처리 해야됌 *************/
+
 	.dropDown{
 		display: flex;
 		flex-direction: column;
-	
-	}
-	
-	.dropDown li{
 		display: none;
-	}
-	
-	.dropDown li:hover{
-		display: block;
 		background-color: pink;
 	}
 	
-	.navr_ul > li:hover > .dropDown{
-		display: block
+
+	
+	.dropDown:hover{
+		display: visible;
+		background-color: pink;
 	}
 	
-	.navr_ul li:hover .dropDown{
-		display:block;
-	
+	.navr_ul > li:hover {
+		border: 1px solid red;
+		color: blue;
 	}
+	
+	
 	
 	/********** left side end **********/
 	
 
 	
-	.title{
-		position: absolute;
-		left: 0px;
-	
-	}
-	
 
+	/************modal**********************/
 	
+	.search_modal_container {
+		position: absolute;
+	}
 	
 </style>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script type="text/javascript"></script>
+
 <script type="text/javascript">
 
-	$(function(){
-		$(".search_icon").on("click", function(){
-			let date = $("");
-			$().text(date);
-			alert(date);
+
+	
+	$(function (){
+		$('#search_icon2').click(function(){
+			//window.open('product/search.jsp', '_black', 'height="500"', 'true')
+			$(location).attr('href', 'product/search.jsp')
 		});
+		
 		
 	});
 	
-	
+
 	
 
 
@@ -150,16 +143,22 @@
 			<li>Surplus</li>
 			<li>A.P.C.X Jessica Ogden</li>
 			<li>
-				<img class="search_icon" src="images/icon-search-bold.svg" width="18px"><span class="seach_text">search</span>
+			
+				<div class="search-container">
+					<a href="#" alt="Search image">
+						<img id="search_icon2" alt="Search image" data-search_window="date/search_test.jsp" 
+						src="images/icon-search-bold.svg" width="18px"><span class="seach_text">search</span>	
+					</a>
+				</div>
+				
 			</li>
 		</ul>
 	</div> <!-- navr end -->
 	
 	
+
 	
-	
-	
-	
+	<!--  <script src="script/modal.js"></script>-->
 
 </body>
-</html>
+</html>	

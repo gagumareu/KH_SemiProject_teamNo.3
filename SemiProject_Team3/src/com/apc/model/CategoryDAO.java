@@ -88,6 +88,46 @@ public class CategoryDAO {
 	
 	
 	
+	public List<CategoryDTO> getCategory2(){
+		
+		List<CategoryDTO> list = new ArrayList<CategoryDTO>();
+	
+		try {
+			openConn();
+			
+			sql = "select * from apc_category order by category_code";
+			
+			pstmt = con.prepareStatement(sql);
+			
+
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				CategoryDTO dto = new CategoryDTO();
+				
+				dto.setCategory_no(rs.getInt("category_no"));
+				dto.setCategory_code(rs.getString("category_code"));
+				dto.setCategory_name(rs.getString("category_name"));
+				dto.setCategory_image(rs.getString("category_image"));
+				
+				list.add(dto);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return list;
+		
+		
+	} // getCategory() end
+
+
+	
+	
 	public List<CategoryDTO> getCategory(){
 		
 		List<CategoryDTO> list = new ArrayList<CategoryDTO>();
@@ -100,7 +140,7 @@ public class CategoryDAO {
 			
 			pstmt = con.prepareStatement(sql);
 			
-			pstmt.setString(1, "_0000000");
+			pstmt.setString(1, "__000000");
 
 			rs = pstmt.executeQuery();
 			

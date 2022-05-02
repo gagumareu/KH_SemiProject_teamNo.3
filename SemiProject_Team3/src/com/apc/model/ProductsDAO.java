@@ -120,7 +120,6 @@ public class ProductsDAO {
 				dto.setPrice(rs.getInt("price"));
 				dto.setPsize(rs.getString("psize"));
 				dto.setPcolor(rs.getString("pcolor"));
-				dto.setPicon(rs.getString("picon"));
 				dto.setPcontents(rs.getString("pcontents"));
 				dto.setMileage(rs.getInt("mileage"));
 				dto.setPinputdate(rs.getString("pinputdate"));
@@ -159,7 +158,7 @@ public class ProductsDAO {
 				count = rs.getInt(1) +1;
 			}
 			
-			sql ="insert into apc_products values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default, sysdate)";
+			sql ="insert into apc_products values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, sysdate)";
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -171,8 +170,8 @@ public class ProductsDAO {
 			pstmt.setInt(6, dto.getPrice());
 			pstmt.setString(7, dto.getPsize());
 			pstmt.setString(8, dto.getPcolor());
-			pstmt.setNString(9, dto.getPicon());
-			pstmt.setString(10, dto.getPcontents());
+			pstmt.setString(9, dto.getPcontents());
+			pstmt.setInt(10, dto.getMileage());
 			
 			result = pstmt.executeUpdate();
 			
@@ -214,7 +213,6 @@ public class ProductsDAO {
 				dto.setPqty(rs.getInt("pqty"));
 				dto.setPrice(rs.getInt("price"));
 				dto.setPcolor(rs.getString("pcolor"));
-				dto.setPicon(rs.getString("picon"));
 				dto.setPcontents(rs.getString("pcontents"));
 				dto.setMileage(rs.getInt("mileage"));
 				dto.setPinputdate(rs.getString("pinputdate"));			
@@ -267,7 +265,6 @@ public class ProductsDAO {
 				dto.setPrice(rs.getInt("price"));
 				dto.setPsize(rs.getString("psize"));
 				dto.setPcolor(rs.getNString("pcolor"));
-				dto.setPicon(rs.getString("picon"));
 				dto.setPcontents(rs.getString("pcontents"));
 				dto.setMileage(rs.getInt("mileage"));
 				dto.setPinputdate(rs.getString("pinputdate"));
@@ -318,7 +315,6 @@ public class ProductsDAO {
 				dto.setPrice(rs.getInt("price"));
 				dto.setPsize(rs.getString("psize"));
 				dto.setPcolor(rs.getNString("pcolor"));
-				dto.setPicon(rs.getString("picon"));
 				dto.setPcontents(rs.getString("pcontents"));
 				dto.setMileage(rs.getInt("mileage"));
 				dto.setPinputdate(rs.getString("pinputdate"));

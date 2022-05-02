@@ -1,54 +1,66 @@
+<%@page import="com.apc.model.CategoryDTO"%>
+<%@page import="java.util.List"%>
 <%@page import="com.apc.model.CategoryDAO"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
- 
+     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
+    <%
+    CategoryDAO dao = CategoryDAO.getInstance();
+    
+    List<CategoryDTO> list = dao.getCategory2();
+    
+    pageContext.setAttribute("list", list);
+    
+    %>
+    
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
+	
 	<div align="center">
 		<form method="post" enctype="multipart/form-data" action="<%=request.getContextPath() %>/inputCategory.do">
 		<div>
-			Ä«Å×°í¸® ³Ñ¹ö <br>
+			ì¹´í…Œê³ ë¦¬ ë„˜ë²„ <br>
 			<select name="cno">
 				<option value="1">
-					¿©¼º 1¹ø
+					ì—¬ì„± 1ë²ˆ
 				</option>
 				
 				<option value="2">
-					³²¼º 2¹ø
+					ë‚¨ì„± 2ë²ˆ
 				</option>
 				
 				<option value="3">
-					°ñÇÁ 3¹ø
+					ê³¨í”„3ë²ˆ
 				</option>
 			
 			</select>
 		</div>
 		
 		<div>
-			Ä«Å×°í¸® ÄÚµå 
+			ì¹´í…Œê³ ë¦¬ ì½”ë“œ
 			<input name="ccode">
 		</div>
 		
 		<div>
-			Ä«Å×°í¸® ÀÌ¸§
+			ì¹´í…Œê³ ë¦¬ ì´ë¦„
 			<input name="cname">
 		</div>
 		<br>
 		<div>
-			Ä«Å×°í¸® ÀÌ¹ÌÁö 
+			ì¹´í…Œê³ ë¦¬ ì´ë¯¸ì§€
 			<br>
 			<input type="file" name="cimage">
 		</div>
 		<br>
 		<div>
-			<input type="submit" value="µî·Ï">
+			<input type="submit" value="ë“±ë¡">
 		</div>
 		</form>
 		
@@ -61,100 +73,57 @@
 	
 	<div align="center">
 	<form method="post" enctype="multipart/form-data" action="<%=request.getContextPath() %>/insertProduct.do">
-		<h2>»óÇ° µî·Ï</h2>
-	 
+		<h2>ìƒí’ˆ ë“±ë¡</h2>
+		
 		<div>
-		ÀÌ¸§
+		ì´ë¦„
 		<input name="pName">	
 		</div>
 		
 		<div>
-		Ä«Å×°í¸® ÄÚµå ¿©¼º
 		<select name="pCategory">
-			<option selected>
-			none
-			</option>
-			<option value="1w1n0000">
-			new arrivals 1w1n0000
-			</option>
-			<option value="1wcs0000">
-			shoes
-			</option>
-			<option value="1wbb0000">
-			bags
-			</option>
 		
-		</select>
-		</div>
-		<br>
-		<div>
-		Ä«Å×°í¸® ÄÚµå ³²¼º
-		<select name="pCategory">
-			<option selected>
-			none
-			</option>
-			<option value="2man0000">
-			new arrivals 2man0000
-			</option>
-			<option value="2mbt0000">
-			top 2mbt0000
-			</option>
-			<option value="2mcp0000">
-			pants 2mcp0000
-			</option>
-		
+			<c:forEach items="${list }" var="dto" >
+				<option value="${dto.getCategory_code() }">
+					${dto.getCategory_name() }[${dto.getCategory_code() }]
+				</option>
+			
+			</c:forEach>
 		</select>
 		</div>
 		
+		
 		<div>
-		ÀÌ¹ÌÁö
+		ì´ë¯¸ì§€
 		<input type="file" name="pImage">	
 		</div>
 		
 		<div>
-		¼ö·®
+		ìˆ˜ëŸ‰
 		<input type="number" name="pQty" min="1">	
 		</div>
 		
 		<div>
-		°¡°Ý
+		ê°€ê²©
 		<input name="price">	
 		</div>
 		
 		<div>
-		»çÀÌÁî
+		ì‚¬ì´ì¦ˆ
 		<input name="pSize">	
 		</div>
 		
 		<div>
-		»ö»ó
+		ìƒ‰ìƒ
 		<input name="pColor">	
 		</div>
 		
-		<div>
-		ºÐ·ù
-		<select name="pIcon">
-			<option value="new">
-			½Å»ó
-			</option>
-			
-			<option value="hit">
-			ÀÎ±â
-			</option>
-			
-			<option value="recommand">
-			ÃßÃµ
-			</option>
-			
-			<option value="none">
-			º¸Åë
-			</option>
-			
-		</select>	
+		 <div>
+		í¬ì¸íŠ¸
+		<input name="mileag">
 		</div>
 		
 		<div>
-		³»¿ë
 		<textarea rows="20" cols="50" name="content"></textarea>	
 		</div>
 		
@@ -162,14 +131,10 @@
 		
 		<br>
 		
-		<input type="submit" value="µî·Ï">
+		<input type="submit" value="ë“±ë¡">
 	
 	</form>
 	</div>
-
-	
-	
-	
 	
 </body>
 </html>

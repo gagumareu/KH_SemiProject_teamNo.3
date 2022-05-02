@@ -19,9 +19,10 @@
 	
 	
  	.detail_wrapper{
-	 	margin: 150px 20px 0px 20px;
+	 	margin: 0px 20px 0px 20px;
 	 	display: grid;
 	 	grid-template-column: 200px 100%;
+	 	padding-top: 150px;
  		
 	}
 
@@ -48,7 +49,7 @@
 	}
 	
 	
-	/*
+/*
 	.product_images {
 		grid-column: 2;
 		display: flex;
@@ -64,7 +65,7 @@
 	.product_image > img{
 		width: 100%;
 	}
-	*/
+*/
 </style>
 </head>
 <body>
@@ -134,9 +135,7 @@
 			<div>
 				 수량
 				 <select>
-				 	<option>
 				 		
-				 	</option>
 				 </select>
 			</div>
 			

@@ -13,7 +13,7 @@
 	
 	.apcTitle{
 		margin-top: 50px;
-		font-size: 58px;
+		font-size: 63px;
 		margin-left: 15px;
 		font-weight: bold;
 		width: 100%;
@@ -50,7 +50,26 @@
 	.Products_list{
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+		align-itmes: center;
 	}
+	
+	.product > a {
+		text-decoration: none;
+		color: black;
+	}
+	
+	
+	.description {
+		display: none;
+	}
+	
+	.product:hover {
+		.description {
+			display: block;
+		}
+	}
+	
+	
 	
 </style>
 
@@ -81,9 +100,9 @@
 						<c:forEach items="${list }" var="dto">	
 							<div class="product">
 				    			<a href="<%=request.getContextPath() %>/product_content.do?no=${dto.getPno() }&name=${dto.getPname() }">
-									<img alt="" src="upload/${dto.getPimage() }" width="100%">
-									<span>${dto.getPname() }</span>
-									<span><fmt:formatNumber value="${dto.getPrice() }"/></span>
+									<img alt="" src="upload/${dto.getPimage() }" width="100%"> 
+									<div class="description">${dto.getPname() }</div>
+									<div class="description"><fmt:formatNumber value="${dto.getPrice() }"/>¿ø</div>
 								</a>
 							</div>
 						</c:forEach>

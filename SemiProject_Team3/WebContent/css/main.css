@@ -3,9 +3,9 @@
 
 	
 	#mainPage_wrapper{
-	height: 100%;
-	display: grid;
-	grid-template-columns: 50% 50%;
+		height: 100%;
+		display: grid;
+		grid-template-columns: 50% 50%;
 	
 	}
 	
@@ -14,11 +14,10 @@
 	
 	
 	#right_side{
-	width: 100%;
+		width: 100%;
+		grid-column: 2;
 	
-	grid-column: 2;
-	
-	}
+	}	
 	
 	.right_image-1{
 		width: 100%;

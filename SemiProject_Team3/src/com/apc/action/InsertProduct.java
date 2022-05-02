@@ -37,10 +37,11 @@ public class InsertProduct implements Action {
 		int price = Integer.parseInt(multi.getParameter("price").trim());
 		String pSize = multi.getParameter("pSize").trim();
 		String pColor = multi.getParameter("pColor").trim();
-		String pIcon = multi.getParameter("pIcon").trim();
 		String content = multi.getParameter("content").trim();
-		
 		String pImage = multi.getFilesystemName("pImage").trim();
+		int mileage = Integer.parseInt(multi.getParameter("mileag").trim());
+		
+		System.out.println(pCategory);
 		
 		ProductsDTO dto = new ProductsDTO();
 		
@@ -50,13 +51,15 @@ public class InsertProduct implements Action {
 		dto.setPrice(price);
 		dto.setPsize(pSize);
 		dto.setPcolor(pColor);
-		dto.setPicon(pIcon);
 		dto.setPcontents(content);
+		dto.setMileage(mileage);
 		dto.setPimage(pImage);
 		
 		ProductsDAO dao = ProductsDAO.getInstance();
 		
 		int check = dao.insertProduct(dto);
+		
+		System.out.println(dto.getPcategory_fk());
 		
 		ActionForward forward = new ActionForward();
 		

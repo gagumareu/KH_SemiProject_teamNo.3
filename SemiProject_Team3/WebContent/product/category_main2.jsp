@@ -1,3 +1,5 @@
+<%@page import="com.apc.model.CategoryDTO"%>
+<%@page import="java.util.List"%>
 <%@page import="java.util.Set"%>
 <%@page import="com.apc.model.CategoryDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -5,7 +7,7 @@
     
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
   
-    
+   
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,8 +21,8 @@
 	/* ****************공통으로 링크걸  css*******/
 
 	.apcTitle{
-		margin-top: 50px;
-		font-size: 58px;
+		padding-top: 40px;
+		font-size: 63px;
 		margin-left: 15px;
 		font-weight: bold;
 		width: 100%;

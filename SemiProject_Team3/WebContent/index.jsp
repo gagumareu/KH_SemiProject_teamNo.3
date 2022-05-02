@@ -36,10 +36,13 @@
 <body>
 
 	<c:set var="list" value="${List }"></c:set>
+	
+	<jsp:include page="include/shop_top.jsp"/>
+	<jsp:include page="include/shop_top_right.jsp"/>
+		
 	<div id="mainPage_wrapper">
 		
-		<jsp:include page="include/shop_top.jsp"/>
-		<jsp:include page="include/shop_top_right.jsp"/>
+		
 				
 		<div id="left_side">
 					
