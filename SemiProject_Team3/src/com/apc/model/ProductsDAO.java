@@ -338,7 +338,7 @@ public class ProductsDAO {
 		try {
 			openConn();
 			
-			sql = "select distinct psize from apc_products where pname = ?";
+			sql = "select distinct psize from apc_products where pname = ? order by psize";
 			
 			pstmt = con.prepareStatement(sql);
 			

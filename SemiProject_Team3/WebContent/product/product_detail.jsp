@@ -19,14 +19,37 @@
 	
 	
  	.detail_wrapper{
-	 	margin: 0px 20px 0px 20px;
+	 	margin: 0px 20px 0px 0px;
 	 	display: grid;
 	 	grid-template-column: 200px 100%;
-	 	padding-top: 150px;
  		
 	}
 
 	/************************************/	
+	
+	.apcTitle{
+		margin-top: 50px;
+		font-size: 63px;
+		margin-left: 15px;
+		font-weight: bold;
+		width: 100%;
+	}
+	
+	.apcTitle > a{
+		color: black;
+		text-decoration: none;
+	}
+	
+	.apcTitle > a:hover{
+		color: white;
+		text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+	}
+
+	.col > a > img{
+		width:100%;
+	}
+	
+	/**************************/
 	
 	
 	.product_contents{
@@ -34,6 +57,7 @@
 		width: 200px;
 		font-size: 0.8em;
 		line-height: 1.8;
+		margin-left: 20px;
 
 	}
 		
@@ -70,9 +94,7 @@
 </style>
 </head>
 <body>
-	
-	<jsp:include page="../include/shop_top.jsp"/>
-	<jsp:include page="../include/shop_top_right.jsp"/>
+
 	
 	<c:set var="dto" value="${Detail }"/>
 	
@@ -82,86 +104,98 @@
 	
 	<div class="detail_wrapper">
 
+		<jsp:include page="../include/shop_top.jsp"/>
+		<jsp:include page="../include/shop_top_right.jsp"/>
+		
+		<div class="apcTitle">
+			<a href="<%=request.getContextPath() %>/index.jsp">A.P.C.</a> 
+		</div>
 		
 		<div class="product_contents">
-		
-			<hr>
-			<div>
-				<strong>${dto.getPname() }</strong>
-			</div>
-			<br>
+			<form method="post" action="">
 			
-			<div>
-				${dto.getPcontents() }
-			</div>
-			<br>
-			
-			<div>
-				<fmt:formatNumber value="${dto.getPrice() }"/>원
-			</div>
-			
-			<div>
-				색상 ${dto.getPcolor() }
-			</div>
-			<div>		
-				<c:if test="${!empty clist }" >
-				<c:forEach items="${clist }" var="list">
-					<a href="#">${list.getPcolor() }</a>
+			<input type="hidden" name="pno" value="${dto.getPno() }">
+			<input type="hidden" name="mileage" value="${dto.getMileage() }">
+			<input type="hidden" name="color" value="${dto.getPcolor() }">
+				<hr>
+				<div>
+					<strong>${dto.getPname() }</strong>
+				</div>
+				<br>
 				
-				</c:forEach>
-				</c:if>
+				<div>
+					${dto.getPcontents() }
+				</div>
+				<br>
 				
-				<c:if test="${empty clist }">
-						검색된 데이터가 없어 :(
-				</c:if>
+				<div>
+					<fmt:formatNumber value="${dto.getPrice() }"/>원
+				</div>
 				
-			</div>
-			
-			<div>
-				사이즈	
-					<c:if test="${!empty slist }" >
-					<select>
-					<c:forEach items="${slist }" var="sizeList">
-						<option>
-							${sizeList.getPsize() }
-						</option>
+				<div>
+					색상 ${dto.getPcolor() }
+				</div>
+				<div>		
+					<c:if test="${!empty clist }" >
+					<c:forEach items="${clist }" var="list">
+						<a href="#">${list.getPcolor() }</a>
+					
 					</c:forEach>
-					</select>
 					</c:if>
 					
-					<c:if test="${empty slist }">
-						검색된 데이터가 없어 :(
+					<c:if test="${empty clist }">
+							검색된 데이터가 없어요 :(
 					</c:if>
-			</div>
-			
-			<div>
-				 수량
-				 <select name="qty">
-				 	<c:forEach begin="1" end="10" var="count">
-				 		<option>
-				 			${count }
-				 		</option>
-				 	</c:forEach>	
-				 </select>
-			</div>
-			
-			<div>
-				적립금<fmt:formatNumber value="${dto.getMileage() }" />원 
-			</div>
-			
-			<div>
-				<a>SIZE GUIDE</a>
-			</div>
-			<div>
-				<a>무이자할부 안내</a>
-			</div>
-			
-			<div>
-				<input type="button" value="바로구매">
-				<input type="button" value="장바구니">
-			</div>
+					
+				</div>
+				
+				<div>
+					사이즈	
+						<c:if test="${!empty slist }" >
+						
+						<select name="size">
+							<c:forEach items="${slist }" var="sizeList">
+								<option value="${sizeList.getPsize() }">
+									${sizeList.getPsize() }
+								</option>
+							</c:forEach>
+						</select>
+						
+						</c:if>
+						
+						<c:if test="${empty slist }">
+							검색된 데이터가 없어요 :(
+						</c:if>
+				</div>
+				
+				<div>
+					 수량
+					 <select name="qty">
+					 	<c:forEach begin="1" end="10" var="count">
+					 		<option value="${count }">
+					 			${count }
+					 		</option>
+					 	</c:forEach>	
+					 </select>
+				</div>
+				
+				<div>
+					적립금<fmt:formatNumber value="${dto.getMileage() }" />원 
+				</div>
+				
+				<div>
+					<a>SIZE GUIDE</a>
+				</div>
+				<div>
+					<a>무이자할부 안내</a>
+				</div>
+				
+				<div>
+					<input type="button" value="바로구매">
+					<input type="button" value="장바구니">
+				</div>
 
-			
+			</form>
 		</div> <!-- product_contents end -->
 	
 	
