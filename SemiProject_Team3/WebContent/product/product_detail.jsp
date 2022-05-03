@@ -18,13 +18,7 @@
 	}
 	
 	
- 	.detail_wrapper{
-	 	margin: 0px 20px 0px 0px;
-	 	display: grid;
-	 	grid-template-column: 200px 100%;
- 		
-	}
-
+ 	
 	/************************************/	
 	
 	.apcTitle{
@@ -51,6 +45,13 @@
 	
 	/**************************/
 	
+	.detail_wrapper{
+	 	margin: 0px 20px 0px 0px;
+	 	display: grid;
+	 	grid-template-column: 200px 100%;
+ 		
+	}
+	
 	
 	.product_contents{
 		grid-column: 1;
@@ -74,23 +75,7 @@
 	}
 	
 	
-/*
-	.product_images {
-		grid-column: 2;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex-direction: column;
-	}
-	
-	.product_image{
-		width: 50%;
-		
-	}
-	.product_image > img{
-		width: 100%;
-	}
-*/
+
 </style>
 </head>
 <body>
@@ -196,24 +181,24 @@
 				</div>
 
 			</form>
+			
+			<div class="product_images">	
+				<div class="product_image">
+					<img alt="" src="<%=request.getContextPath() %>/upload/${dto.getPimage() }">
+				</div>
+			</div> <!-- product_images end -->
+	
+	
 		</div> <!-- product_contents end -->
 	
 	
 	
 	
 	
-		<div class="product_images">
 		
-			<div class="product_image">
-				<img alt="" src="<%=request.getContextPath() %>/upload/${dto.getPimage() }">
-			</div>
-
-		
-		</div> <!-- product_contents end -->
 	
 	
-	
-	</div>
+	</div> <!-- detail_wrapper END -->
 	
 	<jsp:include page="../include/shop_bottom.jsp"/>
 	

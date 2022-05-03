@@ -70,23 +70,32 @@
 	}
 	
 	#search_field {
-		width: 580px;
+		width: 570px;
 		height: 60px;
 		position: absolute;
 		top: 67px;
-		left: 200px;
+		left: 220px;
 		text-decoration: none;
-		
+		border: none;
+		font-size: 50px;
 	
 	}
 	
+	input[type=submit] {
+	 	background-image: url(images/icon-search-bold.svg);
+	}
 	
 </style>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
 <script type="text/javascript">
 
-	
+	$(function(){
+		$('#btnSearch').click(function(){
+			location.href='<%=request.getContextPath() %>/product_search.do?key=keyword';
+		});
+		
+	});
 
 
 </script>
@@ -108,9 +117,12 @@
 		<div class="apcTitle">
 				<a href="<%=request.getContextPath() %>/index.jsp">A.P.C.</a> 
 				
-				<input id="search_field" type="search" name="keyword" placeholder="SEARCH" maxlength="128">
+				<form action="">
+					<input id="search_field" type="search" name="keyword" placeholder="SEARCH" maxlength="128">
 				
 				<div id="btnSearch" class="search_icon"></div>
+				<input type="submit" value="">
+				</form>
 		</div>
 		
 		<div class="space">

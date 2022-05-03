@@ -82,21 +82,23 @@
 </head>
 <body>
 
-	<jsp:include page="/include/shop_top.jsp"/>
-	<jsp:include page="/include/shop_top_right.jsp"/>
-
+	
 	<c:set var="list" value="${productList }"/>
-	
-	<br>
-	
+		
 	<div class="products_wrapper">
+	
+		<jsp:include page="/include/shop_top.jsp"/>
+		<jsp:include page="/include/shop_top_right.jsp"/>
+	
 	
 		<div class="apcTitle">
 			<a href="<%=request.getContextPath() %>/index.jsp">A.P.C.</a> 
 		</div>
 		
 			<div class="Products_list">
+			
 					<c:if test="${!empty list }">
+					
 						<c:forEach items="${list }" var="dto">	
 							<div class="product">
 				    			<a href="<%=request.getContextPath() %>/product_content.do?no=${dto.getPno() }&name=${dto.getPname() }">
@@ -106,6 +108,7 @@
 								</a>
 							</div>
 						</c:forEach>
+						
 					</c:if>
 					
 					<c:if test="${empty list }">
@@ -117,9 +120,7 @@
 	</div> <!-- products_wrapper end -->
 	
 	
-	
-	
-	
+
 	
 	<jsp:include page="/include/shop_bottom.jsp"/>
 	

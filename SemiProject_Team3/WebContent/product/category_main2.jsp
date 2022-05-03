@@ -15,13 +15,17 @@
 <title>Insert title here</title>
 <style type="text/css">
 
+	html, body{
+		margin:0px;
+		padding: 0px;
+	}
 	
 
 
 	/* ****************공통으로 링크걸  css*******/
 
 	.apcTitle{
-		padding-top: 40px;
+		margin-top: 50px;
 		font-size: 63px;
 		margin-left: 15px;
 		font-weight: bold;
@@ -38,26 +42,23 @@
 		text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 	}
 
+	.col > a > img{
+		width:100%;
+	}
+
 	/* ****************공통으로 링크걸  css*******/
 	
 	
-	
-	
-	.col > a > img{
-		width:100%;
-
+	#category_wrapper {
+		display: flex;
+		flex-direction: column;
+		min-heigth: 100vh;
 	}
-	
-	.col{
-		width: 800px;
-	}
-	
-	
 	
 	.contents{
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr;
-	
+	}
 	
 </style>
 
@@ -70,44 +71,47 @@
 </head>
 <body>
 	
-	<jsp:include page="/include/shop_top.jsp"/>
-	<jsp:include page="/include/shop_top_right.jsp"/>
-	
-	<c:set var="list" value="${List }"/>
-
-						
 
 	<div id="category_wrapper">
+	
+		<jsp:include page="/include/shop_top.jsp"/>
+		<jsp:include page="/include/shop_top_right.jsp"/>
+		
+		<c:set var="list" value="${List }"/>
 	
 		<div class="apcTitle">
 			<a href="<%=request.getContextPath() %>/index.jsp">A.P.C.</a>
 		</div>
 		
-			<c:if test="${!empty list }">
-				<div class="contents">
-						<c:forEach items="${list }" var="dto">	
-				   			<div class="content">
-				    			<a href="<%=request.getContextPath() %>/product_list.do?code=${dto.getCategory_code() } ">
-									<img class="content_image" alt="" src="upload/${dto.getCategory_image() }" width="100%" >
-								</a>
-									<br>
-									${dto.getCategory_name() }
-				  	 		</div>
-						</c:forEach>
-				</div> 
-			</c:if>		
+			<div class="contents">
+			
+				<c:if test="${!empty list }">
+			
+					<c:forEach items="${list }" var="dto">	
+			   			<div class="content">
+			    			<a href="<%=request.getContextPath() %>/product_list.do?code=${dto.getCategory_code() } ">
+								<img class="content_image" alt="" src="upload/${dto.getCategory_image() }" width="100%" >
+							</a>
+								<br>
+								${dto.getCategory_name() }
+			  	 		</div>
+					</c:forEach>
+			
+				</c:if>		
 						
-			<c:if test="${empty list }">
-				<h4>검색된 품목이 없습니다:(</h4>
-			</c:if>
+				<c:if test="${empty list }">
+					<h4>검색된 품목이 없습니다:(</h4>
+				</c:if>
 		
+			</div> 
+			
 		
-		
-		<jsp:include page="/include/shop_bottom.jsp"/>
 		
 		
 	</div> <!-- category_wrapper end -->
 		
+	
+	<jsp:include page="/include/shop_bottom.jsp"/>
 	
 
 	

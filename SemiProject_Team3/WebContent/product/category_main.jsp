@@ -18,6 +18,32 @@
 
 <style type="text/css">
 
+
+	.apcTitle{
+		margin-top: 50px;
+		font-size: 63px;
+		margin-left: 15px;
+		font-weight: bold;
+		width: 100%;
+	}
+	
+	.apcTitle > a{
+		color: black;
+		text-decoration: none;
+	}
+	
+	.apcTitle > a:hover{
+		color: white;
+		text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+	}
+
+	.col > a > img{
+		width:100%;
+	}
+	
+	
+	/********************************/
+	
 	
 	.category_main_wrapper{
 		display: flex;
@@ -56,25 +82,7 @@
 	}
 	
 
-	/********************************/
 	
-	.apcTitle{
-	margin-top: 50px;
-	font-size: 58px;
-	margin-left: 15px;
-	font-weight: bold;
-	width: 100%;
-	}
-	
-	.apcTitle > a{
-	color: black;
-	text-decoration: none;
-	}
-	
-	.apcTitle > a:hover{
-	color: white;
-	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-	}
 	
 </style>
 
