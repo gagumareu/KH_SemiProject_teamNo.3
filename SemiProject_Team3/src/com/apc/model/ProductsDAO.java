@@ -288,15 +288,58 @@ public class ProductsDAO {
 	
 	
 	
-	public List<ProductsDTO> getSizeAndColor(String name){
+	public List<ProductsDTO> getColor(String name){
 		
 		List<ProductsDTO> list = new ArrayList<ProductsDTO>();
 		
-		openConn();
-		
-		sql ="select * from apc_products where pname = ?";
 		
 		try {
+			
+			openConn();
+			
+			sql ="select distinct pcolor from apc_products where pname = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, name);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				ProductsDTO dto = new ProductsDTO();
+	
+				dto.setPcolor(rs.getString("pcolor"));
+				
+				list.add(dto);
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		return list;
+		
+		
+	} // getColor() end 
+	
+	
+	
+	
+	
+	public List<ProductsDTO> getSize(String name){
+		
+		
+		List<ProductsDTO> list = new ArrayList<ProductsDTO>();
+		
+		
+		try {
+			openConn();
+			
+			sql = "select distinct psize from apc_products where pname = ?";
+			
 			pstmt = con.prepareStatement(sql);
 			
 			pstmt.setString(1, name);
@@ -307,33 +350,20 @@ public class ProductsDAO {
 				
 				ProductsDTO dto = new ProductsDTO();
 				
-				dto.setPno(rs.getInt("pno"));
-				dto.setPname(rs.getString("pname"));
-				dto.setPcategory_fk(rs.getString("pcategory_fk"));
-				dto.setPimage(rs.getString("pimage"));
-				dto.setPqty(rs.getInt("pqty"));
-				dto.setPrice(rs.getInt("price"));
 				dto.setPsize(rs.getString("psize"));
-				dto.setPcolor(rs.getNString("pcolor"));
-				dto.setPcontents(rs.getString("pcontents"));
-				dto.setMileage(rs.getInt("mileage"));
-				dto.setPinputdate(rs.getString("pinputdate"));
 				
 				list.add(dto);
-				
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally {
+		} finally {
 			closeConn(rs, pstmt, con);
 		}
+		
 		return list;
-		
-		
-	} // getProductSize() end 
-	
+
+	} //getSize() end
 	
 	
 	

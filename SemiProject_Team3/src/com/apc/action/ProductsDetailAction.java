@@ -22,13 +22,17 @@ public class ProductsDetailAction implements Action {
 		
 		ProductsDAO dao = ProductsDAO.getInstance();
 		
-		List<ProductsDTO> sNcList = dao.getSizeAndColor(product_name);
+		List<ProductsDTO> clist = dao.getColor(product_name);
+		
+		List<ProductsDTO> slist = dao.getSize(product_name);
 		
 		ProductsDTO productDetail = dao.getProductDetail(product_no);
 		
 		request.setAttribute("Detail", productDetail);
 		
-		request.setAttribute("sNcList", sNcList);
+		request.setAttribute("clist", clist);
+		
+		request.setAttribute("slist", slist);
 		
 		ActionForward forward = new ActionForward();
 		

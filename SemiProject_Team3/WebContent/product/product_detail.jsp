@@ -33,6 +33,7 @@
 		grid-column: 1;
 		width: 200px;
 		font-size: 0.8em;
+		line-height: 1.8;
 
 	}
 		
@@ -75,7 +76,9 @@
 	
 	<c:set var="dto" value="${Detail }"/>
 	
-	<c:set var="snc" value="${sNcList }"/>
+	<c:set var="clist" value="${clist }"/>
+	
+	<c:set var="slist" value="${slist }"/>
 	
 	<div class="detail_wrapper">
 
@@ -98,49 +101,52 @@
 			</div>
 			
 			<div>
-				색상
+				색상 ${dto.getPcolor() }
 			</div>
-			<div>
-			
-				<c:forEach items="${snc }" var="c">
-					<a href="#">${c.getPcolor() }</a>
+			<div>		
+				<c:if test="${!empty clist }" >
+				<c:forEach items="${clist }" var="list">
+					<a href="#">${list.getPcolor() }</a>
 				
 				</c:forEach>
+				</c:if>
 				
+				<c:if test="${empty clist }">
+						검색된 데이터가 없어 :(
+				</c:if>
 				
 			</div>
 			
-			
 			<div>
-				사이즈 
-			</div>
-			
-			<div>
-								
-				<select>
-				
-					<c:forEach items="${snc }" var="s">
+				사이즈	
+					<c:if test="${!empty slist }" >
+					<select>
+					<c:forEach items="${slist }" var="sizeList">
 						<option>
-							${s.getPsize() }
+							${sizeList.getPsize() }
 						</option>
 					</c:forEach>
-				
-				
-				</select>
-				
-		
-				
+					</select>
+					</c:if>
+					
+					<c:if test="${empty slist }">
+						검색된 데이터가 없어 :(
+					</c:if>
 			</div>
 			
 			<div>
 				 수량
-				 <select>
-				 		
+				 <select name="qty">
+				 	<c:forEach begin="1" end="10" var="count">
+				 		<option>
+				 			${count }
+				 		</option>
+				 	</c:forEach>	
 				 </select>
 			</div>
 			
 			<div>
-				적립금 &nsp; ${dto.getMileage() }
+				적립금<fmt:formatNumber value="${dto.getMileage() }" />원 
 			</div>
 			
 			<div>
