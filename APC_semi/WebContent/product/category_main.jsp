@@ -6,49 +6,70 @@
 <head>
 <meta charset="UTF-8">
 <title>A.P.C. 아페쎄 온라인 스토어 > GOLF</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/main.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style_products.css">
 <style type="text/css">
 
 	body{
 		font-family: "arial";
 	}
 	
-	
-	
-	#golf_main_top ul{
-	
-		list-style: none;
-		padding:0px;
+	#golf_main_container{
+		margin-bottom: 30px;
 	}
 	
-	.home {
+	.page_title {
+		padding	:0px;
+	}
+	.page_title ul{
+		display:block;
+	}
+	
+	.page_title li{
+		display:block;
+		
+	}
+
+	.page_title1{
 		color:black;
 		font-size: 60px;
 		font-weight: bold;
-		
 	}
-	.home a {
+	
+	.page_title1 a{
 		text-decoration:none;
 		color: black;
 	}
-	.home a:hover{
+	
+	.page_title1 a:hover{
 		color: white;
 		text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 	}
 	
-	#golf_title{
-		font-size:120px;
-		font-weight: bold;
+	.page_title2{
+		color:black;
+		font-size:110px;
+		margin-top:-40px;
+		margin-bottom:-30px;
+		margin-left:-10px;
 	}
+	
 	
 	#golf_bottom{
 		display:flex;
+		justify-content: space-between;
 		
 	}
-
 	.golf_item{
-		width:500px;
-		height:500px;
+		width:33%;
+		height:33%;
+		margin-top:10px;
+		margin-right:3px;
 		position: relative;
+		
 	}
 	
 	.golf_itme img{
@@ -56,28 +77,56 @@
 		height:100%;
 	}
 	
+	.img_overlay{
+		position:absolute;
+		top:30%;
+		left:28%;
+		width:100%;
+		height:100%;
+		
+		font-family: "Arial Black";
+		font-size:2.3em;
+		color:white;
+		letter-spacing: 3px;	
+	}
 	
 	
 </style>
 </head>
 <body>
+
+	<jsp:include page="/include/shop_top.jsp"/>
+	<jsp:include page="/include/shop_top_right.jsp"/>
 	<c:set var="list" value="${List }"/>
 	<c:if test="${empty list }">
 		<h3>해당정보가 없습니다.</h3>
 		</c:if>
 		
-	<div id="golf_main" >
-		<jsp:include page="../include/shop_top_left.jsp"/>
-		<div id="golf_main_top">
+	<div id="golf_main_container" > <!-- GOFL에만 있는 페이지 -->
+	
+		
+		<div class="page_title">
 		<ul>
-		<li class="home">
-		<a href="index.jsp">A.P.C.</a>
+		<li class="page_title1">
+		<a href="<%=request.getContextPath()%>/index.jsp">A.P.C.</a>
 		</li>
-		<li class="golf_title">
-			GOLF
+		<li class="page_title2">
+			${first}
 		</li>
-		</ul> 
-		</div> <!-- id="golf-top" end -->
+		</ul>
+		</div><!-- class="page_title" -->
+	
+		
+<%-- 		<div class="page_title">
+		<ul>
+		<li class="page_title1">
+		<a href="<%=request.getContextPath()%>/index.jsp">A.P.C.</a>
+		</li>
+		<li class="page_title2">
+			${first}
+		</li>
+		</ul>
+		</div><!-- class="page_title" --> --%>
 		
 	
 		<div id="golf_middle">
@@ -85,30 +134,43 @@
 		</div><!-- id="golf_middle" -->
 		
 		
-		
-		<c:if test="${!empty list }">
+
+		 <c:if test="${!empty list }">
 		<div id="golf_bottom">
 			<div class="golf_item">
+				
+				<div class="img_box">
 				<a href="<%=request.getContextPath() %>/2nd_category.do?code=${list[0].getCategory_code()}">
-					<img class="golf_sub" src="e_image/golf_sub1.jpg" alt="golf_women" >
-					<div class="overlay">
+					<img class="golf_sub" src="e_image/golf_sub1.jpg" alt="golf_women" width="100%" height="100%">
+					<div class="img_overlay">
 						<p>GOLF/<br>WOMEN</p>
 					</div>
 				</a>
+				</div>
 			</div>
 			<div class="golf_item">
+				<div class="img_box">
 				<a href="<%=request.getContextPath() %>/2nd_category.do?code=${list[1].getCategory_code()}">
-					<img class="golf_sub" src="e_image/golf_sub2.jpg" alt="golf_men" >
+					<img class="golf_sub" src="e_image/golf_sub2.jpg" alt="golf_men"width="100%" height="100%"> 
+					<div class="img_overlay">
+						<p>GOLF/<br>MEN</p>
+					</div>
 				</a>
+				</div>
 			</div>
 			<div class="golf_item">
+				<div class="img_box">
 				<a href="<%=request.getContextPath() %>/2nd_category.do?code=${list[2].getCategory_code()}">
-					<img class="golf_sub" src="e_image/golf_sub3.jpg" alt="golf_acc" >
+					<img class="golf_sub" src="e_image/golf_sub3.jpg" alt="golf_acc"width="100%" height="100%"> 
+					<div class="img_overlay">
+						<p>GOLF/<br>ACC</p>
+					</div>
 				</a>
+				</div>
 			</div>
 		</div>
 	</c:if>
-	</div>
-
+	</div> <!-- id="golf_main_container" -->
+		<jsp:include page="/include/shop_bottom.jsp"/>
 </body>
 </html>

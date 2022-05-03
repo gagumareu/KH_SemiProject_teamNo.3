@@ -1,23 +1,25 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-	
-	
-	
+
 	#right_menu{
 	margin-top: 10px;
-	padding-left: 87%;
+	width: 100px;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	
 	}
 	
 	#right_menu>ul{
 	display:flex;
 	flex-direction:column;
-	font-size: 13px;
+	font-size: 12px;
 	}
 	
 	
@@ -34,32 +36,31 @@
 	text-decoration: underline;
 	}
 	
+	/********** right side end **********/
 
 </style>
 </head>
 <body>
-	
+
+
 	<div id="right_menu">
 		<ul>
-			<li><a href="#"><img src="images/bag1.png" width="20px">Àå¹Ù±¸´Ï</a></li>
-			<li><a href="#">³»°èÁ¤/·Î±×ÀÎ</a></li>
+			<li><a href="#"><img src="images/icon-bag.svg" width="20px">ì¥ë°”êµ¬ë‹ˆ</a></li>
+			<li><a href="#">ë‚´ê³„ì •/ë¡œê·¸ì¸</a></li>
 			<li>&nbsp;</li>
 			<li><a href="#">South Korea</a></li>
-			<li><a href="#">´º½º·¹ÅÍ</a></li>
-			<li><a href="#">°í°´¼¾ÅÍ</a></li>
-			<li><a href="#">¸ÅÀåÂ÷±â</a></li>
+			<li><a href="#">ë‰´ìŠ¤ë ˆí„°</a></li>
+			<li><a href="<%=request.getContextPath() %>/qa_list.do">ê³ ê°ì„¼í„°</a></li>
+			<li><a href="#">ë§¤ì¥ì°¾ê¸°</a></li>
 			<li>&nbsp;</li>
-			<li><a href="#">¾ÆÀÌµğ·è¸ô</a></li>
+			<li><a href="#">ì•„ì´ë””ë£©ëª°</a></li>
 		
 		</ul>
-	</div>	
+	</div>	<!--  right_menu end  -->
 	
 	
 	
+	
+
 </body>
 </html>
-	
-	
-	
-	
-	

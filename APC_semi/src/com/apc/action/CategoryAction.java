@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.apc.controller.Action;
 import com.apc.controller.ActionForward;
@@ -20,10 +21,26 @@ public class CategoryAction implements Action {
 		
 		String fullcode = request.getParameter("code").trim();
 		String code = fullcode.substring(0,1);
+		String first = ""; //첫번째 카테고리 이름 
 		
 		CategoryDAO dao = CategoryDAO.getInstance();
 		
 		ActionForward forward = new ActionForward();
+		
+		switch(code) {
+			case "1" : 
+				first ="WOMEN";
+				break;
+			case "2" :
+				first="MEN";
+				break;
+			case "3":
+				first="GOLF";
+				break;
+		}
+		
+		HttpSession productSession = request.getSession();
+		
 
 		if(code.equals("3")) {//카테고리가 3:골프인 경우, 2nd category불러오기
 
@@ -32,13 +49,14 @@ public class CategoryAction implements Action {
 			request.setAttribute("List", list);
 			forward.setRedirect(false);
 			forward.setPath("product/category_main.jsp");
+			productSession.setAttribute("first", first);
 			
 
 		}else if (code.equals("1") || code.equals("2")){
 			
 			forward.setRedirect(true);
 			forward.setPath("2nd_category.do?code="+fullcode);
-			
+			productSession.setAttribute("first", first);
 		}else {
 			System.out.println("오류 발생");
 		}

@@ -4,8 +4,8 @@ create table apc_payment(
 
 	order_no number(5) primary key, 				-- 주문번호
 	cartno_fk number(5),							-- 카트번호
-	order_id number(5) not null,					-- 주문아이디(비회원,회원통합관리) 
-	category_fk varchar2(8) not null,				-- 카테고리 코드
+	order_id varchar2(100) not null,				-- 주문아이디(비회원,회원통합관리) 
+	pno_fk number(5) not null,				-- 카테고리 코드
 	pname varchar2(50) not null,					-- 상품명	
 	pqty number(5) not null,						-- 수량
 	price number(10) not null,						-- 가격
@@ -22,3 +22,9 @@ create table apc_payment(
 );
 
 -- 20220426 : memno외래키 삭제, order_id 추가 / category_no 삭제, category_fk(코드) 외래키참조  / cartno_fk(외래키)추가
+-- 20220502 : order_id number(5) - > varchar2(100), category_fk 삭제 -> pno_fk number(5) 수정
+
+
+-- apc_paymnet 데이터 
+insert into apc_payment 
+values(1, 1, 'hong', '3WAT0000', 'Sermaise T-Shirts (white)', 1, 289000, default, 1, sysdate, '홍길동', '서울시 구로구', '010-1111-1111');

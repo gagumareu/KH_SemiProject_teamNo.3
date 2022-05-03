@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.apc.controller.Action;
 import com.apc.controller.ActionForward;
@@ -22,6 +23,8 @@ public class SecondCategoryAction implements Action {
 		String code = fullcode.substring(0,1); // 맨앞자리 1st category 구분
 		String code2 = fullcode.substring(1,2); // 2nd category 존재여부 구분 
 		
+		String second = null; //2nd category 이름 
+		
 		CategoryDAO dao = CategoryDAO.getInstance();
 		List<CategoryDTO> list = null;
 		
@@ -36,9 +39,28 @@ public class SecondCategoryAction implements Action {
 			
 		}
 		
+
+		
+		if(code2.equalsIgnoreCase("W")) {
+			second="WOMEN";
+		}else if(code2.equalsIgnoreCase("M")) {
+			second="MEN";
+		}else if(code2.equalsIgnoreCase("A")) {
+			second="ACC";
+		}
+		
+		System.out.println("code2>>>"+code2);
+		System.out.println("second>>>"+second);
+		
+		HttpSession productSession = request.getSession();
+		
+		
+		
 		ActionForward forward = new ActionForward();
 		
 		if(list.size() == 0 ) {
+			
+			productSession.setAttribute("second", second);
 			
 			forward.setRedirect(true);
 			forward.setPath("product_list.do?code="+fullcode);
@@ -46,7 +68,7 @@ public class SecondCategoryAction implements Action {
 		}else {
 			
 			request.setAttribute("List", list);
-			request.setAttribute("code", fullcode);
+			productSession.setAttribute("second", second);
 			
 			forward.setRedirect(false);
 			forward.setPath("product/category_main2.jsp");

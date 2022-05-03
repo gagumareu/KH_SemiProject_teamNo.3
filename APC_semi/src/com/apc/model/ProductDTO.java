@@ -10,7 +10,7 @@ public class ProductDTO {
 	private int price;
 	private String psize;
 	private String pcolor;
-	private String picon;
+//	private String picon;
 	private String pcontents;
 	private int mileage;
 	private String pinputdate;
@@ -64,12 +64,12 @@ public class ProductDTO {
 	public void setPcolor(String pcolor) {
 		this.pcolor = pcolor;
 	}
-	public String getPicon() {
-		return picon;
-	}
-	public void setPicon(String picon) {
-		this.picon = picon;
-	}
+//	public String getPicon() {
+//		return picon;
+//	}
+//	public void setPicon(String picon) {
+//		this.picon = picon;
+//	}
 	
 	public String getPcontents() {
 		return pcontents;

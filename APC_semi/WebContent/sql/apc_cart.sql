@@ -18,3 +18,6 @@ create table apc_cart (
 );
 
 -- 20220426 수정 : memno 참조 -> cart_memid 수정 (외래키 해제)
+
+insert into apc_cart 
+values(1, 3, 'hong', 'Sermaise T-Shirts (white)', 1, 'XS', 'WHITE', 289000, default, '');

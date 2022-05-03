@@ -23,7 +23,7 @@
 		<h3>상품 등록 페이지</h3>
 		<hr width="65%" color="teal">
 		<br>
-		
+		<div>
 		<form method="post" enctype = "multipart/form-data" 
 			action="<%=request.getContextPath() %>/product_upload.do">
 			<table border="1" cellspacing="0" width="400">
@@ -51,7 +51,14 @@
 				</tr>			
 				<tr>
 					<th>상품 이미지</th>
-					<td><input type="file" name="p_image" multiple></td>
+					<td>
+					<input type="button" value="파일추가" id="addFileBtn"> 
+					<input type="button" value="파일제거" id="delFileBtn">
+					<hr> 
+					<div id="file_area">
+					<input type="file" name="p_image"><br>
+					</div>
+					</td>
 				</tr>			
 				<tr>
 					<th>상품 수량</th>
@@ -70,7 +77,7 @@
 					<th>상품 칼라</th>
 					<td><input type="text" name="p_color" maxlength="8"></td>
 				</tr>			
-				<tr>
+			<!-- 	<tr>
 					<th>상품 아이콘</th>
 					<td>
 						<select name="p_icon">
@@ -80,7 +87,7 @@
 							<option value="recommend" >추천</option>
 						</select>
 					</td>
-				</tr>			
+				</tr>			 -->
 				<tr>
 					<th>상품 소개</th>
 					<td><textarea rows="7" cols="30" name="p_contents"></textarea></td>
@@ -98,6 +105,77 @@
 			</table>		
 		</form>
 	</div>
+<script type="text/javascript">
 
+let form = document.forms[0]; //html안에서 form의 첫번째
+let addFileBtn = document.getElementById("addFileBtn");
+let delFileBtn = document.getElementById("delFileBtn");
+let file_area = document.getElementById("file_area");
+let count = 1;
+
+console.log(form);
+console.log(addFileBtn);
+console.log(delFileBtn);
+console.log(file_area);
+
+//파일업로드 유효성 검사
+/* form.onsubmit = function(){
+	event.preventDefault(); // 일단 현재 이벤트를 멈춤
+	
+	//파일선택 유효성검사
+	let inputs = file_area.getElementsByTagName("input");//file_area에 있는 input들 가져오기
+	for(let i = 0; i<inputs.length; i++){
+		
+		if(inputs[i].value	== ""){
+			alert("파일을 선택하세요");
+			inputs[i].focus();
+			return;
+		}
+		
+	}
+	
+	this.action="multiFileUploadServer.jsp";
+	this.method="post";
+	this.enctype="multipart/form-data";
+ 	this.submit(); //다시 시작
+}; */
+
+
+addFileBtn.onclick = function(){
+	
+	if(count < 10 ){
+	count++
+	let element = document.createElement("input");
+	element.type ="file";
+	element.name ="p_image"+count;
+	
+	
+	file_area.appendChild(element);
+	file_area.appendChild(document.createElement("br"));
+	
+	}else{
+		alert('파일은 10개까지 추가 가능합니다.');
+	}
+	
+};
+
+delFileBtn.onclick = function(){
+	
+	if(count > 1 ){
+	count-- ;
+	
+	let inputs = file_area.getElementsByTagName("input"); //input태그 모두 불러오기
+	let brArr = file_area.getElementsByTagName("br"); 
+	
+	file_area.removeChild(brArr[brArr.length-1]);
+	file_area.removeChild(inputs[count]); //또는 inputs[inputs.length-1] 으로 가장 마지막에 생성된 input태그를 삭제할수있음
+	
+	}else{
+		alert('더이상 제거 불가능합니다.');
+	}
+	
+};
+
+</script>
 </body>
 </html>

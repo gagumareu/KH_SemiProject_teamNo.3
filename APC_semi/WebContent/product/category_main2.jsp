@@ -5,62 +5,101 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>이슬 category_main2</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/main.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style_products.css">
 <style type="text/css">
 
-	#golf_women_body{
-		
+	html, body{
+	
+		margin: 0px;
+		padding: 0px;
 	}
 
-	.gw_sub{
-		float:left;
-		width: 400px;
-		height: 400px;
-		background-color:skyblue;
-		border :2px solid black;
-	}
 
 </style>
+
+	<link rel="stylesheet" href="../css/style.css">
+	
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" 
+	rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" 
+	crossorigin="anonymous">
+
 </head>
 <body>
+	
+	<jsp:include page="/include/shop_top.jsp"/>
+	<jsp:include page="/include/shop_top_right.jsp"/>
+	<div class="category_wrapper" >
 	<c:set var="list" value="${List }"/>
-		<div id="golf_subcategory">
-		<div id="golf_sub_top">
+	
+		<div class="page_title">
 		<ul>
-		<li class="home">
-		<a href="../index.jsp">A.P.C.</a>
+		<li class="page_title1">
+		<a href="<%=request.getContextPath()%>/index.jsp">A.P.C.</a>
 		</li>
-		<li class="eng">
-			GOLF
+		<!--   second이 null (WOMEN, MEN일 경우)   -->
+		<c:if test="${empty second }"> 
+		<li class="page_title2">
+			${first}
 		</li>
-		</ul> 
-		</div> <!-- id="golf-top" end -->
-		
-		
-		<c:if test="${empty list }">
-		<h3>정보가 없습니다.</h3>
 		</c:if>
-		
-		<c:if test="${!empty list }">
-		<div id="golf_sub_body">
-			<c:forEach items="${list }" var="dto">
-				<div class="gw_sub">
-					<a href="<%=request.getContextPath() %>/product_list.do?code=${dto.getCategory_code()}">
-					<!-- ++dto파일이미지 받아 화면표시하기 -->
-						<img src="../e_image/wTshirt1_1.jpg" alt="gw_tshirt1">
-					<div class="overlay">
-						<p>${dto.getCategory_name() }</p>
-					</div>
-				</a>		
-				</div>
-			</c:forEach>
-		
-		
-		
-		</div>
-		
+		 <!--   second이 null이 아니면 (GOLF일 경우)    -->
+		<c:if test="${!empty second }">
+		<li class="page_title2">
+			<a href="<%=request.getContextPath()%>/category.do?code=30000000">${first}</a>
+		</li>
+		<li class="page_title3">
+			/ ${second}
+		</li>
 		</c:if>
-	</div>
+		</ul>
+		</div><!-- class="page_title" -->
 
+		
+			<c:if test="${!empty list }">
+				<div class="category_flex_wrapper">
+					<div class="category_flex">
+					<c:forEach items="${list }" var="dto">	
+						<div class="flex_item">
+							<div class="img_box">
+							<a href="<%=request.getContextPath() %>/product_list.do?code=${dto.getCategory_code() } ">
+								<img alt="" src="upload/${dto.getCategory_image() }">
+								<div class="img_overlay">
+									<c:if test="${dto.getCategory_name().substring(0,1) == 'W' }">
+								<span> 
+									${dto.getCategory_name().substring(0,6) }<br>
+									${dto.getCategory_name().substring(6) }
+								</span>
+								</c:if>
+								
+								 <c:if test="${dto.getCategory_name().substring(0,1) == 'M'}">
+								<span> 
+									${dto.getCategory_name().substring(0,4) }<br>
+									${dto.getCategory_name().substring(4) }
+								</span>
+								</c:if>
+								</div>
+							</a>						
+							</div>	<!-- class="img_box" -->					
+						</div><!-- class="flex_item" -->
+					</c:forEach>
+					</div><!-- class="category_flex" -->
+				</div> <!-- class="category_flex_warpper" -->
+			</c:if>		
+			<c:if test="${empty list }">
+				<h4>검색된 품목이 없습니다:(</h4>
+			</c:if>
+		
+		
+	</div> <!-- category_wrapper end -->
+		
+	
+
+	<jsp:include page="/include/shop_bottom.jsp"/>
+	
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
+	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>

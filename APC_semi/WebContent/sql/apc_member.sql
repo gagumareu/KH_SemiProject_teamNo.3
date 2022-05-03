@@ -16,3 +16,10 @@ create table apc_member (
 );
 
 -- 20220426수정: memno삭제, mem_id (primary key)
+
+-- apc_member 데이터 
+
+insert into apc_member values('hong', '1111','홍길동','010-1111-1111','hong@gmail.com', '1980-12-19', '서울시 중구', default, sysdate);
+insert into apc_member values('funfun', '1111','유재석','010-2111-1111','fun@gmail.com', '1979-08-23', '서울시 서초구', default, sysdate);
+insert into apc_member values('choi', '1111','샤론최','010-3111-1111','choi@gmail.com', '1989-05-01', '경기도 성남시', default, sysdate);
+insert into apc_member values('apcceo', '1111','김재풍','010-4111-1111','apc@gmail.com', '1975-01-13', '경기도 평택시', default, sysdate);

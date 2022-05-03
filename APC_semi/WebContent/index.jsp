@@ -118,7 +118,6 @@
 				
 				<div>
 					<a href="<%=request.getContextPath()%>/category.do?code=${list[2].getCategory_code()}">A.P.C GOLF</a>
-					<a href="<%=request.getContextPath()%>/golf_category.do">GOLF</a>
 				</div>
 				
 				<div>

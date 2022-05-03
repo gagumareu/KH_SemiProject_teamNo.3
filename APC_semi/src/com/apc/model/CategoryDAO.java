@@ -277,8 +277,68 @@ public class CategoryDAO {
 		return list;
 	}
 
-	
+	public CategoryDTO getCategoryCont(String code) {
+		
+		CategoryDTO dto = new CategoryDTO();
+		
+		try {
+			openConn();
+			
+			sql="select * from apc_category where category_code = ? ";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, code);
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				dto.setCategory_no(rs.getInt("category_no"));
+				dto.setCategory_code(rs.getString("category_code"));
+				dto.setCategory_name(rs.getString("category_name"));
+				dto.setCategory_image(rs.getString("category_image"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return dto;
+		
+	}
 
+	//코드의 상위 카테고리 정보를 가져오는 메서드
+	public CategoryDTO getUpperCategory(String fullcode) {
+		
+		CategoryDTO dto = new CategoryDTO();
+		try {
+			openConn();
+			
+			sql="select * from apc_category where category_code like ?"
+					+ " and category_code like ? ";
+			pstmt=con.prepareStatement(sql);
+			
+			pstmt.setString(1, fullcode.substring(0,2)+"%");
+			pstmt.setNString(2, "__000000");
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				dto.setCategory_no(rs.getInt("category_no"));
+				dto.setCategory_code(rs.getString("category_code"));
+				dto.setCategory_name(rs.getString("category_name"));
+				dto.setCategory_image(rs.getString("category_image"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return dto;
+	}//getUpperCategory() end 
 
 
 
