@@ -21,10 +21,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-	.admin {
-		color: blue;
-		font-size: 40px;
-	}
 	
 </style>
 
@@ -142,12 +138,7 @@
 		
 		<input type="submit" value="등록">
 		
-		<div class="admin">
-			<a>
-				<img alt="" src="../images/noun-admin.svg">
-				<i class="fa-solid fa-screwdriver-wrench"></i>
-			</a>
-		</div>
+		
 		
 	</form>
 	</div>

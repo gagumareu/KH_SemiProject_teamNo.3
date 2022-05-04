@@ -119,14 +119,11 @@
 	
 	$(function (){
 		$('#search_icon2').click(function(){
-			//window.open('product/search.jsp', '_black', 'height="500"', 'true')
-			$(location).attr('href', 'product/search.jsp')
+			$(location).attr('href', '<%=request.getContextPath() %>/product/search.jsp');
 		});
-		
-		
 	});
 	
-
+	
 	
 
 
@@ -163,13 +160,16 @@
 			
 				<div class="search-container">
 					<a href="#" alt="Search image">
-						<img id="search_icon2" alt="Search image" data-search_window="date/search_test.jsp" 
-						src="images/icon-search-bold.svg" width="18px"><span class="seach_text">search</span>	
+					
+						<img id="search_icon2" alt="Search image" 
+						src="<%=request.getContextPath() %>/images/icon-search-bold.svg" width="18px">
+						
+						<span class="seach_text">search</span>	
 					</a>
-					<a href="#pop1">	
+					<!-- <a href="#pop1">	
 						<img id="search_icon3" alt="Search image" data-search_window="date/search_test.jsp" 
 						src="images/icon-search-bold.svg" width="18px">
-					</a>
+					</a> -->
 				</div>
 				
 			</li>

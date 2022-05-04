@@ -81,10 +81,6 @@
 	
 	}
 	
-	input[type=submit] {
-	 	background-image: url(images/icon-search-bold.svg);
-	 	
-	}
 	
 </style>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
@@ -99,13 +95,7 @@
 		});
 	});
 	
-	$(function(){
-		
-		$('#btnSearch').keydown(function(){
-			var valueById = $('#search_field').val();
-			location.href='<%=request.getContextPath() %>/product_search.do?keyword='+valueById;
-		});
-	});
+	
 	
 
 </script>
@@ -120,11 +110,12 @@
 	
 	
 		<div class="apcTitle">
+		
 				<a href="<%=request.getContextPath() %>/index.jsp">A.P.C.</a> 
 				
-				<form action="<%=request.getContextPath() %>/product_search.do?keyword=keywords">
+				<form action="<%=request.getContextPath() %>/product_search.do">
 				
-					<input id="search_field" type="search" value="" name="keywords" placeholder="SEARCH" maxlength="128">
+					<input id="search_field" type="search" value="" name="keyword" placeholder="SEARCH" maxlength="128">
 				
 					<div id="btnSearch"></div>
 				
