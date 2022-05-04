@@ -20,6 +20,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+	.admin {
+		color: blue;
+		font-size: 40px;
+	}
+	
+</style>
+
+<script src="https://kit.fontawesome.com/a705bacd4a.js" crossorigin="anonymous"></script>
 </head>
 <body>
 	
@@ -100,7 +109,7 @@
 		
 		<div>
 		수량
-		<input type="number" name="pQty" min="1">	
+		<input type="number" name="pQty">	
 		</div>
 		
 		<div>
@@ -132,7 +141,14 @@
 		<br>
 		
 		<input type="submit" value="등록">
-	
+		
+		<div class="admin">
+			<a>
+				<img alt="" src="../images/noun-admin.svg">
+				<i class="fa-solid fa-screwdriver-wrench"></i>
+			</a>
+		</div>
+		
 	</form>
 	</div>
 	

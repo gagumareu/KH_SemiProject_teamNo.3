@@ -83,6 +83,7 @@
 	
 	input[type=submit] {
 	 	background-image: url(images/icon-search-bold.svg);
+	 	
 	}
 	
 </style>
@@ -91,37 +92,43 @@
 <script type="text/javascript">
 
 	$(function(){
-		$('#btnSearch').click(function(){
-			location.href='<%=request.getContextPath() %>/product_search.do?key=keyword';
-		});
-		
-	});
 
+		$('#btnSearch').click(function(){
+			var valueById = $('#search_field').val();
+			location.href='<%=request.getContextPath() %>/product_search.do?keyword='+valueById;
+		});
+	});
+	
+	$(function(){
+		
+		$('#btnSearch').keydown(function(){
+			var valueById = $('#search_field').val();
+			location.href='<%=request.getContextPath() %>/product_search.do?keyword='+valueById;
+		});
+	});
+	
 
 </script>
 </head>
 <body>
 	
 	
-	
-	
-	
+	<div class="search_wrapper">
 	
 	<jsp:include page="../include/shop_top.jsp"/>
 	<jsp:include page="../include/shop_top_right.jsp"/>
 	
 	
-	<div class="search_wrapper">
-	
-	
 		<div class="apcTitle">
 				<a href="<%=request.getContextPath() %>/index.jsp">A.P.C.</a> 
 				
-				<form action="">
-					<input id="search_field" type="search" name="keyword" placeholder="SEARCH" maxlength="128">
+				<form action="<%=request.getContextPath() %>/product_search.do?keyword=keywords">
 				
-				<div id="btnSearch" class="search_icon"></div>
-				<input type="submit" value="">
+					<input id="search_field" type="search" value="" name="keywords" placeholder="SEARCH" maxlength="128">
+				
+					<div id="btnSearch"></div>
+				
+				
 				</form>
 		</div>
 		

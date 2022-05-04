@@ -17,7 +17,7 @@ public class ProductSearchAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// TODO Auto-generated method stub
 		
-		String keyword = request.getParameter("key").trim();
+		String keyword = request.getParameter("keyword").trim();
 		
 		ProductsDAO dao = ProductsDAO.getInstance();
 		

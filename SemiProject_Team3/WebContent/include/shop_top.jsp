@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
+    
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -92,6 +97,18 @@
 		position: absolute;
 	}
 	
+	
+	.popup {
+	
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		whdth: 500px;
+		heigth: 500px;
+		z-index: 3;
+	}
+	
 </style>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script type="text/javascript"></script>
@@ -149,12 +166,17 @@
 						<img id="search_icon2" alt="Search image" data-search_window="date/search_test.jsp" 
 						src="images/icon-search-bold.svg" width="18px"><span class="seach_text">search</span>	
 					</a>
+					<a href="#pop1">	
+						<img id="search_icon3" alt="Search image" data-search_window="date/search_test.jsp" 
+						src="images/icon-search-bold.svg" width="18px">
+					</a>
 				</div>
 				
 			</li>
 		</ul>
 	</div> <!-- navr end -->
 	
+	<div class="popup" id="pop1"></div>
 	
 
 	

@@ -99,7 +99,8 @@ public class ProductsDAO {
 			
 			openConn();
 			
-
+			//sql = "select distinct pname from apc_products where pcategory_fk = ?";
+			
 			sql = "select * from apc_products where pcategory_fk = ? order by pinputdate desc";
 			
 			pstmt = con.prepareStatement(sql);
@@ -338,7 +339,9 @@ public class ProductsDAO {
 		try {
 			openConn();
 			
-			sql = "select distinct psize from apc_products where pname = ? order by psize";
+			//sql = "select distinct psize from apc_products where pname = ? order by psize";
+			
+			sql = "select distinct psize, pqty from apc_products where pname = ? order by psize";
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -351,7 +354,7 @@ public class ProductsDAO {
 				ProductsDTO dto = new ProductsDTO();
 				
 				dto.setPsize(rs.getString("psize"));
-				
+				dto.setPqty(rs.getInt("pqty"));
 				list.add(dto);
 			}
 			
