@@ -117,6 +117,43 @@ public class CategoryDAO {
 		
 	} //getCategoryList() end
 	
+	// 카테고리 번호에 해당하는 자료리스트 가져오기
+	public List<CategoryDTO> getCategoryList(int no){
+
+		List<CategoryDTO> list = new ArrayList<CategoryDTO>();
+		
+		
+		try {
+			openConn();
+			
+			sql = "select * from apc_category where category_no=? order by category_code";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, no);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				CategoryDTO dto = new CategoryDTO();
+				
+				dto.setCategory_no(rs.getInt("category_no"));
+				dto.setCategory_code(rs.getString("category_code"));
+				dto.setCategory_name(rs.getString("category_name"));
+				dto.setCategory_image(rs.getString("category_image"));
+				
+				list.add(dto);			
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		return list;
+		
+	}
+	
 	//apc_category 테이블에 새로운 카테고리를 추가해주는 메서드
 	public int insertCategory(CategoryDTO dto) {
 		int result =0;

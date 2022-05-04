@@ -17,9 +17,18 @@ public class AdminCategoryListAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// 카테고리 클릭하면 db에서 정보를 받아와 카테고리 list 출력
 		
+		int pagingNo = 1;
+		
+		if(request.getParameter("num") == null) {
+			pagingNo=1;		
+		}else {
+			pagingNo= Integer.parseInt(request.getParameter("num").trim());
+			
+		}
+		
 		CategoryDAO dao = CategoryDAO.getInstance();
 		
-		List<CategoryDTO> list =  dao.getCategoryList();
+		List<CategoryDTO> list =  dao.getCategoryList(pagingNo);
 		
 		request.setAttribute("CategoryList", list);
 		

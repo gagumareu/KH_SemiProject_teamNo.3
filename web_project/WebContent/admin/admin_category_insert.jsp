@@ -4,13 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>카페고리 추가 페이지</title>
+<title>카테고리 추가 페이지</title>
+<link rel="stylesheet" href="../css/admin_register.css">
+
 <style type="text/css">
-	.btn{
-		color: white;
-		background-color: black;
-		font-family:bold;
-	}
+
 
 </style>
 </head>
@@ -24,7 +22,9 @@
 		<form method="post" enctype="multipart/form-data"
 		action="<%=request.getContextPath() %>/admin_category_insert_ok.do">
 			
-			<table border="1" cellspacing="0" width="600" height="200">
+			
+			
+			<table>
 			
 			<tr>
 				<th>카테고리 대분류</th>
@@ -34,8 +34,7 @@
 						<option value="1">Women</option>
 						<option value="2">Men</option>
 						<option value="3">Golf</option>					
-					</select>
-					
+					</select>					
 				</td>
 			</tr>
 			
@@ -61,22 +60,12 @@
 			</tr>
 			
 			<tr>
-				<td colspan ="2" align="center">
-				<input class="btn" type="submit" value="등록하기">
-				<input class="btn" type="reset" value="다시 작성">				
-					
-				</td>
-					
-			</table>
-		
-			
-		
-		
+				<td class="lastTr" colspan ="2" align="center">
+				<input class="btn" type="submit" value="등록하기">&nbsp;&nbsp;
+				<input class="btn" type="reset" value="다시 작성">									
+				</td>					
+			</table>	
 		</form>
-		
-		
-	
 	</div>
-
 </body>
 </html>

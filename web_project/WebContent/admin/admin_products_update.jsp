@@ -7,6 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/admin_register.css">
+
 <script src = "http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
 	function deleteFile(num){
@@ -23,6 +25,13 @@
 
 </script>
 
+<style type="text/css">
+ #p_code{
+ 	border:none;
+ }
+
+</style>
+
 </head>
 <body>
 
@@ -35,15 +44,15 @@
 			action="<%=request.getContextPath() %>/admin_products_update_ok.do">
 		
 		
-			<table border="1" cellspacing="0" width="500">
+			<table>
 			<c:set var="dto" value="${productCont }"/>
 				
 				<input type="hidden" name="p_no" value="${dto.getPno() }">
 				
 				<tr>
 					<th>상품 코드</th>
-					<td>
-					<input name="p_code" value="${dto.getPcategory_fk() }" readonly>					
+					<td>			
+					<input id="p_code" name="p_code" value="${dto.getPcategory_fk() }" readonly>										
 					</td>
 				</tr>
 				
@@ -127,31 +136,25 @@
 								<div id="old_image_${status.index}">
 								<input type="hidden" name="index${status.index}" value="${status.index }">
 								<a href="<%=request.getContextPath() %>/image_products/${listFile }" >${listFile.substring(10) }</a>
-								<input type="button" value="삭제"  onclick="deleteFile('${status.index}')"><br>
+								<input class="fileBtn" type="button" value="삭제"  onclick="deleteFile('${status.index}')"><br>
 								</div>
 							</c:forEach>
 							</c:if>
-							
-							
-							
-							
+													
 							<div id="a_file">
 								
 							</div>
-							
-						<%-- <input type="file" name="p_image_new">				 
-				  		<input type ="hidden" name="p_image_old"
-				  		value="${dto.getPimage() }"> --%>
+
 					</td>
 					
 				</tr>
 				
 				<tr>
-					<td colspan="2" align="center">
-						<input type="button" value="파일 추가"
+					<td colspan="2" align="center" class="lastTr">
+						<input class="btn" type="button" value="파일 추가"
 						onclick="addFile()">&nbsp;&nbsp;&nbsp;
-						<input type="submit" value="상품수정">&nbsp;&nbsp;&nbsp;
-						<input type="button" value="작성 취소"
+						<input class="btn" type="submit" value="상품수정">&nbsp;&nbsp;&nbsp;
+						<input class="btn" type="button" value="작성 취소"
 						onclick="location.href='admin_products_list.do'">
 					</td>
 				</tr>

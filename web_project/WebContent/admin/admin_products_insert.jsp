@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>상품 등록 폼 페이지</title>
+<link rel="stylesheet" href="./css/admin_register.css">
+
 <script src = "http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
 	var cnt =2;
@@ -14,31 +16,21 @@
 		cnt++;		
 	}
 	
-	
-
 </script>
 
-<style type="text/css">
-	.btn{
-		color: white;
-		background-color: black;
-		font-family:bold;
-	}
-
-</style>
 </head>
 <body>
 	
-	<div align="center">
+	<div width="700px" align="center">
 		<span>상품 등록</span>
-		<hr width="600" color="gray">
+		<hr>
 		<br>
 		
 		<form method="post" enctype="multipart/form-data"
 			action="<%=request.getContextPath() %>/admin_products_insert_ok.do">
 		
 		
-			<table border="1" cellspacing="0" width="500">
+			<table>
 			<c:set var="category" value="${categoryList }"/>
 								
 				<tr>
@@ -64,63 +56,54 @@
 					<th>상품명</th>
 					<td>
 						<input name="p_name"> 
-					</td>
-					
+					</td>					
 				</tr>
-				
-				
+								
 				<tr>
-					<th>제품 규격</th>
-					<td>
-						
+					<th>상품 규격</th>
+					<td>						
 						<select name="p_size">
 							<option value="">선택</option>
 							<option value="S">small(S)</option>
 							<option value="M">Medium(M)</option>
 							<option value="L">Large(L)</option>
 							<option value="XL">Extra Large(XL)</option>
-							<option value="F">Free(F)</option>
-							
+							<option value="F">Free(F)</option>							
 						</select>
-					</td>
-					
+					</td>					
 				</tr>
 				
 				<tr>
-					<th>제품 색상</th>
+					<th>상품 색상</th>
 					<td>
 						<input name="p_color"> 
-					</td>
-					
+					</td>					
 				</tr>
 				
 				<tr>
-					<th>제품 가격</th>
+					<th>상품 가격</th>
 					<td>
 						<input name="price"> 
-					</td>
-					
+					</td>					
 				</tr>
 				
 				<tr>
-					<th>제품 마일리지</th>
+					<th>상품 마일리지</th>
 					<td>
 						<input name="mileage"> 
-					</td>
-					
+					</td>					
 				</tr>
 				
 				<tr>
 					<th>재고 수량</th>
 					<td>
 						<input name="pqty"> 
-					</td>
-					
+					</td>					
 				</tr>
 				
 				
 				<tr>
-					<th>제품 설명</th>
+					<th>상품 설명</th>
 					<td>
 						<textarea rows="7" cols="25" name="p_cont"></textarea>
 					</td>
@@ -130,32 +113,21 @@
 					<th>첨부 파일</th>
 					<td>					
 						<input type="file" name="file1">	
-						<div id="d_file"> 
-						
-						</div>
-						
-					</td>
-					
+						<div id="d_file"> 												
+						</div>						
+					</td>					
 				</tr>
 				
 				<tr>
-					<td colspan="2" align="center">
-						<input class="btn" type ="button" value="파일 추가" onclick="addFile()">&nbsp;&nbsp;&nbsp;
-						<input class="btn" type="submit" value="상품추가">&nbsp;&nbsp;&nbsp;
+					<td colspan="2" align="center" class="lastTr">
+						<input class="btn" type ="button" value="파일추가" onclick="addFile()">&nbsp;&nbsp;&nbsp;
+						<input class="btn" type="submit" value="상품등록">&nbsp;&nbsp;&nbsp;
 						<input class="btn" type="reset" value="다시작성">
 					</td>
 				</tr>
-				
-				
-			
-			</table>	
-			
-			
-			
-		</form>
-	
-	</div>
-	
-
+											
+			</table>							
+		</form>	
+	</div>	
 </body>
 </html>

@@ -1,5 +1,6 @@
 package com.admin.action;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -20,7 +21,7 @@ public class AdminCategoryUpdateOkAction implements Action {
 		// 수정 폼 페이지에서 수정이 완료되면 db로 데이터를 이동시킨다. 
 		
 		//첨부파일
-		String saveFolder = "C:\\Users\\jsjo5\\git\\KH_SemiProjeckt_teamNo3_da\\web_project\\WebContent\\image";
+		String saveFolder = "C:\\Users\\jsjo5\\git\\KH_SemiProjeckt_teamNo3_da\\web_project\\WebContent\\image_category";
 		
 		int fileSize = 1024*1024*10;
 		
@@ -32,12 +33,18 @@ public class AdminCategoryUpdateOkAction implements Action {
 	
 		
 		String c_image_new;
+		String c_image_old;
 		
 		if(multi.getFilesystemName("c_image_new")==null) {
 			c_image_new = multi.getParameter("c_image_old");
 	
 		}else {
 			c_image_new = multi.getFilesystemName("c_image_new");
+			c_image_old = multi.getParameter("c_image_old");
+			File file = new File(saveFolder +"/"+ c_image_old);
+			file.delete();
+			
+			
 		}
 		System.out.println("파일이름>>" + c_image_new);
 		

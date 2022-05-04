@@ -6,16 +6,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>제품 리스트</title>
-
+<title>선택 제품 리스트</title>
 <script type="text/javascript">
 	function delchk(){
 	    return confirm("해당 상품을 삭제하시겠습니까?");
 	}
-
-
 </script>
 <link rel="stylesheet" href="./css/admin_products_list.css">
+
 	
 </head>
 <body>
@@ -25,19 +23,6 @@
 	<hr>
 	
 	<br>
-		<div class="search" align ="right">
-			<form  method ="post" action="<%=request.getContextPath() %>/admin_products_search.do">
-				<select name = "search_field">
-					<option value="code">제품코드</option>
-					<option value="name">제품명</option>		
-				</select>
-				
-				<input name ="search_keyword">
-				<input type="submit" value="검색">&nbsp;&nbsp;	
-				<input class="btn" type="button" value="상품 추가"
-						onclick="location.href='admin_products_insert.do'">		
-			</form>
-		</div>
 	
 	
 	<table border="1" cellspacing="0" width="1000">
@@ -54,11 +39,9 @@
 			<th>수정  |  삭제</th>
 		</tr>
 		
-		<c:set var="list" value="${ProductsList }"/>
+		<c:set var="list" value="${searchList }"/>
 			<c:if test="${!empty list }">
 				<c:forEach items="${list }" var="dto">
-				
-			
 				
 					<tr>
 						<td>${dto.getPcategory_fk() }</td>								
@@ -83,7 +66,7 @@
 							<a href="<%=request.getContextPath() %>/admin_products_update.do?no=${dto.getPno() }">
 							수정</a>
 							&nbsp;|&nbsp;
-							<a href="<%=request.getContextPath() %>/admin_products_delete.do?no=${dto.getPno() }&image=${dto.getPimage() }" 
+							<a href="<%=request.getContextPath() %>/admin_products_delete.do?no=${dto.getPno() }" 
 							onclick="return delchk();">
 							삭제</a>
 						</td>
@@ -99,10 +82,12 @@
 					</td>
 				</tr>	
 			</c:if>
-		
 
 	</table>
-				
+			<div class="search" align="right">
+			<input class="btn" type="button" value="전체 목록"
+						onclick="location.href='admin_products_list.do'">
+			</div>		
 						
 		<br>
 		
@@ -128,6 +113,7 @@
 		</c:if>
 		
 		<br>
+
 	</div>
 
 </body>

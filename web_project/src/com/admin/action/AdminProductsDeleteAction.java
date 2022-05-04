@@ -1,7 +1,9 @@
 package com.admin.action;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,6 +18,18 @@ public class AdminProductsDeleteAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// 넘어온 번호에 해당하는 상품을 삭제하는 비즈니스 로직.
+		
+		//이미지 삭제하기
+		String saveFolder="C:\\Users\\jsjo5\\git\\KH_SemiProjeckt_teamNo3_da\\web_project\\WebContent\\image_products";
+		
+		String pimage = request.getParameter("image");
+		
+		String[] splitStr = pimage.split(",");
+		for(int i=0; i<splitStr.length; i++) {
+			File file = new File(saveFolder + splitStr[i]);
+			file.delete();
+		}
+		
 		
 		int product_no = Integer.parseInt(request.getParameter("no").trim());
 		

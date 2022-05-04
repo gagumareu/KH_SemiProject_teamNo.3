@@ -6,17 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>카페고리 수정 폼 페이지</title>
+<link rel="stylesheet" href="./css/admin_register.css">
 
 <style type="text/css">
-	.btn{
-		color: white;
-		background-color: black;
-		font-family:bold;
+	#c_code{
+		border:none;
 	}
 
 </style>
-
-
 </head>
 <body>
 
@@ -30,10 +27,8 @@
 		action="<%=request.getContextPath() %>/admin_category_update_ok.do">
 			
 			<c:set var="dto" value="${CategoryCont }"/>
-		
-			
-			<table border="1" cellspacing="0" width="600" height="200">
-			
+					
+			<table>			
 			<tr>
 				<th>카테고리 대분류</th>
 				<td>
@@ -65,7 +60,7 @@
 			<tr>
 				<th>카테고리 코드</th>
 				<td>
-					<input type="text" name="c_code" value="${dto.getCategory_code() }" readonly>
+					<input id="c_code" type="text" name="c_code" value="${dto.getCategory_code() }" readonly>
 				</td>
 			</tr>
 			
@@ -79,7 +74,7 @@
 			<tr>
 				<th>카테고리 이미지</th>	
 				<td>								
-					<img src="<%=request.getContextPath() %>/image/${dto.getCategory_image() }"
+					<img src="<%=request.getContextPath() %>/image_category/${dto.getCategory_image() }"
 					width="150" height="120"><br>				
 					<input type="file" name="c_image_new">
 					
@@ -88,7 +83,7 @@
 			</tr>
 			
 			<tr>
-				<td colspan ="2" align="center">
+				<td class="lastTr" colspan ="2" align="center">
 				<input class="btn" type="submit" value="수정하기">
 				<input class="btn" type="reset" value="다시 작성">									
 				</td>

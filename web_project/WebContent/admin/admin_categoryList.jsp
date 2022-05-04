@@ -12,19 +12,23 @@
 		background-color: black;
 		color:white;
 		height: 50px;
+		font-family: airal;
 		
 	}
 	.btn_add{
 		color: white;
 		background-color: black;
-		font-family:bold;		
+		font-family: airal;		
 		width:113px;
 		height: 35px;		
 		margin-top: 14px;
 		margin-left: 642px;
+		
 	}
 	
 	.btn{
+		font-family: airal;
+		
 		background-color: transparent;
 		border:0;
 		outline:0;	
@@ -34,17 +38,39 @@
 		margin-left: 0;
 	}
 	
+	div.catePaging{
+		text-align: left;
+		width: 800px;
+		margin: 1px;
+	}
 	
-
-
+	a.paging{
+		text-decoration: none;		
+		font-family: airal;
+		font-size: 21px;
+		color: black;
+		
+		width:20px;
+		border:2px solid gray;
+		border-radius: 9px 9px 0px 0px;
+		
+		padding:0px 5px;
+		margin: 0px;	
+	}
 </style>
 </head>
 <body>
 	
-	<div align="center" width="1000px">
+	<div align="center">
 	
 	<span>카테고리 관리</span>
 	<hr>
+	
+	<div class="catePaging">
+	<a class="paging" href="<%=request.getContextPath() %>/admin_category_list.do?num=1">Women</a>
+	<a class="paging" href="<%=request.getContextPath() %>/admin_category_list.do?num=2">Men</a>
+	<a class="paging" href="<%=request.getContextPath() %>/admin_category_list.do?num=3">Golf</a>
+	</div>
 	
 	<table border="1" cellspacing="0" width="800">
 		<tr>
@@ -67,7 +93,7 @@
 						&nbsp;|&nbsp;
 						<input class="btn" type="button" value="삭제"
 						onclick="if(confirm('삭제하시겠습니까?')){
-							location.href='admin_category_delete.do?code=${dto.getCategory_code() }'
+							location.href='admin_category_delete.do?code=${dto.getCategory_code() }&image=${dto.getCategory_image() }'
 						}else{
 							return;
 						}">
