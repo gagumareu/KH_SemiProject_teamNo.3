@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.apc.controller.Action;
 import com.apc.controller.ActionForward;
+import com.apc.model.CartDAO;
+import com.apc.model.CartDTO;
 import com.apc.model.MemberDAO;
 import com.apc.model.MemberDTO;
 import com.apc.model.ProductDAO;
@@ -23,11 +25,11 @@ public class CartMainAction implements Action {
 		MemberDAO dao = MemberDAO.getInstance();
 		MemberDTO member = dao.getMember(mem_id);
 
-		ProductDAO pdao = ProductDAO.getInstance();
-		List<ProductDTO> list = pdao.getCartList(mem_id);
-		
+		CartDAO cdao = CartDAO.getInstance();
+		List<CartDTO> list = cdao.getCartList(mem_id);
 		
 		request.setAttribute("memDTO", member);
+		request.setAttribute("cartList", list);
 		
 		ActionForward forward = new ActionForward();
 		
