@@ -32,6 +32,6 @@
             <li><a href="<%=request.getContextPath() %>/admin_products_list.do">제품관리</a></li>
             <li><a href="#">재고관리</a></li>
             <li><a href="<%=request.getContextPath() %>/admin_sales_managment.do">매출관리</a></li>
-            <li><a href="<%=request.getContextPath() %>/admin_QnA.do">고객Q&A</a></li>
+            <li><a href="<%=request.getContextPath() %>/admin_qa.do">고객Q&A</a></li>
           </ul>
          </div>

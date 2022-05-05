@@ -28,7 +28,7 @@
 					<col width="20%">
 				</colgroup>
 				
-				<tr>
+				<tr style="background-color: #383636; color:white;">
 					<th>NO</th>
 					<th>제목</th>
 					<th>조회수</th>

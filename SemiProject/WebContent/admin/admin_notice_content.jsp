@@ -71,7 +71,7 @@
 			
 			<tr>
 				<td colspan="2" align="center">
-					<input type="button" value="글수정" class="btn btn-info"
+					<input type="button" value="글수정" class="btn btn-primary"
 						onclick="location.href='admin_notice_update.do?no=${dto.getNotice_no() }'">
 					
 					<input type="button" value="글삭제" class="btn btn-danger"

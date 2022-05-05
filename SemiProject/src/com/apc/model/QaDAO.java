@@ -149,7 +149,8 @@ public class QaDAO {
 			openConn();
 			
 			sql="select * from "
-					+ " (select row_number() over ( order by qa_no desc) rnum, "
+					+ " (select row_number()"
+					+ " over(order by qa_group desc, qa_step) rnum, "
 					+ " b.* from apc_qa b ) "
 					+ " where rnum >= ? and rnum <= ? " ;
 			
@@ -322,6 +323,7 @@ public class QaDAO {
 		return result;
 	}//qaUpdate() end 
 
+	
 	//게시글 전체 개수를 확인하는 메서드 
 	public int getBoardCount() {
 		int count = 0; 
@@ -571,4 +573,79 @@ public class QaDAO {
 		return list;
 	}//getSearchList() end
 
+	
+	// QNA 답변 글 step 증가
+	public void replyUpdate(int group, int step) {
+				
+		try {
+			openConn();
+			
+			sql = "update apc_qa set "
+					+ "qa_step = qa_step + 1 "
+					+ "where qa_group = ? and qa_step > ?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, group);
+			pstmt.setInt(2, step);
+			
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+	}	// replyUpdate() 메서드 end
+	
+	
+	// QNA 문의사항에 답변글 추가
+	public int replyQa(QaDTO dto) {
+		
+		int result = 0, count = 0;
+				
+		try {
+			openConn();
+			
+			sql = "select max(qa_no) from apc_qa";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				count = rs.getInt(1) + 1;
+			}
+			
+			sql = "insert into apc_qa "
+					+ "values(?, ?, '관리자', ?, ?, ?, '', default, sysdate, '', ?, ?, ?)";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, count);
+			pstmt.setString(2, dto.getQa_category());
+			pstmt.setString(3, dto.getQa_title());
+			pstmt.setString(4, dto.getQa_cont());
+			pstmt.setInt(5, dto.getQa_pno_fk());
+			
+			pstmt.setInt(6, dto.getQa_group());
+			pstmt.setInt(7, dto.getQa_step() + 1);
+			pstmt.setInt(8, dto.getQa_indent() + 1);
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return result;
+		
+	}	// replyQa() 메서드 end
+	
+	
 }

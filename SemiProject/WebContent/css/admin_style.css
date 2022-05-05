@@ -10,6 +10,11 @@ body {
   border-bottom: 1px solid #eee;
 }
 
+table th {
+	text-align: center;
+	vertical-align: middle !important;
+}
+
 /*
  * Top navigation
  * Hide default border to remove 1px line.
