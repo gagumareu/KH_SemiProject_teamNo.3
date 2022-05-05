@@ -1,3 +1,5 @@
+<%@page import="com.apc.model.ReviewDTO"%>
+<%@page import="com.apc.model.ReviewDAO"%>
 <%@page import="com.apc.model.PaymentDTO"%>
 <%@page import="com.apc.model.PaymentDAO"%>
 <%@page import="com.apc.model.ProductDTO"%>
@@ -12,6 +14,10 @@
 	List<PaymentDTO> paylist = dao.getPayList(id);
 	
 	pageContext.setAttribute("List", paylist);
+	
+	
+	
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -38,10 +44,12 @@
 		<td>${dto.getOrder_no() }</td>
 		<td>${dto.getPname() }</td>
 		<td>
+		
+		
 			<a href="<%=request.getContextPath()%>/review_write.do?num=${dto.getPno_fk()}" 
 			onclick="window.open( this.href, '_blank', 'width=470,height=490, scrollbars=yes,directories=no'); return false ">리뷰쓰기</a>
 			<a href="<%=request.getContextPath()%>/qa_write.do?num=${dto.getPno_fk()}">문의하기</a>
-			
+			<a href="<%=request.getContextPath()%>/review_update.do?num=${dto.getPno_fk()}">리뷰수정</a>
 		
 		
 		</td>

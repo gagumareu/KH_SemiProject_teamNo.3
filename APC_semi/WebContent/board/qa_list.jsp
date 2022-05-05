@@ -220,7 +220,7 @@
 						<td width="5%" align="center"><%=dto.getQa_hit() %></td>
 					</tr>
 					<% }//for%>
-				
+					
 			</c:if>
 				</tbody>
 			</table>

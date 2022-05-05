@@ -5,11 +5,13 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.apc.controller.Action;
 import com.apc.controller.ActionForward;
 import com.apc.model.CartDAO;
 import com.apc.model.CartDTO;
+import com.apc.model.MemberDAO;
 import com.apc.model.ProductDAO;
 import com.apc.model.ProductDTO;
 
@@ -40,12 +42,20 @@ public class GoCartAction implements Action {
 		System.out.println(dto.getPcolor());
 		System.out.println(dto.getPsize());
 		System.out.println(dto.getPqty());
-	
+		
+		//로그인 정보 확인
+		HttpSession session = request.getSession();
+		String memberid = (String) session.getAttribute("member_id");
+		if(memberid == null) {
+			MemberDAO mdao = MemberDAO.getInstance();
+			memberid = mdao.nonMemberId();
+		}
+		System.out.println("GoCartAction - memberid : "+memberid);
 		
 		//제품정보를 cartDTO에 넣어주기
 		CartDTO cDto = new CartDTO();
 		cDto.setPno_fk(dto.getPno());
-//		cDto.setCart_memid(); //나중에 로그인 자료받으면 넣기
+		cDto.setCart_memid(memberid); //나중에 로그인 자료받으면 넣기
 		cDto.setCart_pname(dto.getPname());
 		cDto.setCart_pqty(qty);			//form에서 고객이 입력한 수량 
 		cDto.setCart_psize(dto.getPsize());

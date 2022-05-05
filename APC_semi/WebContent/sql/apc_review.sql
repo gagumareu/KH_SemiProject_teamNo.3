@@ -14,7 +14,7 @@ create table apc_review(
 	review_pwd varchar2(50),				--리뷰 비밀번호
 	review_date date,						--리뷰 날짜	
 	
-	foreign key (memid_fk) references apc_member(mem_id),
+	foreign key (memid_fk) references apc_member(mem_id)-
 	foreign key (pno_fk) references apc_products(pno)
 	
 );

@@ -56,7 +56,7 @@
 			<tr>
 				<td width="50%">
 					<button type="button" class="btn btn-outline-dark" 
-					onclick="loaction.href='<%=request.getContextPath()%>/product_detail.do?num=${pCont.getPno() }&color=${pCont.getPcolor() }&size=${pCont.getPsize() }'">
+					onclick="loaction.href='product_detail.do?num=${pCont.getPno() }&color=${pCont.getPcolor() }&size=${pCont.getPsize() }'">
 					제품 상세보기
 					</button>
 				</td>

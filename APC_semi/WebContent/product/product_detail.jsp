@@ -20,9 +20,12 @@
 <title>Insert title here</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" > -->
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/main.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style_products.css?after">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style_products.css">
 <script type="text/javascript">
 
 
@@ -41,9 +44,8 @@
 		
 	}
 	
-	function go_pay(){
+	function go_nonPay(){
 		
-		//비회원구매, 로그인하기 창...어떻게............?
 		
 		let pname = document.getElementById("p_name").value;
 		let pcolor = document.getElementById("p_color").value;
@@ -51,15 +53,82 @@
 		
 		
 		//form(name=frm)의 action경로 지정
-		document.frm.action = "<%=request.getContextPath()%>/go_pay.do?name="+pname+"&color="+pcolor+"&size="+psize ;
+		document.frm.action = "<%=request.getContextPath()%>/go_nonPay.do?name="+pname+"&color="+pcolor+"&size="+psize ;
 	
 		//form(frm)에 submit 메서드 호출해 데이터 전달
 		document.frm.submit();
 		
 	}
+	
+
 
 
 </script>
+
+
+<script type="text/javascript">
+
+let id = <%=(String)session.getAttribute("member_id")%>
+
+if(id == null){/* 로그인이 안된 경우, 레이어팝업 뜸  */
+	
+	$(function(){
+		$(".payBtn").on("click", function(){
+			$(".pay_popup").show();
+			$(".pay_dim").show();
+		});
+
+		$(".pay_popup .popup_close").on("click", function(){
+		$(this).parent().hide();
+		$(".pay_dim").hide();
+		
+		}); 
+	});
+	
+} else{ /* 로그인 되어 있는 경우 결제창으로 넘어감 */
+	
+	$(function(){
+		
+		$(".payBtn").on("click", function(){
+			
+			let pname = $("#p_name").val();
+			let pcolor = $("#p_color").val();
+			let psize = $("#p_size").val();
+			
+			
+			$("#frm").attr("action", "<%=request.getContextPath()%>/payment.do?name="+pname+"&color="+pcolor+"&size="+psize);
+			$("#frm").submit();
+			
+			
+		});
+
+	});
+}
+
+
+
+/*  $(document).ready(function(){
+	
+
+	$(".payBtn").on("click", function(){
+		$(".pay_popup").show();
+		$(".pay_dim").show();
+	});
+
+	$(".pay_popup .popup_close").on("click", function(){
+	$(this).parent().hide();
+	$(".pay_dim").hide();
+	
+	}); 
+});   */
+
+</script>
+<style type="text/css">
+
+	#review_updateBTN{
+		display:none;
+	}
+</style>
 </head>
 <body>
 
@@ -108,7 +177,7 @@
 		<div class="product_section">
 		<div class="product_section_aside">
 			<hr width="90%">
-		<form name="frm" method="post">
+		<form id="frm" name="frm" method="post">
 		<input type="hidden" id="p_name" value="${dto.getPname() }">
 		<input type="hidden" id="p_color" value="${dto.getPcolor()}">
 		
@@ -199,13 +268,41 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-					<input id="go_pay_btn"class="btn btn-dark" type="button" value="바로구매" onclick="go_pay()"> &nbsp;
-					<input id="go_cart_btn" class="btn btn-light" type="button" value="장바구니" onclick="go_cart()">
+					
+					<!-- <a href="#1" class="payBtn">바로구매</a>
+					<a href="#a" class="cartBtn">장바구니</a> -->
+					
+			<input type="button" class="payBtn" value="바로구매" >
+			<input type="button" class="cartBtn" value="장바구니" onclick="go_cart()"></button>
+					
+					<!-- <input id="go_pay_btn"class="btn btn-dark" type="button" value="바로구매" onclick="go_pay()"> &nbsp;
+					<input id="go_cart_btn" class="btn btn-light" type="button" value="장바구니" onclick="go_cart()"> -->
 					</td>
 				</tr>
 			</table>
 		</form>
 		</div><!-- class="product_detail_aside" -->
+		<!-- **************레이어 팝업창*********************              -->
+		<div class="pay_popup">
+			회원으로 주문하시면 더 많은 혜택이 제공됩니다. <br>
+			로그인하시겠습니까?<br>
+			<br>
+			<input type="button" class="nonmember_btn" value="비회원주문하기" 
+				onclick="go_nonPay()">
+			<input type="button" class="login_btn" value="로그인하기" 
+				onclick="location.href='LoginMain.jsp?pname=${dto.getPname()}&color=${dto.getPcolor() }&size=${dto.getPsize() }'">
+			
+			<%-- <input id="go_pay_btn"class="btn btn-dark" type="button" value="비회원주문하기" onclick="nonmember_order()">
+			<input id="go_cart_btn" class="btn btn-light" type="button" value="로그인하기" 
+			onclick="location.href=<%=request.getContextPath()%>"> --%>
+			<a href="#" class="popup_close">닫기</a>
+		
+		</div><!-- class="pay_popup" -->
+		<div class="pay_dim">
+			
+		</div>
+		<!-- **************레이어 팝업창*********************              -->
+		
 		<div class="product_section_main">
 			<div class="detail_image">
 				<c:forEach items="${arrImg }" var="img">
@@ -221,7 +318,69 @@
 				<div class="review_top">
 				<span>REVIEW <B>(${rSum })</B></span>
 				</div>
-		
+				
+				
+				<div class="review_content">
+				<c:forEach items="${rlist }" var="dto">
+				<div class="review_box1">
+					<div class="review_title">
+					<span class="star_rate">
+						<c:choose>
+							<c:when test="${dto.getReview_rate() == 5 }">
+							 <i class="fas fa-star" style="color:#fd4"></i>
+							  <i class="fas fa-star" style="color:#fd4"></i>
+							  <i class="fas fa-star" style="color:#fd4"></i>
+							  <i class="fas fa-star" style="color:#fd4"></i>
+							  <i class="fas fa-star" style="color:#fd4"></i>
+							</c:when>
+							<c:when test="${dto.getReview_rate() == 4 }">
+							 <i class="fas fa-star" style="color:#fd4"></i>
+							  <i class="fas fa-star" style="color:#fd4"></i>
+							  <i class="fas fa-star" style="color:#fd4"></i>
+							  <i class="fas fa-star" style="color:#fd4"></i>
+							  <i class="fas fa-star" style="color:#e2e2e2"></i>
+							</c:when>
+							<c:when test="${dto.getReview_rate() == 3 }">
+							 <i class="fas fa-star" style="color:#fd4"></i>
+							  <i class="fas fa-star" style="color:#fd4"></i>
+							  <i class="fas fa-star" style="color:#fd4"></i>
+							  <i class="fas fa-star" style="color:#e2e2e2"></i>
+							  <i class="fas fa-star" style="color:#e2e2e2"></i>
+							</c:when>
+							<c:when test="${dto.getReview_rate() == 2 }">
+							 <i class="fas fa-star" style="color:#fd4"></i>
+							  <i class="fas fa-star" style="color:#fd4"></i>
+							  <i class="fas fa-star" style="color:#e2e2e2"></i>
+							  <i class="fas fa-star" style="color:#e2e2e2"></i>
+							  <i class="fas fa-star" style="color:#e2e2e2"></i>
+							</c:when>
+							<c:when test="${dto.getReview_rate() == 1 }">
+							 <i class="fas fa-star" style="color:#fd4"></i>
+							  <i class="fas fa-star" style="color:#e2e2e2"></i>
+							  <i class="fas fa-star" style="color:#e2e2e2"></i>
+							  <i class="fas fa-star" style="color:#e2e2e2"></i>
+							  <i class="fas fa-star" style="color:#e2e2e2"></i>
+							</c:when>
+							
+						</c:choose>
+					</span>
+						<span class="review_product">
+							SIZE: ${dto.getPsize() } / COLOR: ${dto.getPcolor() }
+						</span>
+						<span>
+							${dto.getReview_date().substring(0,10) }
+						</span>
+					</div><!-- class="review_title" -->
+					<div class="review_content">
+						${dto.getReview_cont() }
+					</div>
+				</div>			
+				<div class="review_box2">
+					<span class="review_id" >${dto.getMemid_fk() }</span><br>
+				</div><!-- class="Review_box2  -->			
+				</c:forEach>
+				</div><!-- class="review_content" -->
+				
 				</div><!--class="review_detail"  -->
 			</div><!--class="product_review"  -->
 		</div><!-- class="product_section_main" -->
@@ -232,5 +391,9 @@
 	
 	</div> <!-- class="category_wrapper" end-->
 	<jsp:include page="../include/shop_bottom.jsp"/>
+	
+
+	
+	
 </body>
 </html>

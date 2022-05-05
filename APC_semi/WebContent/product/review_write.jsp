@@ -73,7 +73,7 @@
   	  color: black;
  	   font-size: 0.8em;
 	}
-	/*                별점주기                            */
+	/*     ****************  별점주기   ***************   */
 	.star_container{
 	
 		background:#111;
