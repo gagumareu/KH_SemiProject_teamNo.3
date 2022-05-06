@@ -1,6 +1,7 @@
 package com.apc.action;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,9 +28,20 @@ public class ProductSearchAction implements Action {
 		
 		ActionForward forward = new ActionForward();
 		
-		forward.setRedirect(false);
+		PrintWriter out = response.getWriter();
 		
-		forward.setPath("product/product_list.jsp");
+		if(list.size() > 0) {
+			forward.setRedirect(false);
+			
+			forward.setPath("product/product_list.jsp");
+			
+		}else {
+			out.println("<script>");
+			out.println("alert('검색된 제품이 없습니다 :(')");
+			out.println("history.back()");
+			out.println("</script>");
+		}
+		
 		
 		
 		return forward;
