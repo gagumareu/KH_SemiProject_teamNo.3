@@ -39,7 +39,7 @@ public class ProductsDetailAction implements Action {
 		CategoryDTO ctitleCode = cDao.getCategoryTitle(fullCode);
 		
 		CategoryDTO ltitleCode = cDao.getListTitle(fullCode);
-		
+	
 		request.setAttribute("fullCode", fullCode);
 		
 		request.setAttribute("ltitleCode", ltitleCode);
@@ -51,6 +51,7 @@ public class ProductsDetailAction implements Action {
 		request.setAttribute("clist", clist);
 		
 		request.setAttribute("slist", slist);
+		
 		
 		ActionForward forward = new ActionForward();
 		

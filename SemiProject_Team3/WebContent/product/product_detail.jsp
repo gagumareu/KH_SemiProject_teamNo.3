@@ -217,7 +217,7 @@
 					<div>		
 						<c:if test="${!empty clist }" >
 						<c:forEach items="${clist }" var="list">
-							<a href="<%=request.getContextPath() %>/product_color_choose.do?cColor=${list.getPcolor() }&name=${dto.getPname() }">${list.getPcolor() }</a>
+							<a href="<%=request.getContextPath() %>/product_color_choose.do?cColor=${list.getPcolor() }&cName=${dto.getPname() }&code=${fullCode }">${list.getPcolor() }</a>
 						
 						</c:forEach>
 						</c:if>
