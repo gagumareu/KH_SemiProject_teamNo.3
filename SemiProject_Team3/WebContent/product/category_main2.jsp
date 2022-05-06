@@ -7,6 +7,12 @@
     
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
   
+  	<%
+  	CategoryDAO dao = CategoryDAO.getInstance();
+  	
+  	
+  	
+  	%>
    
 <!DOCTYPE html>
 <html>
@@ -93,9 +99,11 @@
 		<jsp:include page="/include/shop_top_right.jsp"/>
 		
 		<c:set var="list" value="${List }"/>
+		
+		<c:set var="ctitleCode" value="${ctitleCode }"/>
 	
 		<div class="apcTitle">
-			<a href="<%=request.getContextPath() %>/index.jsp">A.P.C.</a>
+			<a href="<%=request.getContextPath() %>/index.jsp">A.P.C.</a> <span>${ctitleCode.getCategory_name() }</span>
 		</div>
 		
 			<div class="contents">

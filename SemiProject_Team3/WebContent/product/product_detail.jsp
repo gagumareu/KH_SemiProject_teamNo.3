@@ -162,13 +162,25 @@
 	
 	<c:set var="slist" value="${slist }"/>
 	
+	<c:set var="ctitleCode" value="${ctitleCode }"/>
+	
+	<c:set var="ltitleCode" value="${ltitleCode }"/>
+	
+	<c:set var="fullCode" value="${fullCode }"/>
+	
 	<div class="detail_wrapper">
 
 		<jsp:include page="../include/shop_top.jsp"/>
 		<jsp:include page="../include/shop_top_right.jsp"/>
 		
 		<div class="apcTitle">
-			<a href="<%=request.getContextPath() %>/index.jsp">A.P.C.</a> 
+			<a href="<%=request.getContextPath() %>/index.jsp">A.P.C.
+			</a>
+			<a href="<%=request.getContextPath() %>/category.do?code=${ctitleCode.getCategory_code() }">
+			${ctitleCode.getCategory_name() }
+			</a>/<a href="<%=request.getContextPath() %>/product_list.do?code=${fullCode }">
+			${ltitleCode.getCategory_name() }
+			</a> 
 		</div>
 		
 		<div class="product_contents">	

@@ -25,19 +25,23 @@ public class CategoryAction implements Action {
 		
 		CategoryDAO dao = CategoryDAO.getInstance();
 				
+		
 		ActionForward forward = new ActionForward();
 
 		PrintWriter out = response.getWriter();
 		
-		if(code.equals("3")) {   // 카테고리가 3: 골프인 경우, 2nd category 불러옴
+		if(code.equals("3")) {   // 카테고리가 3: 골프인 경우, 2nd category() 불러옴
+			
 			
 			List<CategoryDTO> list = dao.get2ndCategory(code);
 			
+
 			request.setAttribute("List", list);
 			forward.setRedirect(false);
 			forward.setPath("product/category_main.jsp");
 			
 		}else if(code.equals("1") || code.equals("2")) {
+			
 			
 			forward.setRedirect(true);
 			forward.setPath("2nd_category.do?code="+fullcode);

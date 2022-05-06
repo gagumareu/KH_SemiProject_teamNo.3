@@ -22,8 +22,10 @@ public class SecondCategoryAction implements Action {
 		String code = fullcode.substring(0, 1); // 첫 번째 자리만 뽑기
 		String code2 = fullcode.substring(1, 2); // 두 번째 자리만 뽑기
 		
-		CategoryDAO dao =CategoryDAO.getInstance();
+		System.out.println("main2 >>> " +fullcode);
 		
+		CategoryDAO dao =CategoryDAO.getInstance();
+				
 		List<CategoryDTO> list = null;
 		
 		if(code2.equals("0")) { // 남녀 카테고리 에서 넘어온 코드 
@@ -45,6 +47,9 @@ public class SecondCategoryAction implements Action {
 			
 		}else {
 			
+			CategoryDTO ctitleCode = dao.getCategoryTitle(fullcode);
+
+			request.setAttribute("ctitleCode", ctitleCode);
 			request.setAttribute("List", list);
 			request.setAttribute("code", fullcode); // 남녀 : 100.., 200,,
 													// 골프 : 3w00.., 3m00.., 3a00..

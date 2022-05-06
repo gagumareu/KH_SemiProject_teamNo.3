@@ -1,7 +1,10 @@
+<%@page import="com.apc.model.CategoryDTO"%>
+<%@page import="com.apc.model.CategoryDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
     
 <!DOCTYPE html>
 <html>
@@ -25,14 +28,20 @@
 		margin-left: 15px;
 		font-weight: bold;
 		width: 100%;
+
+	}
+	.apcTitle > ul {
+		display: flex;
+		flex-direction: column;
+		line-height: 1;
 	}
 	
-	.apcTitle > a{
+	.apcTitle a{
 		color: black;
 		text-decoration: none;
 	}
 	
-	.apcTitle > a:hover{
+	.apcTitle a:hover{
 		color: white;
 		text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 	}
@@ -81,7 +90,10 @@
 	.cImage_center{
 	}
 	
-
+	.category_title {
+		font-size: 120px;
+	
+	}
 	
 	
 </style>
@@ -94,9 +106,18 @@
 
 			
 	<div class="category_main_wrapper" >
-	
+		
+		<c:set var="cTitleCode" value="${ctitleCode }"/>
+		
 		<div class="apcTitle">
-			<a href="<%=request.getContextPath() %>/index.jsp">A.P.C.</a>
+			<ul>
+				<li>
+					<a href="<%=request.getContextPath() %>/index.jsp">A.P.C.</a>
+				</li>
+				<li>
+					<span class="category_title">GOLF</span>
+				</li>
+			</ul>
 		</div>
 		
 	

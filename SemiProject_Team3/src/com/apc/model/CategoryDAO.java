@@ -333,6 +333,79 @@ public class CategoryDAO {
 	
 	
 	
+	public CategoryDTO getCategoryTitle(String code){
+		
+		CategoryDTO dto = new CategoryDTO();
+		
+		
+		try {
+			
+			openConn();
+			
+			sql ="select category_name, category_code from apc_category where category_code like ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, code.substring(0, 2)+"%");
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				dto.setCategory_name(rs.getString("category_name"));
+				dto.setCategory_code(rs.getString("category_code"));
+			}
+				
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		return dto;
+		
+		
+	} //getTitle() end 
+	
+	
+	
+public CategoryDTO getListTitle(String code){
+		
+		CategoryDTO dto = new CategoryDTO();
+		
+		
+		try {
+			
+			openConn();
+			
+			sql ="select category_name from apc_category where category_code like ?";
+					//+ " and category_code not like ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, code.substring(0, 4)+"%");
+			//pstmt.setString(2, "__000000");
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				dto.setCategory_name(rs.getString("category_name"));
+			}
+				
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		return dto;
+		
+		
+	} //getTitle() end
+	
 	
 	
 	

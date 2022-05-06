@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.apc.controller.Action;
 import com.apc.controller.ActionForward;
+import com.apc.model.CategoryDAO;
+import com.apc.model.CategoryDTO;
 import com.apc.model.ProductsDAO;
 import com.apc.model.ProductsDTO;
 
@@ -19,6 +21,9 @@ public class ProductsDetailAction implements Action {
 		
 		int product_no = Integer.parseInt(request.getParameter("no").trim());
 		String product_name = request.getParameter("name").trim();
+		String fullCode = request.getParameter("code").trim();
+		
+		System.out.println("detail >>> " + fullCode);
 		
 		ProductsDAO dao = ProductsDAO.getInstance();
 		
@@ -27,6 +32,19 @@ public class ProductsDetailAction implements Action {
 		List<ProductsDTO> slist = dao.getSize(product_name);
 		
 		ProductsDTO productDetail = dao.getProductDetail(product_no);
+		
+		// title dao
+		CategoryDAO cDao = CategoryDAO.getInstance();
+		
+		CategoryDTO ctitleCode = cDao.getCategoryTitle(fullCode);
+		
+		CategoryDTO ltitleCode = cDao.getListTitle(fullCode);
+		
+		request.setAttribute("fullCode", fullCode);
+		
+		request.setAttribute("ltitleCode", ltitleCode);
+		
+		request.setAttribute("ctitleCode", ctitleCode);
 		
 		request.setAttribute("Detail", productDetail);
 		

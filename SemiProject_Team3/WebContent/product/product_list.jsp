@@ -82,7 +82,9 @@
 
 	
 	<c:set var="list" value="${productList }"/>
-		
+	<c:set var="ltitleCode" value="${ltitleCode }"/>
+	<c:set var="ctitleCode" value="${ctitleCode }"/>
+	<c:set var="fullCode" value="${fullCode }"/>
 	<div class="products_wrapper">
 	
 		<jsp:include page="/include/shop_top.jsp"/>
@@ -90,7 +92,9 @@
 	
 	
 		<div class="apcTitle">
-			<a href="<%=request.getContextPath() %>/index.jsp">A.P.C.</a> 
+			<a href="<%=request.getContextPath() %>/index.jsp">A.P.C.</a>
+			<a href="<%=request.getContextPath() %>/category.do?code=${ctitleCode.getCategory_code() }">${ctitleCode.getCategory_name() }</a>
+			/<span>${ltitleCode.getCategory_name() }</span> 
 		</div>
 		
 			<div class="Products_list">
@@ -99,7 +103,7 @@
 					
 						<c:forEach items="${list }" var="dto">	
 							<div class="product">
-				    			<a href="<%=request.getContextPath() %>/product_content.do?no=${dto.getPno() }&name=${dto.getPname() }">
+				    			<a href="<%=request.getContextPath() %>/product_content.do?no=${dto.getPno() }&name=${dto.getPname() }&code=${fullCode }">
 									<img alt="" src="upload/${dto.getPimage() }" width="100%"> 
 									<div class="description">
 										<div class="description_text">${dto.getPname() }</div>
