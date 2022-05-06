@@ -60,6 +60,21 @@
 		grid-template-columns: 1fr 1fr 1fr;
 	}
 	
+	.content {
+		text-align: center;
+	}
+	
+	.content a {
+		text-decoration: none;
+		line-style-type: none;
+		color: black;
+		
+	}
+	
+	.category_name {
+		font-size: 30px;
+	
+	}
 </style>
 
 	<link rel="stylesheet" href="../css/style.css">
@@ -90,10 +105,14 @@
 					<c:forEach items="${list }" var="dto">	
 			   			<div class="content">
 			    			<a href="<%=request.getContextPath() %>/product_list.do?code=${dto.getCategory_code() } ">
+
 								<img class="content_image" alt="" src="upload/${dto.getCategory_image() }" width="100%" >
+							
+								<span class="category_name">
+									${dto.getCategory_name() }
+									
+								</span>
 							</a>
-								<br>
-								${dto.getCategory_name() }
 			  	 		</div>
 					</c:forEach>
 			

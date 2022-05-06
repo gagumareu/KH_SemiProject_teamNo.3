@@ -53,21 +53,19 @@
 		align-itmes: center;
 	}
 	
+	/**************************/
+	
 	.product > a {
 		text-decoration: none;
 		color: black;
 	}
 	
 	
-	.description {
-		display: none;
+	.description_text {
+		text-align: center;
 	}
 	
-	.product:hover {
-		.description {
-			display: block;
-		}
-	}
+	
 	
 	
 	
@@ -103,8 +101,10 @@
 							<div class="product">
 				    			<a href="<%=request.getContextPath() %>/product_content.do?no=${dto.getPno() }&name=${dto.getPname() }">
 									<img alt="" src="upload/${dto.getPimage() }" width="100%"> 
-									<div class="description">${dto.getPname() }</div>
-									<div class="description"><fmt:formatNumber value="${dto.getPrice() }"/>¿ø</div>
+									<div class="description">
+										<div class="description_text">${dto.getPname() }</div>
+										<div class="description_text"><fmt:formatNumber value="${dto.getPrice() }"/>¿ø</div>
+									</div>
 								</a>
 							</div>
 						</c:forEach>

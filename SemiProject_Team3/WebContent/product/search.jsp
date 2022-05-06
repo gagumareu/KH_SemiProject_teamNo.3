@@ -88,12 +88,13 @@
 <script type="text/javascript">
 
 	$(function(){
-
 		$('#btnSearch').click(function(){
 			var valueById = $('#search_field').val();
-			location.href='<%=request.getContextPath() %>/product_search.do?keyword='+valueById;
+				location.href='<%=request.getContextPath() %>/product_search.do?keyword='+valueById;
 		});
 	});
+	
+	
 	
 	
 	
@@ -115,7 +116,7 @@
 				
 				<form action="<%=request.getContextPath() %>/product_search.do">
 				
-					<input id="search_field" type="search" value="" name="keyword" placeholder="SEARCH" maxlength="128">
+					<input id="search_field" type="search" value="" name="keyword" placeholder="SEARCH" minlength="2" maxlength="128">
 				
 					<div id="btnSearch"></div>
 				

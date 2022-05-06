@@ -88,18 +88,70 @@
 		
 	}
 	
-	.company_contact {
+	.btn {
+		display: flex;
+		flex-direction: row;
+	}
 	
+	.btn a {
+		text-decoration: none;
 		
 	}
 	
-	.company_contact ul{
+	.buy_btn {
+		width: 100px;
+		height: 30px;
+		background-color: black;
+		color: white;
+		font-size: 14px;
+		font-weight: bold;
+		text-align: center;
+		border: 1px solid black;
+		justify-items:center;
 		
 	}
 	
-
+	.cart_btn {
+		width: 100px;
+		height: 30px;
+		font-size: 14px;
+		font-weight: bold;
+		text-align: center;
+		border: 1px solid black;
+		color: black;
+	}
+	
+	#cart_btn_test1 {
+		width: 100px;
+		height: 33px;
+		background-color: black;
+		font-size: 14px;
+		font-weight: bold;
+		text-align: center;
+		border: 1px solid black;
+		color: white;
+	}
+	
+	#cart_btn_test2 {
+		width: 100px;
+		height: 33px;
+		background-color: white;
+		font-size: 14px;
+		font-weight: bold;
+		text-align: center;
+		border: 1px solid black;
+		color: black;
+	}
+	
+	
 	
 </style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+<script type="text/javascript">
+
+	
+</script>
 </head>
 <body>
 
@@ -123,12 +175,15 @@
 			
 			<div class="product_left_detail">
 				
-				<form method="post" action="<%=request.getContextPath() %>/product_cart_list.do">
+				<form method="post" enctype="multipart/form-data" action="<%=request.getContextPath() %>/product_cart_list.do">
 			
-					<input type="hidden" name="pno" value="${dto.getPno() }">
+					<input type="hidden" name="no" value="${dto.getPno() }">
 					<input type="hidden" name="mileage" value="${dto.getMileage() }">
 					<input type="hidden" name="color" value="${dto.getPcolor() }">
-			
+					<input type="hidden" name="price" value="${dto.getPrice() }">
+					<input type="hidden" name="name" value="${dto.getPname() }">
+					<input type="hidden" name="image" value="${dto.getPimage() }">
+					
 					<hr>
 					<div>
 						<strong>${dto.getPname() }</strong>
@@ -150,7 +205,7 @@
 					<div>		
 						<c:if test="${!empty clist }" >
 						<c:forEach items="${clist }" var="list">
-							<a href="#">${list.getPcolor() }</a>
+							<a href="<%=request.getContextPath() %>/product_color_choose.do?cColor=${list.getPcolor() }&name=${dto.getPname() }">${list.getPcolor() }</a>
 						
 						</c:forEach>
 						</c:if>
@@ -210,11 +265,11 @@
 						<a>무이자할부 안내</a>
 					</div>
 					
-					<div>
-						<input type="submit" value="바로구매">
-						<input type="button" value="장바구니">
-					</div>
 					
+					<div class="btn">
+						<input type="submit" value="바로구매" id="cart_btn_test1">
+						<input type="submit" value="장바구니" id="cart_btn_test2" onclick="href='<%=request.getContextPath() %>/product_cart.do'">
+					</div>
 					 
 					
 			</form>

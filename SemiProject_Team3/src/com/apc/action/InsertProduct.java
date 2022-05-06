@@ -40,9 +40,7 @@ public class InsertProduct implements Action {
 		String content = multi.getParameter("content").trim();
 		String pImage = multi.getFilesystemName("pImage").trim();
 		int mileage = Integer.parseInt(multi.getParameter("mileag").trim());
-		
-		System.out.println(pCategory);
-		
+				
 		ProductsDTO dto = new ProductsDTO();
 		
 		dto.setPname(pName);
@@ -58,9 +56,7 @@ public class InsertProduct implements Action {
 		ProductsDAO dao = ProductsDAO.getInstance();
 		
 		int check = dao.insertProduct(dto);
-		
-		System.out.println(dto.getPcategory_fk());
-		
+				
 		ActionForward forward = new ActionForward();
 		
 		PrintWriter out = response.getWriter();

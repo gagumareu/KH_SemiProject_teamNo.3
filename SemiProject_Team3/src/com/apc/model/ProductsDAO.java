@@ -369,6 +369,66 @@ public class ProductsDAO {
 	} //getSize() end
 	
 	
+	public ProductsDTO colorChoose(String color, String name) {
+		
+		ProductsDTO dto = new ProductsDTO();
+		
+		int count = 0;
+	
+		try {
+			
+			openConn();
+			
+			sql ="select min(pno) from apc_products where pcolor = ? and pname = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, color);
+			pstmt.setString(2, name);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				count = rs.getInt(1);
+				
+			}
+			
+			System.out.println(count);
+			
+			sql ="select * from apc_products where pno = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, count);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				
+				dto.setPno(rs.getInt("pno"));
+				dto.setPname(rs.getString("pname"));
+				dto.setPcategory_fk(rs.getString("pcategory_fk"));
+				dto.setPimage(rs.getString("pimage"));
+				dto.setPqty(rs.getInt("pqty"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setPsize(rs.getString("psize"));
+				dto.setPcolor(rs.getNString("pcolor"));
+				dto.setPcontents(rs.getString("pcontents"));
+				dto.setMileage(rs.getInt("mileage"));
+				dto.setPinputdate(rs.getString("pinputdate"));
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return dto;
+		
+	} //colorChoose() end
 	
 	
 	
