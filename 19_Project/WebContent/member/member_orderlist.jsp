@@ -21,13 +21,42 @@
 		<c:if test="${!empty list }">
 		<c:forEach items="${list }" var="dto">
 		<tr>
-			<td colspan="3" align="center">
-				${dto.getOrderdate() }
+			<td colspan="4" align="center">
+				${dto.getOrderdate().substring(0, 7) }
 			</td>
 		</tr>
-	
+		
+		<tr>
+		<td rowspan="3" align="center">
+			이미지 넣기
+		</td>
+		
+		<td colspan="2">
+			${dto.getPname() }
+		</td>
+		
+		<td rowspan="3" align="center">
+			<input type="button" class="button" value="Q/A">
+		</td>
+		</tr>
+		
+		<tr>
+		<td>
+			<fmt:formatNumber value="${dto.getPrice() }" />
+		</td>
+		
+		<td>
+			${dto.getOrderdate().substring(0, 10) }
+		</td>
+		</tr>
+		
 		</c:forEach>	
 		</c:if>
+		</table>
+		
+		
+	
+		
 		
 		
 		<c:if test="${empty list }">
@@ -35,7 +64,7 @@
 		<td> <h2>결제내역이 없습니다.</h2> </td>
 		</tr>
 		</c:if>
-	</table>
+
 
 	</div>
 

@@ -217,11 +217,7 @@
 		</ul>
 		</div>
 		
-		<div>
-		<br>
-		<input type="submit" value="결제하기" class="pay_button">
 		
-		</div>
 	</form>
 	</div>
 	
@@ -301,6 +297,14 @@
 	<th> 총 결제금액 </th> <th> ${total + total_trans - use_mileage } </th>
 	</tr>
 	</table>
+	
+	<hr>
+	
+	<div>
+		<br>
+		<input type="submit" value="결제하기" class="pay_button">
+		
+	</div>
 	
 	</div>
 	
