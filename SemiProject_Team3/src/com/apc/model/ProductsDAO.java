@@ -101,7 +101,11 @@ public class ProductsDAO {
 			
 			//sql = "select distinct pname from apc_products where pcategory_fk = ?";
 			
-			sql = "select * from apc_products where pcategory_fk = ? order by pinputdate desc";
+			sql = "select * from apc_products where pno in (select min(pno) from apc_products group by pname)"
+					+ " and pcategory_fk = ?";
+
+			
+			//sql = "select * from apc_products where pcategory_fk = ? order by pinputdate desc";
 			
 			pstmt = con.prepareStatement(sql);
 			
