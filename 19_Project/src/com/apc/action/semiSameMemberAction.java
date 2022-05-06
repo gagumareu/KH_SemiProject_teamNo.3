@@ -1,18 +1,17 @@
 package com.apc.action;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.ParseException;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.apc.controller.Action;
 import com.apc.controller.ActionForward;
-import com.apc.model.PaymentDAO;
-import com.apc.model.PaymentDTO;
+import com.apc.model.MemberDAO;
 
-public class semiOrderListAction implements Action {
+public class semiSameMemberAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
@@ -21,20 +20,17 @@ public class semiOrderListAction implements Action {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
-		String member_id = request.getParameter("member_id").trim();
+		String member_name = request.getParameter("name").trim();
 		
-		PaymentDAO dao = PaymentDAO.getInstance();
+		MemberDAO dao = MemberDAO.getInstance();
 		
-		List<PaymentDTO> dto = dao.getPaymentList(member_id);
+		String str = dao.getMemberInfoAjax(member_name);
 		
-		request.setAttribute("payInfo", dto);
+		PrintWriter out = response.getWriter();
 		
-		ActionForward forward = new ActionForward();
+		out.println(str);
 		
-		forward.setRedirect(false);
-		forward.setPath("member/member_orderlist.jsp");
-		
-		return forward;
+		return null;
 	}
 
 }

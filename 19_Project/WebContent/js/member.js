@@ -26,14 +26,27 @@ $(function() {
 		});
 	});  // keyup() 함수 end
 	
-	// 아이디 중복 여부 확인
+		// 회원 정보 불러와서 기입하기
+	// xml로 받아오기
+	// input_box.text로 this.find.text로 받아온 정보 넣어주기
+	
 	$("#same").on("click", function() {
 		$.ajax({
-			url : "sameMember.do",
-			datatype : "text",
+			url : "/19_Project/sameMember.do",
+			datatype : "xml",
 			data : {name : $("#member_name").val()},
 			success : function(data) {
-				$("#order_name").html(data);
+				
+				$(data).find("member").each(function() {
+					
+					// $("#order_name").text($(this).find("name").text());
+					
+					alert($(this).find("name").text());
+					
+					// $("#order_addr").text($(this).find("addr").text());
+							
+				 });
+				
 			},
 			error : function() {
 				alert('통신 에러 발생');

@@ -2,15 +2,16 @@ package com.apc.action;
 
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.apc.controller.Action;
 import com.apc.controller.ActionForward;
-import com.apc.model.MemberDAO;
-import com.apc.model.PaymentDAO;
-import com.apc.model.PaymentDTO;
+import com.apc.model.CartDTO;
+
 
 public class semiOrderOkAction implements Action {
 
@@ -43,17 +44,18 @@ public class semiOrderOkAction implements Action {
 		String orderphone =
 				phone1 + "-" + phone2 + "-" + phone3;
 		
-		PaymentDTO dto = new PaymentDTO();
+		// 결제 관련 내용
+		List<CartDTO> list = new ArrayList<CartDTO>();
 		
-		dto.setOrder_id(member_id);
-		dto.setOrdername(ordername);
-		dto.setOrderaddr(orderaddr);
-		dto.setOrderphone(orderphone);
-		dto.setPaytype(paytype);
+		
+		
+		
+		
+		
 			
-		PaymentDAO dao = PaymentDAO.getInstance();
 		
-		dao.CartToPay(dto);
+		
+		
 		
 		
 		return null;

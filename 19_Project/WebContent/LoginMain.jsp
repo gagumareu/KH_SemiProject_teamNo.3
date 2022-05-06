@@ -19,18 +19,87 @@
 </script>
 <style type="text/css">
 
-
-
-	body {
-		text-align: center;
+	.wrapper {
+		position: absolute;
+		top: 35%;
+		left: 43%;
 		font-family: arial;
+		width: 300px;
+		
+	}
+	
+	.login_title_tab {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		font-weight: bold;
+		font-size: 14pt;
 	}
 	
 	#tab01 {
 		display: none;
 	}
 	
-
+	ul li {
+		list-style: none;
+	}
+	
+	.form_list {
+		width: 100%;
+		padding-left: 0;
+	}
+	
+	.input_text {
+		width: 293px;
+		height: 30px;
+	}
+	
+	.required {
+		font-size: 9pt;
+		font-weight: bold;
+	}
+	
+	.button {
+		width: 100%;
+		height: 36px;
+		background-color: black;
+		color: white;
+		font-weight: bold;
+	}
+	
+	.login_tab_bottom_line {
+		width: 100%;
+		height: 5px;
+	}
+	
+	.login_link {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+	}
+	
+	a {
+		text-decoration: none;
+		font-size: 10pt;
+		color: black;
+		font-weight: bold;
+	}
+	
+	.tab_title_selected {
+		text-align: center;
+		width: 50%;
+		padding-bottom: 10px;
+		border-bottom: 4px solid black;
+		
+	}
+	
+	.tab_title {
+		text-align: center;
+		width: 50%;
+		padding-bottom: 10px;
+		border-bottom: 2px solid black;
+	}
+		
 </style>
 </head>
 <body>
@@ -38,6 +107,7 @@
 	<h1>A.P.C LOG IN</h1>
 
 	 <!-- member login form : Start -->
+	 <div class="wrapper">
 		            <div id="tab00">
 		            <form  method="post" id="login_Form" class="login_form"
 		            		action="<%=request.getContextPath() %>/memberLogin.do">
@@ -46,24 +116,26 @@
 		                            <div class="tab_title_selected" onclick="TabOpen('00')">회원로그인</div>
 		                            <div class="tab_title" onclick="TabOpen('01')">비회원 주문확인</div>
 		                        </div>
-		                        <div class="login-tab-bottom-line"></div>
+		                        <div class="login_tab_bottom_line"></div>
 		
-		                 
-		                        <ul class="form-list">
+		                 		<br>
+		                        <ul class="form_list">
 		                            <li>
-		                                <label for="member_id" class="required"><em>*</em>회원아이디</label>
-		                                <div class="input-box">
+		                                <label for="member_id" class="required">회원아이디<em>*</em></label>
+		                                <div class="input_box">
 		                                    <input type="text" name="member_id" id="member_id" class="input_text"/>
 		                                </div>
 		                            </li>
+		                            <br>
 		                            <li>
-		                                <label for="member_pwd" class="required"><em>*</em>비밀번호</label>
-		                                <div class="input-box">
+		                                <label for="member_pwd" class="required">비밀번호<em>*</em></label>
+		                                <div class="input_box">
 		                                    <input type="password" name="member_pwd" id="member_pwd" class="input_text"/>
 		                                </div>
 		                            </li>	                            
 		                        </ul>
 		                    </div>
+		                    <br>
 		                    <div class="login_button">
 		                        <button type="submit" class="button" title="로그인"><span>로그인</span></button>
 		                    </div>
@@ -71,8 +143,12 @@
 		                    <br>
 		                    <br>
 		                    <div class="login_link">
+		                    	<div>
 								<a href="find.do">아이디/비밀번호 찾기</a>
+								</div>
+								<div>
 								<a href="<%=request.getContextPath() %>/semiJoin.do">회원가입</a>
+								</div>
 							</div>
          
 		       			</form>
@@ -80,43 +156,46 @@
 		            <!-- member login form : End -->
 		            
 		            <!-- order login form : Start -->
-		            <div id="tab01">
+		            <div id="tab01" >
 		            <form action="" method="post" name="order_form" id="order_form">
 		                    <div class="content fieldset">
-		                        <div class="login-title-tab">
+		                        <div class="login_title_tab">
 		                            <div class="tab_title" onclick="TabOpen('00');">회원로그인</div>
 		                            <div class="tab_title_selected" onclick="TabOpen('01');">비회원 주문확인</div>
 		                        </div>
-		                        <div class="login-tab-bottom-line"></div>
+		                        <div class="login_tab_bottom_line"></div>
 		
-		                        <p class="form-instructions"></p>
-		                        <ul class="form-list">
+		                       	<br>
+		                       
+		                        <ul class="form_list">
 		                            <li>
-		                                <label for="CustomerName" class="required"><em>*</em>주문하신 분</label>
-		                                <div class="input-box">
-		                                    <input type="text" name="orderName" id="orderName"  value="" title="주문하신 분" />
+		                                <label for="CustomerName" class="required">주문하신 분<em>*</em></label>
+		                                <div class="input_box">
+		                                    <input type="text" name="orderName" id="orderName"  value="" class="input_text" />
 		                                </div>
 		                            </li>
+		                            <br>
 		                            <li>
-		                                <label for="ordernumber" class="required"><em>*</em>주문번호</label>
-		                                <div class="input-box">
-		                                    <input type="text" name="orderNum" id="orderNum" title="주문번호" />
+		                                <label for="ordernumber" class="required">주문번호<em>*</em></label>
+		                                <div class="input_box">
+		                                    <input type="text" name="orderNum" id="orderNum" class="input_text" />
 		                                </div>
 		                            </li>
 		                        </ul>
 		                    </div>
+		                    <br>
 		                    <div class="buttons-set">
 		                        <button type="button" class="button" title="주문조회" onclick='lfn_order();'><span><span>주문조회</span></span></button>
 		                    </div>
 		                    <br>
 		                    <br>
 		                    <div class="buttons-set">
-		                        <a href="join.do" class="button" title="회원가입"><span><span>회원가입</span></span></a>
+		                        <input type="button" class="button" value="회원가입">
 		                    </div>
 		            </form>
 		            </div>
 		            <!-- order login form : End -->
 		
-
+	</div>
 </body>
 </html>

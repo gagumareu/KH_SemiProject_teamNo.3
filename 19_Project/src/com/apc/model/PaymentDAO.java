@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PaymentDAO {
 
@@ -85,36 +87,53 @@ public class PaymentDAO {
 	}  // closeConn() 메서드 end
 	
 	
-	// 결제화면의 정보를 payment 테이블에 넣는 메서드
-	public int CartToPay(PaymentDTO dto) {
+	// 결제내역을 불러오는 메서드
+		public List<PaymentDTO> getPaymentList(String id) {
+			
+			List<PaymentDTO> list = new ArrayList<PaymentDTO>();
+			
+			try {
+				openConn();
+				
+				sql = "select * from apc_payment where order_id = ?";
+				
+				pstmt = con.prepareStatement(sql);
+				
+				pstmt.setString(1, id);
+				
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+				PaymentDTO dto = new PaymentDTO();
+				
+				dto.setOrder_no(rs.getInt("order_no"));;
+				dto.setCartno_fk(rs.getInt("cartno_fk"));
+				dto.setOrder_id(rs.getString("order_id"));
+				dto.setPno_fk(rs.getInt("pno_fk"));
+				dto.setPname(rs.getString("pname"));
+				dto.setPqty(rs.getInt("pqty"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setTranscost(rs.getInt("transcost"));
+				dto.setPaytype(rs.getInt("paytype"));
+				dto.setOrderdate(rs.getString("orderdate"));
+				dto.setOrdername(rs.getString("ordername"));
+				dto.setOrderaddr(rs.getString("orderaddr"));
+				dto.setOrderphone(rs.getString("orderphone"));
+				
+				list.add(dto);
+				
+				}
+				
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				closeConn(rs, pstmt, con);
+			}
+			
+			return list;
+		}  // getPaymentInfo() 메서드 end
 		
-		int result = 0;
-		String count, pname;
-		int cartno, pno, pqty, price, trans;
-		
-		try {
-			openConn();
-			
-			sql = "select * from apc_cart where cart_memid = ?";
-			
-			pstmt = con.prepareStatement(sql);
-			
-			pstmt.setString(1, dto.getOrder_id());
-			
-			rs = pstmt.executeQuery();
-			
-			dto.setCartno_fk(rs.getInt("cart_no"));
-			dto.setPno_fk(rs.getInt("pno_fk"));
-			dto.setPname(rs.getString("cart_pname"));
-			dto.setPqty(rs.getInt("cart_pqty"));
-			dto.setPrice(rs.getInt("cart_price"));
-			dto.setTranscost(rs.getInt("cart_trans"));
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
 	
 }

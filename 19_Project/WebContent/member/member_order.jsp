@@ -20,16 +20,11 @@
 <script type="text/javascript" src="js/member.js"></script>
 <style type="text/css">
 
-	ul li {
-		list-style: none;
-	}
-	
-	.content {
-		float: left;
-	}
-	
-	.sidebar {
-		float: right;
+	.wrapper2 {
+		width: 80%;
+		border: 3px solid blue;
+		display: grid;
+		grid-template-columns: 70% 30%;
 	}
 
 </style>
@@ -39,6 +34,11 @@
 	<h1>A.P.C 주문결제</h1>
 	<c:set var="dto" value="${memberInfo }" />
 	<c:set var="list" value="${cartInfo }" />
+	
+	<div class="wrapper">
+	
+	
+	<div class="wrapper2">
 	
 	<div class="content">
 	
@@ -154,8 +154,7 @@
 		</li>
 		
 		<li>
-		<input type="button" id="same" value="고객 정보와 동일">
-		<input type="button" id="reset" value="초기화">
+		고객 정보와 동일 <input type="checkbox" id="same">
 		</li>
 			
 		<li>
@@ -231,10 +230,10 @@
 	<table id="sideTable">
 	<c:if test="${!empty list }">
 		<c:forEach items="${list }" var="cart">
+			<input type="hidden" name="cartno" value="${cart.getCart_no() }">
+			<input type="hidden" name="pno_fk" value="${cart.getPno_fk() }">
 	<tr>
-		<td rowspan="4">
-			<img  src="<%=request.getContextPath()%>/upload/${cart.getCart_pimage() }">
-		</td>
+
 		
 		<td> ${cart.getCart_pname() } </td>
 		<c:set var="price" value="${cart.getCart_price() }" />
@@ -305,6 +304,7 @@
 	
 	</div>
 	
-	
+		</div>
+	</div>
 </body>
 </html>

@@ -22,26 +22,106 @@
 	body {
 		font-family: arial;
 	}
+	
+	.wrapper {
+		position: absolute;
+		top: 35%;
+		left: 43%;
+		font-family: arial;
+		width: 300px;
+		
+	}
 
 	#tab01 {
 		display: none;
 	}
-
+	
+	.find_tab {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		font-weight: bold;
+		font-size: 14pt;
+	}
+	
+	ul li {
+		list-style: none;
+	}
+	
+	.form_list {
+		width: 100%;
+		padding-left: 0;
+	}
+	
+	.required {
+		font-size: 9pt;
+		font-weight: bold;
+	}
+	
+	.input_text {
+		width: 293px;
+		height: 30px;
+	}
+	
+	.phone1 {
+		width: 60px;
+		height: 35px;
+		text-align: center;
+	}
+	
+	.phone {
+		width: 60px;
+		height: 30px;
+		text-align: center;
+	}
+	
+	.button {
+		width: 100%;
+		height: 36px;
+		background-color: black;
+		color: white;
+		font-weight: bold;
+	}
+	
+	.button2 {
+		width: 146px;
+		height: 36px;
+		background-color: white;
+		border: 1px solid black;
+		font-weight: bold;
+	}
+	
+	.tab_title_selected {
+		text-align: center;
+		width: 50%;
+		padding-bottom: 10px;
+		border-bottom: 4px solid black;
+		
+	}
+	
+	.tab_title {
+		text-align: center;
+		width: 50%;
+		padding-bottom: 10px;
+		border-bottom: 2px solid black;
+	}
+	
 </style>
 </head>
 <body>
 
 	<h1>A.P.C LOG IN</h1>
 	
+	<div class="wrapper">
 	<div id="tab00">
-		 <form  method="post" id="findId_form" class="findId_form"
+		 <form  method="post" id="findId_form" class="find_form"
 		            action="<%=request.getContextPath() %>/findId.do">
 		 <div class="content">
 		     <div class="find_tab">
 		     <div class="tab_title_selected" onclick="TabOpen('00')">아이디 찾기</div>
 		     <div class="tab_title" onclick="TabOpen('01')">비밀번호 찾기</div>
 		     </div>
-		        
+		     <br>
 		 <ul class="form_list">
 		 	<li>
 		 		<label for="memberName" class="required">
@@ -53,7 +133,7 @@
 		 				maxlength="20">
 		 		</div>
 		 	</li>
-		 	
+		 	<br>
 		 	<li>
 		 		<label for="memberPhone" class="required">
 		 		휴대폰번호
@@ -76,7 +156,7 @@
 		 	</li>
 		 </ul>       
 		 </div>
-		 
+		 <br>
 		 <div class="find_button">
 		 <input type="submit" value="아이디 찾기" class="button">
 		 </div>
@@ -97,14 +177,14 @@
 	
 	
 	<div id="tab01">
-		 <form  method="post" id="findpwd_form" class="findpwd_form"
+		 <form  method="post" id="findpwd_form" class="find_form"
 		            action="<%=request.getContextPath() %>/findPwd.do">
 		 <div class="content">
 		     <div class="find_tab">
 		     <div class="tab_title" onclick="TabOpen('00')">아이디 찾기</div>
 		     <div class="tab_title_selected" onclick="TabOpen('01')">비밀번호 찾기</div>
 		     </div>
-		        
+		     <br>  
 		        
 		 <ul class="form_list">
 		 	<li>
@@ -117,7 +197,7 @@
 		 				maxlength="20">
 		 		</div>
 		 	</li>
-		 	
+		 	<br>
 		 	<li>
 		 		<label for="member_email" class="required">
 		 		이메일주소
@@ -130,7 +210,7 @@
 		 	</li>
 		</ul>   
 		 </div>
-		 
+		 <br>
 		 <div class="find_button">
 		 <input type="submit" value="비밀번호 찾기" class="button">
 		 </div>
@@ -149,6 +229,6 @@
 		 
 		 
 	</div>
-
+</div>
 </body>
 </html>
