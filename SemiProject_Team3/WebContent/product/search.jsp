@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"  %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,6 +24,17 @@
 		flex: 1;
 	}
 	
+	
+	.search_container{
+		flex: 1;
+		
+	}
+	
+	.Products_list{
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+		align-itmes: center;
+	}
 	
 	
 	
@@ -65,9 +79,21 @@
 	
 	
 	.space {
-		height: 900px;
+		height: 200px;
 		
 	}
+	
+	.product > a {
+		text-decoration: none;
+		color: black;
+	}
+	
+	
+	.description_text {
+		text-align: center;
+	}
+	
+	/****************************/
 	
 	#search_field {
 		width: 570px;
@@ -109,7 +135,8 @@
 	<jsp:include page="../include/shop_top.jsp"/>
 	<jsp:include page="../include/shop_top_right.jsp"/>
 	
-	
+		<div class="search_container"> 
+		
 		<div class="apcTitle">
 		
 				<a href="<%=request.getContextPath() %>/index.jsp">A.P.C.</a> 
@@ -124,15 +151,39 @@
 				</form>
 		</div>
 		
-		<div class="space">
+		<c:set var="list" value="${productList }"/>
 		
-		</div>
-
+		<div class="Products_list">
+			
+					<c:if test="${!empty list }">
+					
+						<c:forEach items="${list }" var="dto">	
+						
+							<div class="product">
+				    			<a href="<%=request.getContextPath() %>/product_content.do?no=${dto.getPno() }&name=${dto.getPname() }&code=${dto.getPcategory_fk() }">
+									<img alt="" src="upload/${dto.getPimage() }" width="100%"> 
+									<div class="description">
+										<div class="description_text">${dto.getPname() }</div>
+										<div class="description_text"><fmt:formatNumber value="${dto.getPrice() }"/>원</div>
+									</div>
+								</a>
+							</div>
+							
+						</c:forEach>
+						
+					</c:if>
+					
+					
+			</div> <!-- Products_list end -->
+		
+			<div class="space">
+			
+			</div>
 	
 		<jsp:include page="../include/shop_bottom.jsp"/>
 		
-		
-	</div>
+		</div> <!-- search_container end -->
+	</div> <!-- search_wrapper end -->
 	
 	
 </body>

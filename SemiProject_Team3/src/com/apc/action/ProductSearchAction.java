@@ -33,7 +33,7 @@ public class ProductSearchAction implements Action {
 		if(list.size() > 0) {
 			forward.setRedirect(false);
 			
-			forward.setPath("product/product_list.jsp");
+			forward.setPath("product/search.jsp");
 			
 		}else {
 			out.println("<script>");

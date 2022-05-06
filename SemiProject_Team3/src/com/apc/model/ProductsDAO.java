@@ -247,13 +247,18 @@ public class ProductsDAO {
 			
 			openConn();
 			
-			sql ="select * from apc_products where upper(pname) like upper(?) "
-					+ " and lower(pname) like lower(?) order by pcategory_fk";
+			//sql ="select * from apc_products where pno in (select min(pno) from apc_products where upper(pname) like upper(?) "
+			//		+ " and lower(pname) like lower(?) order by pcategory_fk)";
 			
+			//sql ="select * from apc_products where pno in (select min(pno) "
+			//		+ " from apc_products where uppder(pname) like upper(?))";
+			
+			sql ="select * from apc_products where pno in (select min(pno) from apc_products where upper(pname) like upper(?))";  
+					
 			pstmt = con.prepareStatement(sql);
 			
 			pstmt.setString(1, "%"+keyword+"%");
-			pstmt.setString(2, "%"+keyword+"%");
+			//pstmt.setString(2, "%"+keyword+"%");
 			
 			
 			rs = pstmt.executeQuery();
