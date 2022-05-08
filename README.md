@@ -1,1 +1,1 @@
-# KH_SemiProjeckt_teamNo.3
+# KH_SemiProject_teamNo.3
