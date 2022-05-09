@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>상품 등록 폼 페이지</title>
-<link rel="stylesheet" href="./css/admin_register.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/admin_register.css">
 
 <script src = "http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
@@ -18,13 +18,33 @@
 	
 </script>
 
+<style type="text/css">
+	.btnBottom{
+		color: black;
+		background-color: white;
+		font-family: airal;
+		font-size:12px;
+		font-weight:bold;
+		padding: 6px;
+		
+		border:1px solid gray;
+		border-radius: 4px;
+		width:65px;
+		
+		box-shadow: -1px -1px 0px gray;
+	
+	}
+
+</style>
+
 </head>
 <body>
-	
-	<div width="700px" align="center">
-		<span>상품 등록</span>
-		<hr>
-		<br>
+	<jsp:include page="../include/admin_top.jsp"/>
+		        
+		<div class="col-sm-8 col-sm-offset-3">
+		<br><br><br>
+        <div class="page-header" align="center"><h2>상품 등록</h2></div>
+        <br>
 		
 		<form method="post" enctype="multipart/form-data"
 			action="<%=request.getContextPath() %>/admin_products_insert_ok.do">
@@ -120,9 +140,9 @@
 				
 				<tr>
 					<td colspan="2" align="center" class="lastTr">
-						<input class="btn" type ="button" value="파일추가" onclick="addFile()">&nbsp;&nbsp;&nbsp;
-						<input class="btn" type="submit" value="상품등록">&nbsp;&nbsp;&nbsp;
-						<input class="btn" type="reset" value="다시작성">
+						<input class="btnBottom" type ="button" value="파일추가" onclick="addFile()">&nbsp;&nbsp;&nbsp;
+						<input class="btnBottom" type="submit" value="상품등록">&nbsp;&nbsp;&nbsp;
+						<input class="btnBottom" type="reset" value="다시작성">
 					</td>
 				</tr>
 											

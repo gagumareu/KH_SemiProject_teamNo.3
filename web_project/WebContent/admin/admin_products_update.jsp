@@ -6,8 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="css/admin_register.css">
+<title>상품 수정 폼 페이지</title>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/admin_register.css">
 
 <script src = "http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
@@ -22,29 +22,47 @@
 		cnt++;
 	}
 
-
 </script>
+
 
 <style type="text/css">
  #p_code{
  	border:none;
  }
+ 
+ .btnBottom{
+		color: black;
+		background-color: white;
+		font-family: airal;
+		font-size:12px;
+		font-weight:bold;
+		padding: 6px;
+		
+		border:1px solid gray;
+		border-radius: 4px;
+		width:65px;
+		
+		box-shadow: -1px -1px 0px gray;
+	}
 
 </style>
 
 </head>
 <body>
-
-	<div align="center">
-		<span>상품 수정</span>
-		<hr width="600" color="gray">
-		<br>
+<jsp:include page="../include/admin_top.jsp"/>
+		        
+		<div class="col-sm-8 col-sm-offset-3">
+		<br><br><br>
+        <div class="page-header" align="center"><h2>상품 수정</h2></div>
+        <br>
 		
 		<form method="post" enctype="multipart/form-data"
-			action="<%=request.getContextPath() %>/admin_products_update_ok.do">
-		
-		
+			action="<%=request.getContextPath() %>/admin_products_update_ok.do">		
 			<table>
+			<colgroup>
+        		<col width="30%">
+        		<col width="70%">       		
+        	</colgroup>
 			<c:set var="dto" value="${productCont }"/>
 				
 				<input type="hidden" name="p_no" value="${dto.getPno() }">
@@ -151,18 +169,18 @@
 				
 				<tr>
 					<td colspan="2" align="center" class="lastTr">
-						<input class="btn" type="button" value="파일 추가"
+						<input class="btnBottom" type="button" value="파일 추가"
 						onclick="addFile()">&nbsp;&nbsp;&nbsp;
-						<input class="btn" type="submit" value="상품수정">&nbsp;&nbsp;&nbsp;
-						<input class="btn" type="button" value="작성 취소"
+						<input class="btnBottom" type="submit" value="상품수정">&nbsp;&nbsp;&nbsp;
+						<input class="btnBottom" type="button" value="작성 취소"
 						onclick="location.href='admin_products_list.do'">
 					</td>
 				</tr>
 			
 			</table>		
 		</form>
-	
 	</div>
+	
 
 </body>
 </html>

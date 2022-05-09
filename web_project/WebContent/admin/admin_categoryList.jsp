@@ -5,76 +5,41 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>카테고리 리스트</title>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/admin_category_list.css">
 
-<style type="text/css">
-	tr th{
-		background-color: black;
-		color:white;
-		height: 50px;
-		font-family: airal;
-		
-	}
-	.btn_add{
-		color: white;
-		background-color: black;
-		font-family: airal;		
-		width:113px;
-		height: 35px;		
-		margin-top: 14px;
-		margin-left: 642px;
-		
-	}
-	
-	.btn{
-		font-family: airal;
-		
-		background-color: transparent;
-		border:0;
-		outline:0;	
-	}
-	
-	table{
-		margin-left: 0;
-	}
-	
-	div.catePaging{
-		text-align: left;
-		width: 800px;
-		margin: 1px;
-	}
-	
-	a.paging{
-		text-decoration: none;		
-		font-family: airal;
-		font-size: 21px;
-		color: black;
-		
-		width:20px;
-		border:2px solid gray;
-		border-radius: 9px 9px 0px 0px;
-		
-		padding:0px 5px;
-		margin: 0px;	
-	}
-</style>
 </head>
 <body>
 	
-	<div align="center">
-	
-	<span>카테고리 관리</span>
-	<hr>
+	<jsp:include page="../include/admin_top.jsp" />
+
+	<div class="col-sm-8 col-sm-offset-3">
+   <br><br><br>
+        
+	<div class="page-header" align="center"><h2>카테고리 관리</h2></div>
 	
 	<div class="catePaging">
+	
 	<a class="paging" href="<%=request.getContextPath() %>/admin_category_list.do?num=1">Women</a>
 	<a class="paging" href="<%=request.getContextPath() %>/admin_category_list.do?num=2">Men</a>
 	<a class="paging" href="<%=request.getContextPath() %>/admin_category_list.do?num=3">Golf</a>
+	<input class="btn_add" type="button" value="추가"
+						onclick="location.href='admin/admin_category_insert.jsp'">	
+	
 	</div>
 	
-	<table border="1" cellspacing="0" width="800">
+	<table border="1" cellspacing="0" width="100%">
+		<colgroup>
+       		<col width="15%">
+       		<col width="25%">
+       		<col width="40%">      		
+       		<col width="20%">
+       		
+       	</colgroup>
+	
+	
 		<tr>
-			<th>카테고리 번호</th>
+			<th>대분류</th>
 			<th>카테고리 코드</th>
 			<th>카테고리 이름</th>
 			<th>수정 | 삭제</th>		
@@ -112,11 +77,9 @@
 		</c:if>
 	
 	</table>
-			<input class="btn_add" type="button" value="추가"
-						onclick="location.href='admin/admin_category_insert.jsp'">						
-				
-	
-	
+	<br>
+	<hr>
+	<br>
 	</div>
 	
 

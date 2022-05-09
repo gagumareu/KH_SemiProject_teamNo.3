@@ -19,12 +19,14 @@
 	
 </head>
 <body>
+<jsp:include page="../include/admin_top.jsp" />
 
-	<div align="center" width="1000px">
-	<span>제품 관리</span>
-	<hr>
+<div class="col-sm-8 col-sm-offset-3">
+   <br><br><br>
+        
+	<div class="page-header" align="center"><h2>제품관리</h2></div>
 	
-	<br>
+	<div>
 		<div class="search" align ="right">
 			<form  method ="post" action="<%=request.getContextPath() %>/admin_products_search.do">
 				<select name = "search_field">
@@ -40,8 +42,19 @@
 		</div>
 	
 	
-	<table border="1" cellspacing="0" width="1000">
-	<%-- 제품 코드, 제품명, 이미지,사이즈, 색상, 가격, 재고수량, 등록일  --%>
+	<table border="1" cellspacing="0" width="100%">
+		<colgroup>
+       		<col width="12%">
+       		<col width="13%">
+       		<col width="21%">      		
+       		<col width="6%">
+       		<col width="7%">
+       		<col width="10%">      		
+       		<col width="7%">
+       		<col width="12%">
+       		<col width="12%">
+       	</colgroup>
+
 		<tr>
 			<th>제품코드</th>			
 			<th>이미지</th>
@@ -51,7 +64,7 @@
 			<th>가격</th>
 			<th>재고량</th>
 			<th>등록일</th>
-			<th>수정  |  삭제</th>
+			<th>수정  | 삭제</th>
 		</tr>
 		
 		<c:set var="list" value="${ProductsList }"/>
@@ -105,7 +118,7 @@
 				
 						
 		<br>
-		
+		<div class="paging_products" align="center">
 		<c:if test="${page> block }">
 			<a class="paging" href ="admin_products_list.do?page=1">《《</a>
 			<a class="paging" href = "admin_products_list.do?page=${startBlock -1 }">《</a>
@@ -126,9 +139,16 @@
 			<a class="paging" href="adnim_products_list.do?page=${allPage }">》》</a>
 			<a class="paging" href="adnim_products_list.do?page=${endBlock +1 }">》</a>
 		</c:if>
+		</div>
 		
 		<br>
 	</div>
+	</div>
+	
+	<footer class="container-fluid navbar-fixed-bottom col-sm-offset-2">
+		<p>하단바 영역</p>
+	</footer>
+	
 
 </body>
 </html>

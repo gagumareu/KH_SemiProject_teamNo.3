@@ -12,15 +12,32 @@
 	#c_code{
 		border:none;
 	}
+	
+	.btnBottom{
+		color: black;
+		background-color: white;
+		font-family: airal;
+		font-size:12px;
+		font-weight:bold;
+		padding: 6px;
+		
+		border:1px solid gray;
+		border-radius: 4px;
+		width:65px;
+		
+		box-shadow: -1px -1px 0px gray;
+	}
 
 </style>
 </head>
 <body>
 
-	<div align="center">
-		<span>카테고리 수정</span>
-		<hr width="600" color="gray">
-		<br>
+	<jsp:include page="../include/admin_top.jsp"/>
+		        
+		<div class="col-sm-8 col-sm-offset-3">
+		<br><br><br>
+        <div class="page-header" align="center"><h2>카테고리 수정</h2></div>
+        <br>
 		
 		
 		<form method="post" enctype="multipart/form-data"
@@ -84,8 +101,8 @@
 			
 			<tr>
 				<td class="lastTr" colspan ="2" align="center">
-				<input class="btn" type="submit" value="수정하기">
-				<input class="btn" type="reset" value="다시 작성">									
+				<input class="btnBottom" type="submit" value="수정하기">&nbsp;&nbsp;
+				<input class="btnBottom" type="reset" value="다시 작성">									
 				</td>
 					
 			</table>

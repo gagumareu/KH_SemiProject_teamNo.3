@@ -1,18 +1,9 @@
 @charset "UTF-8";
 
 	
-
-	
-	br {
-		width: 700px;
-		height: 2px;
-		color: #D7D7D7;
-		
-	}
-	
 	
 	table {
-		width :650px;
+		width :100%;
 		margin: 0;
 		border-collapse:collapse;
 		
@@ -22,7 +13,7 @@
 	
 	table th{
 		border: 1px solid #D7D7D7;
-		width:200px;
+		
 		text-align: left;		
 		height:30px;
 		font-family: airal;
@@ -53,7 +44,12 @@
 		width: 250px;
 	}
 	
-	.btn{
+	textarea{
+		width: 250px;
+		height: 200px;
+	}
+	
+	.btnBottom{
 		color: black;
 		background-color: white;
 		font-family: airal;
@@ -84,11 +80,3 @@
 	}
 	
 	
-	span{
-		font-family: airal;	
-		font-size: 15px;	
-		font-weight:bold;	
-		text-align: center;
-		color: black;
-		
-	}

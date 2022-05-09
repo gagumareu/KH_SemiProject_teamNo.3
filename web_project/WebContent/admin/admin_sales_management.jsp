@@ -10,14 +10,21 @@
 </head>
 <body>
 
-	<div align="center">
-	
-	<h3>일자별 매출관리</h3>
-	<hr>
+	<jsp:include page="../include/admin_top.jsp" />
+		        
+		<div class="col-sm-8 col-sm-offset-3">
+		<br><br><br>
+        <div class="page-header" align="center"><h2>매출관리</h2></div>
+        <br>
 		<c:set var="list" value="${salesList }"/>
 		
-		<table border="1" cellspacing="0" width="500">
-			<tr>
+		<table class="table table-bordered table-hover">
+			<colgroup>
+        		<col width="40%">
+        		<col width="20%">
+        		<col width="40%">
+        	</colgroup>
+			<tr style="background-color: #383636; color:white;">
 				<th>매출일</th>
 				<th>판매 건수</th>
 				<th>매출금액</th>				
@@ -36,15 +43,16 @@
 			
 			<c:if test="${!empty totalPrice }">
 			<tr>
-				<th colspan="2">총금액</th>
+				<th colspan="2"><b>총금액</b></th>
 				<td>
-					<fmt:formatNumber value="${totalPrice }"/>원
+					<b><fmt:formatNumber value="${totalPrice }"/>원</b>
 				</td>
 				
 			</tr>
 			</c:if>
 			</c:if>				
 		</table>	
+	</div>
 	</div>		
 </body>
 </html>

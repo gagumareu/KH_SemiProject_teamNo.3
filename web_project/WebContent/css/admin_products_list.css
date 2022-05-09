@@ -1,5 +1,8 @@
 @charset "UTF-8";
 
+	
+
+
 	table tr td {
 	border-left: none;
 	border-right: none;
@@ -10,12 +13,18 @@
 	table tr th{
 	border-left: none;
 	border-right: none;
-	background-color: black;
+	background-color: #383636;
 	color: white;
 	height: 40px;
 	font-family: airal;
 	
 	}
+	
+	table tr:hover{	
+		background-color: #eee;
+	
+	}
+	
 	table a{
 	text-decoration: none;
 	font-family: airal;
@@ -23,7 +32,7 @@
 	}
 	
 	.btn{
-		background-color: black;
+		background-color: #383636;
 		color:white;
 		font-weight:bold;	
 		font-family: airal;	
@@ -35,7 +44,7 @@
 	}
 	
 	div.search{
-		width: 1000px;
+		width: 100%;
 		margin: 0 0 10px 0;
 	}
 	
@@ -58,3 +67,4 @@
 		padding: 2px 10px 2px 10px;
 		
 	}
+	

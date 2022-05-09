@@ -5,86 +5,22 @@
 <head>
 <meta charset="UTF-8">
 <title>관리자 로그인 페이지</title>
-
-<style type="text/css">
-
-body {
-  font-family:arial;
- 
-}
-
-h1 span{
-	font-size: 50px;
-}
-
-h3{
-	padding-bottom: 0px;
-	margin-bottom:0px;
-}
-.id_pwd {
-	font-size: 5px;
-	color: black;
-	padding-top: 10px;
-	padding-bottom: 3px;
-}
-
-.text_id_pwd {
-	width: 280px;
-	height: 29px;
-	background-color: white;
-	border-color: gray;
-	border-width: 1px;
-}
-
-a {
-	text-decoration: none;
-	font-size: 7px;
-	color: black;
-	font-weight: bold;
-	margin-top: 5px;
-}
-
-#cb1 {
-	font-size: 5px;
-}
-
-hr {
-height: 2px;
-background-color: black;
-	
-}
-
-tr td span{
-	font-size: 5px;
-	margin-top: 0;
-	
-}
-
-#btn_login{
-	width: 280px;
-	height: 31px;
-	margin-top: 10px;
-	background-color: black;
-	color: white;
-	font-size: 7px;
-	font-weight:bold;
-	border-color: black;
-
-}
+<link rel="stylesheet" href="../css/admin_login.css">
 
 
-</style>
 </head>
 <body>
 
 	<h1><span>A.P.C</span>
 		<span>LOG IN</span>
 	</h1>
+	<br>
 	
 	<div align="center">
 	<h3>관리자 로그인</h3>
 	<hr width="280">
 	<br>
+	
 	
 
 	
@@ -129,13 +65,13 @@ tr td span{
 			</td>
 		</tr>
 		
-		<tr>
+<%-- 		<tr>
 			<td align="center">
 				<a href = "<%=request.getContentType() %>/reserch_id.do">아이디 찾기</a>&nbsp;|&nbsp;
 				<a href = "<%=request.getContentType() %>/reserch_pwd.do">비밀번호 찾기</a>&nbsp;|&nbsp;
 				<a href = "<%=request.getContentType() %>/reserch_join.do">회원가입</a>
 			</td>
-		</tr>
+		</tr> --%>
 	</table>
 		
 	
