@@ -18,10 +18,11 @@ public class AdminNoticeDeleteAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
 		int notice_no = Integer.parseInt(request.getParameter("no").trim());
+		int nowPage = Integer.parseInt(request.getParameter("page").trim());
 		
 		NoticeDAO dao = NoticeDAO.getInstance();
 		
-		NoticeDTO dto = dao.noticeContent(notice_no);
+		NoticeDTO dto = dao.noticeContent(notice_no, 1);
 		
 		// upload 폴더에 업로드된 파일까지 삭제
 		String upload = 
@@ -44,7 +45,7 @@ public class AdminNoticeDeleteAction implements Action {
 			}
 			
 			forward.setRedirect(true);
-			forward.setPath("admin_notice.do");
+			forward.setPath("admin_notice.do?page="+nowPage);
 
 		}else {
 			out.println("<script>");

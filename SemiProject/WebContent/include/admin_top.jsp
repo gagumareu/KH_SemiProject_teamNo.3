@@ -32,15 +32,14 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-2 sidebar">
-          <ul class="nav nav-sidebar">
+          <ul class="nav nav-sidebar" style="font-size:16px;">
           	<li align="center">
        			<img src="<%=request.getContextPath() %>/img/admin.png" width="80%">
           	</li>
-            <li><a href="<%=request.getContextPath() %>/admin_notice.do">공지사항</a></li>
-            <li><a href="<%=request.getContextPath() %>/admin_category_list.do">카테고리관리</a></li>
-            <li><a href="<%=request.getContextPath() %>/admin_products_list.do">제품관리</a></li>
-            <li><a href="#">재고관리</a></li>
-            <li><a href="<%=request.getContextPath() %>/admin_sales_managment.do">매출관리</a></li>
-            <li><a href="<%=request.getContextPath() %>/admin_qa.do">고객Q&A</a></li>
+            <li><a href="<%=request.getContextPath() %>/admin_notice.do" class="glyphicon glyphicon-bell">&nbsp;공지사항</a></li>
+            <li><a href="<%=request.getContextPath() %>/admin_category_list.do" class="glyphicon glyphicon-list">&nbsp;카테고리관리</a></li>
+            <li><a href="<%=request.getContextPath() %>/admin_products_list.do" class="glyphicon glyphicon-briefcase">&nbsp;제품관리</a></li>
+            <li><a href="<%=request.getContextPath() %>/admin_sales_managment.do" class="glyphicon glyphicon-list-alt">&nbsp;매출관리</a></li>
+            <li><a href="<%=request.getContextPath() %>/admin_qa.do" class="glyphicon glyphicon-phone-alt">&nbsp;고객Q&A</a></li>
           </ul>
          </div>

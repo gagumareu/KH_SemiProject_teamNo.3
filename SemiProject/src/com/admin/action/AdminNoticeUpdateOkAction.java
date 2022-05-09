@@ -38,6 +38,7 @@ public class AdminNoticeUpdateOkAction implements Action {
 		String notice_cont = multi.getParameter("n_cont").trim().replace("\r\n","<br>");
 		String notice_pwd = multi.getParameter("n_pwd").trim();
 		int notice_no = Integer.parseInt(multi.getParameter("n_no").trim());
+		int nowPage = Integer.parseInt(multi.getParameter("page"));
 		
 		String notice_image_new = multi.getFilesystemName("n_image_new");
 		
@@ -100,7 +101,7 @@ public class AdminNoticeUpdateOkAction implements Action {
 		
 		if(check > 0) {
 			forward.setRedirect(true);
-			forward.setPath("admin_notice_content.do?no="+notice_no);
+			forward.setPath("admin_notice_content.do?no="+notice_no + "&page=" + nowPage);
 			
 		}else if(check == -1) {
 			out.println("<script>");

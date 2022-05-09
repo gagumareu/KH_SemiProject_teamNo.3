@@ -26,7 +26,7 @@ public class AdminNoticeContentAction implements Action {
 		dao.noticeHit(notice_no);
 		
 		// 상세내역 조회
-		NoticeDTO dto = dao.noticeContent(notice_no);
+		NoticeDTO dto = dao.noticeContent(notice_no, 1);
 		
 		request.setAttribute("noticeCont", dto);
 		request.setAttribute("page", nowPage);

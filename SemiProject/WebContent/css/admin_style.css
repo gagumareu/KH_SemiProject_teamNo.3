@@ -15,6 +15,11 @@ table th {
 	vertical-align: middle !important;
 }
 
+.nav-sidebar li {
+	padding-top:10px;
+	padding-bottom:10px;
+}
+
 /*
  * Top navigation
  * Hide default border to remove 1px line.

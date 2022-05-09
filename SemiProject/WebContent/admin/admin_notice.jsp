@@ -5,7 +5,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 </head>
 <body>
 
@@ -15,7 +14,7 @@
 		<br><br><br>
         <div class="page-header" align="center"><h2>공지사항</h2></div>
         <div align="right">
-        	<button type="button" class="btn btn-primary"
+        	<button type="button" class="btn btn-default"
         		onclick="location.href='<%=request.getContextPath() %>/admin_notice_input.do'">공지사항 등록</button>
         </div>
         <br>

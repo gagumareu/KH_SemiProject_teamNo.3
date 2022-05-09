@@ -28,15 +28,16 @@
 			<table class="table table-bordered table-hover">
 				<tr>
 					<th>공지사항 제목</th>
-					<td><input name="n_title"> </td>
+					<td><input name="n_title" class="form-control" style="width:50%;"> </td>
 				</tr>
 				<tr>
 					<th>작성자</th>
-					<td><input name="n_writer" value="${adminName }"> </td>
+					<td><input name="n_writer" value="${adminName }"
+							class="form-control" style="width:150px;"> </td>
 				</tr>
 				<tr>
 					<th>내용</th>
-					<td><textarea rows="7" cols="100" name="n_cont"></textarea> </td>
+					<td><textarea rows="7" cols="100" name="n_cont" class="form-control"></textarea> </td>
 				</tr>
 				<tr>
 					<th>이미지 첨부파일</th>
@@ -44,7 +45,7 @@
 				</tr>
 				<tr>
 					<th>비밀번호</th>
-					<td><input type="password" name="n_pwd"> </td>
+					<td><input type="password" name="n_pwd" class="form-control" style="width:150px;"> </td>
 				</tr>
 				<tr>
 					<td colspan="2" align="center">
