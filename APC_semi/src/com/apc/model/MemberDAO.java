@@ -375,7 +375,7 @@ public class MemberDAO {
 		
 		String memberId = "non"+count;
 		
-		count++;
+		++count;
 		System.out.println(count);
 		return memberId;
 		

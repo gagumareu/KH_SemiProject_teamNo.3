@@ -93,7 +93,7 @@ public class ReviewWriteOkAction implements Action {
 		if(result>0) {
 			
 			forward.setRedirect(true);
-			forward.setPath("mypage"); //마이페이지 보여주기
+			forward.setPath("orderView.do"); //주문목록 보이기, 주문목록보이기전 주문목록 리스트 액션으로가기 
 		}else {
 			out.println("<script>");
 			out.println("alert('리뷰등록 성공')");

@@ -28,7 +28,7 @@
 		if(first.equals("WOMEN")){
 			third = dto.getCategory_name().substring(6);
 		}else if(first.equals("MEN")){
-			third = dto.getCategory_name().substring(5);
+			third = dto.getCategory_name().substring(4);
 		}
 	}else{//second 카테고리 이름이 있으면  ex) GOLF 
 

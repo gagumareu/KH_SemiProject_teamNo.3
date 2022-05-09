@@ -92,7 +92,7 @@ public class CartDAO {
 				count = rs.getInt(1)+1;
 			}
 
-			sql="insert into apc_cart values(?,?,?,?,?,?,?,?,default,?)";
+			sql="insert into apc_cart values(?,?,?,?,?,?,?,?,default,?,?)";
 			pstmt=con.prepareStatement(sql);
 			
 			pstmt.setInt(1, count);
@@ -104,6 +104,7 @@ public class CartDAO {
 			pstmt.setString(7, dto.getCart_psize());
 			pstmt.setInt(8, dto.getCart_price());
 			pstmt.setString(9, dto.getCart_pimage());
+			pstmt.setInt(10, dto.getCart_mileage());
 
 			result=pstmt.executeUpdate();
 
@@ -115,6 +116,99 @@ public class CartDAO {
 		}
 		return result;
 	}
+
+	//특정 1개의 장바구니 정보를 불러오는 메서드 
+	//1개인데 뷰페이지에서 list로 통일해서 받기때문에 list로 받음 
+	public List<CartDTO> getCartContent(String id, int pno) {
+		
+		List<CartDTO> list = new ArrayList<CartDTO>();
+		
+		
+		try {
+			openConn();
+			
+			//id, 제품번호, 그리고 가장 최근에 생성된 카트번호에 해당하는 정보를 받기
+			sql="select * from apc_cart where cart_memid=? and pno_fk = ? and "
+					+ " cart_no = (select max(cart_no) from apc_cart where cart_memid= ? and pno_fk= ? ) ";
+					
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setInt(2, pno);
+			pstmt.setString(3, id);
+			pstmt.setInt(4, pno);
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				CartDTO dto = new CartDTO();
+				
+				dto.setCart_no(rs.getInt("cart_no"));
+				dto.setPno_fk(rs.getInt("pno_fk"));
+				dto.setCart_memid(rs.getString("cart_memid"));
+				dto.setCart_pname(rs.getString("cart_pname"));
+				dto.setCart_pqty(rs.getInt("cart_pqty"));
+				dto.setCart_psize(rs.getString("cart_psize"));
+				dto.setCart_pcolor(rs.getString("cart_pcolor"));
+				dto.setCart_trans(rs.getInt("cart_trans"));
+				dto.setCart_price(rs.getInt("cart_price"));
+				dto.setCart_pimage(rs.getString("cart_pimage"));
+				dto.setCart_pimage(rs.getString("cart_mileage"));
+				
+				list.add(dto);
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return list;
+	}
+
+	//로그인된 아이디에 해당하는 카트전체리스트를 조회하는 메서드 
+	public List<CartDTO> getCartList(String loginId) {
+		
+		List<CartDTO> list = new ArrayList<CartDTO>();
+		
+		try {
+			openConn();
+			
+			sql="select * from apc_cart where cart_memid = ? order by cart_no desc";
+			pstmt=con.prepareStatement(sql);
+			
+			pstmt.setString(1, loginId);
+			
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				CartDTO dto = new CartDTO();
+				
+				dto.setCart_no(rs.getInt("cart_no"));
+				dto.setPno_fk(rs.getInt("pno_fk"));
+				dto.setCart_memid(rs.getString("cart_memid"));
+				dto.setCart_pname(rs.getString("cart_pname"));
+				dto.setCart_pqty(rs.getInt("cart_pqty"));
+				dto.setCart_psize(rs.getString("cart_psize"));
+				dto.setCart_pcolor(rs.getString("cart_pcolor"));
+				dto.setCart_trans(rs.getInt("cart_trans"));
+				dto.setCart_price(rs.getInt("cart_price"));
+				dto.setCart_pimage(rs.getString("cart_pimage"));
+				
+				list.add(dto);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return list;
+	}//getCartList() end 
 
 
 

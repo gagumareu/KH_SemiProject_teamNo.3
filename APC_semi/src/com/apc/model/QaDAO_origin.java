@@ -12,7 +12,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 
-public class QaDAO {
+public class QaDAO_origin {
 	
 	Connection con = null;
 	PreparedStatement pstmt = null;
@@ -20,15 +20,15 @@ public class QaDAO {
 	
 	String sql = null;
 	
-	private static QaDAO instance = null;
+	private static QaDAO_origin instance = null;
 	
-	private QaDAO() { }
+	private QaDAO_origin() { }
 	
-	public static QaDAO getInstance() {
+	public static QaDAO_origin getInstance() {
 		
 		if(instance == null) {
 			
-			instance = new QaDAO();
+			instance = new QaDAO_origin();
 			
 		}
 		return instance;
@@ -84,7 +84,7 @@ public class QaDAO {
 		try {
 			openConn();
 			
-			sql="select * from apc_qa order by qa_group desc, qa_step";
+			sql="select * from apc_qa order by qa_no desc";
 			pstmt=con.prepareStatement(sql);
 			
 			rs=pstmt.executeQuery();
@@ -137,7 +137,7 @@ public class QaDAO {
 			openConn();
 			
 			sql="select * from "
-					+ " (select row_number() over ( order by qa_group desc, qa_indent) rnum, "
+					+ " (select row_number() over ( order by qa_no desc) rnum, "
 					+ " b.* from apc_qa b ) "
 					+ " where rnum >= ? and rnum <= ? " ;
 			
@@ -195,7 +195,7 @@ public class QaDAO {
 			openConn();
 
 			sql="select * from "
-					+ " (select row_number() over ( order by qa_group desc, qa_indent) rnum, "
+					+ " (select row_number() over ( order by qa_no desc) rnum, "
 					+ " b.* from apc_qa b where qa_category = upper( ? ) ) "
 					+ " where rnum >= ? and rnum <= ? " ;
 

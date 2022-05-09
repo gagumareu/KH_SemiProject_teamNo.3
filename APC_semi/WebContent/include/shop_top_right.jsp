@@ -1,10 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%
+ 	
+%>   
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <style type="text/css">
 
 	#right_menu{
@@ -37,16 +41,29 @@
 	}
 	
 	/********** right side end **********/
-
+	#mypage {
+		display:none;
+	}
 </style>
+
+<script type="text/javascript">
+
+	$(function (){
+		$('.cart').click(function(){
+			window.open('product/cart.jsp', '_blank', 'width="200"');
+		});
+	});
+
+</script>
 </head>
 <body>
 
 
 	<div id="right_menu">
 		<ul>
-			<li><a href="#"><img src="images/icon-bag.svg" width="20px">장바구니</a></li>
-			<li><a href="#">내계정/로그인</a></li>
+			<li class="cart"><a href="#"><img src="images/icon-bag.svg" width="12px"> 장바구니</a></li>
+			<li id="login"><a href="<%=request.getContextPath() %>/loginMain.do">내계정/로그인</a></li>
+			<%-- <li id="mypage"><a href="<%=request.getContextPath() %>/member_myPage.do?id=">마이페이지</a></li> --%>
 			<li>&nbsp;</li>
 			<li><a href="#">South Korea</a></li>
 			<li><a href="#">뉴스레터</a></li>
@@ -58,6 +75,7 @@
 		</ul>
 	</div>	<!--  right_menu end  -->
 	
+
 	
 	
 	

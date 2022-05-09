@@ -19,7 +19,7 @@ public class GoCartAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		//product_detail.jsp에서 전달받은 정보를 DB apc_cart테이블에 저장하는 비즈니스 로직
+		//product_detail.jsp에서 전달받은 정보를 DB apc_cart테이블에 저장하고 카트리스트불러오는 액션으로 이동하는 로직 
 		
 		//get방식으로 넘어온 데이터
 		String pname = request.getParameter("name");
@@ -47,8 +47,10 @@ public class GoCartAction implements Action {
 		HttpSession session = request.getSession();
 		String memberid = (String) session.getAttribute("member_id");
 		if(memberid == null) {
+			//세션에 정보된 아이디정보가 없으면 비회원 아이디 생성 
 			MemberDAO mdao = MemberDAO.getInstance();
 			memberid = mdao.nonMemberId();
+			session.setAttribute("nonMember_id", memberid);//비회원아이디 세션에 등록
 		}
 		System.out.println("GoCartAction - memberid : "+memberid);
 		
@@ -63,6 +65,7 @@ public class GoCartAction implements Action {
 		cDto.setCart_price(dto.getPrice());
 		//배송비는 DB에서 default 3000, 일정금액은 0원으로 설정?
 		cDto.setCart_pimage(pimage[0]);
+		cDto.setCart_mileage(dto.getMileage());
 		
 		//DB에 데이터 저장하기
 		CartDAO cartDao = CartDAO.getInstance();

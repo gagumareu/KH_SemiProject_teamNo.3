@@ -137,11 +137,11 @@
 			<form class="qa_category" name="frm" method="post">
 				<select id="code" name="qa_class" onchange="qa_category()">
 					<option value="all" selected>전체</option>
-					<option value="cr">취소/환불</option>
-					<option value="iq">상품문의</option>
-					<option value="del">배송</option>
-					<option value="sb">반품</option>
-					<option value="etc">기타</option>
+					<option value="CR">취소/환불</option>
+					<option value="IQ">상품문의</option>
+					<option value="DEL">배송</option>
+					<option value="SB">반품</option>
+					<option value="ETC">기타</option>
 			</select>
 			</form>
 			<table class="table table-hover" align="center">
@@ -210,11 +210,6 @@
 						
 					<!--                       제목                                               -->	
 						<td width="40%">
-						<c:if test="${dto.getQa_indent() != 0 }"> <%-- indent가 0이 아닌것은 답글이라는 뜻  --%>
-							<c:forEach begin="1" end ="${dto.getQa_indent() }">
-							 └  
-							</c:forEach>
-							</c:if>
 						<a href="<%=request.getContextPath() %>/qa_content.do?num=<%=dto.getQa_no()%>&page=${page}"><%=dto.getQa_title() %></a>
 						</td>
 					<!--                       작성자                                              -->		
@@ -241,12 +236,12 @@
 			<div class="qa_paging" align="center">
 			<c:if test="${page > block }">
 				<!-- 현재페이지가 block(3)보다 큰경우,  예를들어 현재페이지가 4일 경우  -->
-				<a href="<%=request.getContextPath()%>/qa_list.do?page=1">
+				<a href="<%=request.getContextPath()%>/qa_category.do?page=1">
 				<img src="e_image/btn_first.png" alt="btn_first">
 				</a>
 				<!-- 1페이지로 이동 (최초페이지로 이동)-->
 				<a
-					href="<%=request.getContextPath() %>/qa_list.do?page=${startBlock-1}">
+					href="<%=request.getContextPath() %>/qa_category.do?page=${startBlock-1}">
 					<img src="e_image/btn_prev.png" alt="btn_prev">
 				</a>
 				<!-- 3페이지로 이동(이전페이지로 이동)  -->
@@ -255,21 +250,21 @@
 				<c:if test="${i == page }">
 					<!-- startBlock == page, 현재페이지라면 -->
 					<b><a
-						href="<%=request.getContextPath()%>/qa_list.do?page=${i}">[${i }]</a></b>
+						href="<%=request.getContextPath()%>/qa_category.do?page=${i}">[${i }]</a></b>
 				</c:if>
 				<c:if test="${i != page }">
 					<!-- startBlock != page, 현재재페이지가 아니라면 -->
-					<a href="<%=request.getContextPath()%>/qa_list.do?page=${i}">[${i }]</a>
+					<a href="<%=request.getContextPath()%>/qa_category.do?page=${i}">[${i }]</a>
 				</c:if>
 			</c:forEach>
 
 			<c:if test="${endBlock < allPage }">
 				<!-- endBlock이 전체페이지 수보다 작은경우, 예를 들어 endBlock이 6페이지인경우 -->
-				<a href="qa_list.do?page=${endBlock + 1 }">
+				<a href="qa_category.do?page=${endBlock + 1 }">
 				<img src="e_image/btn_next.png" alt="btn_next">
 				</a>
 				<!-- 7페이지로 이동(다음 페이지로 이동) -->
-				<a href="qa_list.do?page=${allPage }">
+				<a href="qa_category.do?page=${allPage }">
 				<img src="e_image/btn_last.png"alt="btn_last">
 				</a>
 				<!-- 마지막페이지로 이동  -->

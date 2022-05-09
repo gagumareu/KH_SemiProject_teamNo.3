@@ -108,6 +108,7 @@ public class PaymentDAO {
 				dto.setOrdername(rs.getString("ordername"));
 				dto.setOrderaddr(rs.getString("orderaddr"));
 				dto.setOrderphone(rs.getString("orderphone"));
+				dto.setPay_pimage(rs.getString("pay_pimage"));
 				
 				list.add(dto);
 			}
@@ -118,6 +119,46 @@ public class PaymentDAO {
 		}
 		
 		return list;
+	}
+
+	//주문번호에 해당하는 정보를 조회하는 메서드
+	public PaymentDTO getPaymentCont(int no) {
+		
+		PaymentDTO dto = new PaymentDTO();
+		
+		try {
+			openConn();
+			sql="select * from apc_payment where order_no = ? ";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				dto.setOrder_no(rs.getInt("order_no"));
+				dto.setCartno_fk(rs.getInt("cartno_fk"));
+				dto.setOrder_id(rs.getString("order_id"));
+				dto.setPno_fk(rs.getInt("pno_fk"));
+				dto.setPname(rs.getString("pname"));
+				dto.setPqty(rs.getInt("pqty"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setTranscost(rs.getInt("transcost"));
+				dto.setPaytype(rs.getInt("paytype"));
+				dto.setOrderdate(rs.getString("orderdate"));
+				dto.setOrdername(rs.getString("ordername"));
+				dto.setOrderaddr(rs.getString("orderaddr"));
+				dto.setOrderphone(rs.getString("orderphone"));
+				dto.setPay_pimage(rs.getString("pay_pimage"));
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return dto;
 	}
 
 

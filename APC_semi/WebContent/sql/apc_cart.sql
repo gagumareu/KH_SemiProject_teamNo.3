@@ -10,14 +10,15 @@ create table apc_cart (
 	cart_psize varchar2(100),				-- 상품 규격 
 	cart_pcolor varchar2(50),				-- 상품 색상
 	cart_price number(8) not null,			-- 상품 가격
-	cart_trans number(8) default 3000,		-- 배송비
+	cart_trans number(8) default 0,		-- 배송비
 	cart_pimage varchar2(500),				-- 상품 이미지
-	
+	cart_mileage number(10),				--상품 마일리지
 	foreign key (pno_fk) references apc_products(pno)
 	
 );
 
 -- 20220426 수정 : memno 참조 -> cart_memid 수정 (외래키 해제)
-
+-- 20220506 수정 : 배송비 default 0 수정
+-- 20220508 수정 : cart_mileage 추가 (동찬님)
 insert into apc_cart 
 values(1, 3, 'hong', 'Sermaise T-Shirts (white)', 1, 'XS', 'WHITE', 289000, default, '');

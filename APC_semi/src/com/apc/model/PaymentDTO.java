@@ -16,8 +16,7 @@ public class PaymentDTO {
 	private String ordername;
 	private String orderaddr;
 	private String orderphone;
-	
-	
+	private String pay_pimage;
 	public int getOrder_no() {
 		return order_no;
 	}
@@ -36,7 +35,6 @@ public class PaymentDTO {
 	public void setOrder_id(String order_id) {
 		this.order_id = order_id;
 	}
-	
 	public int getPno_fk() {
 		return pno_fk;
 	}
@@ -97,6 +95,13 @@ public class PaymentDTO {
 	public void setOrderphone(String orderphone) {
 		this.orderphone = orderphone;
 	}
+	public String getPay_pimage() {
+		return pay_pimage;
+	}
+	public void setPay_pimage(String pay_pimage) {
+		this.pay_pimage = pay_pimage;
+	}
+	
 	
 	
 	

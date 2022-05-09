@@ -107,21 +107,27 @@ if(id == null){/* 로그인이 안된 경우, 레이어팝업 뜸  */
 
 
 
+/*  $(document).ready(function(){
+	
+
+	$(".payBtn").on("click", function(){
+		$(".pay_popup").show();
+		$(".pay_dim").show();
+	});
+
+	$(".pay_popup .popup_close").on("click", function(){
+	$(this).parent().hide();
+	$(".pay_dim").hide();
+	
+	}); 
+});   */
+
 </script>
 <style type="text/css">
 
 	#review_updateBTN{
 		display:none;
 	}
-	
-	.review_box{
-		display:none;
-	}
-	
-	#load{
-		display:none;
-	}
-	
 </style>
 </head>
 <body>
@@ -316,63 +322,63 @@ if(id == null){/* 로그인이 안된 경우, 레이어팝업 뜸  */
 				
 				<div class="review_content">
 				<c:forEach items="${rlist }" var="dto">
-				<div class="review_box">
-					<table class="review_table" border="1">
-						<tr>
-							<td>
-								<c:choose>
-								<c:when test="${dto.getReview_rate() == 5 }">
+				<div class="review_box1">
+					<div class="review_title">
+					<!-- -----------------------개인 리뷰 별점 표시 ------------------------ -->
+					<span class="star_rate">
+						<c:choose>
+							<c:when test="${dto.getReview_rate() == 5 }">
 							 <i class="fas fa-star" style="color:#fd4"></i>
 							  <i class="fas fa-star" style="color:#fd4"></i>
 							  <i class="fas fa-star" style="color:#fd4"></i>
 							  <i class="fas fa-star" style="color:#fd4"></i>
 							  <i class="fas fa-star" style="color:#fd4"></i>
 							</c:when>
-								<c:when test="${dto.getReview_rate() == 4 }">
+							<c:when test="${dto.getReview_rate() == 4 }">
 							 <i class="fas fa-star" style="color:#fd4"></i>
 							  <i class="fas fa-star" style="color:#fd4"></i>
 							  <i class="fas fa-star" style="color:#fd4"></i>
 							  <i class="fas fa-star" style="color:#fd4"></i>
 							  <i class="fas fa-star" style="color:#e2e2e2"></i>
 							</c:when>
-								<c:when test="${dto.getReview_rate() == 3 }">
+							<c:when test="${dto.getReview_rate() == 3 }">
 							 <i class="fas fa-star" style="color:#fd4"></i>
 							  <i class="fas fa-star" style="color:#fd4"></i>
 							  <i class="fas fa-star" style="color:#fd4"></i>
 							  <i class="fas fa-star" style="color:#e2e2e2"></i>
 							  <i class="fas fa-star" style="color:#e2e2e2"></i>
 							</c:when>
-								<c:when test="${dto.getReview_rate() == 2 }">
+							<c:when test="${dto.getReview_rate() == 2 }">
 							 <i class="fas fa-star" style="color:#fd4"></i>
 							  <i class="fas fa-star" style="color:#fd4"></i>
 							  <i class="fas fa-star" style="color:#e2e2e2"></i>
 							  <i class="fas fa-star" style="color:#e2e2e2"></i>
 							  <i class="fas fa-star" style="color:#e2e2e2"></i>
 							</c:when>
-								<c:when test="${dto.getReview_rate() == 1 }">
+							<c:when test="${dto.getReview_rate() == 1 }">
 							 <i class="fas fa-star" style="color:#fd4"></i>
 							  <i class="fas fa-star" style="color:#e2e2e2"></i>
 							  <i class="fas fa-star" style="color:#e2e2e2"></i>
 							  <i class="fas fa-star" style="color:#e2e2e2"></i>
 							  <i class="fas fa-star" style="color:#e2e2e2"></i>
 							</c:when>
-								</c:choose>
-							</td>
-							<td>
-								SIZE: ${dto.getPsize() } / COLOR: ${dto.getPcolor() }
-							</td>
-							<td>${dto.getReview_date().substring(0,10) }</td>
-							<td rowspan="2">${dto.getMemid_fk() }님 리뷰</td>
-						</tr>
-						<tr>
-							<td colspan="3">
-							${dto.getReview_cont() }
-							</td>
-						</tr>
-						</table>
-				</div><!-- class="review_box  -->
+						</c:choose>
+					</span>
+						<span class="review_product">
+							SIZE: ${dto.getPsize() } / COLOR: ${dto.getPcolor() }
+						</span>
+						<span>
+							${dto.getReview_date().substring(0,10) }
+						</span>
+					</div><!-- class="review_title" -->
+					<div class="review_content">
+						${dto.getReview_cont() }
+					</div>
+				</div>			
+				<div class="review_box2">
+					<span class="review_id" >${dto.getMemid_fk() }</span><br>
+				</div><!-- class="Review_box2  -->			
 				</c:forEach>
-				<a href="#" id="load">더 보기</a>
 				</div><!-- class="review_content" -->
 				
 				</div><!--class="review_detail"  -->
@@ -385,31 +391,7 @@ if(id == null){/* 로그인이 안된 경우, 레이어팝업 뜸  */
 	
 	</div> <!-- class="category_wrapper" end-->
 	<jsp:include page="../include/shop_bottom.jsp"/>
-
-<script type="text/javascript">
-
-$(function(){
-    $(".review_box").slice(0, 3).show(); // 처음 3개를 보여주기
-    
-    let review_count = $(".review_box").length;
-    
-    if(review_count>3) {//리뷰가 3개이상인경우
-    	$("#load").show(); // 더보기 버튼 보이기 
-    	
-  	  $("#load").click(function(e){ // 더보기 버튼 눌렀을 경우
-        e.preventDefault();
-        $(".review_box:hidden").slice(0, 3).show(); // 다음 리뷰 3개 더 보이기 
-        if($(".review_box:hidden").length == 0){ // 숨겨진 리뷰가 0이 되면 알림창 띄우기
-            alert("더 이상 리뷰가 존재하지 않습니다.");
-        	$("#load").hide();
-    
-        }
-        });
-    
-    }
-});
-
-</script>	
+	
 
 	
 	

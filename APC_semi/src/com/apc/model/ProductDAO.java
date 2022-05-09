@@ -481,6 +481,166 @@ public class ProductDAO {
 		
 		return sizes;
 	}//getProductSize() end 
+	
+	//검색한 레코드 전체 수 
+	public int getProductSearchCount(String field, String word) {
+		
+		int count =0;
+		
+		if(field.equals("pname")) {
+			try {
+				openConn();
+				sql="select count(*) from apc_products where pname like ? ";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setString(1, "%"+word+"%");
+				
+				rs=pstmt.executeQuery();
+				
+				if(rs.next()) {
+
+					count = rs.getInt(1);
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				closeConn(rs, pstmt, con);
+			}
+			}else if(field.equals("category")) {
+			
+				try {
+					openConn();
+					
+					//제품 검색시, 카테고리를 카테고리코드로 검색하거나 혹은 카레고리이름으로 검색할 경우 
+					sql="select count(*) from apc_products where PCATEGORY_FK like ? or  "
+							+ " PCATEGORY_FK in (select category_code from apc_category where category_name like ? ) ";
+					
+					pstmt=con.prepareStatement(sql);
+					pstmt.setString(1, "%"+word+"%");
+					pstmt.setString(2, "%"+word+"%");
+					
+					rs=pstmt.executeQuery();
+					
+					if(rs.next()) {
+						count = rs.getInt(1);
+					}
+					
+				} catch (SQLException e) {
+					e.printStackTrace();
+				
+				}finally {
+					closeConn(rs, pstmt, con);
+				}
+			}else {
+				System.out.println("getProductSearch()메서드 문제");
+			}
+		
+		return count ;
+	}
+
+	//제품찾기, 옵션과 검색명에 해당하는 정보를 찾는 메서드 
+	public List<ProductDTO> getProductSearch(String field, String word, int page, int rowsize) {
+		
+		List<ProductDTO> list = new ArrayList<ProductDTO>();
+		
+		//해당페이지에서 시작 번호 
+		int startNo = (page*rowsize) - (rowsize-1);
+
+		//해당페이지 마지막 번호
+		int endNo = (page*rowsize);
+		
+		
+		if(field.equalsIgnoreCase("pname")) {
+		try {
+			openConn();
+			sql="select * from (select row_number() over ( order by pno desc) rnum, "
+					+ " p.* from apc_products p	 where pname like ? ) "
+					+ " where rnum >= ? and rnum <= ? ";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, "%"+word+"%");
+			pstmt.setInt(2, startNo);
+			pstmt.setInt(3, endNo);
+			
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				ProductDTO dto = new ProductDTO();
+				
+				dto.setPno(rs.getInt("pno"));
+				dto.setPname(rs.getString("pname"));
+				dto.setPcategory_fk(rs.getString("pcategory_fk"));
+				dto.setPimage(rs.getString("pimage"));
+				dto.setPqty(rs.getInt("pqty"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setPsize(rs.getString("psize"));
+				dto.setPcolor(rs.getString("pcolor"));
+				dto.setPcontents(rs.getString("pcontents"));
+				dto.setMileage(rs.getInt("mileage"));
+				dto.setPinputdate(rs.getString("pinputdate"));
+				
+				list.add(dto);
+				
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		}else if(field.equalsIgnoreCase("category")) {
+		
+			try {
+				openConn();
+				
+				//제품 검색시, 카테고리를 카테고리코드로 검색하거나 혹은 카레고리이름으로 검색할 경우 
+				sql="select * from (select row_number() over ( order by pno desc) rnum, "
+						+ " p.* from apc_products p where pcategory_fk like upper( ? ) or "
+						+ " pcategory_fk in (select category_code from apc_category where category_name like upper( ? ) ) ) "
+						+ " where rnum >= ? and rnum <= ? ";
+				
+				pstmt=con.prepareStatement(sql);
+				pstmt.setString(1, "%"+word+"%");
+				pstmt.setString(2, "%"+word+"%");
+				pstmt.setInt(3, startNo);
+				pstmt.setInt(4, endNo);
+				rs=pstmt.executeQuery();
+				
+				while(rs.next()) {
+					ProductDTO dto = new ProductDTO();
+					
+					dto.setPno(rs.getInt("pno"));
+					dto.setPname(rs.getString("pname"));
+					dto.setPcategory_fk(rs.getString("pcategory_fk"));
+					dto.setPimage(rs.getString("pimage"));
+					dto.setPqty(rs.getInt("pqty"));
+					dto.setPrice(rs.getInt("price"));
+					dto.setPsize(rs.getString("psize"));
+					dto.setPcolor(rs.getString("pcolor"));
+					dto.setPcontents(rs.getString("pcontents"));
+					dto.setMileage(rs.getInt("mileage"));
+					dto.setPinputdate(rs.getString("pinputdate"));
+					
+					list.add(dto);
+					
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			
+			}finally {
+				closeConn(rs, pstmt, con);
+			}
+		}else {
+			System.out.println("getProductSearch()메서드 문제");
+		}
+		
+		
+		
+		return list;
+	}//getProductSearch() end 
+
+	
 
 
 	
