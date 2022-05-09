@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+
+
+	.footer{
+		background-color: black;
+		color: white;
+		padding-left: 17px;
+		display:flex; 
+		flex-direction: column;
+		justify-content: space-between;
+	}
+	
+	
+	.foot_title{
+		font-size: 58px;
+		font-weight: bold;
+		color: white;
+		margin: 0px 0 100px 0;
+		padding-top: 30px;
+	}
+	
+	.sns{
+		font-size: 23px;
+		position: absolute;
+		right: 20px;
+		flex-wrap: wrap;
+	
+	}
+	
+	.addr{
+		font-size: 13px;
+		margin-bottom: 50px;
+		display: flex;
+		flex-direction: row;
+	}
+	
+	.policy{
+		font-size: 13px;
+		padding-bottom: 50px;
+	
+	}
+	
+	.new{
+		font-size: 13px;
+		padding-bottom: 50px;
+	
+	}

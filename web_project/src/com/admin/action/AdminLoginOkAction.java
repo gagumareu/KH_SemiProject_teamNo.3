@@ -41,6 +41,7 @@ public class AdminLoginOkAction implements Action {
 			
 			session.setAttribute("adminId",dto.getAdmin_id());
 			session.setAttribute("adminPwd",dto.getAdmin_pwd());
+			session.setAttribute("adminName", dto.getAdmin_name());
 			
 			forward.setRedirect(false);
 			forward.setPath("admin/Admin_main.jsp");	

@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
+    
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,11 +13,7 @@
 <style type="text/css">
 
 
-	/*.include_wrapper{
-	width:100%;
-	top:0px;
-	display: flex;
-	}  */
+	
 	
 	li {
 		list-style-type: none;
@@ -33,7 +34,7 @@
 		margin: 10px 0px 0px 10px;
 		display: flex;
 		position: absolute;
-		top: 0px;
+		
 	}
 	
 	#navr_ul{
@@ -60,60 +61,66 @@
 		padding: 0 38px 0px 0px;
 	}
 	
-	/** 상단 메뉴바 호버 처리 해야됌 */
-	.navr_ul >:hover{
-		cursor: ponter;
-		color:pink;
-	}
 	
+	
+	/********** 상단 메뉴바 호버 처리 해야됌 *************/
+
 	.dropDown{
 		display: flex;
 		flex-direction: column;
-	
-	}
-	
-	.dropDown li{
 		display: none;
-	}
-	
-	.dropDown li:hover{
-		display: block;
 		background-color: pink;
 	}
 	
-	.navr_ul > li:hover > .dropDown{
-		display: block
+
+	
+	.dropDown:hover{
+		display: visible;
+		background-color: pink;
 	}
 	
-	.navr_ul li:hover .dropDown{
-		display:block;
-	
+	.navr_ul > li:hover {
+		border: 1px solid red;
+		color: blue;
 	}
+	
+	
 	
 	/********** left side end **********/
 	
 
 	
-	.title{
-		position: absolute;
-		left: 0px;
+
+	/************modal**********************/
 	
+	.search_modal_container {
+		position: absolute;
 	}
 	
-
 	
+	.popup {
+	
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		whdth: 500px;
+		heigth: 500px;
+		z-index: 3;
+	}
 	
 </style>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script type="text/javascript"></script>
+
 <script type="text/javascript">
 
-	$(function(){
-		$(".search_icon").on("click", function(){
-			let date = $("");
-			$().text(date);
-			alert(date);
+
+	
+	$(function (){
+		$('#search_icon2').click(function(){
+			$(location).attr('href', '<%=request.getContextPath() %>/product/search.jsp');
 		});
-		
 	});
 	
 	
@@ -150,16 +157,30 @@
 			<li>Surplus</li>
 			<li>A.P.C.X Jessica Ogden</li>
 			<li>
-				<img class="search_icon" src="images/icon-search-bold.svg" width="18px"><span class="seach_text">search</span>
+			
+				<div class="search-container">
+					<a href="#" alt="Search image">
+					
+						<img id="search_icon2" alt="Search image" 
+						src="<%=request.getContextPath() %>/images/icon-search-bold.svg" width="18px">
+						
+						<span class="seach_text">search</span>	
+					</a>
+					<!-- <a href="#pop1">	
+						<img id="search_icon3" alt="Search image" data-search_window="date/search_test.jsp" 
+						src="images/icon-search-bold.svg" width="18px">
+					</a> -->
+				</div>
+				
 			</li>
 		</ul>
 	</div> <!-- navr end -->
 	
-	
-	
-	
-	
+	<div class="popup" id="pop1"></div>
 	
 
+	
+	<!--  <script src="script/modal.js"></script>-->
+
 </body>
-</html>
+</html>	

@@ -39,18 +39,28 @@
 	/********** right side end **********/
 
 </style>
+
+<script type="text/javascript">
+
+	$(function (){
+		$('.cart').click(function(){
+			window.open('product/cart.jsp', '_blank', 'width="200"');
+		});
+	});
+
+</script>
 </head>
 <body>
 
 
 	<div id="right_menu">
 		<ul>
-			<li><a href="#"><img src="images/icon-bag.svg" width="20px">장바구니</a></li>
+			<li class="cart"><a href="#"><img src="images/icon-bag.svg" width="12px"> 장바구니</a></li>
 			<li><a href="#">내계정/로그인</a></li>
 			<li>&nbsp;</li>
 			<li><a href="#">South Korea</a></li>
 			<li><a href="#">뉴스레터</a></li>
-			<li><a href="<%=request.getContextPath() %>/qa_list.do">고객센터</a></li>
+			<li><a href="#">고객센터</a></li>
 			<li><a href="#">매장찾기</a></li>
 			<li>&nbsp;</li>
 			<li><a href="#">아이디룩몰</a></li>
