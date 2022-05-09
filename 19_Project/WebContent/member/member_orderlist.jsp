@@ -9,12 +9,25 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+
+	.wrapper {
+		position: absolute;
+		top: 20%;
+		left: 30%;
+		font-family: arial;
+		width: 500px;
+	}
+	
+	
+
+</style>
 </head>
 <body>
 
 	<h1>A.P.C 주문내역</h1>
 
-	<div class="content">
+	<div class="wrapper">
 	<c:set var="list" value="${payInfo }" />
 	
 	<table>

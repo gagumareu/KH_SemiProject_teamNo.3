@@ -20,11 +20,78 @@
 <script type="text/javascript" src="js/member.js"></script>
 <style type="text/css">
 
+
 	.wrapper2 {
-		width: 80%;
+		position: absolute;
+		top: 10%;
+		left: 25%;
+		width: 50%;
 		border: 3px solid blue;
 		display: grid;
 		grid-template-columns: 70% 30%;
+		font-family: arial;
+		font-size: 9.5pt;
+	}
+	
+	.sidebar {
+		padding-left: 35px;
+	}
+	
+	ul li {
+		list-style: none;
+		margin-top: 10px;
+	}
+	
+	h4 {
+		font-weight: bold;
+	}
+	
+	.required {
+		font-size: 9pt;
+	}
+	
+	.input_text {
+		width: 40%;
+		height: 30px;
+		margin-top: 5px;
+		
+	}
+	
+	.phone1 {
+		width: 8%;
+		height: 35px;
+		text-align: center;
+		margin-top: 5px;
+	}
+	
+	.phone {
+		width: 8%;
+		height: 30px;
+		text-align: center;
+		margin-top: 5px;
+	}
+	
+	p {
+		font-size: 9pt;
+	}
+	
+	.input_text2 {
+		width: 80%;
+		height: 30px;
+		margin-top: 5px;
+	}
+	
+	.input_text3 {
+		width: 10%;
+		height: 30px;
+	}
+
+	.td1 {
+		font-weight: bold;
+	}
+	
+	.td2 {
+		font-size: 9.5pt;
 	}
 
 </style>
@@ -141,7 +208,8 @@
 		<br>
 		
 		</li>
-		<p>변경하시는 주문고객 정보는 이번 주문에만 적용됩니다. 회원정보에는 반영되지 않습니다.</p>
+		<p>변경하시는 주문고객 정보는 이번 주문에만 적용됩니다. <br>
+		 회원정보에는 반영되지 않습니다.</p>
 		</ul>	
 		</div>
 		
@@ -185,7 +253,7 @@
 		<li>
 		<label for="order_addr" class="required">배송지 주소<em>*</em></label>
 		        <div class="input-box">
-		        <input type="text" name="order_addr" id="order_addr" class="input_text">
+		        <input type="text" name="order_addr" id="order_addr" class="input_text2">
 		        </div>
 		</li>
 		</ul>
@@ -209,7 +277,7 @@
 		</li>
 		
 		<li>
-			<input type="text" name="mileage_use" id="mileage_use" class="input_text"
+			<input type="text" name="mileage_use" id="mileage_use" class="input_text3"
 				value="${dto.getMileage() }">
 			<input type="checkbox" name="mileage_check">마일리지 사용
 		</li>
@@ -224,31 +292,39 @@
 	<div class="sidebar">
 	
 	<table id="sideTable">
+	
+	<h4>장바구니 결제내역</h4>
 	<c:if test="${!empty list }">
 		<c:forEach items="${list }" var="cart">
 			<input type="hidden" name="cartno" value="${cart.getCart_no() }">
 			<input type="hidden" name="pno_fk" value="${cart.getPno_fk() }">
+	
+	
 	<tr>
+		<td	rowspan="5" align="center" class="td">
+			<img src="<%=request.getContextPath() %>/upload/${cart.getCart_pimage() }">
+		</td>
+	</tr>
 
-		
-		<td> ${cart.getCart_pname() } </td>
-		<c:set var="price" value="${cart.getCart_price() }" />
+	<tr>
+		<td class="td1"> ${cart.getCart_pname() } </td>
+		<c:set var="price"  value="${cart.getCart_price() }" />
 		<c:set var="amount" value="${cart.getCart_pqty() }" />
-		<td> <fmt:formatNumber value="${price * amount }" />원 </td>
+		<td  class="td1"> <fmt:formatNumber value="${price * amount }" />원 </td>
 	</tr>
 	
 	<tr>
-		<td> ${cart.getCart_pcolor() } </td>
+		<td class="td2"> ${cart.getCart_pcolor() } </td>
 		<c:set var="mileage" value="${cart.getCart_mileage() }" />
-		<td rowspan="3"> 마일리지 : <fmt:formatNumber value="${cart.getCart_mileage() }" />원 </td>
+		<td rowspan="3" class="td2"> 마일리지 : <fmt:formatNumber value="${cart.getCart_mileage() }" />원 </td>
 	</tr>
 	
 	<tr>
-		<td> ${cart.getCart_psize() } </td>
+		<td class="td2"> ${cart.getCart_psize() } </td>
 	</tr>
 	
 	<tr>
-		 <td> 수량 : ${cart.getCart_pqty() } </td>
+		 <td class="td2"> 수량 : ${cart.getCart_pqty() } </td>
 	</tr>
 	
 		<c:set var="total" value="${total + (price * amount) }" />

@@ -37,13 +37,13 @@ $(function() {
 			data : {name : $("#member_name").val()},
 			success : function(data) {
 				
-				$(data).find("member").each(function() {
+				$(data).find("members").each(function() {
 					
-					// $("#order_name").text($(this).find("name").text());
+					// $("#order_name").val($(this).find("name").text());
 					
 					alert($(this).find("name").text());
 					
-					// $("#order_addr").text($(this).find("addr").text());
+					// $("#order_addr").val($(this).find("addr").text());
 							
 				 });
 				

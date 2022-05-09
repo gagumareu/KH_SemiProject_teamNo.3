@@ -45,9 +45,115 @@
 		font-family: arial;
 	}
 	
-	.field {
-		
+	
+	.content {
+		width: 45%;
 	}
+	
+	
+	.field {
+		display: flex;
+		flex-direction: row;
+		padding-top: 20px;
+	}
+	
+	.text {
+		width: 20%;
+		padding-top: 5px;
+	}
+	
+	.text1 {
+		width: 20%;
+	}
+	
+	.label {
+		font-size: 9pt;
+	}
+	
+	em {
+		font-size: 8pt;
+	}
+	
+	.checkbutton {
+		padding-left: 20%;
+	}
+	
+	.input {
+		width: 80%;
+	}
+	
+	.input_box {
+		width: 100%;
+		height: 30px;
+		font-size: 10pt;
+	}
+	
+	.select1 {
+		width: 80px;
+		height: 35px;
+		text-align: center;
+	}
+	
+	.select {
+		width: 65px;
+		height: 35px;
+		text-align: center;
+	}
+	
+	.phone {
+	
+		width: 65px;
+		height: 30px;
+		text-align: center;
+	}
+	
+	.phone1 {
+	
+		width: 65px;
+		height: 35px;
+		text-align: center;
+	}
+	
+	#idcheck_btn {
+		width: 100px;
+		height: 35px;
+		margin-left: 10px;
+		background-color: black;
+		color: white;
+		font-weight: bold;
+	}
+	
+	ul li {
+		list-style: none;
+	}
+	
+	.description {
+		font-size: 9pt;
+	}
+	
+	.mail_button {
+		margin-left: 20%;
+	}
+	
+	.join_button {
+		margin-left: 20%;
+		width: 80%;
+		height: 35px;
+		font-weight: bold;
+		background-color: black;
+		color: white;
+	}
+	
+	a {
+		text-decoration: none;
+		font-weight: bold;
+		color: black;
+		padding-left: 0;
+		margin-left: 20%;
+	}
+	
+	
+	
 
 </style>
 </head>
@@ -60,39 +166,65 @@
 	<form method="post" action="<%=request.getContextPath() %>/member_join_ok.do">
 	<p class="instruction">회원 가입에 필요한 정보를 입력해 주세요</p>
 	
+	
 	<ul class="form_list">
 		<li class="field">
+			<div class="text">
 			<label for="username" class="label">이름</label>
 			<em>*</em>
+			</div>
+			<div class="input">
 			<input type="text" id="username" name="username" class="input_box" maxlength="10">
+			</div>
 		</li>	
 		
 		<li class="field">
+			<div class="text">
 			<label for="userId" class="label">아이디</label>
 			<em>*</em>
+			</div>
+			<div class="input">
 			<input type="text" id="userId" name="userId" class="input_box" maxlength="15">
-			<input type="button" value="중복체크" id="idcheck_btn"> <br>
-			<span id="idcheck">중복결과여부</span>
+			</div>
+			<div>
+			<input type="button" value="중복체크" id="idcheck_btn">
+			</div>
 		</li>	
+			<div class="checkbutton">
+			<span id="idcheck"></span>
+			</div>
 		
 		<li class="field">
+			<div class="text">
 			<label for="userpwd" class="label">비밀번호</label>
 			<em>*</em>
+			</div>
+			<div class="input">
 			<input type="password" id="userpwd" name="userpwd" class="input_box" maxlength="15">
-			
+			</div>
 		</li>	
 		
 		<li class="field">
+			<div class="text">
 			<label for="userpwd2" class="label">비밀번호확인</label>
 			<em>*</em>
-			<input type="password" id="userpwd2" name="userpwd2" class="input_box" maxlength="15"> <br>
-			<span id="pwdcheck"></span>
-		</li>	
+			</div>
+			<div class="input">
+			<input type="password" id="userpwd2" name="userpwd2" class="input_box" maxlength="15">
+			</div>
+		</li>
+			
+		<div class="checkbutton">
+		<span id="pwdcheck"></span>
+		</div>
 		
 		<li class="field">
+			<div class="text">
 			<label for="user_birth" class="label">생년월일</label>
 			<em>*</em>
-			<select name="user_birth1" id="user_birth1" class="select">
+			</div>
+			<div class="input">
+			<select name="user_birth1" id="user_birth1" class="select1">
 			<option value="2017">2017</option>
 			<option value="2017">2016</option>
 			<option value="2017">2015</option>
@@ -141,7 +273,7 @@
 			<option value="2017">1972</option>
 			<option value="2017">1971</option>
 			<option value="2017">1970</option>
-			</select>
+			</select>년
 			
 			<select name="user_birth2" id="user_birth2" class="select">
 			<option value="01">01</option>
@@ -156,7 +288,7 @@
 			<option value="10">10</option>
 			<option value="11">11</option>
 			<option value="12">12</option>
-			</select>
+			</select>월
 			
 			<select name="user_birth3" id="user_birth3" class="select">
 			<option value="01">01</option>
@@ -190,18 +322,26 @@
 			<option value="01">29</option>
 			<option value="01">30</option>
 			<option value="01">31</option>
-			</select>
+			</select>일
+			</div>
 		</li>	
 		
 		<li class="field">
+			<div class="text">
 			<label for="user_email" class="label">이메일</label>
 			<em>*</em>
+			</div>
+			<div class="input">
 			<input type="text" id="user_email" name="user_email" class="input_box" maxlength="30">
+			</div>
 		</li>
 		
 		<li class="field">
+			<div class="text">
 			<label for="user_phone" class="label">휴대폰번호</label>
 			<em>*</em>
+			</div>
+			<div class="input">
 			<select name="phone1" class="phone1">
 			<option value="010">010</option>
 			<option value="011">011</option>
@@ -214,32 +354,43 @@
 			<input type="text" name="phone2" class="phone" maxlength="4">
 			-
 			<input type="text" name="phone3" class="phone" maxlength="4">
+			</div>
 		</li>	
 		
 		<li class="field">
+			<div class="text">
 			<label for="user_addr" class="label">주소</label>
 			<em>*</em>
+			</div>
+			<div class="input">
 			<input type="text" id="user_addr" name="user_addr" class="input_box" maxlength="30">
+			</div>
 		</li>
 		
 		<br>
 		<hr>
 		<br>
 		
-		<li>
-		<label>
+		<li class="field">
+		<div class="text1">
+		<label class="label">
 		마케팅정보<br>
 		수신동의
 		</label>
+		</div>
 		<div class="description">
 		A.P.C몰에서 제공되는 서비스에 대한 수신동의 여부를 확인해주세요. 수신 미동의 시 이벤트 및 할인, 인기/신상품 등의 정보를 받아보실 수 없습니다.
 		</div>
-		<br>
-		<br>
-		<input type="checkbox" name="email_yn" checked>메일수신
-		<input type="checkbox" name="phone_yn" checked>SMS수신
 		</li>
 		
+		<br>
+		
+		<div class="mail_button">
+		<input type="checkbox" name="email_yn" checked>메일수신
+		<input type="checkbox" name=" phone_yn" checked>SMS수신
+		</div>
+		
+		<br>
 		
 		<div>
 		<br>

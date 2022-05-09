@@ -190,7 +190,8 @@
 		                    <br>
 		                    <br>
 		                    <div class="buttons-set">
-		                        <input type="button" class="button" value="회원가입">
+		                        <input type="button" class="button" value="회원가입"
+		                        	onclick="location.href='semiJoin.do'">
 		                    </div>
 		            </form>
 		            </div>
