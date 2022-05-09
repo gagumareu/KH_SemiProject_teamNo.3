@@ -315,11 +315,11 @@
 	
 	
 		
-	
+	<jsp:include page="../include/shop_bottom.jsp"/>
 	
 	</div> <!-- detail_wrapper END -->
 	
-	<jsp:include page="../include/shop_bottom.jsp"/>
+	
 	
 	
 	

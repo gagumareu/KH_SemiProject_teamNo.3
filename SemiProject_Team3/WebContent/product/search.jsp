@@ -176,13 +176,14 @@
 					
 			</div> <!-- Products_list end -->
 		
-			<div class="space">
-			
-			</div>
+			<!-- <div class="space"></div> -->
 	
-		<jsp:include page="../include/shop_bottom.jsp"/>
+		
 		
 		</div> <!-- search_container end -->
+		
+		<jsp:include page="../include/shop_bottom.jsp"/>
+		
 	</div> <!-- search_wrapper end -->
 	
 	

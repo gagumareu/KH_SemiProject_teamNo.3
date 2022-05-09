@@ -25,7 +25,7 @@ public class ProductListAction implements Action {
 		
 		ProductsDAO dao = ProductsDAO.getInstance();
 		
-		List<ProductsDTO> dto = dao.getProductList(fullCode);
+		List<ProductsDTO> dto = dao.getShopProductList(fullCode);
 		
 		request.setAttribute("productList", dto);
 		request.setAttribute("fullCode", fullCode);

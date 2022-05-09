@@ -91,7 +91,7 @@ public class ProductsDAO {
 	
 	
 	
-	public List<ProductsDTO> getProductList(String code){
+	public List<ProductsDTO> getShopProductList(String code){
 		
 		List<ProductsDTO> list = new ArrayList<ProductsDTO>();
 		
@@ -140,7 +140,7 @@ public class ProductsDAO {
 		}
 		
 		return list;
-	} // apcProductWomenList() end
+	} // getShopProductList() end
 	
 	
 
@@ -195,7 +195,7 @@ public class ProductsDAO {
 	
 	
 	
-	public ProductsDTO getProductDetail(int no) {
+	public ProductsDTO getProductCont(int no) {
 		
 		ProductsDTO dto = new ProductsDTO();
 		
@@ -297,7 +297,7 @@ public class ProductsDAO {
 	
 	
 	
-	
+	// 상세페이지에서 컬러 조회
 	public List<ProductsDTO> getColor(String name){
 		
 		List<ProductsDTO> list = new ArrayList<ProductsDTO>();
@@ -338,7 +338,7 @@ public class ProductsDAO {
 	
 	
 	
-	
+	// 상세페이지에서 사이즈 조회
 	public List<ProductsDTO> getSize(String name){
 		
 		

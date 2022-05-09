@@ -93,8 +93,7 @@
 	
 		<div class="apcTitle">
 			<a href="<%=request.getContextPath() %>/index.jsp">A.P.C.</a>
-			<a href="<%=request.getContextPath() %>/category.do?code=${ctitleCode.getCategory_code() }">${ctitleCode.getCategory_name() }</a>
-			/<span>${ltitleCode.getCategory_name() }</span> 
+			<a href="<%=request.getContextPath() %>/category.do?code=${ctitleCode.getCategory_code() }">${ctitleCode.getCategory_name() }</a> / <span>${ltitleCode.getCategory_name() }</span> 
 		</div>
 		
 			<div class="Products_list">
@@ -120,13 +119,15 @@
 					</c:if>
 			
 			</div> <!-- Products_list end -->
+			
+		<jsp:include page="/include/shop_bottom.jsp"/>
 
 	</div> <!-- products_wrapper end -->
 	
 	
 
 	
-	<jsp:include page="/include/shop_bottom.jsp"/>
+	
 	
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

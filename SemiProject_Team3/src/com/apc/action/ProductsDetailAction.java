@@ -31,7 +31,7 @@ public class ProductsDetailAction implements Action {
 		
 		List<ProductsDTO> slist = dao.getSize(product_name);
 		
-		ProductsDTO productDetail = dao.getProductDetail(product_no);
+		ProductsDTO productDetail = dao.getProductCont(product_no);
 		
 		// title dao
 		CategoryDAO cDao = CategoryDAO.getInstance();

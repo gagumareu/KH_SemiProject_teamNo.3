@@ -55,7 +55,7 @@ public class FrontController extends HttpServlet {
 		 */
 		
 		FileInputStream fis = 
-				new FileInputStream("C:\\Users\\JUNGHWAN\\git\\SemiProject\\SemiProject_Team3\\src\\com\\apc\\controller\\mapping.properties");
+				new FileInputStream("C:\\Users\\JUNGHWAN\\git\\junghwan_\\SemiProject_Team3\\src\\com\\apc\\controller\\mapping.properties");
 		
 		prop.load(fis);
 		

@@ -107,7 +107,7 @@
 	
 	$(function(){
 		$('.fa-solid').click(function(){
-			window.open('admin/admin_main.jsp');	
+			window.open('admin/admin_Login.jsp');	
 		});
 	});
 		

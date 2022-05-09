@@ -169,7 +169,7 @@ public class CategoryDAO {
 	
 	
 
-	
+	// 카테고리 등록 (admin)
 	public int inputCategory(CategoryDTO dto) {
 		
 		int result = 0;
@@ -332,7 +332,7 @@ public class CategoryDAO {
 	} // get3rdCategory() end
 	
 	
-	
+	// 상단 카테고리 navBar 
 	public CategoryDTO getCategoryTitle(String code){
 		
 		CategoryDTO dto = new CategoryDTO();
@@ -366,11 +366,11 @@ public class CategoryDAO {
 		return dto;
 		
 		
-	} //getTitle() end 
+	} //get3rdCategory() end 
 	
 	
-	
-public CategoryDTO getListTitle(String code){
+	// 상단 리스트 navBar
+	public CategoryDTO getListTitle(String code){
 		
 		CategoryDTO dto = new CategoryDTO();
 		
@@ -404,7 +404,7 @@ public CategoryDTO getListTitle(String code){
 		return dto;
 		
 		
-	} //getTitle() end
+	} //getListTitle() end
 	
 	
 	
