@@ -1,7 +1,5 @@
 package com.apc.model;
 
-import java.sql.Date;
-
 public class ProductDTO {
 
 	private int pno;

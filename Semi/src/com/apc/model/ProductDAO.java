@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -120,5 +122,56 @@ public class ProductDAO {
 	}
 	
 	
+	public List<String> getProductColor(String name) {
+		
+		List<String> list = new ArrayList<String>();
+		String color = null;
+		
+		try {
+			openConn();
+			sql = "select distinct pcolor from apc_products where pname = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, name);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				color = rs.getString("pcolor");
+				list.add(color);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		return list;
+	}
 	
+	
+	public List<String> getProductSize(String name) {
+		
+		List<String> list = new ArrayList<String>();
+		String size = null;
+		
+		try {
+			openConn();
+			sql = "select distinct psize from apc_products where pname = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, name);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				size = rs.getString("psize");
+				list.add(size);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		return list;
+	}
 }

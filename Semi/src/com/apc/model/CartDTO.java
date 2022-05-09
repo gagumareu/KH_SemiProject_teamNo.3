@@ -12,7 +12,14 @@ public class CartDTO {
 	private int cart_price;
 	private int cart_trans;
 	private String cart_pimage;
+	private int cart_mileage;
 	
+	public int getCart_mileage() {
+		return cart_mileage;
+	}
+	public void setCart_mileage(int cart_mileage) {
+		this.cart_mileage = cart_mileage;
+	}
 	public int getCart_no() {
 		return cart_no;
 	}

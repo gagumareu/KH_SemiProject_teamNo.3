@@ -110,7 +110,7 @@
 		<br>
 		<b>기간조회 :</b>
 		
-		<!-- 이 부분 ajax를 좀더 공부하고 와서 완성할 것 -->
+		<!-- ajax를 공부해서 조회 기간 조절하는 거랑, 답변이 온 문의의 경우 제목을 누르면 답글 내용이 보이도록. -->
 		
 		<c:set var="date_3" value="${date_3 }" />
 		<c:set var="date_now" value="${date_now }" />
@@ -143,8 +143,8 @@
 					<c:if test="${qaDTO.getQa_indent() == 0 }">
 						답변대기
 						<input type="button" value="x"
-								onclick="if(confirm('정말로 삭제하시겠습니까?')){
-									location.href='member_deleteContact.do?no=${qaDTO.getQa_no() }'}
+								onclick="if(confirm('삭제하시겠습니까?')){
+									location.href='<%=request.getContextPath() %>/member_deleteContact.do?no=${qaDTO.getQa_no() }'}
 									else{ return; }" />
 					</c:if>			
 				</span>

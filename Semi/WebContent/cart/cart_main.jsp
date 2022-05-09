@@ -138,28 +138,33 @@
 						<a><b>${cDTO.getCart_pname() }</b></a><br><br><br>
 						<div class="left3">
 							SIZE<br><br>
-							<select>
-								<option value="${cDTO.getCart_psize() }" selected>${cDTO.getCart_psize() }</option>
-							</select>
+							<a href="<%=request.getContextPath() %>/cart_update.do?num=${cDTO.getCart_no() }">
+							<b>${cDTO.getCart_psize() }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▼</b></a>
 						</div>
 						<div class="left3">
 							COLOR<br><br>
-							<select>
-								<option value="${cDTO.getCart_pcolor() }" selected>${cDTO.getCart_pcolor() }</option>
-							</select>
+							<a href="<%=request.getContextPath() %>/cart_update.do?num=${cDTO.getCart_no() }">
+							<b>${cDTO.getCart_pcolor() }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▼</b></a>
 						</div>
 						<div class="left3">
 							QTY<br><br>
-							<button class="white">-</button>
-							&nbsp;<span style="font-size: 15px;">${cDTO.getCart_pqty() }</span>&nbsp;
-							<button class="white">+</button>
+							<button class="white" 
+							<c:if test="${cDTO.getCart_pqty() != 1}">
+							onclick="location.href='<%=request.getContextPath() %>/cart_qtyDown.do?num=${cDTO.getCart_no() }'"
+							</c:if>>-</button>
+							&nbsp;&nbsp;&nbsp;<span style="font-size: 13px;"><b>${cDTO.getCart_pqty() }</b></span>&nbsp;&nbsp;&nbsp;
+							<button class="white" 
+							onclick="location.href='<%=request.getContextPath() %>/cart_qtyUp.do?num=${cDTO.getCart_no() }'">+</button>
 						</div>
 					</div>
 					
 					<!-- ajax를 공부하고 다시 봐봐야겠다. ajax로 jsp 페이지 안에서 dao 메서드를 연산이 가능한가를 알아봐야한다. -->
 					<div class="right2">
-						<a href="<%=request.getContextPath() %>/deleteCart.do?num=${cDTO.getCart_no() }">X</a><br><br>
-						적립금 <fmt:formatNumber value="555555" />원<br><br>
+						<a onclick="if(confirm('해당 상품을 쇼핑백에서 삭제하시겠습니까?')){
+									location.href='<%=request.getContextPath() %>/cart_delete.do?num=${cDTO.getCart_no() }'}
+									else{ return; }" >
+						X</a><br><br>
+						적립금 <fmt:formatNumber value="${cDTO.getCart_mileage() * cDTO.getCart_pqty() }" />원<br><br>
 						<b><fmt:formatNumber value="${cDTO.getCart_price() * cDTO.getCart_pqty() }" />원</b>
 					</div>
 					<br><br>
@@ -168,6 +173,9 @@
 				</c:forEach>
 			</div>
 			<form><b>장바구니 결제금액</b>
+				<c:set var="pSum" value="${price_sum }" />
+				<c:set var="mSum" value="${mileage_sum }" />
+				<c:set var="tCost" value="${tCost }" />
 				<hr>
 				<br><br>
 				
@@ -179,9 +187,9 @@
 				
 				<!-- ajax로 판매가 합산이 가능하지 않을까 기대해보며 넘어간다. -->
 				<div class="right">
-					<b>원</b><br><br>				
-					<fmt:formatNumber value="5555555" />원<br><br>
-					원<br><br>
+					<b><fmt:formatNumber value="${pSum }" />원</b><br><br>				
+					<fmt:formatNumber value="${mSum }" /><br><br>
+					<fmt:formatNumber value="${tCost }" />원<br><br>
 				</div>
 				
 				<hr color="lightgray" width="100%">
@@ -192,7 +200,7 @@
 				</div>
 				
 				<div class="right">
-					<b>원</b>
+					<b><fmt:formatNumber value="${pSum + tCost}" />원</b>
 				</div>
 				<br><br><br><br>
 				<button type="submit" class="black"><b>구매하기</b></button>

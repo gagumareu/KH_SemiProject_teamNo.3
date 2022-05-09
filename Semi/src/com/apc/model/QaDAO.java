@@ -89,7 +89,7 @@ public class QaDAO {
 	
 	public List<QaDTO> getQaList(String id){
 		
-		ArrayList list = new ArrayList<QaDTO>();
+		List<QaDTO> list = new ArrayList<QaDTO>();
 		
 		try {
 			openConn();
@@ -116,5 +116,26 @@ public class QaDAO {
 			closeConn(rs, pstmt, con);
 		}
 		return list;
+	}
+	
+	
+	public int deleteQa(int no) {
+		
+		int result = 0;
+		
+		try {
+			openConn();
+			sql = "delete from apc_qa where qa_no = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		return result;
 	}
 }
