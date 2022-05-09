@@ -570,7 +570,8 @@ public class ProductsDAO {
 		return list;
 	} // apcProductWomenList() end
 
-
+	
+	// shop 상단 서치 창에서 이름 검색시 중복 제거 후 모든 제품 나열
 	public List<ProductsDTO> productSearch(String keyword){
 		
 		List<ProductsDTO> list = new ArrayList<ProductsDTO>();

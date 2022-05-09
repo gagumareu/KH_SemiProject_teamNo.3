@@ -32,7 +32,7 @@
 	
 	#navr{
 		margin: 10px 0px 0px 10px;
-		display: flex;
+		/*display: flex;*/
 		position: absolute;
 		
 	}
@@ -119,7 +119,7 @@
 	
 	$(function (){
 		$('#search_icon2').click(function(){
-			$(location).attr('href', '<%=request.getContextPath() %>/product/search.jsp');
+			$(location).attr('href', '<%=request.getContextPath() %>/product/product_search.jsp');
 		});
 	});
 	

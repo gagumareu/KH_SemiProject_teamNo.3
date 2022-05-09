@@ -54,6 +54,7 @@
 	
 	
 	.product_contents{
+		flex: 1;
 		display: grid;
 	 	grid-template-column: 200px 100%;		
 	 	
@@ -157,15 +158,10 @@
 
 	
 	<c:set var="dto" value="${Detail }"/>
-	
 	<c:set var="clist" value="${clist }"/>
-	
 	<c:set var="slist" value="${slist }"/>
-	
 	<c:set var="ctitleCode" value="${ctitleCode }"/>
-	
 	<c:set var="ltitleCode" value="${ltitleCode }"/>
-	
 	<c:set var="fullCode" value="${fullCode }"/>
 	
 	<div class="detail_wrapper">
@@ -315,11 +311,11 @@
 	
 	
 		
-	
+	<jsp:include page="../include/shop_bottom.jsp"/>
 	
 	</div> <!-- detail_wrapper END -->
 	
-	<jsp:include page="../include/shop_bottom.jsp"/>
+	
 	
 	
 	

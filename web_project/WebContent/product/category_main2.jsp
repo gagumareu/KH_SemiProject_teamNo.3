@@ -62,6 +62,7 @@
 	}
 	
 	.contents{
+		flex: 1;
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr;
 	}
@@ -99,48 +100,43 @@
 		<jsp:include page="/include/shop_top_right.jsp"/>
 		
 		<c:set var="list" value="${List }"/>
-		
 		<c:set var="ctitleCode" value="${ctitleCode }"/>
 	
 		<div class="apcTitle">
 			<a href="<%=request.getContextPath() %>/index.jsp">A.P.C.</a> <span>${ctitleCode.getCategory_name() }</span>
 		</div>
 		
-			<div class="contents">
-			
-				<c:if test="${!empty list }">
-			
-					<c:forEach items="${list }" var="dto">	
-			   			<div class="content">
-			    			<a href="<%=request.getContextPath() %>/product_list.do?code=${dto.getCategory_code() } ">
+		<div class="contents">
+				
+			<c:if test="${!empty list }">
+		
+				<c:forEach items="${list }" var="dto">	
+		   			<div class="content">
+		    			<a href="<%=request.getContextPath() %>/product_list.do?code=${dto.getCategory_code() } ">
 
-								<img class="content_image" alt="" src="upload/${dto.getCategory_image() }" width="100%" >
-							
-								<span class="category_name">
-									${dto.getCategory_name() }
-									
-								</span>
-							</a>
-			  	 		</div>
-					</c:forEach>
-			
-				</c:if>		
+							<img class="content_image" alt="" src="upload/${dto.getCategory_image() }" width="100%" >
 						
-				<c:if test="${empty list }">
-					<h4>검색된 품목이 없습니다:(</h4>
-				</c:if>
+							<span class="category_name">
+								${dto.getCategory_name() }
+								
+							</span>
+						</a>
+		  	 		</div>
+				</c:forEach>
 		
-			</div> 
+			</c:if>		
+					
+			<c:if test="${empty list }">
+				<h4>검색된 품목이 없습니다:(</h4>
+			</c:if>
+		
+		</div> <!-- contents end -->
 			
 		
-		
+	<jsp:include page="/include/shop_bottom.jsp"/>
 		
 	</div> <!-- category_wrapper end -->
 		
-	
-	<jsp:include page="/include/shop_bottom.jsp"/>
-	
-
 	
 	
 	

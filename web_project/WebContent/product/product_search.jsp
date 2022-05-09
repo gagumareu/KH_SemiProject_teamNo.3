@@ -121,9 +121,6 @@
 	});
 	
 	
-	
-	
-	
 
 </script>
 </head>
@@ -135,25 +132,25 @@
 	<jsp:include page="../include/shop_top.jsp"/>
 	<jsp:include page="../include/shop_top_right.jsp"/>
 	
+		<div class="apcTitle">
+	
+			<a href="<%=request.getContextPath() %>/index.jsp">A.P.C.</a> 
+			
+			<form action="<%=request.getContextPath() %>/product_search.do">
+			
+				<input id="search_field" type="search" value="" name="keyword" placeholder="SEARCH" minlength="2" maxlength="128">
+			
+				<div id="btnSearch"></div>
+				
+			</form>
+		</div>
+			
 		<div class="search_container"> 
 		
-		<div class="apcTitle">
+
+			<c:set var="list" value="${productList }"/>
 		
-				<a href="<%=request.getContextPath() %>/index.jsp">A.P.C.</a> 
-				
-				<form action="<%=request.getContextPath() %>/product_search.do">
-				
-					<input id="search_field" type="search" value="" name="keyword" placeholder="SEARCH" minlength="2" maxlength="128">
-				
-					<div id="btnSearch"></div>
-				
-				
-				</form>
-		</div>
-		
-		<c:set var="list" value="${productList }"/>
-		
-		<div class="Products_list">
+			<div class="Products_list">
 			
 					<c:if test="${!empty list }">
 					
@@ -176,13 +173,14 @@
 					
 			</div> <!-- Products_list end -->
 		
-			<div class="space">
-			
-			</div>
+				<!--  <div class="space"></div>-->
 	
-		<jsp:include page="../include/shop_bottom.jsp"/>
+			
 		
 		</div> <!-- search_container end -->
+		
+		<jsp:include page="../include/shop_bottom.jsp"/>
+		
 	</div> <!-- search_wrapper end -->
 	
 	

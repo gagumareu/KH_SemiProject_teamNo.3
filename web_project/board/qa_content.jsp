@@ -134,8 +134,9 @@
 </style>
 </head>
 <body>
-	<jsp:include page="/include/shop_top.jsp" />
-	<jsp:include page="/include/shop_top_right.jsp" />
+	<jsp:include page="../include/shop_top.jsp" />
+	<jsp:include page="../include/shop_top_right.jsp" />
+
 	<div class="qa_container">
 		<div class="alltitle">
 		<div class="apcTitle">
@@ -237,7 +238,7 @@
 		</form>
 		</div>
 	</div>
-	<jsp:include page="/include/shop_bottom.jsp"/>
+	<jsp:include page="../include/shop_bottom.jsp"/>
 
 </body>
 </html>

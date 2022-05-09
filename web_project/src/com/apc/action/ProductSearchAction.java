@@ -29,11 +29,13 @@ public class ProductSearchAction implements Action {
 		ActionForward forward = new ActionForward();
 		
 		PrintWriter out = response.getWriter();
+
+		System.out.println(list.size());
 		
 		if(list.size() > 0) {
 			forward.setRedirect(false);
 			
-			forward.setPath("product/search.jsp");
+			forward.setPath("product/product_search.jsp");
 			
 		}else {
 			out.println("<script>");

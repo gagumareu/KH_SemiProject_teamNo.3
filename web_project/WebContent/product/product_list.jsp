@@ -85,6 +85,8 @@
 	<c:set var="ltitleCode" value="${ltitleCode }"/>
 	<c:set var="ctitleCode" value="${ctitleCode }"/>
 	<c:set var="fullCode" value="${fullCode }"/>
+	
+	
 	<div class="products_wrapper">
 	
 		<jsp:include page="/include/shop_top.jsp"/>
@@ -120,13 +122,15 @@
 					</c:if>
 			
 			</div> <!-- Products_list end -->
+			
+		<jsp:include page="/include/shop_bottom.jsp"/>
 
 	</div> <!-- products_wrapper end -->
 	
 	
 
 	
-	<jsp:include page="/include/shop_bottom.jsp"/>
+	
 	
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
