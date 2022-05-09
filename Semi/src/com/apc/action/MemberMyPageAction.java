@@ -1,7 +1,6 @@
 package com.apc.action;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,7 +18,6 @@ public class MemberMyPageAction implements Action {
 		
 		String mem_id = request.getParameter("mem_id");
 
-		
 		MemberDAO dao = MemberDAO.getInstance();
 		MemberDTO member = dao.getMember(mem_id);
 

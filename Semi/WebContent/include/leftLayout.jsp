@@ -9,11 +9,11 @@
 </head>
 <body>			<!-- id 부분 고쳐야 함. -->
 	<h4><a href="<%=request.getContextPath() %>/member_myPage.do?mem_id=tlsruddus">마이페이지</a></h4>
-	<h4><a href="<%=request.getContextPath() %>/member/memUpdate.jsp">회원정보관리</a></h4>
+	<h4><a href="<%=request.getContextPath() %>/member_confirmPsw.do?mem_id=tlsruddus">회원정보관리</a></h4>
 	<h4><a href="<%=request.getContextPath() %>/member/pswUpdate.jsp">비밀번호관리</a></h4>
 	<h4><a href="<%=request.getContextPath() %>/member/mileageView.jsp">적립금관리</a></h4>
-	<h4><a href="<%=request.getContextPath() %>/member/orderView.jsp">주문/배송조회</a></h4>
-	<h4><a href="<%=request.getContextPath() %>/member/orderCancel.jsp">취소/반품신청</a></h4>
+	<h4><a href="<%=request.getContextPath() %>/member_orderView.do?mem_id=tlsruddus">구매내역</a></h4>
+	<h4><a href="<%=request.getContextPath() %>/member_orderCancelView.do?mem_id=tlsruddus">취소/반품조회</a></h4>
 	<h4><a href="<%=request.getContextPath() %>/member_addrView.do?mem_id=tlsruddus">배송지관리</a></h4>
 	<h4><a href="<%=request.getContextPath() %>/member_contactView.do?mem_id=tlsruddus">온라인상담</a></h4>
 	<h4><a href="<%=request.getContextPath() %>/member/logout.jsp">로그아웃</a></h4>

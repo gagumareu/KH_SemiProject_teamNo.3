@@ -87,7 +87,7 @@
 		</span>
 		<span class="right">
 			<br> <br> <br>
-			<a href="<%=request.getContextPath() %>/member_updateMem.do?mem_id=${mem.getMem_id() }">정보수정</a>
+			<a href="<%=request.getContextPath() %>/member_confirmPsw.do?mem_id=${mem.getMem_id() }">정보수정</a>
 		</span>
 
 		<hr width="100%">
@@ -119,19 +119,19 @@
 			<a href="mileageView.jsp">전체보기</a>
 		</div>
 		
-		<h1 style="display:inline; font-size: 50px;">상품 주문/배송</h1>
+		<h1 style="display:inline; font-size: 50px;">구매 내역</h1>
 		<hr width="100%">
 		
 		<div class="left">
 			<br>
-			<b>주문/배송 목록</b> <br>
-			<a href="orderView.jsp">전체보기</a>
+			<b>구매 내역</b> <br>
+			<a href="<%=request.getContextPath() %>/member_orderView.do?mem_id=${mem.getMem_id() }">전체보기</a>
 		</div>
 		
 		<div class="right">
 			<br>
 			<b>취소/반품 신청</b> <br>
-			<a href="orderCancle.jsp">조회하기</a>
+			<a href="<%=request.getContextPath() %>/member_orderCancelView.do?mem_id=${mem.getMem_id() }">조회하기</a>
 		</div>
 	</section>
 </body>

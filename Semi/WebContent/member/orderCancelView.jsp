@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -77,7 +76,7 @@
 		}
 		
 		div.left{
-			width: 90%;
+			width: 85%;
 			float: left;
 			text-align: left;
 			font-size: 13px;
@@ -85,49 +84,19 @@
 		}
 		
 		div.right{
-			width: 10%;
+			width: 15%;
 			float: right;
 			align: right;
 			font-family: 나눔고딕;
 		}
 		
-		div.left2{
-			width: 20%;
-			padding: 0 2% 0 0;
-			float: left;
-		}
-		
-		div.center{
-			width: 60%;
-			float: left;
-		}
-		
-		div.right2{
-			width: 15%;
-			float: right;
-			text-align:right;
-		}
-		
-		button.black{
-			color: white;
-			background-color: black;
-			width: 70%;
-			height: 40px;
-		}
-		
-		button.white{
-			color: black;
-			background-color: white;
-			width: 70%;
-			height: 40px;
-		}
 	</style>
 </head>
 <body>
 
 	<header>
 	<h1 style="font-size: 50px;"><a href="mainPage.jsp">A.P.C.</a> 
-	구매내역</h1>
+	취소/반품조회</h1>
 	</header>
 
 	<nav>
@@ -135,7 +104,7 @@
 	</nav>
 
 	<section>
-	<b>구매내역</b>
+	<b>주문취소/반품조회</b>
 	<hr width="100%">
 	<div align="center">
 		<br>
@@ -154,43 +123,37 @@
 		~
 		<input type="text" value=${date_now } class="text" />
 		<input type="button" value="조회" class="black" />
+		&nbsp; &nbsp;
 		<br> <br> <br>
-	</div>
-	<div>
-		<c:set var="pList" value="${payList }" />
-		<c:set var="a" value="0" />
-		<c:forEach items="${pList }" var="pDTO">
-			<c:if test="${pDTO.getOrderdate().substring(0,10) != a}">
-				<hr>
-				<b>${pDTO.getOrderdate().substring(0,10) }</b><br><br><br>
-			</c:if>
-			
-			<div class="left2">
-				<a><img src="<%=request.getContextPath() %>/upload/${pDTO.getPay_pimage() }"
-					    width="100" height="100"></a>
+		<hr>
+		<c:forEach items="${cancelList }" var="cDTO">
+		<br>
+			<div class="left">
+				<b>${cDTO.getPname() } &nbsp; ${cDTO.getPcolor() } &nbsp; 
+				${cDTO.getPsize() } &nbsp; ${cDTO.getPqty() }매</b> <br>
+				<span style="color: gray;">
+					${cDTO.getCancel_category() }<br>
+					${cDTO.getCancel_date().substring(0,10) }
+				</span>
 			</div>
-					
-			<!-- ajax가 필요해 보인다. ajax로 jsp 페이지 안에서 dao 메서드를 연산이 가능한가를 알아봐야한다. -->
-			<div class="center">
-				<br>
-				<b>${pDTO.getPname() } &nbsp;&nbsp;&nbsp; ${pDTO.getPqty() }매</b><br><br>
-				<b><fmt:formatNumber value="${pDTO.getPrice() }" />원</b><br><br>
-				구매완료
+			<div class="right">
+				<span style="color: gray;">
+					<c:if test="${cDTO.getCancel_state() == 0 }">
+						취소/반품 대기
+					</c:if>	
+				</span>
+				<span style="color: blue;">
+					<c:if test="${cDTO.getCancel_state() == 1 }">
+						취소/반품 완료
+					</c:if>			
+				</span>
+				<span style="color: red;">
+					<c:if test="${cDTO.getCancel_state() == 2 }">
+						취소/반품 실패
+					</c:if>
+				</span>
 			</div>
-					
-			<div class="right2">
-				<!-- 해당 제품에 대한 리뷰가 존재하면 내가 쓴 리뷰에 해당하는 별점이 보인다거나 하는 다른 것이 보이도록 할 예정인데,
-					리뷰 테이블은 Pno를 컨퍼런스 값으로 가진다. 만약 다른 날 같은 제품을 구매했을 때 모든 같은 제품이 리뷰 처리 될 것 같아서
-					orderNo 추가 하는거 이야기 해봐야 한다.-->
-				<b><button class="white">리뷰 작성</button></b><br><br>
-				
-				<b><button class="black" onclick="location.href='<%=request.getContextPath() %>/member_orderCancel.do?num=${pDTO.getOrder_no() }'">
-				취소/반품</button></b>
-			</div>
-			<br><br>
-			<hr width="100%" color="white">
-			<br><br>
-			<c:set var="a" value="${pDTO.getOrderdate().substring(0,10) }" />
+		<br><br><br><br>
 		</c:forEach>
 	</div>
 	</section>

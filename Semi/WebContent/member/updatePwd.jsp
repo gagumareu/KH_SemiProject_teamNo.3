@@ -33,17 +33,40 @@
 		section{
 			margin: 75px 325px 25px 100px;
 			padding: 0px 100px;
-			font-size: 0.75em;
+			font-size: 13px;
 			font-family: 나눔고딕;
 		}
-		section{
-			margin: 75px 325px 25px 100px;
-			padding: 0px 100px;
-			font-size: 12px;
-			font-family: 나눔고딕;
-			
+		
+		input {
+			width: 40%;
+			height: 35px;
 		}
-
+		
+		div.left{
+			width: 70%;
+			float: left;
+		}
+		
+		div.right{
+			width: 30%;
+			float: right;
+			text-align: right;
+			align: right;
+		}
+		
+		button {
+			width: 130px;
+			height: 40px;
+			color: white;
+			background-color: black;
+		}
+		
+		button:hover {
+			width: 130px;
+			height: 40px;
+			background-color: white;
+			color: black;
+		}
 	</style>
 	
 </head>
@@ -63,11 +86,22 @@
 	<hr width="100%">
 	<br>
 	<span style="color: gray;">회원님의 개인정보 보호를 위해 비밀번호를 변경해 주십시오.</span>
-	<br><br>
-	<b>현재 비밀번호</b>
-	
+	<br><br><br>
+	<b>현재 비밀번호</b><br><br>
+	<input type="password" name="" /><br><br><br>
+	<b>새 비밀번호</b><br><br>
+	<input type="password" name="" /><br><br><br>
+	<b>새 비밀번호 확인</b><br><br>
+	<input type="password" name="" /><br><br><br>
+	<hr>
+	<div class="left">
+		<br>
+		<a onclick="history.back()" style="font-size:12px">◀ 돌아가기</a>
+	</div>
+	<div class="right">
+		<button><b>비밀번호 변경하기</b></button>
+	</div>
 	</section>
-	
 	
 </body>
 </html>

@@ -173,15 +173,13 @@
 				
 				<div class="left">
 					<b>판매가</b><br><br>
-					할인금액<br><br>
 					적립금<br><br>
 					배송비<br><br>
 				</div>
 				
 				<!-- ajax로 판매가 합산이 가능하지 않을까 기대해보며 넘어간다. -->
 				<div class="right">
-					<b>원</b><br><br>
-					원<br><br>				
+					<b>원</b><br><br>				
 					<fmt:formatNumber value="5555555" />원<br><br>
 					원<br><br>
 				</div>

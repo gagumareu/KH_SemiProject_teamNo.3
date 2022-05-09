@@ -34,11 +34,10 @@
 		section{
 			margin: 75px 325px 25px 100px;
 			padding: 0px 100px;
-			font-size: 0.75em;
+			font-size: 13px;
 			font-family: 나눔고딕;
 		}
 		
-				
 		div.left{
 			width: 90%;
 			float: left;
@@ -54,6 +53,7 @@
 		section{
 			margin: 75px 325px 25px 100px;
 			padding: 0px 100px;
+			font-size: 13px;
 			font-family: 나눔고딕;
 		}
 
@@ -110,7 +110,7 @@
 	<br><br><br><br><br>
 	<hr width="100%">
 	<br>
-	<a href="mainPage.jsp" style="font-size:12px"><b>◀ 돌아가기</b></a>
+	<a onclick="history.back()" style="font-size:12px">◀ 돌아가기</a>
 	</section>
 </body>
 </html>

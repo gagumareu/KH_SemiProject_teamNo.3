@@ -15,7 +15,7 @@ public class ProductDTO {
 	private String picon;
 	private String pcontents;
 	private int mileage;
-	private Date pinpupdate;
+	private String pinputdate;
 	
 	public int getPno() {
 		return pno;
@@ -83,11 +83,11 @@ public class ProductDTO {
 	public void setMileage(int mileage) {
 		this.mileage = mileage;
 	}
-	public Date getPinpupdate() {
-		return pinpupdate;
+	public String getPinputdate() {
+		return pinputdate;
 	}
-	public void setPinpupdate(Date pinpupdate) {
-		this.pinpupdate = pinpupdate;
+	public void setPinputdate(String pinputdate) {
+		this.pinputdate = pinputdate;
 	}
 	
 	
