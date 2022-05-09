@@ -162,16 +162,32 @@ public class CategoryDAO {
 		try {
 			openConn();
 			
-			sql = "insert into apc_category values(?,?,?,?)";
+			sql="select * from apc_category where category_code=?";
 			
 			pstmt = con.prepareStatement(sql);
 			
-			pstmt.setInt(1, dto.getCategory_no());
-			pstmt.setString(2, dto.getCategory_code());
-			pstmt.setString(3, dto.getCategory_name());
-			pstmt.setString(4, dto.getCategory_image());
+			pstmt.setString(1, dto.getCategory_code());
 			
-			result = pstmt.executeUpdate();
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result=-1;
+				
+				
+			}else {
+				sql = "insert into apc_category values(?,?,?,?)";
+				
+				pstmt = con.prepareStatement(sql);
+				
+				pstmt.setInt(1, dto.getCategory_no());
+				pstmt.setString(2, dto.getCategory_code());
+				pstmt.setString(3, dto.getCategory_name());
+				pstmt.setString(4, dto.getCategory_image());
+				
+				result = pstmt.executeUpdate();
+				
+			}
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

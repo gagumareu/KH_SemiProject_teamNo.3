@@ -56,7 +56,7 @@ public class AdminProductsInsertOkAction implements Action {
 			//System.out.println("parameter >>"+  parameter);
 			//System.out.println("value >>"+  value);
 			
-			if(parameter != null) {
+			if(value != null) {
 				
 				String homedir = saveFolder+"/"+ p_code ;
 				File path = new File(homedir);
@@ -69,7 +69,7 @@ public class AdminProductsInsertOkAction implements Action {
 				String fileDBName = "/"+p_code+"/"+fileName;
 				
 				fileList.add(fileDBName);		
-			}else if(parameter == null) continue;
+			}else if(value == null) continue;
 			
 		}
 		dto.setPimage(String.join(",",fileList).trim());	

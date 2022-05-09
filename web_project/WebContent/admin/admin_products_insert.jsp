@@ -18,24 +18,7 @@
 	
 </script>
 
-<style type="text/css">
-	.btnBottom{
-		color: black;
-		background-color: white;
-		font-family: airal;
-		font-size:12px;
-		font-weight:bold;
-		padding: 6px;
-		
-		border:1px solid gray;
-		border-radius: 4px;
-		width:65px;
-		
-		box-shadow: -1px -1px 0px gray;
-	
-	}
 
-</style>
 
 </head>
 <body>

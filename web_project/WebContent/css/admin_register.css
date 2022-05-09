@@ -64,6 +64,11 @@
 		box-shadow: -1px -1px 0px gray;
 	}
 	
+	.btnBottom:haver{
+		background-color: #D7D7D7;
+		
+	}
+	
 	.fileBtn{
 		width:40px;
 		text-align: center;

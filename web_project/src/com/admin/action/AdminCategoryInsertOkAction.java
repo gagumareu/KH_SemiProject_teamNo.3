@@ -59,11 +59,18 @@ public class AdminCategoryInsertOkAction implements Action {
 			forward.setPath("admin_category_list.do");
 			
 			
+		}else if(check==-1){
+			out.println("<script>");
+			out.println("alert('이미 존재하는 카테고리 코드입니다.')");
+			out.println("history.back()");
+			out.println("</script>");
+			
 		}else {
 			out.println("<script>");
 			out.println("alert('카테고리 추가에 실패했습니다.')");
 			out.println("history.back()");
 			out.println("</script>");
+			
 			
 		}
 				

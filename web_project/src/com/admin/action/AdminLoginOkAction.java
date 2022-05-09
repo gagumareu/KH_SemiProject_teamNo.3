@@ -52,7 +52,7 @@ public class AdminLoginOkAction implements Action {
 			out.println("</script>");
 		}else {
 			out.println("<script>");
-			out.println("alert('통신 오류가 발생했습니다.')");
+			out.println("alert('아이디를 다시 확인해주세요.')");
 			out.println("history.back()");
 			out.println("</script>");
 			

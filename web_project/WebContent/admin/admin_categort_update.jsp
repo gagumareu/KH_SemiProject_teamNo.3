@@ -12,21 +12,6 @@
 	#c_code{
 		border:none;
 	}
-	
-	.btnBottom{
-		color: black;
-		background-color: white;
-		font-family: airal;
-		font-size:12px;
-		font-weight:bold;
-		padding: 6px;
-		
-		border:1px solid gray;
-		border-radius: 4px;
-		width:65px;
-		
-		box-shadow: -1px -1px 0px gray;
-	}
 
 </style>
 </head>
@@ -101,8 +86,9 @@
 			
 			<tr>
 				<td class="lastTr" colspan ="2" align="center">
-				<input class="btnBottom" type="submit" value="수정하기">&nbsp;&nbsp;
-				<input class="btnBottom" type="reset" value="다시 작성">									
+				<input class="btnBottom" type="submit" value="수정하기">&nbsp;&nbsp;	
+				<input class="btnBottom" type="button" value="목록으로"
+					onclick="location.href='<%=request.getContextPath()%>/admin_category_list.do?num=${dto.getCategory_no() }'">							
 				</td>
 					
 			</table>

@@ -10,12 +10,13 @@
 	font-family: airal;
 	}
 	
+	
 	table tr th{
 	border-left: none;
 	border-right: none;
 	background-color: #383636;
 	color: white;
-	height: 40px;
+	height: 80px;
 	font-family: airal;
 	
 	}
