@@ -25,7 +25,8 @@
 			<input type="hidden" name = "qa_group" value="${dto.getQa_group() }">
 			<input type="hidden" name = "qa_step" value="${dto.getQa_step() }">
 			<input type="hidden" name = "qa_indent" value="${dto.getQa_indent() }">
-			<input type="hidden" name = "page" value="${page }">
+			<input type="hidden" name = "page" value="${page}">
+
 
         	<table class="table table-bordered table-hover">
         	<colgroup>

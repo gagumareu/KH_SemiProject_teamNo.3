@@ -4,6 +4,10 @@
 <head>
 <meta charset="UTF-8">
 <title>A.P.C ADMIN PAGE</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
 <link href="<%=request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet">
 <link href="<%=request.getContextPath() %>/css/admin_style.css" rel="stylesheet">
 </head>
@@ -11,12 +15,17 @@
 
    <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
-      	<a class="navbar-brand" href="<%=request.getContextPath() %>/admin_main.do"><span style="font-size:24px;">A.P.C ADMIN PAGE</span></a>
+      	<a class="navbar-brand" href="<%=request.getContextPath() %>/admin_main.do">
+      		<span class="glyphicon glyphicon-home"></span><span style="font-size:24px;">&nbsp;A.P.C ADMIN PAGE</span>
+      	</a>
 
 		<ul class="nav navbar-nav navbar-right">
-        	<li><a href="#">${adminName }님 환영합니다.</a></li>
-            <li><a href="<%=request.getContextPath() %>/admin_logout.do">Logout</a></li>
+        	<li><a href="#"><span class="glyphicon glyphicon-user"></span>&nbsp;${adminName }님 환영합니다.</a></li>
+            <li><a href="<%=request.getContextPath() %>/admin_logout.do">
+            	<span class="glyphicon glyphicon-log-out"></span>&nbsp;Logout
+            </a></li>
         </ul>
+        
       </div>
     </nav>
 

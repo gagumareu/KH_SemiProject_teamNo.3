@@ -72,15 +72,15 @@
 			<tr>
 				<td colspan="2" align="center">
 					<input type="button" value="글수정" class="btn btn-primary"
-						onclick="location.href='admin_notice_update.do?no=${dto.getNotice_no() }'">
+						onclick="location.href='admin_notice_update.do?no=${dto.getNotice_no() }&page=${page}'">
 					
 					<input type="button" value="글삭제" class="btn btn-danger"
 						onclick="if(confirm('공지사항을 삭제하시겠습니까?')) {
-									location.href='admin_notice_delete.do?no=${dto.getNotice_no() }'
+									location.href='admin_notice_delete.do?no=${dto.getNotice_no() }&page=${page}'
 								} else {return; }">
 								
 					<input type="button" value="전체목록" class="btn btn-default"
-						onclick="location.href='admin_notice.do'">
+						onclick="location.href='admin_notice.do?page=${page}'">
 						
 				</td>
 			</tr>
@@ -90,9 +90,6 @@
         
 	 </div>
 
-	<footer class="container-fluid navbar-fixed-bottom col-sm-offset-2">
-		<p>하단바 영역</p>
-	</footer>
 	
 </body>
 </html>

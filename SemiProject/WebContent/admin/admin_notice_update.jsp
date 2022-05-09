@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,9 +32,10 @@
 					<th>작성자</th>
 					<td><input name="n_writer" value="${dto.getNotice_writer() }" readonly></td>
 				</tr>
-				
+				<% pageContext.setAttribute("newLineChar", "<br>"); %>
 				<tr>
 					<th>글 내용</th>
+					
 					<td><textarea rows="7" cols="100" name="n_cont">${dto.getNotice_cont() }</textarea></td>
 				</tr>
 				

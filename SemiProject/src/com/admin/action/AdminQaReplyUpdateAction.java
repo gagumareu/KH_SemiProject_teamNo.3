@@ -23,6 +23,7 @@ public class AdminQaReplyUpdateAction implements Action {
 		QaDTO dto = dao.getQaContent(no);
 		
 		request.setAttribute("modify", dto);
+		request.setAttribute("page", nowPage);
 		
 		ActionForward forward = new ActionForward();
 		
