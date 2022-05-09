@@ -210,12 +210,17 @@
 						
 					<!--                       제목                                               -->	
 						<td width="40%">
-						<c:if test="${dto.getQa_indent() != 0 }"> <%-- indent가 0이 아닌것은 답글이라는 뜻  --%>
-							<c:forEach begin="1" end ="${dto.getQa_indent() }">
-							 └  
-							</c:forEach>
-							</c:if>
+						<%if(dto.getQa_indent() != 0 ){
+							for(int k =1; k<= dto.getQa_indent(); k++){
+						%>	
+							└ 
+						<% 	}//for문
+						%>	
+						<a href="<%=request.getContextPath() %>/qa_content.do?num=<%=dto.getQa_no()%>&page=${page}">답글:<%=dto.getQa_title() %></a>
+						<% }else{%>
 						<a href="<%=request.getContextPath() %>/qa_content.do?num=<%=dto.getQa_no()%>&page=${page}"><%=dto.getQa_title() %></a>
+						<% }%>
+						
 						</td>
 					<!--                       작성자                                              -->		
 						<td width="15%" align="center"><%=dto.getQa_memid() %></td>

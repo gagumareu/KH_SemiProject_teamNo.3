@@ -27,9 +27,9 @@
 		</div>
 		
 		<div class="qa_body">
-		<form id="qa_form" method="post" name="frm" >
+		<form id="qa_form" method="post" name="frm" action="<%=request.getContextPath()%>/qa_write_ok.do" >
 		<input type="hidden" id="pno" name="pno" value="${pCont.getPno() }">
-		<input type="hidden" id="num" name="num" value="${num }">
+		<%-- <input type="hidden" id="num" name="num" value="${num }"> --%>
 		
 		<table class="qa_top_table" >
 		<c:if test="${empty pCont }"><!-- 넘겨받은 제품정보가 없으면  -->
@@ -105,7 +105,7 @@
 							</c:if>
 							<c:if test="${!empty list }">
 							<c:forEach items="${list }" var="dto">
-								<option value=${dto.getCategory_code() }>${dto.getCategory_name() }</option>
+								<option value="${dto.getCategory_code()}">${dto.getCategory_name() }</option>
 							</c:forEach>
 							</c:if>
 							</select>
@@ -114,7 +114,7 @@
 					<tr>
 						<td class="table-light">작성자</td>
 						<td>
-						<input name="qa_writer" style="border: none; background: transparent;" size="100" value="${id }" readonly>
+						<input name="qa_writer" style="border: none; background: transparent;" size="100" value="${member_id }" readonly>
 						</td>
 					</tr>
 					<tr>
@@ -139,7 +139,7 @@
 					</button>
 					</div>
 					<div id="groupItem2" align="right">
-					<button type="button" class="btn btn-outline-dark" onclick="location.href='<%=request.getContextPath()%>/qa_write_ok.do'">등록</button>
+					<input type="submit" class="btn btn-outline-dark"  value="등록">
 					<button type="button" class="btn btn-outline-dark" onclick="location.href='<%=request.getContextPath()%>/index.jsp'">취소</button>
 					</div>
 				</div>

@@ -21,8 +21,20 @@ public class QaWriteOkAction implements Action {
 		
 		//form에서 넘겨받은 정보
 		String qa_category = request.getParameter("qa_category");
-		int pno = Integer.parseInt(request.getParameter("pno")); //원래 넘겨받은 제품정보
-		int num = Integer.parseInt(request.getParameter("num")); // 직접선택한 제품정보
+		
+		System.out.println("qa_category:"+qa_category);
+		int pno = 0;
+		try {
+				pno = Integer.parseInt(request.getParameter("pno")); //원래 넘겨받은 제품정보
+		}catch(Exception e){
+			System.out.println("pno정보 없는 게시글");
+		}
+//		try {
+//			num = Integer.parseInt(request.getParameter("num")); // 직접선택한 제품정보
+//		}catch(Exception e){
+//			System.out.println("qa_write: 제품선택안함 ");
+//		}
+			
 		String title = request.getParameter("qa_title");
 		String writer = request.getParameter("qa_writer");
 		String cont = request.getParameter("qa_cont");
@@ -31,14 +43,9 @@ public class QaWriteOkAction implements Action {
 		MemberDTO dto = dao.getMemberInfo(writer);
 		
 		String pwd = dto.getMempwd();
-		int pno_fk = 0;
 		
-		if(pno == 0) {
-			pno_fk = num;
-		}else if(num == 0){
-			pno_fk = pno;
-		}
-
+		System.out.println("pno_fk:"+pno);
+		
 		QaDTO qdto = new QaDTO();
 		
 		qdto.setQa_category(qa_category);
@@ -46,7 +53,10 @@ public class QaWriteOkAction implements Action {
 		qdto.setQa_title(title);
 		qdto.setQa_cont(cont);
 		qdto.setQa_pwd(pwd);
-		qdto.setQa_pno_fk(pno_fk);
+		if(pno>0) {
+		qdto.setQa_pno_fk(pno);
+		}
+		
 		
 		QaDAO qdao = QaDAO.getInstance();
 		int result = qdao.qaInsert(qdto);

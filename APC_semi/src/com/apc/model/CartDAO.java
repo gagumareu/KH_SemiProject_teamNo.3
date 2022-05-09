@@ -101,7 +101,7 @@ public class CartDAO {
 			pstmt.setString(4, dto.getCart_pname());
 			pstmt.setInt(5, dto.getCart_pqty());
 			pstmt.setString(6, dto.getCart_psize());
-			pstmt.setString(7, dto.getCart_psize());
+			pstmt.setString(7, dto.getCart_pcolor());
 			pstmt.setInt(8, dto.getCart_price());
 			pstmt.setString(9, dto.getCart_pimage());
 			pstmt.setInt(10, dto.getCart_mileage());

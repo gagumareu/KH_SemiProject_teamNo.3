@@ -1,6 +1,7 @@
 package com.apc.action;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -61,12 +62,19 @@ public class GoPayAction implements Action {
 		cdto.setCart_memid(loginId); //나중에 로그인 자료받으면 넣기
 		cdto.setCart_pname(productDto.getPname());
 		cdto.setCart_pqty(pqty);			//form에서 고객이 입력한 수량 
-		cdto.setCart_psize(size);
-		cdto.setCart_psize(color);
+		cdto.setCart_psize(productDto.getPsize());
+		cdto.setCart_pcolor(productDto.getPcolor());
 		cdto.setCart_price(productDto.getPrice());
 		cdto.setCart_pimage(pimage[0]);
 		cdto.setCart_mileage(productDto.getMileage());
 		
+		//장바구니 테이블에 저장 
+		int result = cdao.cartInsert(cdto);
+		
+		ActionForward forward= new ActionForward();
+		PrintWriter out = response.getWriter();
+		
+		if(result > 0 ) {
 		//저장된 장바구니 정보 불러오기
 		//뷰페이지에서 list로 foreach문을 돌리기때문에 통일시켜 바로구매 로직에서도 list로 받기
 //		cdto = cdao.getCartContent(loginId, productDto.getPno());
@@ -74,10 +82,14 @@ public class GoPayAction implements Action {
 		
 		request.setAttribute("cartInfo", list);
 		
-		ActionForward forward= new ActionForward();
 		forward.setRedirect(false);
 		forward.setPath("member/member_order.jsp");
-		
+		}else {
+			out.println("<script>");
+			out.println("alert('장바구니 저장실패')");
+			out.println("history.back()");
+			out.println("</script>");
+		}
 		
 		return forward;
 	}
