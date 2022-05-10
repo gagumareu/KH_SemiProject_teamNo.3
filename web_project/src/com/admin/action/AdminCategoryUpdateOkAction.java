@@ -23,7 +23,7 @@ public class AdminCategoryUpdateOkAction implements Action {
 		//첨부파일
 		String saveFolder = "C:\\Users\\JUNGHWAN\\git\\SemiProject_teamNo.3\\web_project\\WebContent\\image_category";
 		
-		int fileSize = 1024*1024*30;
+		int fileSize = 1024*1024*10;
 		
 		MultipartRequest multi = new MultipartRequest(request, saveFolder, fileSize,"UTF-8", new DefaultFileRenamePolicy());
 		

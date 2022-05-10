@@ -80,7 +80,6 @@
 	
 	.category_name {
 		font-size: 30px;
-	
 	}
 </style>
 
@@ -116,10 +115,7 @@
 
 							<img class="content_image" alt="" src="image_category/${dto.getCategory_image() }" width="100%" >
 						
-							<span class="category_name">
-								${dto.getCategory_name() }
-								
-							</span>
+							<div class="category_name">${dto.getCategory_name() }</div>
 						</a>
 		  	 		</div>
 				</c:forEach>
