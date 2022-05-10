@@ -381,6 +381,44 @@ public class MemberDAO {
 		
 	}//nonMemberId() end 
 	
-	
+	// ajax로 멤버 이름에 맞는 멤버 정보를 가져오는 메서드
+	public String getMemberInfoAjax(String name) {
+		
+		String result = "";
+		
+		try {
+			openConn();
+			
+			sql = "select * from apc_member where mem_name = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, name);
+			
+			rs = pstmt.executeQuery();
+			
+			result += "<members>";
+			
+			if(rs.next()) {
+				
+				result += "<member>";
+				result += "<name>" + rs.getString("mem_name") + "</name>";
+				result += "<phone>" + rs.getString("phone") + "</phone>";
+				result += "<addr>" + rs.getString("addr") + "</addr>";
+				result += "</member>";
+				
+			}
+			
+			result += "</members>";
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return result;
+	}  // getMemberInfoAjax() 메서드 end
 	
 }
