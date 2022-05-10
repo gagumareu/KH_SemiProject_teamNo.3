@@ -93,7 +93,7 @@ public class CategoryDAO {
 		try {
 			openConn();
 			
-			sql = "select * from apc_category order by category_no";
+			sql = "select * from apc_category order by category_code";
 			
 			pstmt = con.prepareStatement(sql);
 			

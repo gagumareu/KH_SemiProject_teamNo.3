@@ -20,7 +20,7 @@ public class AdminProductsDeleteAction implements Action {
 		// 넘어온 번호에 해당하는 상품을 삭제하는 비즈니스 로직.
 		
 		//이미지 삭제하기
-		String saveFolder="C:\\Users\\jsjo5\\git\\KH_SemiProjeckt_teamNo3_da\\web_project\\WebContent\\image_products";
+		String saveFolder="C:\\Users\\JUNGHWAN\\git\\SemiProject_teamNo.3\\web_project\\WebContent\\image_products";
 		
 		String pimage = request.getParameter("image");
 		
@@ -32,6 +32,8 @@ public class AdminProductsDeleteAction implements Action {
 		
 		
 		int product_no = Integer.parseInt(request.getParameter("no").trim());
+		
+		System.out.println("produc_delte >> " + product_no);
 		
 		ProductsDAO dao = ProductsDAO.getInstance();
 		

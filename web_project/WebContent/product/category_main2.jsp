@@ -114,7 +114,7 @@
 		   			<div class="content">
 		    			<a href="<%=request.getContextPath() %>/product_list.do?code=${dto.getCategory_code() } ">
 
-							<img class="content_image" alt="" src="upload/${dto.getCategory_image() }" width="100%" >
+							<img class="content_image" alt="" src="image_category/${dto.getCategory_image() }" width="100%" >
 						
 							<span class="category_name">
 								${dto.getCategory_name() }

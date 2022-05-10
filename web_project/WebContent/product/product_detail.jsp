@@ -54,9 +54,9 @@
 	
 	
 	.product_contents{
-		flex: 1;
+		
 		display: grid;
-	 	grid-template-column: 200px 100%;		
+	 	grid-template-columns: 200px 80%;		
 	 	
 		
 
@@ -77,7 +77,7 @@
 	}
 	
 	.product_images {
-		width: 50%;
+		width: 46%;
 		grid-column: 2;
 		place-self: center;
 	}
@@ -300,7 +300,7 @@
 			
 			<div class="product_images">
 			
-					<img alt="" src="<%=request.getContextPath() %>/upload/${dto.getPimage() }">
+					<img alt="" src="<%=request.getContextPath() %>/image_products/${dto.getPimage() }">
 					
 			</div><!-- product_images end -->
 	
