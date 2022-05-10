@@ -32,6 +32,9 @@ insert into apc_qa values (1, 'ETC', 'hong', '질문있어요', '질문질문', 
 insert into apc_qa values (2, 'IQ', 'choi', '니트관련', '니트가 많이 까실거리나요?', 2, '1111', default, sysdate, '', 2, 0, 0);
 insert into apc_qa values (3, 'IQ', 'funfun', '티셔츠 사이즈', '아내가 55사이즈인데 어떤사이즈를 구매해야하죠?', 1, '1111', default, sysdate, '', 3, 0, 0);
 insert into apc_qa values (4, 'ETC', 'hong', '적립금 사용기한', '적립금 사용기한이 어떻게 되나요?', '', '1111', default, sysdate, '', 4, 0, 0);
+
+
+-- apc_qa 데이터
 insert into apc_qa 
 values (5, 'DEL', 'apcceo', '배송문의', '4월28일에 주문했는데 배송일정이 어떻게되나요? 빨리보내주세요', 2, '1111', default, sysdate, '', 5, 0, 0);
 insert into apc_qa 
