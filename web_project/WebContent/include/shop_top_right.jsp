@@ -56,7 +56,7 @@
 	<div id="right_menu">
 		<ul>
 			<li class="cart"><a href="<%=request.getContextPath()%>/#"><img src="images/icon-bag.svg" width="12px"> 장바구니</a></li>
-			<li><a href="#">내계정/로그인</a></li>
+			<li><a href="<%=request.getContextPath() %>/product/LoginMain.jsp">내계정/로그인</a></li>
 			<li>&nbsp;</li>
 			<li><a href="#">South Korea</a></li>
 			<li><a href="#">뉴스레터</a></li>
