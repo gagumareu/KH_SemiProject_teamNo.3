@@ -30,7 +30,7 @@ public class ProductListAction implements Action {
 		request.setAttribute("productList", dto);
 		request.setAttribute("fullCode", fullCode);
 		
-		// title dao 
+		// 상단 카테고리 title  
 		CategoryDAO cDao = CategoryDAO.getInstance();	
 		CategoryDTO ctitleCode = cDao.getCategoryTitle(fullCode);		
 		CategoryDTO ltitleCode = cDao.getListTitle(fullCode);				
