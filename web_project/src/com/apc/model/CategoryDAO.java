@@ -370,63 +370,188 @@ public class CategoryDAO {
 	} // getCategory() end
 
 
-	public List<CategoryDTO> getCategory(){
+//	public List<CategoryDTO> getCategory(){
+//	
+//	List<CategoryDTO> list = new ArrayList<CategoryDTO>();
+//
+//	try {
+//		openConn();
+//		
+//		sql = "select * from apc_category where category_code like ? "
+//				+ " order by category_code";
+//		
+//		pstmt = con.prepareStatement(sql);
+//		
+//		pstmt.setString(1, "__000000");
+//	
+//		rs = pstmt.executeQuery();
+//		
+//		while(rs.next()) {
+//			
+//			CategoryDTO dto = new CategoryDTO();
+//			
+//			dto.setCategory_no(rs.getInt("category_no"));
+//			dto.setCategory_code(rs.getString("category_code"));
+//			dto.setCategory_name(rs.getString("category_name"));
+//			dto.setCategory_image(rs.getString("category_image"));
+//				
+//				list.add(dto);
+//			}
+//			
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}finally {
+//			closeConn(rs, pstmt, con);
+//		}
+//		
+//		return list;
+//		
+//		
+//	} // getCategory() end
+//
+//
+//	public List<CategoryDTO> get2ndCategory(String code){
+//		
+//		List<CategoryDTO> list = new ArrayList<CategoryDTO>();
+//		
+//		
+//		try {
+//			
+//			openConn();
+//			
+//			sql = "select * from apc_category where category_code like ? "
+//					+ " and category_code like ? and category_code not like ?"
+//					+ " order by category_code desc";
+//			
+//			pstmt = con.prepareStatement(sql);
+//			pstmt.setNString(1, code+"%");
+//			pstmt.setString(2, "__000000");
+//			pstmt.setString(3, "_0000000");
+//			
+//			rs = pstmt.executeQuery();
+//			
+//			while(rs.next()) {
+//				
+//				CategoryDTO dto = new CategoryDTO();
+//				
+//				dto.setCategory_no(rs.getInt("category_no"));
+//				dto.setCategory_code(rs.getString("category_code"));
+//				dto.setCategory_name(rs.getString("category_name"));
+//				dto.setCategory_image(rs.getString("category_image"));
+//				list.add(dto);
+//				
+//
+//			}
+//			
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}finally {
+//			closeConn(rs, pstmt, con);
+//		}
+//		return list;
+//		
+//	} // get2ndCategory() end 
+//	
+//	
+//	
+//	public List<CategoryDTO> get3rdCategory(String code){
+//		// 넘어온 코드 >> 남,녀 카테고리일 경우 1 and 2
+//		//          >> 골프일 경우 3w0.., 3m0.., 3a0..
+//		
+//		
+//		List<CategoryDTO> list = new ArrayList<CategoryDTO>();
+//		
+//		if(code.length() > 1) {  // 골프 3w0.., 3m0.., 3a0..인 경우
+//			
+//			try {
+//				
+//				openConn();
+//				
+//				sql ="select * from apc_category where category_code like ? "
+//						+ " and category_code not like ? and category_code not like ? ";
+//				
+//				pstmt = con.prepareStatement(sql);
+//				
+//				// 골프 카테고리 목록 불러오기 (상품 목록이 아닌 품목은 제외시키기)
+//				pstmt.setString(1, code.substring(0, 2)+"%"); 
+//				pstmt.setString(2, "_0000000");
+//				pstmt.setString(3, "__000000");
+//				
+//				rs = pstmt.executeQuery();
+//				
+//				while(rs.next()) {
+//					
+//					CategoryDTO dto = new CategoryDTO();
+//					
+//					dto.setCategory_no(rs.getInt("category_no"));
+//					dto.setCategory_code(rs.getString("category_code"));
+//					dto.setCategory_name(rs.getString("category_name"));
+//					dto.setCategory_image(rs.getString("category_image"));
+//					list.add(dto);
+//
+//				}
+//				
+//			} catch (SQLException e) {
+//				e.printStackTrace();
+//			}finally {
+//				closeConn(rs, pstmt, con);
+//			}
+//			
+//
+//		}else if(code.length() == 1) {  // code 가 한자린 경우 (남/녀) 2nd category 없는 품목인 경우
+//			
+//			
+//			try {
+//				openConn();
+//				
+//				sql ="select * from apc_category where category_code like ?"
+//						+ " and category_code not like ?";
+//				
+//				pstmt = con.prepareStatement(sql);
+//				
+//				pstmt.setString(1, code+"%");
+//				pstmt.setString(2, "_0000000");
+//				
+//				rs = pstmt.executeQuery();
+//				
+//				while(rs.next()) {
+//					
+//					CategoryDTO dto = new CategoryDTO();
+//					
+//					dto.setCategory_no(rs.getInt("category_no"));
+//					dto.setCategory_code(rs.getString("category_code"));
+//					dto.setCategory_name(rs.getString("category_name"));
+//					dto.setCategory_image(rs.getString("category_image"));
+//					list.add(dto);					
+//				}
+//				
+//			} catch (SQLException e) {
+//				e.printStackTrace();
+//			}finally {
+//				closeConn(rs, pstmt, con);
+//			}
+//	
+//		}
+//		
+//		return list;
+//		
+//	} // get3rdCategory() end
 	
-	List<CategoryDTO> list = new ArrayList<CategoryDTO>();
-
-	try {
-		openConn();
-		
-		sql = "select * from apc_category where category_code like ? "
-				+ " order by category_code";
-		
-		pstmt = con.prepareStatement(sql);
-		
-		pstmt.setString(1, "__000000");
 	
-		rs = pstmt.executeQuery();
-		
-		while(rs.next()) {
-			
-			CategoryDTO dto = new CategoryDTO();
-			
-			dto.setCategory_no(rs.getInt("category_no"));
-			dto.setCategory_code(rs.getString("category_code"));
-			dto.setCategory_name(rs.getString("category_name"));
-			dto.setCategory_image(rs.getString("category_image"));
-				
-				list.add(dto);
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			closeConn(rs, pstmt, con);
-		}
-		
-		return list;
-		
-		
-	} // getCategory() end
-
-
-	public List<CategoryDTO> get2ndCategory(String code){
+	//카테고리 대분류(Women,Men, Golf등등) 불러오는 메서드
+	public List<CategoryDTO> getCategory() {
 		
 		List<CategoryDTO> list = new ArrayList<CategoryDTO>();
 		
-		
 		try {
-			
 			openConn();
 			
-			sql = "select * from apc_category where category_code like ? "
-					+ " and category_code like ? and category_code not like ?"
-					+ " order by category_code desc";
+			sql="select * from apc_category where category_code like ? "
+					+" order by category_code";
 			
-			pstmt = con.prepareStatement(sql);
-			pstmt.setNString(1, code+"%");
-			pstmt.setString(2, "__000000");
-			pstmt.setString(3, "_0000000");
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, "_0000000");
 			
 			rs = pstmt.executeQuery();
 			
@@ -440,56 +565,93 @@ public class CategoryDAO {
 				dto.setCategory_image(rs.getString("category_image"));
 				list.add(dto);
 				
-
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			closeConn(rs, pstmt, con);
 		}
+		
 		return list;
+	}//getCategory() end 
 		
-	} // get2ndCategory() end 
-	
-	
-	
-	public List<CategoryDTO> get3rdCategory(String code){
-		// 넘어온 코드 >> 남,녀 카테고리일 경우 1 and 2
-		//          >> 골프일 경우 3w0.., 3m0.., 3a0..
-		
+	//2nd category 가져오기 (main->카테고리 눌렀을때 나오는 카테고리들) 
+	public List<CategoryDTO> get2ndCategory(String code) {
 		
 		List<CategoryDTO> list = new ArrayList<CategoryDTO>();
 		
-		if(code.length() > 1) {  // 골프 3w0.., 3m0.., 3a0..인 경우
+		try {
+			openConn();
+			
+			sql="select * from apc_category where category_code like ? "
+					+ " and category_code like ? and category_code not like ? "
+					+ " order by category_code desc ";
+					
+					
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, code+"%");
+			pstmt.setString(2, "__000000");
+			pstmt.setString(3, "_0000000");
+			
+			rs = pstmt.executeQuery();
+
+			while(rs.next()) {
+
+				CategoryDTO dto = new CategoryDTO();
+
+				dto.setCategory_no(rs.getInt("category_no"));
+				dto.setCategory_code(rs.getString("category_code"));
+				dto.setCategory_name(rs.getString("category_name"));
+				dto.setCategory_image(rs.getString("category_image"));
+				list.add(dto);
+				
+				
+			}
+
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return list;
+	}//get2ndcateogry() end
+		
+		
+	//3rd category 가져오기 - 2nd category없이 1st와 3rd category만 가졌을 경우
+	public List<CategoryDTO> get3rdCategory(String code) {
+	//WOMEN, MEN에만 해당 
+		
+		List<CategoryDTO> list = new ArrayList<CategoryDTO>();
+		
+		
+		if(code.length()>1) {//fullcode로 넘어온 경우 
 			
 			try {
-				
 				openConn();
 				
-				sql ="select * from apc_category where category_code like ? "
-						+ " and category_code not like ? and category_code not like ? ";
+				sql="select * from apc_category where category_code like ? "
+						+ " and category_code not like ? ";
 				
-				pstmt = con.prepareStatement(sql);
+				pstmt=con.prepareStatement(sql);
 				
-				// 골프 카테고리 목록 불러오기 (상품 목록이 아닌 품목은 제외시키기)
-				pstmt.setString(1, code.substring(0, 2)+"%"); 
-				pstmt.setString(2, "_0000000");
-				pstmt.setString(3, "__000000");
+				pstmt.setString(1, code.substring(0, 2)+"%");
+				pstmt.setString(2, "__000000");
 				
 				rs = pstmt.executeQuery();
-				
+
 				while(rs.next()) {
-					
+
 					CategoryDTO dto = new CategoryDTO();
-					
+
 					dto.setCategory_no(rs.getInt("category_no"));
 					dto.setCategory_code(rs.getString("category_code"));
 					dto.setCategory_name(rs.getString("category_name"));
 					dto.setCategory_image(rs.getString("category_image"));
+					
 					list.add(dto);
-
 				}
 				
 			} catch (SQLException e) {
@@ -498,32 +660,32 @@ public class CategoryDAO {
 				closeConn(rs, pstmt, con);
 			}
 			
-
-		}else if(code.length() == 1) {  // code 가 한자린 경우 (남/녀) 2nd category 없는 품목인 경우
 			
+		}else if(code.length() == 1) {//code가 한자리수로 넘어온 경우(2nd category가 없을경우)
 			
 			try {
 				openConn();
 				
-				sql ="select * from apc_category where category_code like ?"
-						+ " and category_code not like ?";
+				sql="select * from apc_category where category_code like ? "
+						+ " and category_code not like ? ";
 				
-				pstmt = con.prepareStatement(sql);
+				pstmt=con.prepareStatement(sql);
 				
 				pstmt.setString(1, code+"%");
 				pstmt.setString(2, "_0000000");
 				
 				rs = pstmt.executeQuery();
-				
+
 				while(rs.next()) {
-					
+
 					CategoryDTO dto = new CategoryDTO();
-					
+
 					dto.setCategory_no(rs.getInt("category_no"));
 					dto.setCategory_code(rs.getString("category_code"));
 					dto.setCategory_name(rs.getString("category_name"));
 					dto.setCategory_image(rs.getString("category_image"));
-					list.add(dto);					
+					
+					list.add(dto);
 				}
 				
 			} catch (SQLException e) {
@@ -531,12 +693,15 @@ public class CategoryDAO {
 			}finally {
 				closeConn(rs, pstmt, con);
 			}
-	
+			
 		}
 		
 		return list;
-		
-	} // get3rdCategory() end
+	}//get3rdcategory(String code) end 
+	
+	
+	
+	
 	
 	
 	// 상단 카테고리 navBar 
@@ -553,7 +718,7 @@ public class CategoryDAO {
 			
 			pstmt = con.prepareStatement(sql);
 			
-			pstmt.setString(1, code.substring(0, 2)+"%");
+			pstmt.setString(1, code.substring(0, 1)+"%");
 			
 			rs = pstmt.executeQuery();
 			
@@ -614,7 +779,43 @@ public class CategoryDAO {
 	} //getListTitle() end
 	
 
-
+// *************** 이슬님 ******************
+	
+	//코드의 상위 카테고리 정보를 가져오는 메서드
+	public CategoryDTO getUpperCategory(String fullcode) {
+		
+		CategoryDTO dto = new CategoryDTO();
+		try {
+			openConn();
+			
+			sql="select * from apc_category where category_code like ?"
+					+ " and category_code like ? ";
+			pstmt=con.prepareStatement(sql);
+			
+			pstmt.setString(1, fullcode.substring(0,2)+"%");
+			pstmt.setNString(2, "__000000");
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				dto.setCategory_no(rs.getInt("category_no"));
+				dto.setCategory_code(rs.getString("category_code"));
+				dto.setCategory_name(rs.getString("category_name"));
+				dto.setCategory_image(rs.getString("category_image"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return dto;
+	}//getUpperCategory() end 
+		
+		
+		
 
 	
 

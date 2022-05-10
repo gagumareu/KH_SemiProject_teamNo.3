@@ -85,18 +85,26 @@
 	<c:set var="ltitleCode" value="${ltitleCode }"/>
 	<c:set var="ctitleCode" value="${ctitleCode }"/>
 	<c:set var="fullCode" value="${fullCode }"/>
-	
+	<c:set var="code1" value="${code1 }"/>
 	
 	<div class="products_wrapper">
 	
 		<jsp:include page="/include/shop_top.jsp"/>
 		<jsp:include page="/include/shop_top_right.jsp"/>
 	
-	
 		<div class="apcTitle">
-			<a href="<%=request.getContextPath() %>/index.jsp">A.P.C.</a>
-			<a href="<%=request.getContextPath() %>/category.do?code=${ctitleCode.getCategory_code() }">${ctitleCode.getCategory_name() }</a>
-			/<span>${ltitleCode.getCategory_name() }</span> 
+			<a href="<%=request.getContextPath() %>/index.jsp">A.P.C.</a> <a href="<%=request.getContextPath() %>/category.do?code=${ctitleCode.getCategory_code() }">${ctitleCode.getCategory_name() }</a> / <span>${ltitleCode.getCategory_name() }</span>
+			
+			<!--  
+			<c:if test="${code1 != 3 } ">
+				<a href="<%=request.getContextPath() %>/category.do?code=${ctitleCode.getCategory_code() }">${ctitleCode.getCategory_name() }</a> / <span>${ltitleCode.getCategory_name() }</span>
+			</c:if>
+			
+			<c:if test="${code1 == 3 }">
+				<a href="<%=request.getContextPath() %>/category.do?code=${ctitleCode.getCategory_code() }">${ctitleCode.getCategory_name() }</a> / <span>${ltitleCode.getCategory_name() }</span>
+			</c:if>
+			-->
+			
 		</div>
 		
 			<div class="Products_list">

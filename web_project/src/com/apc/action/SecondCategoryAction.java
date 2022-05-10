@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.apc.controller.Action;
 import com.apc.controller.ActionForward;
@@ -22,11 +23,13 @@ public class SecondCategoryAction implements Action {
 		String code = fullcode.substring(0, 1); // 첫 번째 자리만 뽑기
 		String code2 = fullcode.substring(1, 2); // 두 번째 자리만 뽑기
 		
-		System.out.println("main2 >>> " +fullcode);
 		
+		String second = null; //2nd category 이름 
+
 		CategoryDAO dao =CategoryDAO.getInstance();
 				
 		List<CategoryDTO> list = null;
+		
 		
 		if(code2.equals("0")) { // 남녀 카테고리 에서 넘어온 코드 
 			
@@ -38,10 +41,26 @@ public class SecondCategoryAction implements Action {
 			
 		}
 		
+		if(code2.equalsIgnoreCase("W")) {
+			second="WOMEN";
+		}else if(code2.equalsIgnoreCase("M")) {
+			second="MEN";
+		}else if(code2.equalsIgnoreCase("A")) {
+			second="ACC";
+		}
+
+		
+		System.out.println("code2>>>"+code2);
+		System.out.println("second>>>"+second);
+		
+		HttpSession productSession = request.getSession();
+		
 		ActionForward forward = new ActionForward();
 		
 		if(list.size() == 0) {
 			
+			productSession.setAttribute("second", second);
+
 			forward.setRedirect(true);
 			forward.setPath("product_list.do?code="+fullcode);
 			
@@ -49,10 +68,10 @@ public class SecondCategoryAction implements Action {
 			
 			CategoryDTO ctitleCode = dao.getCategoryTitle(fullcode);
 
-			request.setAttribute("ctitleCode", ctitleCode);
+			request.setAttribute("ctitleCode", ctitleCode);  //남녀 페이지 상단 카테고리 타이틀 코드(정환)
 			request.setAttribute("List", list);
-			request.setAttribute("code", fullcode); // 남녀 : 100.., 200,,
-													// 골프 : 3w00.., 3m00.., 3a00..
+			request.setAttribute("code", fullcode); 
+													
 			forward.setRedirect(false);
 			forward.setPath("product/category_main2.jsp");
 		}
