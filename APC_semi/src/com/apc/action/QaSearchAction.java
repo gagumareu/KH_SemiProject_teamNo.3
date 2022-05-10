@@ -19,8 +19,8 @@ public class QaSearchAction implements Action {
 		//qa_list.jsp에서 검색한 정보를 받아 DB에서 조회하여
 		//view page에 전달하는 비즈니스 로직 
 		
-		String search_field = request.getParameter("search_field");
-		String search_word = request.getParameter("search_word");
+		String search_field = request.getParameter("search_field").trim();
+		String search_word = request.getParameter("search_word").trim();
 		
 		int rowsize = 3;
 		int block = 3;

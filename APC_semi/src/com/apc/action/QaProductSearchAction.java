@@ -46,8 +46,8 @@ public class QaProductSearchAction implements Action {
 		int endBlock = (((page-1)/ block)*block)+block; 
 		
 		
-		String search_field = request.getParameter("search_field"); //제품명 또는 카테고리
-		String search_word = request.getParameter("search_word");
+		String search_field = request.getParameter("search_field").trim(); //제품명 또는 카테고리
+		String search_word = request.getParameter("search_word").trim();
 		
 		ProductDAO dao = ProductDAO.getInstance();
 		

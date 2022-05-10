@@ -679,8 +679,9 @@ public class QaDAO {
 				
 				count = rs.getInt(1)+1;
 			}
+			System.out.println("dto.getQa_pno_fk():"+dto.getQa_pno_fk());
 			
-			
+			if(dto.getQa_pno_fk()>0) {
 			sql="insert into apc_qa values(?,?,?,?,?,?,?, default, sysdate, '', ?, 0, 0)";
 			pstmt=con.prepareStatement(sql);
 			
@@ -694,7 +695,20 @@ public class QaDAO {
 			pstmt.setInt(8, count);
 			
 			result=pstmt.executeUpdate();
-			
+			} else {
+				sql="insert into apc_qa values(?,?,?,?,?,'',?, default, sysdate, '', ?, 0, 0)";
+				pstmt=con.prepareStatement(sql);
+				
+				pstmt.setInt(1, count);
+				pstmt.setString(2, dto.getQa_category());
+				pstmt.setString(3, dto.getQa_memid());
+				pstmt.setString(4, dto.getQa_title());
+				pstmt.setString(5, dto.getQa_cont());
+				pstmt.setString(6, dto.getQa_pwd());
+				pstmt.setInt(7, count);
+				
+				result=pstmt.executeUpdate();
+			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

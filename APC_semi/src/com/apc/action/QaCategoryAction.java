@@ -51,6 +51,12 @@ public class QaCategoryAction implements Action {
 		}
 		
 		List<QaDTO> list = dao.getQaList(code, page, rowsize);
+		ActionForward forward = new ActionForward();
+		
+		if(code.equalsIgnoreCase("all")) {
+			forward.setRedirect(true);
+			forward.setPath("qa_list.do");
+		}else {
 		
 		request.setAttribute("List", list);
 
@@ -63,11 +69,12 @@ public class QaCategoryAction implements Action {
 		request.setAttribute("endNo", endNo);
 		request.setAttribute("startBlock", startBlock);
 		request.setAttribute("endBlock", endBlock);
+		request.setAttribute("code", code);
 		
-		ActionForward forward = new ActionForward();
+	
 		forward.setRedirect(false);
 		forward.setPath("board/qa_list_category.jsp");
-		
+		}
 		return forward;
 	}
 

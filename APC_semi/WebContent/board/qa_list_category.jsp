@@ -136,12 +136,55 @@
 		<div class="qa_body">
 			<form class="qa_category" name="frm" method="post">
 				<select id="code" name="qa_class" onchange="qa_category()">
-					<option value="all" selected>전체</option>
-					<option value="CR">취소/환불</option>
-					<option value="IQ">상품문의</option>
-					<option value="DEL">배송</option>
-					<option value="SB">반품</option>
-					<option value="ETC">기타</option>
+				<c:choose>
+					<c:when test="${code == 'cr' }">
+					<option value="all" >전체</option>
+					<option value="cr" selected>취소/환불</option>
+					<option value="iq">상품문의</option>
+					<option value="del">배송</option>
+					<option value="sb">반품</option>
+					<option value="etc">기타</option>
+					</c:when>
+					<c:when test="${code == 'iq' }">
+					<option value="all" >전체</option>
+					<option value="cr" >취소/환불</option>
+					<option value="iq" selected>상품문의</option>
+					<option value="del">배송</option>
+					<option value="sb">반품</option>
+					<option value="etc">기타</option>
+					</c:when>
+					<c:when test="${code == 'del' }">
+					<option value="all" >전체</option>
+					<option value="cr" >취소/환불</option>
+					<option value="iq">상품문의</option>
+					<option value="del" selected>배송</option>
+					<option value="sb">반품</option>
+					<option value="etc">기타</option>
+					</c:when>
+					<c:when test="${code == 'sb' }">
+					<option value="all" >전체</option>
+					<option value="cr" >취소/환불</option>
+					<option value="iq">상품문의</option>
+					<option value="del">배송</option>
+					<option value="sb" selected>반품</option>
+					<option value="etc">기타</option>
+					</c:when>
+					<c:when test="${code == 'etc' }">
+					<option value="all" >전체</option>
+					<option value="cr" >취소/환불</option>
+					<option value="iq">상품문의</option>
+					<option value="del">배송</option>
+					<option value="sb">반품</option>
+					<option value="etc" selected>기타</option>
+					</c:when>
+				</c:choose>
+				<!-- <option value="all" selected>전체</option>
+					<option value="cr">취소/환불</option>
+					<option value="iq">상품문의</option>
+					<option value="del">배송</option>
+					<option value="sb">반품</option>
+					<option value="etc">기타</option> -->
+					
 			</select>
 			</form>
 			<table class="table table-hover" align="center">
@@ -210,10 +253,30 @@
 						
 					<!--                       제목                                               -->	
 						<td width="40%">
+						<%if(dto.getQa_indent() != 0 ){
+							for(int k =1; k<= dto.getQa_indent(); k++){
+						%>	
+							└ 
+						<% 	}//for문
+						%>	
+						<a href="<%=request.getContextPath() %>/qa_content.do?num=<%=dto.getQa_no()%>&page=${page}">답글:<%=dto.getQa_title() %></a>
+						<% }else{%>
 						<a href="<%=request.getContextPath() %>/qa_content.do?num=<%=dto.getQa_no()%>&page=${page}"><%=dto.getQa_title() %></a>
+						<% }%>
+						
 						</td>
 					<!--                       작성자                                              -->		
-						<td width="15%" align="center"><%=dto.getQa_memid() %></td>
+						<td width="15%" align="center">
+						<%if(!(dto.getQa_memid().equals("admin"))){//관리자가 아니라면 
+							if(dto.getQa_memid().length() > 1){
+						%>	
+								<%=dto.getQa_memid().substring(0,2) %>****
+						<%	}
+						}else{//관리자면
+						%>	
+							관리자
+						<% } %>
+						</td>
 					<!--                       작성일자                                              -->		
 						<td width="15%" align="center"><%=dto.getQa_date().substring(0, 10) %></td>
 					<!--                       조회수                                             -->		
@@ -236,12 +299,12 @@
 			<div class="qa_paging" align="center">
 			<c:if test="${page > block }">
 				<!-- 현재페이지가 block(3)보다 큰경우,  예를들어 현재페이지가 4일 경우  -->
-				<a href="<%=request.getContextPath()%>/qa_category.do?page=1">
+				<a href="<%=request.getContextPath()%>/qa_category.do?page=1&code=${code}">
 				<img src="e_image/btn_first.png" alt="btn_first">
 				</a>
 				<!-- 1페이지로 이동 (최초페이지로 이동)-->
 				<a
-					href="<%=request.getContextPath() %>/qa_category.do?page=${startBlock-1}">
+					href="<%=request.getContextPath() %>/qa_category.do?page=${startBlock-1}&code=${code}">
 					<img src="e_image/btn_prev.png" alt="btn_prev">
 				</a>
 				<!-- 3페이지로 이동(이전페이지로 이동)  -->
@@ -250,21 +313,21 @@
 				<c:if test="${i == page }">
 					<!-- startBlock == page, 현재페이지라면 -->
 					<b><a
-						href="<%=request.getContextPath()%>/qa_category.do?page=${i}">[${i }]</a></b>
+						href="<%=request.getContextPath()%>/qa_category.do?page=${i}&code=${code}">[${i }]</a></b>
 				</c:if>
 				<c:if test="${i != page }">
 					<!-- startBlock != page, 현재재페이지가 아니라면 -->
-					<a href="<%=request.getContextPath()%>/qa_category.do?page=${i}">[${i }]</a>
+					<a href="<%=request.getContextPath()%>/qa_category.do?page=${i}&code=${code}">[${i }]</a>
 				</c:if>
 			</c:forEach>
 
 			<c:if test="${endBlock < allPage }">
 				<!-- endBlock이 전체페이지 수보다 작은경우, 예를 들어 endBlock이 6페이지인경우 -->
-				<a href="qa_category.do?page=${endBlock + 1 }">
+				<a href="qa_category.do?page=${endBlock + 1 }&code=${code}">
 				<img src="e_image/btn_next.png" alt="btn_next">
 				</a>
 				<!-- 7페이지로 이동(다음 페이지로 이동) -->
-				<a href="qa_category.do?page=${allPage }">
+				<a href="qa_category.do?page=${allPage }&code=${code}">
 				<img src="e_image/btn_last.png"alt="btn_last">
 				</a>
 				<!-- 마지막페이지로 이동  -->

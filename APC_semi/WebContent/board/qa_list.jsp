@@ -136,12 +136,14 @@
 		<div class="qa_body">
 			<form class="qa_category" name="frm" method="post">
 				<select id="code" name="qa_class" onchange="qa_category()">
-					<option value="all" selected>전체</option>
+				
+				<option value="all" selected>전체</option>
 					<option value="cr">취소/환불</option>
 					<option value="iq">상품문의</option>
 					<option value="del">배송</option>
 					<option value="sb">반품</option>
 					<option value="etc">기타</option>
+					
 			</select>
 			</form>
 			<table class="table table-hover" align="center">
@@ -223,7 +225,17 @@
 						
 						</td>
 					<!--                       작성자                                              -->		
-						<td width="15%" align="center"><%=dto.getQa_memid() %></td>
+						<td width="15%" align="center">
+						<%if(!(dto.getQa_memid().equals("admin"))){//관리자가 아니라면 
+							if(dto.getQa_memid().length() > 1){
+						%>	
+								<%=dto.getQa_memid().substring(0,2) %>****
+						<%	}
+						}else{//관리자면
+						%>	
+							관리자
+						<% } %>
+						</td>
 					<!--                       작성일자                                              -->		
 						<td width="15%" align="center"><%=dto.getQa_date().substring(0, 10) %></td>
 					<!--                       조회수                                             -->		
@@ -243,6 +255,7 @@
 			</div><!-- class="qa_body" -->
 			<br>
 			
+			<c:if test="${empty code }">
 			<div class="qa_paging" align="center">
 			<c:if test="${page > block }">
 				<!-- 현재페이지가 block(3)보다 큰경우,  예를들어 현재페이지가 4일 경우  -->
@@ -280,6 +293,7 @@
 				<!-- 마지막페이지로 이동  -->
 			</c:if>
 		</div>
+		</c:if>
 		<br>
 		<div class="qa_search" align="center">
 			<form method="post" action="<%=request.getContextPath() %>/qa_search.do">
