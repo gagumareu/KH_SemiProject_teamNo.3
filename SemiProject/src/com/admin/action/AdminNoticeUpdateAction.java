@@ -16,12 +16,14 @@ public class AdminNoticeUpdateAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
 		int notice_no = Integer.parseInt(request.getParameter("no").trim());
+		int nowPage = Integer.parseInt(request.getParameter("page"));
 		
 		NoticeDAO dao = NoticeDAO.getInstance();
 		
-		NoticeDTO dto = dao.noticeContent(notice_no);
-		
+		NoticeDTO dto = dao.noticeContent(notice_no, 2);
+				
 		request.setAttribute("noticeCont", dto);
+		request.setAttribute("page", nowPage);
 		
 		ActionForward forward = new ActionForward();
 		

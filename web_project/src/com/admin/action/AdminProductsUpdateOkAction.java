@@ -25,7 +25,7 @@ public class AdminProductsUpdateOkAction implements Action {
 		// 수정 폼 페이지에서 넘어온 정보를 db에 저장하는 비즈니스 로직.
 		ProductsDTO dto = new ProductsDTO();
 		
-		String saveFolder="C:\\Users\\jsjo5\\git\\KH_SemiProjeckt_teamNo3_da\\web_project\\WebContent\\image_products";
+		String saveFolder="C:\\Users\\JUNGHWAN\\git\\SemiProject_teamNo.3\\web_project\\WebContent\\image_products";
 		
 		int fileSize=1024*1024*10;
 		

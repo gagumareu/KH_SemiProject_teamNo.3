@@ -6,7 +6,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 </head>
 <body>
 
@@ -18,25 +17,29 @@
         
         <form method="post" enctype="multipart/form-data"
 			action="<%=request.getContextPath() %>/admin_notice_update_ok.do">
-			
+						
         	<c:set var="dto" value="${noticeCont }" />
         	
         	<input type="hidden" name="n_no" value="${dto.getNotice_no() }">
+        	<input type="hidden" name = "page" value="${page}">
+
         	<table class="table table-bordered table-hover">
         		<tr>
         			<th>제목</th>
-        			<td><input name="n_title" value="${dto.getNotice_title() }"></td>
+        			<td><input name="n_title" value="${dto.getNotice_title() }"
+        									class="form-control" style="width:50%;"></td>
 				</tr>
 				
 				<tr>
 					<th>작성자</th>
-					<td><input name="n_writer" value="${dto.getNotice_writer() }" readonly></td>
+					<td><input name="n_writer" value="${dto.getNotice_writer() }" readonly
+							class="form-control" style="width:150px;"></td>
 				</tr>
-				<% pageContext.setAttribute("newLineChar", "<br>"); %>
+				
 				<tr>
 					<th>글 내용</th>
 					
-					<td><textarea rows="7" cols="100" name="n_cont">${dto.getNotice_cont() }</textarea></td>
+					<td><textarea rows="7" cols="100" name="n_cont" class="form-control">${dto.getNotice_cont() }</textarea></td>
 				</tr>
 				
 				<tr>
@@ -52,7 +55,7 @@
 				
 				<tr>
 					<th>비밀빈호</th>
-					<td><input type="password" name="n_pwd"></td>
+					<td><input type="password" name="n_pwd" class="form-control" style="width:150px;"></td>
 				</tr>
 				
 				<tr>

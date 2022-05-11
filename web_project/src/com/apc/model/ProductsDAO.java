@@ -75,8 +75,11 @@ public class ProductsDAO {
 			}	
 	}//closeConn() end
 	
+	
+//****************************** 동아님********************************	
+	
 	//제품 전체 리스트 cap_products 테이블에서 가져오는 메서드
-	public List<ProductsDTO> getProductList(){
+	public List<ProductsDTO> getAdminProductList(){
 		
 		List<ProductsDTO> list = new ArrayList<ProductsDTO>();
 				
@@ -163,6 +166,7 @@ public class ProductsDAO {
 		return result;
 	}//prodcutsInsert() end
 	
+	
 	//해당번호에 해당하는 상세내역 가져오기
 	public ProductsDTO getProductCont(int no) {
 		
@@ -239,6 +243,7 @@ public class ProductsDAO {
 		}
 		return result;
 	}//prodcutsUpdate() end
+	
 	
 	//apc_products테이블에서 넘어온 번호에 해당하는 상품 삭제하는 메서드
 	public int productDelete(int no) {
@@ -509,21 +514,327 @@ public class ProductsDAO {
 		return list;
 			
 	}//searchBoardList() end
-}
+
+
+
+// ******************  정환  ******************************
+
+	public List<ProductsDTO> getShopProductList(String code){
+	
+		List<ProductsDTO> list = new ArrayList<ProductsDTO>();
+	
+		try {
+			
+			openConn();
+			
+			//sql = "select distinct pname from apc_products where pcategory_fk = ?";
+			
+			sql = "select * from apc_products where pno in (select min(pno) from apc_products group by pname)"
+					+ " and pcategory_fk = ? order by pno";
+	
+			
+			//sql = "select * from apc_products where pcategory_fk = ? order by pinputdate desc";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, code);
+		
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				ProductsDTO dto = new ProductsDTO();
+				
+				dto.setPno(rs.getInt("pno"));
+				dto.setPname(rs.getString("pname"));
+				dto.setPcategory_fk(rs.getString("pcategory_fk"));
+				dto.setPimage(rs.getString("pimage"));
+				dto.setPqty(rs.getInt("pqty"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setPsize(rs.getString("psize"));
+				dto.setPcolor(rs.getString("pcolor"));
+				dto.setPcontents(rs.getString("pcontents"));
+				dto.setMileage(rs.getInt("mileage"));
+				dto.setPinputdate(rs.getString("pinputdate"));
+				
+				list.add(dto);
+			}
+				
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return list;
+	} // apcProductWomenList() end
+
+	
+	// shop 상단 서치 창에서 이름 검색시 중복 제거 후 모든 제품 나열
+	public List<ProductsDTO> productSearch(String keyword){
+		
+		List<ProductsDTO> list = new ArrayList<ProductsDTO>();
+		
+		try {
+			
+			openConn();
+			
+			//sql ="select * from apc_products where pno in (select min(pno) from apc_products where upper(pname) like upper(?) "
+			//		+ " and lower(pname) like lower(?) order by pcategory_fk)";
+			
+			//sql ="select * from apc_products where pno in (select min(pno) "
+			//		+ " from apc_products where uppder(pname) like upper(?))";
+			
+			sql ="select * from apc_products where pno in (select min(pno) from apc_products where upper(pname) like upper(?))";  
+					
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, "%"+keyword+"%");
+			//pstmt.setString(2, "%"+keyword+"%");
+			
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				ProductsDTO dto = new ProductsDTO();
+				
+				dto.setPno(rs.getInt("pno"));
+				dto.setPname(rs.getString("pname"));
+				dto.setPcategory_fk(rs.getString("pcategory_fk"));
+				dto.setPimage(rs.getString("pimage"));
+				dto.setPqty(rs.getInt("pqty"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setPsize(rs.getString("psize"));
+				dto.setPcolor(rs.getNString("pcolor"));
+				dto.setPcontents(rs.getString("pcontents"));
+				dto.setMileage(rs.getInt("mileage"));
+				dto.setPinputdate(rs.getString("pinputdate"));
+				
+				list.add(dto);
+				
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			
+			closeConn(rs, pstmt, con);
+		}
+		
+		return list;
+		
+	} // productSearch() end
+
+
+	// 상세페이지에서 컬러 조회
+	public List<ProductsDTO> getColor(String name){
+		
+		List<ProductsDTO> list = new ArrayList<ProductsDTO>();
+		
+		
+		try {
+			
+			openConn();
+			
+			sql ="select distinct pcolor from apc_products where pname = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, name);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				ProductsDTO dto = new ProductsDTO();
+	
+				dto.setPcolor(rs.getString("pcolor"));
+				
+				list.add(dto);
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		return list;
+		
+		
+	} // getColor() end 
+	
+	
+
+	// 상세페이지에서 사이즈 조회
+	public List<ProductsDTO> getSize(String name){
+		
+		
+		List<ProductsDTO> list = new ArrayList<ProductsDTO>();
+		
+		
+		try {
+			openConn();
+			
+			//sql = "select distinct psize from apc_products where pname = ? order by psize";
+			
+			sql = "select distinct psize, pqty from apc_products where pname = ? order by psize";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, name);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				ProductsDTO dto = new ProductsDTO();
+				
+				dto.setPsize(rs.getString("psize"));
+				dto.setPqty(rs.getInt("pqty"));
+				list.add(dto);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return list;
+
+	} //getSize() end
+
+	
+	// 상세페이지에서 컬러 선택
+	public ProductsDTO colorChoose(String color, String name) {
+		
+		ProductsDTO dto = new ProductsDTO();
+		
+		int count = 0;
+	
+		try {
+			
+			openConn();
+			
+			sql ="select min(pno) from apc_products where pcolor = ? and pname = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, color);
+			pstmt.setString(2, name);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				count = rs.getInt(1);
+				
+			}
+			
+			System.out.println(count);
+			
+			sql ="select * from apc_products where pno = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, count);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				
+				dto.setPno(rs.getInt("pno"));
+				dto.setPname(rs.getString("pname"));
+				dto.setPcategory_fk(rs.getString("pcategory_fk"));
+				dto.setPimage(rs.getString("pimage"));
+				dto.setPqty(rs.getInt("pqty"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setPsize(rs.getString("psize"));
+				dto.setPcolor(rs.getNString("pcolor"));
+				dto.setPcontents(rs.getString("pcontents"));
+				dto.setMileage(rs.getInt("mileage"));
+				dto.setPinputdate(rs.getString("pinputdate"));
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return dto;
+		
+	} //colorChoose() end
+
+	
+	
+	//**********************  이슬님  ***********************
+	
+	//코드에 해당하는 제품리스트를 조회하는 메서드 
+	public List<ProductDTO> getProductList(String code) {
+	
+	List<ProductDTO> list = new ArrayList<ProductDTO>();
+	
+	try {
+		openConn();
+		
+		sql="select * from apc_products where pno in (select min(pno) from apc_products group by pname) "
+				+ " and pcategory_fk like ? order by pno desc";
+		
+		
+//				sql="select * from apc_products where pcategory_fk like ? "
+//						+ " order by pno desc " ;
+		
+		pstmt=con.prepareStatement(sql);
+		pstmt.setString(1, code+"%");
+		
+		rs = pstmt.executeQuery();
+		
+		while(rs.next()) {
+			
+			ProductDTO dto = new ProductDTO();
+			
+			dto.setPno(rs.getInt("pno"));
+			dto.setPname(rs.getString("pname"));
+			dto.setPcategory_fk(rs.getString("pcategory_fk"));
+			dto.setPimage(rs.getString("pimage"));
+			dto.setPqty(rs.getInt("pqty"));
+			dto.setPrice(rs.getInt("price"));
+			dto.setPsize(rs.getString("psize"));
+			dto.setPcolor(rs.getString("pcolor"));
+//					dto.setPicon(rs.getString("picon"));
+			dto.setPcontents(rs.getString("pcontents"));
+			dto.setMileage(rs.getInt("mileage"));
+			dto.setPinputdate(rs.getString("pinputdate"));
+			
+			list.add(dto);
+		}
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return list;
+	}//getProductList() end
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+} // 제일 끝 

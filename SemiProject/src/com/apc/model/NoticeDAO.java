@@ -213,7 +213,7 @@ public class NoticeDAO {
 	
 	
 	// 공지사항 상세내역 
-	public NoticeDTO noticeContent(int no) {
+	public NoticeDTO noticeContent(int no, int type) {
 		
 		NoticeDTO dto = new NoticeDTO();
 				
@@ -232,7 +232,13 @@ public class NoticeDAO {
 				dto.setNotice_no(rs.getInt("notice_no"));
 				dto.setNotice_writer(rs.getString("notice_writer"));
 				dto.setNotice_title(rs.getString("notice_title"));
-				dto.setNotice_cont(rs.getString("notice_cont"));
+				
+				if(type == 1) {
+					dto.setNotice_cont(rs.getString("notice_cont"));
+				}else {
+					dto.setNotice_cont(rs.getString("notice_cont").replace("<br>", "\n"));
+				}
+				
 				dto.setNotice_image(rs.getString("notice_image"));
 				dto.setNotice_pwd(rs.getString("notice_pwd"));
 				dto.setNotice_hit(rs.getInt("notice_hit"));
@@ -381,4 +387,227 @@ public class NoticeDAO {
 	}	// getNoticeCount() end 
 	
 	
+	// 검색한 내용에 해당하는 게시글 전체 수
+	public int getSearchCount(String search_field, String search_word) {
+		
+		int count = 0; 
+		
+		if(search_field.equals("title")) {
+
+			try {
+				openConn();
+	
+				sql = "select count(*) from apc_notice where notice_title like ? ";
+				
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, "%"+search_word+"%");
+	
+				rs = pstmt.executeQuery();
+	
+				if(rs.next()) {
+					count = rs.getInt(1);
+				}
+	
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				closeConn(rs, pstmt, con);
+			}
+			
+		}else if(search_field.equals("content")) {
+			
+			try {
+				openConn();
+
+				sql = "select count(*) from apc_notice where notice_cont like ? ";
+				
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, "%"+search_word+"%");
+
+				rs = pstmt.executeQuery();
+
+				if(rs.next()) {
+					count = rs.getInt(1);
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				closeConn(rs, pstmt, con);
+			}
+			
+		}else if(search_field.equals("title_content")) {
+			try {
+				openConn();
+
+				sql = "select count(*) from apc_notice where notice_title like ? "
+						+ " or notice_cont like ? ";
+				
+				pstmt=con.prepareStatement(sql);
+				
+				pstmt.setString(1, "%"+search_word+"%");
+				pstmt.setString(2, "%"+search_word+"%");
+
+				rs = pstmt.executeQuery();
+
+				if(rs.next()) {
+					count = rs.getInt(1);
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				closeConn(rs, pstmt, con);
+			}
+		}
+
+		return count;
+		
+	}	// getSearchCount() end 
+
+	
+	//검색한 내용에 해당하는 QA리스트 조회하는 메서드
+	public List<NoticeDTO> getSearchList(String search_field, String search_word, int page, int rowsize) {
+		
+		List<NoticeDTO> list = new ArrayList<NoticeDTO>();
+
+		//해당페이지에서 시작 번호 
+		int startNo = (page*rowsize) - (rowsize-1);
+
+		//해당페이지 마지막 번호
+		int endNo = (page*rowsize);
+		
+		if(search_field.equals("title")) {
+
+			try {
+					openConn();
+					
+					sql=" select * from "
+							+ " (select row_number() over (order by notice_no desc) rnum, "
+							+ " b.* from apc_notice b  where notice_title like ? ) "
+							+ " where rnum >= ? and rnum <= ? " ;
+					
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, "%"+search_word+"%");
+					pstmt.setInt(2, startNo);
+					pstmt.setInt(3, endNo);
+					
+					rs = pstmt.executeQuery();
+	
+					while(rs.next()) {
+						
+						NoticeDTO dto = new NoticeDTO();
+						
+						dto.setNotice_no(rs.getInt("notice_no"));
+						dto.setNotice_writer(rs.getString("notice_writer"));
+						dto.setNotice_title(rs.getString("notice_title"));
+						dto.setNotice_cont(rs.getString("notice_cont"));
+						dto.setNotice_image(rs.getString("notice_image"));
+						dto.setNotice_pwd(rs.getString("notice_pwd"));
+						dto.setNotice_hit(rs.getInt("notice_hit"));
+						dto.setNotice_date(rs.getString("notice_date"));
+						dto.setNotice_update(rs.getNString("notice_update"));
+						
+						list.add(dto);
+					}
+
+
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+					closeConn(rs, pstmt, con);
+				}
+			
+			}else if(search_field.equals("content")) {
+				
+				try {
+					openConn();
+					
+					sql="select * from "
+							+ " (select row_number() over (order by notice_no desc) rnum, "
+							+ " b.* from apc_notice b  where notice_cont like ? ) "
+							+ " where rnum >= ? and rnum <= ? " ;
+					
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, "%"+search_word+"%");
+					pstmt.setInt(2, startNo);
+					pstmt.setInt(3, endNo);
+					
+					rs = pstmt.executeQuery();
+
+					while(rs.next()) {
+						
+						NoticeDTO dto = new NoticeDTO();
+						
+						dto.setNotice_no(rs.getInt("notice_no"));
+						dto.setNotice_writer(rs.getString("notice_writer"));
+						dto.setNotice_title(rs.getString("notice_title"));
+						dto.setNotice_cont(rs.getString("notice_cont"));
+						dto.setNotice_image(rs.getString("notice_image"));
+						dto.setNotice_pwd(rs.getString("notice_pwd"));
+						dto.setNotice_hit(rs.getInt("notice_hit"));
+						dto.setNotice_date(rs.getString("notice_date"));
+						dto.setNotice_update(rs.getNString("notice_update"));
+						
+						list.add(dto);
+					}
+
+
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+					closeConn(rs, pstmt, con);
+				}
+				
+			}else if(search_field.equals("title_content")) {
+				
+				try {
+					openConn();
+					
+					sql="select * from "
+							+ " (select row_number() over (order by notice_no desc) rnum, "
+							+ " b.* from apc_notice b  "
+							+ " where notice_title like ? or notice_cont like ? ) "
+							+ " where rnum >= ? and rnum <= ? " ;
+					
+					pstmt=con.prepareStatement(sql);
+					pstmt.setString(1, "%"+search_word+"%");
+					pstmt.setString(2, "%"+search_word+"%");
+					pstmt.setInt(3, startNo);
+					pstmt.setInt(4, endNo);
+					
+					rs = pstmt.executeQuery();
+
+					while(rs.next()) {
+
+						NoticeDTO dto = new NoticeDTO();
+						
+						dto.setNotice_no(rs.getInt("notice_no"));
+						dto.setNotice_writer(rs.getString("notice_writer"));
+						dto.setNotice_title(rs.getString("notice_title"));
+						dto.setNotice_cont(rs.getString("notice_cont"));
+						dto.setNotice_image(rs.getString("notice_image"));
+						dto.setNotice_pwd(rs.getString("notice_pwd"));
+						dto.setNotice_hit(rs.getInt("notice_hit"));
+						dto.setNotice_date(rs.getString("notice_date"));
+						dto.setNotice_update(rs.getNString("notice_update"));
+						
+						list.add(dto);
+					}
+
+					rs.close();pstmt.close();con.close();
+
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+					closeConn(rs, pstmt, con);
+				}
+			}
+
+		return list;
+		
+	}	//getSearchList() end
+	
+	
+
 }

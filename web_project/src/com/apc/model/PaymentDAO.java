@@ -89,7 +89,7 @@ public class PaymentDAO {
 		try {
 			openConn();
 			
-			sql="select * form apc_payment  order by orderdate desc";
+			sql="select * form apc_payment order by orderdate desc";
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -163,4 +163,106 @@ public class PaymentDAO {
 		
 		
 	}
+	
+	// ***************** 이슬님 ****************
+	
+	//회원 별 구매리스트 불러오는 메서드
+	public List<PaymentDTO> getPayList(String id){
+		
+		List<PaymentDTO> list = new ArrayList<PaymentDTO>();
+		
+		try {
+			openConn();
+			
+			sql="select * from apc_payment where order_id = ? ";
+			pstmt=con.prepareStatement(sql);
+			
+			pstmt.setString(1, id);
+			
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				PaymentDTO dto = new PaymentDTO();
+				
+				dto.setOrder_no(rs.getInt("order_no"));
+				dto.setCartno_fk(rs.getInt("cartno_fk"));
+				dto.setOrder_id(rs.getString("order_id"));
+				dto.setPno_fk(rs.getInt("pno_fk"));
+				dto.setPname(rs.getString("pname"));
+				dto.setPqty(rs.getInt("pqty"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setTranscost(rs.getInt("transcost"));
+				dto.setPaytype(rs.getInt("paytype"));
+				dto.setOrderdate(rs.getString("orderdate"));
+				dto.setOrdername(rs.getString("ordername"));
+				dto.setOrderaddr(rs.getString("orderaddr"));
+				dto.setOrderphone(rs.getString("orderphone"));
+				
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return list;
+	}
+
+	
+	// ****************** 동찬님 *******************
+	
+	// 결제내역을 불러오는 메서드
+	public List<PaymentDTO> getPaymentInfo(String id) {
+		
+		List<PaymentDTO> list = new ArrayList<PaymentDTO>();
+		
+		try {
+			openConn();
+			
+			sql = "select * from apc_payment where order_id = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+			PaymentDTO dto = new PaymentDTO();
+			
+			dto.setOrder_no(rs.getInt("order_no"));;
+			dto.setCartno_fk(rs.getInt("cartno_fk"));
+			dto.setOrder_id(rs.getString("order_id"));
+			dto.setPno_fk(rs.getInt("pno_fk"));
+			dto.setPname(rs.getString("pname"));
+			dto.setPqty(rs.getInt("pqty"));
+			dto.setPrice(rs.getInt("price"));
+			dto.setTranscost(rs.getInt("transcost"));
+			dto.setPaytype(rs.getInt("paytype"));
+			dto.setOrderdate(rs.getString("orderdate"));
+			dto.setOrdername(rs.getString("ordername"));
+			dto.setOrderaddr(rs.getString("orderaddr"));
+			dto.setOrderphone(rs.getString("orderphone"));
+			
+			list.add(dto);
+			
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return list;
+	}  // getPaymentInfo() 메서드 end
+	
+	
+	
+	
+	
 }

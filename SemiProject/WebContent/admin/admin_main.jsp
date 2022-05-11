@@ -8,24 +8,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>A.P.C ADMIN PAGE</title>
+<style type="text/css">
+
+
+</style>
 </head>
 <body>
 
 	
  	<jsp:include page="../include/admin_top.jsp" />
         
-		<div class="col-sm-3 col-sm-offset-2">
+		<div class="col-sm-9 col-sm-offset-2">
 			<div class="page-header">공지사항</div>
+			
+	
+			
+			
+			
+			
 		</div>
-	         
-	    <div class="col-sm-3">
-	    	<div class="page-header">카테고리 관리</div>
-		</div>
-	      
-		<div class="col-sm-3">
-			<div class="page-header">제품관리</div>
-		</div>      
 	</div>
 
 
@@ -43,10 +44,6 @@
         </div>      
       </div>
     </div>
-
-	<footer class="container-fluid navbar-fixed-bottom col-sm-offset-2">
-		<p>하단바 영역</p>
-	</footer>
 
     
   </body>
