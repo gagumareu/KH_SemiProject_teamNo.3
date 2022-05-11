@@ -15,7 +15,7 @@
 	
 	<fieldset class="fieldset">
 		<legend>비밀번호 찾기</legend>
-		${memId }님의 비밀번호는 <span>${memPwd.substring(0, 4) } ****
+		${mem_Id }님의 비밀번호는 <span>${mem_Pwd.substring() } 
 		
 		</span> 입니다.
 	</fieldset>

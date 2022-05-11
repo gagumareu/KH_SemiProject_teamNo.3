@@ -23,7 +23,7 @@ public class ReviewWriteOkAction implements Action {
 		//review_write.jsp에서 받은 정보를 DB에 저장하는 비즈니스로직
 		
 		//파일 저장경로
-		String saveFolder = "C:\\NCS\\workspace(jsp)\\APC_semi\\WebContent\\upload";
+		String saveFolder = "C:\\Users\\JUNGHWAN\\git\\SemiProject_teamNo.3\\web_project\\WebContent\\upload";
 		
 		//파일 사이즈
 		int fileSize = 10*1024*1024;
@@ -93,7 +93,7 @@ public class ReviewWriteOkAction implements Action {
 		if(result>0) {
 			
 			forward.setRedirect(true);
-			forward.setPath("mypage"); //마이페이지 보여주기
+			forward.setPath("member/myPage.jsp"); //마이페이지 보여주기
 		}else {
 			out.println("<script>");
 			out.println("alert('리뷰등록 성공')");

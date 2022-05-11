@@ -73,7 +73,7 @@
 		<ul>
 			<li class="cart"><a href="<%=request.getContextPath()%>/#"><img src="images/icon-bag.svg" width="12px"> 장바구니</a></li>
 			<li id="login"><a href="<%=request.getContextPath() %>/member/LoginMain.jsp">내계정/로그인</a></li>
-			<li id="mypage"><a href="<%=request.getContextPath() %>/member/mypage.jsp">마이페이지</a></li>
+			<li id="mypage"><a href="<%=request.getContextPath() %>/member_myPage.do?id=<%=session.getAttribute("member_id")%>">마이페이지</a></li>
 			<li>&nbsp;</li>
 			<li><a href="#">South Korea</a></li>
 			<li><a href="#">뉴스레터</a></li>

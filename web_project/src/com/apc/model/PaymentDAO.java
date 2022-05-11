@@ -263,6 +263,94 @@ public class PaymentDAO {
 	
 	
 	
+	// ****************** 경연님  *******************
+
+	
+	public List<PaymentDTO> getOrderPaymentList(String id){
+		
+		List<PaymentDTO> list = new ArrayList<PaymentDTO>();
+		
+		try {
+			openConn();
+			sql = "select * from apc_payment where order_id = ? order by orderdate desc";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				PaymentDTO dto = new PaymentDTO();
+				dto.setOrder_no(rs.getInt("order_no"));
+				dto.setCartno_fk(rs.getInt("cartno_fk"));
+				dto.setOrder_id(rs.getString("order_id"));
+				dto.setPno_fk(rs.getInt("pno_fk"));
+				dto.setPname(rs.getString("pname"));
+				dto.setPqty(rs.getInt("pqty"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setTranscost(rs.getInt("transcost"));
+				dto.setPaytype(rs.getInt("paytype"));
+				dto.setOrderdate(rs.getString("orderdate"));
+				dto.setOrdername(rs.getString("ordername"));
+				dto.setOrderaddr(rs.getString("orderaddr"));
+				dto.setOrderphone(rs.getString("orderphone"));
+				dto.setPay_pimage(rs.getString("pay_pimage"));
+				
+				list.add(dto);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return list;
+	} // getOrderPaymentList() end
+	
+	
+	public PaymentDTO getPaymentContent(int no) {
+		
+		PaymentDTO dto = new PaymentDTO();
+		
+		try {
+			openConn();
+			sql = "select * from apc_payment where order_no = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				dto.setOrder_no(rs.getInt("order_no"));
+				dto.setCartno_fk(rs.getInt("cartno_fk"));
+				dto.setOrder_id(rs.getString("order_id"));
+				dto.setPno_fk(rs.getInt("pno_fk"));
+				dto.setPname(rs.getString("pname"));
+				dto.setPqty(rs.getInt("pqty"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setTranscost(rs.getInt("transcost"));
+				dto.setPaytype(rs.getInt("paytype"));
+				dto.setOrderdate(rs.getString("orderdate"));
+				dto.setOrdername(rs.getString("ordername"));
+				dto.setOrderaddr(rs.getString("orderaddr"));
+				dto.setOrderphone(rs.getString("orderphone"));
+				dto.setPay_pimage(rs.getString("pay_pimage"));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		return dto;
+	} // getPaymentContent() end
+	
+	
+	
+	
+	
+	
 	
 	
 }

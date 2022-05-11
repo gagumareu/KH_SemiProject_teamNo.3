@@ -195,6 +195,7 @@ public class CartDAO {
 				dto.setCart_psize(rs.getString("cart_psize"));
 				dto.setCart_pcolor(rs.getString("cart_pcolor"));
 				dto.setCart_trans(rs.getInt("cart_trans"));
+				dto.setCart_mileage(rs.getInt("cart_mileage"));
 				dto.setCart_price(rs.getInt("cart_price"));
 				dto.setCart_pimage(rs.getString("cart_pimage"));
 				
@@ -210,6 +211,7 @@ public class CartDAO {
 		return list;
 	}//getCartList() end 
 
+// **************************** 경연님 **********************
 
 	// **************************** 동찬님**********************
 
@@ -263,4 +265,4 @@ public class CartDAO {
 	
 	
 	
-}
+} // end 

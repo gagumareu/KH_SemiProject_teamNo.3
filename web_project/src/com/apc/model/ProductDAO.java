@@ -646,9 +646,41 @@ public class ProductDAO {
 
 
 	
+//*********************** 경연님 *********************
 
-
-
+	public ProductDTO getProductContent(int pno_fk) {
+		
+		ProductDTO dto = new ProductDTO();
+		
+		try {
+			openConn();
+			sql = "select * from apc_products where pno = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, pno_fk);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				dto.setPno(rs.getInt("pno"));
+				dto.setPname(rs.getString("pname"));
+				dto.setPcategory_fk(rs.getString("pcategory_fk"));
+				dto.setPimage(rs.getString("pimage"));
+				dto.setPqty(rs.getInt("pqty"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setPsize(rs.getString("psize"));
+				dto.setPcolor(rs.getString("pcolor"));				
+				dto.setPcontents(rs.getString("pcontents"));
+				dto.setMileage(rs.getInt("mileage"));
+				dto.setPinputdate(rs.getString("pinputdate"));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		return dto;
+	} // getProductContent() end
 	
 
 

@@ -104,9 +104,9 @@ public class MemberDAO {
 			
 			pstmt = con.prepareStatement(sql);
 			
-			pstmt.setString(1, dto.getMemid());
-			pstmt.setString(2, dto.getMempwd());
-			pstmt.setString(3, dto.getMemname());
+			pstmt.setString(1, dto.getMem_id());
+			pstmt.setString(2, dto.getMem_pwd());
+			pstmt.setString(3, dto.getMem_name());
 			pstmt.setString(4, dto.getPhone());
 			pstmt.setString(5, dto.getEmail());
 			pstmt.setString(6, dto.getBirth());
@@ -304,14 +304,14 @@ public class MemberDAO {
 			
 			if(rs.next()) {
 				
-				dto.setMemid(rs.getString("mem_id"));
-				dto.setMempwd(rs.getString("mem_pwd"));
-				dto.setMemname(rs.getString("mem_name"));
+				dto.setMem_id(rs.getString("mem_id"));
+				dto.setMem_pwd(rs.getString("mem_pwd"));
+				dto.setMem_name(rs.getString("mem_name"));
 				dto.setPhone(rs.getString("phone"));
 				dto.setEmail(rs.getString("email"));
 				dto.setBirth(rs.getString("birth"));
 				dto.setAddr(rs.getString("addr"));
-				dto.setMileage(rs.getInt("mem_mileage"));
+				dto.setMem_mileage(rs.getInt("mem_mileage"));
 				dto.setRegdate(rs.getString("regdate"));
 				
 			}
@@ -346,14 +346,14 @@ public class MemberDAO {
 			
 			if(rs.next()) {
 				
-				dto.setMemid(rs.getString("mem_id"));
-				dto.setMempwd(rs.getString("mem_pwd"));
-				dto.setMemname(rs.getString("mem_name"));
+				dto.setMem_id(rs.getString("mem_id"));
+				dto.setMem_pwd(rs.getString("mem_pwd"));
+				dto.setMem_name(rs.getString("mem_name"));
 				dto.setPhone(rs.getString("phone"));
 				dto.setEmail(rs.getString("email"));
 				dto.setBirth(rs.getString("birth"));
 				dto.setAddr(rs.getString("addr"));
-				dto.setMileage(rs.getInt("mem_mileage"));
+				dto.setMem_mileage(rs.getInt("mem_mileage"));
 				dto.setRegdate(rs.getString("regdate"));
 				
 			}
@@ -420,5 +420,85 @@ public class MemberDAO {
 		
 		return result;
 	}  // getMemberInfoAjax() 메서드 end
+	
+	
+	public MemberDTO getMember(String id) {
+		
+		MemberDTO dto = new MemberDTO();
+		
+		try {
+			openConn();
+			sql = "select * from apc_member where mem_id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			
+			if(rs.next()) {
+				dto.setMem_id(rs.getString("mem_id"));
+				dto.setMem_pwd(rs.getString("mem_pwd"));
+				dto.setMem_name(rs.getString("mem_name"));
+				dto.setPhone(rs.getString("phone"));
+				dto.setEmail(rs.getString("email"));
+				dto.setBirth(rs.getString("birth"));
+				dto.setAddr(rs.getString("addr"));
+				dto.setMem_mileage(rs.getInt("mem_mileage"));
+				dto.setRegdate(rs.getString("regdate"));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return dto;
+	} // getMember() end
+	
+	
+	public int updateAddr(String mem_id, String phone, String addr) {
+		
+		int result = 0;
+		
+		try {
+			openConn();
+			
+			sql = "update apc_member set phone = ?, "
+					+ "addr = ? where mem_id = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, phone);
+			pstmt.setString(2, addr);
+			pstmt.setString(3, mem_id);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return result;
+	} // updateAddr() end
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

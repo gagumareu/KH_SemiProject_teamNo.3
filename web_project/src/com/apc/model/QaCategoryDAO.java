@@ -141,7 +141,46 @@ public class QaCategoryDAO {
 	}//getQaCategoryList() end 
 
 
-
+// ******************* 경연님 *****************
+	
+	
+	public List<QaCategoryDTO> getCategoryList() {
+		
+		List<QaCategoryDTO> list = new ArrayList<QaCategoryDTO>();
+		
+		
+		try {
+			openConn();
+			
+			sql = "select * from apc_qa_category "
+					+ " order by category_code desc";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				QaCategoryDTO dto = new QaCategoryDTO();
+				
+				dto.setCategory_code(rs.getString("category_code"));
+				
+				dto.setCategory_name(rs.getString("category_name"));
+				
+				list.add(dto);
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+			
+		}
+		
+		return list;
+	} // getCategoryList() end 
 
 
 

@@ -63,9 +63,9 @@ public class semiJoinOkAction implements Action {
 	
 			MemberDTO dto = new MemberDTO();
 			
-			dto.setMemname(userName);
-			dto.setMemid(userId);
-			dto.setMempwd(userPwd);
+			dto.setMem_name(userName);
+			dto.setMem_id(userId);
+			dto.setMem_pwd(userPwd);
 			dto.setEmail(user_email);
 			dto.setPhone(user_phone);
 			dto.setAddr(user_addr);
