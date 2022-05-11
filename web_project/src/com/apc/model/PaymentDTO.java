@@ -15,7 +15,17 @@ public class PaymentDTO {
 	private String ordername;			//주문자이름
 	private String orderaddr;			//주문자 주소
 	private String orderphone;			//주문자 연락차
+	private String pay_pimage;
 	
+	
+	
+	
+	public String getPay_pimage() {
+		return pay_pimage;
+	}
+	public void setPay_pimage(String pay_pimage) {
+		this.pay_pimage = pay_pimage;
+	}
 	public int getOrder_no() {
 		return order_no;
 	}

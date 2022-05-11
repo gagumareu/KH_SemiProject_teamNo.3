@@ -4,34 +4,36 @@ import java.util.Date;
 
 public class MemberDTO {
 
-	private String memid;
-	private String mempwd;
-	private String memname;
+	private String mem_id;
+	private String mem_pwd;
+	private String mem_name;
 	private String phone;
 	private String email;
 	private String birth;
 	private String addr;
-	private int mileage;
+	private int mem_mileage;
 	private String regdate;
 	
 	
-	public String getMemid() {
-		return memid;
+	
+	
+	public String getMem_id() {
+		return mem_id;
 	}
-	public void setMemid(String memid) {
-		this.memid = memid;
+	public void setMem_id(String mem_id) {
+		this.mem_id = mem_id;
 	}
-	public String getMempwd() {
-		return mempwd;
+	public String getMem_pwd() {
+		return mem_pwd;
 	}
-	public void setMempwd(String mempwd) {
-		this.mempwd = mempwd;
+	public void setMem_pwd(String mem_pwd) {
+		this.mem_pwd = mem_pwd;
 	}
-	public String getMemname() {
-		return memname;
+	public String getMem_name() {
+		return mem_name;
 	}
-	public void setMemname(String memname) {
-		this.memname = memname;
+	public void setMem_name(String mem_name) {
+		this.mem_name = mem_name;
 	}
 	public String getPhone() {
 		return phone;
@@ -57,11 +59,11 @@ public class MemberDTO {
 	public void setAddr(String addr) {
 		this.addr = addr;
 	}
-	public int getMileage() {
-		return mileage;
+	public int getMem_mileage() {
+		return mem_mileage;
 	}
-	public void setMileage(int mileage) {
-		this.mileage = mileage;
+	public void setMem_mileage(int mem_mileage) {
+		this.mem_mileage = mem_mileage;
 	}
 	public String getRegdate() {
 		return regdate;
@@ -69,6 +71,9 @@ public class MemberDTO {
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
+	
+	
+	
 	
 	
 

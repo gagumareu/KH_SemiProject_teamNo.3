@@ -58,6 +58,7 @@
 			<li class="cart"><a href="<%=request.getContextPath()%>/#"><img src="images/icon-bag.svg" width="12px"> 장바구니</a></li>
 			<li><a href="<%=request.getContextPath() %>/member/LoginMain.jsp">내계정/로그인</a></li>
 			<li><a href="<%=request.getContextPath() %>/member/member_orderlist.jsp">[임시] 주문 내역</a></li>
+			<li><a href="<%=request.getContextPath() %>/#">[임시] 마이 페이지</a></li>
 			
 			<li>&nbsp;</li>
 			<li><a href="#">South Korea</a></li>

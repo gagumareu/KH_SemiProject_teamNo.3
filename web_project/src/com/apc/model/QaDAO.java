@@ -703,6 +703,51 @@ public class QaDAO {
 	}//getQaList() end
 	
 	
+// *********************** 경영님 ************************
+	
+	public List<QaDTO> getContactQaList(String id){
+		
+		List<QaDTO> list = new ArrayList<QaDTO>();
+		
+		try {
+			openConn();
+			sql = "select * from apc_qa where qa_memid = ? "
+					+ "order by qa_no desc";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				QaDTO dto = new QaDTO();
+				dto.setQa_no(rs.getInt("qa_no"));
+				dto.setQa_title(rs.getString("qa_title"));
+				dto.setQa_cont(rs.getString("qa_cont"));
+				dto.setQa_date(rs.getString("qa_date"));
+				dto.setQa_update(rs.getString("qa_update"));
+				dto.setQa_indent(rs.getInt("qa_indent"));
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		return list;
+	} // getContactQaList() end
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

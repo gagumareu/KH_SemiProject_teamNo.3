@@ -147,7 +147,7 @@
 		</div><!-- id="golf_middle" -->
 		
 		
-
+	
 		 <c:if test="${!empty list }">
 		<div id="golf_bottom">
 			<div class="golf_item">
