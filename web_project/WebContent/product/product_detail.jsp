@@ -318,7 +318,7 @@ $(function(){
 			<input type="button" class="nonmember_btn" value="비회원주문하기" 
 				onclick="go_nonPay()">
 			<input type="button" class="login_btn" value="로그인하기" 
-				onclick="location.href='LoginMain.jsp?pname=${dto.getPname()}&color=${dto.getPcolor() }&size=${dto.getPsize() }'">
+				onclick="location.href='member/LoginMain.jsp?pname=${dto.getPname()}&color=${dto.getPcolor() }&size=${dto.getPsize() }'">
 			
 			<%-- <input id="go_pay_btn"class="btn btn-dark" type="button" value="비회원주문하기" onclick="nonmember_order()">
 			<input id="go_cart_btn" class="btn btn-light" type="button" value="로그인하기" 
