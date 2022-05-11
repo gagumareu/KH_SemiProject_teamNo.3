@@ -8,58 +8,37 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.apc.controller.Action;
 import com.apc.controller.ActionForward;
-import com.apc.model.CancelDAO;
-import com.apc.model.CancelDTO;
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import com.apc.model.QaDAO;
+import com.apc.model.QaDTO;
 
 public class MemberOrderCancelOkAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
-		// 첨부파일이 저장될 위치(경로)를 설정.
-		String saveFolder = 
-			"C:\\NCS\\workspace(jsp)\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\Semi\\upload";
-			
-		// 첨부파일 용량(크기) 제한 - 파일 업로드 최대 크기
-		int fileSize = 10 * 1024 * 1024;  // 10MB
-				
-		// 이미지파일 업로드를 위한 객체 생성
-		MultipartRequest multi = new MultipartRequest(
-				request,
-				saveFolder,
-				fileSize,
-				"UTF-8",
-				new DefaultFileRenamePolicy()
-		);
+		int order_no = Integer.parseInt(request.getParameter("order_no"));
+		int pno = Integer.parseInt(request.getParameter("pno"));
+		String mem_id = request.getParameter("mem_id");
+		String pname = request.getParameter("pname");
+		String pcolor = request.getParameter("pcolor");
+		String psize = request.getParameter("psize");
+		int pqty = Integer.parseInt(request.getParameter("pqty"));
+		String category = request.getParameter("category");
+		String cont = request.getParameter("content").trim();
 		
-		int order_no = Integer.parseInt(multi.getParameter("order_no"));
-		int pno = Integer.parseInt(multi.getParameter("pno"));
-		String mem_id = multi.getParameter("mem_id");
-		String pname = multi.getParameter("pname");
-		String pcolor = multi.getParameter("pcolor");
-		String psize = multi.getParameter("psize");
-		int pqty = Integer.parseInt(multi.getParameter("pqty"));
-		String category = multi.getParameter("category");
-		String image = multi.getFilesystemName("image");
-		String cont = multi.getParameter("content").trim();
+		String title = pname + ' ' + pcolor + ' ' + psize + ' ' + pqty + "매 취소/환불";
+		QaDTO dto = new QaDTO();
 		
-		CancelDTO dto = new CancelDTO();
+		dto.setQa_orderno(order_no);
+		dto.setQa_title(title);
+		dto.setQa_category(category);
+		dto.setQa_memid(mem_id);
+		dto.setQa_title(title);
+		dto.setQa_cont(cont);
+		dto.setQa_pno_fk(pno);
 		
-		dto.setOrderno_fk(order_no);
-		dto.setPno_fk(pno);
-		dto.setMemid_fk(mem_id);
-		dto.setPname(pname);
-		dto.setPcolor(pcolor);
-		dto.setPsize(psize);
-		dto.setPqty(pqty);
-		dto.setCancel_category(category);
-		dto.setCancel_cont(cont);
-		dto.setCancel_image(image);
-		
-		CancelDAO dao = CancelDAO.getInstance();
-		int result = dao.insertCancel(dto);
+		QaDAO dao = QaDAO.getInstance();
+		int result = dao.cancelQa(dto);
 		
 		ActionForward forward = new ActionForward();
 		PrintWriter out = response.getWriter();
@@ -69,7 +48,7 @@ public class MemberOrderCancelOkAction implements Action {
 			forward.setPath("member_orderCancelView.do");
 		}else {
 			out.println("<script>");
-			out.println("alert('사진 용량이 너무 큽니다.(10MB 이하)')");
+			out.println("alert('실패')");
 			out.println("history.back()");
 			out.println("</script>");
 		}

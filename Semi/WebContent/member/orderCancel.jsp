@@ -80,8 +80,7 @@
 		<hr width="30%" color="lightgray">
 		<c:set var="payDTO" value="${paymentDTO }" />
 		<c:set var="pDTO" value="${productDTO }" />
-		<form method="post" enctype="multipart/form-data" 
-			action="<%=request.getContextPath() %>/member_orderCancel_ok.do">
+		<form method="post" action="<%=request.getContextPath() %>/member_orderCancel_ok.do">
 			<input type="hidden" name="mem_id" value="${payDTO.getOrder_id() }">
 			<input type="hidden" name="order_no" value="${payDTO.getOrder_no() }">
 			<input type="hidden" name="pno" value="${payDTO.getPno_fk() }">
@@ -102,19 +101,13 @@
 			</div>
 			<hr width="100%" color="white">
 			<br>
-			취소/반품 사유<br>
+			취소/반품<br>
 			<select name="category">
-				<option value="제품 손상">제품 손상</option>
-				<option value="배송 지연">배송 지연</option>
-				<option value="사이즈">사이즈</option>
-				<option value="제품 오배송">제품 오배송</option>
-				<option value="기타">기타</option>
+				<option value="CR">취소/환불</option>
+				<option value="SB">반품</option>
 			</select>
-			<br><br>
-	       	이미지 업로드<br>
-	        <input type="file" name="image">
 	        <br><br>
-			상세내용 <br>			
+			취소/반품 사유 <br>			
 			<textarea rows="25" cols="40" name="content"
 					placeholder="취소/반품 신청하시는 제품의 사진을 함께 올려주시면, 좀 더 빠르게 가능합니다."></textarea>
 			<span><br></span>

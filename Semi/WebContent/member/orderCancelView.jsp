@@ -76,7 +76,7 @@
 		}
 		
 		div.left{
-			width: 85%;
+			width: 90%;
 			float: left;
 			text-align: left;
 			font-size: 13px;
@@ -84,7 +84,7 @@
 		}
 		
 		div.right{
-			width: 15%;
+			width: 10%;
 			float: right;
 			align: right;
 			font-family: 나눔고딕;
@@ -126,31 +126,27 @@
 		&nbsp; &nbsp;
 		<br> <br> <br>
 		<hr>
-		<c:forEach items="${cancelList }" var="cDTO">
+		<c:forEach items="${qList }" var="qaDTO">
 		<br>
 			<div class="left">
-				<b>${cDTO.getPname() } &nbsp; ${cDTO.getPcolor() } &nbsp; 
-				${cDTO.getPsize() } &nbsp; ${cDTO.getPqty() }매</b> <br>
+				<b>${qaDTO.getQa_title() }</b> <br>
 				<span style="color: gray;">
-					${cDTO.getCancel_category() }<br>
-					${cDTO.getCancel_date().substring(0,10) }
+					<c:if test="${qaDTO.getQa_update() == null }" > ${qaDTO.getQa_date() }</c:if>
+					<c:if test="${qaDTO.getQa_update() != null }" > ${qaDTO.getQa_update() }</c:if>
 				</span>
 			</div>
 			<div class="right">
-				<span style="color: gray;">
-					<c:if test="${cDTO.getCancel_state() == 0 }">
-						취소/반품 대기
-					</c:if>	
-				</span>
-				<span style="color: blue;">
-					<c:if test="${cDTO.getCancel_state() == 1 }">
-						취소/반품 완료
+				<span style="color: red;">
+					<c:if test="${qaDTO.getQa_indent() == 0 }">
+						답변대기
+						<input type="button" value="x"
+								onclick="if(confirm('삭제하시겠습니까?')){
+									location.href='<%=request.getContextPath() %>/member_deleteContact.do?no=${qaDTO.getQa_no() }'}
+									else{ return; }" />
 					</c:if>			
 				</span>
-				<span style="color: red;">
-					<c:if test="${cDTO.getCancel_state() == 2 }">
-						취소/반품 실패
-					</c:if>
+				<span style="color: gray;">
+					<c:if test="${qaDTO.getQa_indent() != 0 }">답변완료</c:if>			
 				</span>
 			</div>
 		<br><br><br><br>

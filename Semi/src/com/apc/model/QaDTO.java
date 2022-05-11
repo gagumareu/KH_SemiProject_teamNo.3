@@ -15,7 +15,14 @@ public class QaDTO {
 	private int qa_group;
 	private int qa_step;
 	private int qa_indent;
+	private int qa_orderno;
 	
+	public int getQa_orderno() {
+		return qa_orderno;
+	}
+	public void setQa_orderno(int qa_orderno) {
+		this.qa_orderno = qa_orderno;
+	}
 	public int getQa_no() {
 		return qa_no;
 	}

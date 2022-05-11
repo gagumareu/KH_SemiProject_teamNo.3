@@ -91,7 +91,6 @@ public class QaCategoryDAO {
 		
 		List<QaCategoryDTO> list = new ArrayList<QaCategoryDTO>();
 		
-		
 		try {
 			openConn();
 			

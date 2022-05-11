@@ -116,6 +116,7 @@ public class PaymentDAO {
 				dto.setOrderaddr(rs.getString("orderaddr"));
 				dto.setOrderphone(rs.getString("orderphone"));
 				dto.setPay_pimage(rs.getString("pay_pimage"));
+				System.out.println(dto.getOrder_no());
 				
 				list.add(dto);
 				

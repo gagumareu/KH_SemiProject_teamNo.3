@@ -138,4 +138,78 @@ public class QaDAO {
 		}
 		return result;
 	}
+	
+	
+	public int cancelQa(QaDTO dto) {
+		
+		int result = 0;
+		int count = 0;
+		
+		try {
+			openConn();
+			sql = "select max(qa_no) from apc_qa";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				count = rs.getInt(1) + 1;
+			}
+			
+			sql = "insert into apc_qa values(?, ?, ?, ?, ?, ?, 1111, default, sysdate, '', '', '', '', ?)";
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, count);
+			pstmt.setString(2, dto.getQa_category());
+			pstmt.setString(3, dto.getQa_memid());
+			pstmt.setString(4, dto.getQa_title());
+			pstmt.setString(5, dto.getQa_cont());
+			pstmt.setInt(6, dto.getQa_pno_fk());
+			pstmt.setInt(7, dto.getQa_orderno());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		return result;
+	}
+	
+	
+	public List<QaDTO> viewCancelQa(String id){
+		
+		List<QaDTO> list = new ArrayList<QaDTO>();
+		
+		try {
+			openConn();
+			sql = "select * from apc_qa where qa_memid = ? and (qa_category = 'CR' or qa_category = 'SB') "
+					+ "order by qa_no desc";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				QaDTO dto = new QaDTO();
+				dto.setQa_no(rs.getInt("qa_no"));
+				dto.setQa_title(rs.getString("qa_title"));
+				dto.setQa_cont(rs.getString("qa_cont"));
+				dto.setQa_pno_fk(rs.getInt("qa_pno_fk"));
+				dto.setQa_date(rs.getString("qa_date"));
+				dto.setQa_update(rs.getString("qa_update"));
+				dto.setQa_indent(rs.getInt("qa_indent"));
+				dto.setQa_orderno(rs.getInt("qa_orderno"));
+				list.add(dto);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		return list;
+	}
+	
 }

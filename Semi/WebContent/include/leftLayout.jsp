@@ -11,7 +11,6 @@
 	<h4><a href="<%=request.getContextPath() %>/member_myPage.do?mem_id=tlsruddus">마이페이지</a></h4>
 	<h4><a href="<%=request.getContextPath() %>/member_confirmPsw.do?mem_id=tlsruddus">회원정보관리</a></h4>
 	<h4><a href="<%=request.getContextPath() %>/member/pswUpdate.jsp">비밀번호관리</a></h4>
-	<h4><a href="<%=request.getContextPath() %>/member/mileageView.jsp">적립금관리</a></h4>
 	<h4><a href="<%=request.getContextPath() %>/member_orderView.do?mem_id=tlsruddus">구매내역</a></h4>
 	<h4><a href="<%=request.getContextPath() %>/member_orderCancelView.do?mem_id=tlsruddus">취소/반품조회</a></h4>
 	<h4><a href="<%=request.getContextPath() %>/member_addrView.do?mem_id=tlsruddus">배송지관리</a></h4>

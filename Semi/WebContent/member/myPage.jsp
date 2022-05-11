@@ -116,7 +116,6 @@
 			<br> <br> <br>
 			
 			<b>적립금: ${mem.getMem_mileage() }원</b> <br>
-			<a href="mileageView.jsp">전체보기</a>
 		</div>
 		
 		<h1 style="display:inline; font-size: 50px;">구매 내역</h1>

@@ -13,6 +13,10 @@ import com.apc.model.MemberDAO;
 import com.apc.model.MemberDTO;
 import com.apc.model.PaymentDAO;
 import com.apc.model.PaymentDTO;
+import com.apc.model.QaDAO;
+import com.apc.model.QaDTO;
+import com.apc.model.ReviewDAO;
+import com.apc.model.ReviewDTO;
 
 
 public class MemberOrderViewAction implements Action {
@@ -60,10 +64,18 @@ public class MemberOrderViewAction implements Action {
 		PaymentDAO paydao = PaymentDAO.getInstance();
 		List<PaymentDTO> list = paydao.getPaymentList(mem_id);
 		
+		QaDAO qadao = QaDAO.getInstance();
+		List<QaDTO> cancelList = qadao.viewCancelQa(mem_id);
+		
+		ReviewDAO rdao = ReviewDAO.getInstance();
+		List<ReviewDTO> reviewList = rdao.getReviewList(mem_id);
+		
 		request.setAttribute("date_now", now);
 		request.setAttribute("date_3", date_3);
 		request.setAttribute("memDTO", member);
 		request.setAttribute("payList", list);
+		request.setAttribute("cancelList", cancelList);
+		request.setAttribute("reviewList", reviewList);
 		
 		ActionForward forward = new ActionForward();
 		
