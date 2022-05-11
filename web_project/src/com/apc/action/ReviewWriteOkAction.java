@@ -6,9 +6,12 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.apc.controller.Action;
 import com.apc.controller.ActionForward;
+import com.apc.model.MemberDAO;
+import com.apc.model.MemberDTO;
 import com.apc.model.ProductDAO;
 import com.apc.model.ProductDTO;
 import com.apc.model.ReviewDAO;
@@ -23,7 +26,7 @@ public class ReviewWriteOkAction implements Action {
 		//review_write.jsp에서 받은 정보를 DB에 저장하는 비즈니스로직
 		
 		//파일 저장경로
-		String saveFolder = "C:\\Users\\JUNGHWAN\\git\\SemiProject_teamNo.3\\web_project\\WebContent\\upload";
+		String saveFolder = "C:\\Users\\ayss3\\Documents\\KH_SemiProjeckt_teamNo.3\\web_project\\WebContent\\upload";
 		
 		//파일 사이즈
 		int fileSize = 10*1024*1024;
@@ -35,8 +38,8 @@ public class ReviewWriteOkAction implements Action {
 		
 		
 		//GET방식으로 넘어온 값 : 제품번호, 아이디
-		int pno = Integer.parseInt(multi.getParameter("num").trim());
-		//String memid = multi.getParameter("id").trim();
+		 int pno = Integer.parseInt(multi.getParameter("num").trim());
+		 String loginId =multi.getParameter("id").trim();
 		
 		//제품에 대한 정보 불러오기
 		ProductDAO pDao =  ProductDAO.getInstance();
@@ -68,7 +71,8 @@ public class ReviewWriteOkAction implements Action {
 			 }
 			 
 			 /* ***************수정***************************  */
-			 String reFileName = "hong"+"_"+fileName; //memid넣어주기
+			 
+			 String reFileName = loginId+"_"+fileName; //memid넣어주기
 			 
 			 upload_file.renameTo(new File(homedir+"/"+reFileName)); //파일이름이 변경되어 저장
 			 String fileDBName = "/review/"+reFileName;
@@ -76,14 +80,16 @@ public class ReviewWriteOkAction implements Action {
 		
 		}
 
+			MemberDAO mdao = MemberDAO.getInstance();
+			String loginPwd = mdao.getPwd(loginId);
 			dto.setPno_fk(pno);
 			dto.setPname(pDto.getPname());
 			dto.setPsize(pDto.getPsize());
 			dto.setPcolor(pDto.getPcolor());
-			dto.setMemid_fk("hong");
+			dto.setMemid_fk(loginId);
 			dto.setReview_rate(rate);
 			dto.setReview_cont(cont);
-			dto.setReview_pwd("1111"); // memberDTO에서 MEMID에 해당하는 비밀번호 넣기
+			dto.setReview_pwd(loginPwd); // memberDTO에서 MEMID에 해당하는 비밀번호 넣기
 			
 			int result = dao.reviewInsert(dto);
 			
@@ -96,7 +102,7 @@ public class ReviewWriteOkAction implements Action {
 			forward.setPath("member/myPage.jsp"); //마이페이지 보여주기
 		}else {
 			out.println("<script>");
-			out.println("alert('리뷰등록 성공')");
+			out.println("alert('리뷰등록 실패')");
 			out.println("history.back()");
 			out.println("</script>");
 		}

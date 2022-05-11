@@ -152,8 +152,9 @@
 		내용없음
 		</c:if>
 		
-		<form method="post" enctype = "multipart/form-data"
+		<form method="post" enctype = "multipart/form-data" id="frm"
 			action="<%=request.getContextPath()%>/review_write_ok.do?num=${cont.getPno()}"> <!-- &id=로그인아이디 -->
+		<input type="hidden" id="p_num" value="${cont.getPno() }">
 		<c:if test="${!empty cont }">
 		<div class="review_product_info">
 			<table>
@@ -201,10 +202,9 @@
 			</div>
 		</div><!-- class="review_content" -->
 		<div class="review_bottom" align="center"> 
-			<button type="submit" id="submit_btn">리뷰 등록</button>
+			<!-- <button type="submit" id="submit_btn">리뷰 등록</button> -->
+			<button type="button" id="submit_btn" onclick="review_submit()">리뷰 등록</button>
 			<button type="button" id="cancel_btn" onclick="window.close()">취소하기</button>
-			<!-- <input id="go_pay_btn"class="btn btn-dark" type="submit" value="리뷰 등록" > &nbsp;
-			<input id="go_cart_btn" class="btn btn-light" type="button" value="취소하기" onclick="window.close()"> -->
 		</div>
 		
 		</form>
@@ -212,16 +212,35 @@
 <script type="text/javascript">
 
 /* 별점 점수를 받기  */
-$(document).ready(function(){
+/* $(document).ready(function(){
     $('input[type="radio"]').click(function(){
     	var rate = $(this).val();
         alert("Your result is "+rate);
         console.log(rate);
     });
 });
+ */
 
-
-	  
+	  function review_submit(){
+	 	let pnum = document.getElementById("p_num").value;
+		let memid= "<%=(String)session.getAttribute("member_id")%>";
+	 
+		let f = document.forms.frm;
+		
+		window.opener.name = "review_paranet";
+		
+		f.target= "review_paranet";
+		
+		//form(name=frm)의 action경로 지정
+		f.action = "<%=request.getContextPath()%>/review_write_ok.do?num="+pnum+"&id="+memid;
+	
+		//form(frm)에 submit 메서드 호출해 데이터 전달
+		f.submit();
+		
+		self.close();
+	 
+	 
+ }
 	
 
 

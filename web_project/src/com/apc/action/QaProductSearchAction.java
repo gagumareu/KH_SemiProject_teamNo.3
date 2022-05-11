@@ -53,6 +53,7 @@ public class QaProductSearchAction implements Action {
 		
 		totalRecord = dao.getProductSearchCount(search_field, search_word);
 		
+		//검색한 내용
 		List<ProductDTO> list = dao.getProductSearch(search_field, search_word, page, rowsize);
 
 		//전체게시물의 수를 한 페이지당 보여질 게시물의 수로 나누어주어야함

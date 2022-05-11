@@ -552,11 +552,16 @@ public class ProductDAO {
 		int endNo = (page*rowsize);
 		
 		
+		
 		if(field.equals("pname")) {
 		try {
 			openConn();
+//			sql="select * from (select row_number() over ( order by pno desc) rnum, "
+//					+ " p.* from apc_products p	 where pname like ? ) "
+//					+ " where rnum >= ? and rnum <= ? ";
 			sql="select * from (select row_number() over ( order by pno desc) rnum, "
-					+ " p.* from apc_products p	 where pname like ? ) "
+					+ " p.* from apc_products p	 where  pno in (select min(pno) from apc_products group by pname) and "
+					+ " pname like ? ) "
 					+ " where rnum >= ? and rnum <= ? ";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, "%"+word+"%");
@@ -597,8 +602,9 @@ public class ProductDAO {
 				
 				//제품 검색시, 카테고리를 카테고리코드로 검색하거나 혹은 카레고리이름으로 검색할 경우 
 				sql="select * from (select row_number() over ( order by pno desc) rnum, "
-						+ " p.* from apc_products p where pcategory_fk like upper( ? ) or "
-						+ " pcategory_fk in (select category_code from apc_category where category_name like upper( ? ) ) ) "
+						+ " p.* from apc_products p where pno in (select min(pno) from apc_products group by pname) and "
+						+ " ( pcategory_fk like upper( ? ) or "
+						+ " pcategory_fk in (select category_code from apc_category where category_name like upper( ? ) ) ) ) "
 						+ " where rnum >= ? and rnum <= ? ";
 				
 				pstmt=con.prepareStatement(sql);

@@ -77,6 +77,7 @@
 							 ProductDTO product = list.get(i);
 							 
 							String[] img = pdao.getPorudctImg(product);	 
+							
 					%>
 					<tr>
 						<td><img alt="arrImg[0]" src="<%=request.getContextPath() %>/upload/<%= img[0] %> " width="30%" height="30%"></td>
@@ -85,15 +86,15 @@
 							<span><%=product.getPrice() %></span>					
 						</td>
 						<td> 
-							<input type="button" onclick="parentscall()" value="선택">
+							<input type="button" onclick="parentscall(<%=product.getPno() %>)" value="선택">
 						</td>
 					</tr>
 
 						<script type="text/javascript">
 	
-							function parentscall(){
-			
-								window.opener.location.href="<%=request.getContextPath()%>/qa_write.do?num=<%=product.getPno()%>";
+							function parentscall(pno){
+								
+								window.opener.location.href="<%=request.getContextPath()%>/qa_write.do?num="+pno;
 								self.close();
 
 							}

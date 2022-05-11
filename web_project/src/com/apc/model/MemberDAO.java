@@ -484,6 +484,35 @@ public class MemberDAO {
 		
 		return result;
 	} // updateAddr() end
+
+	//로그인한 아이디에 대한 비밀번호조회하기
+	public String getPwd(String loginId) {
+		
+		String pwd = null;
+		
+		try {
+			openConn();
+			
+			sql="select mem_pwd from apc_member where mem_id = ? ";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, loginId);
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				pwd = rs.getString(1);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return pwd;
+	}
 	
 	
 	
