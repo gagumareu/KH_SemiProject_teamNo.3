@@ -30,13 +30,13 @@
         		<tr>
         			<th>작성자</th>
         			<td>
-        				<c:if test="${indent == 0}">
+        				<c:if test="${dto.getQa_indent() == 0}">
         					<c:if test="${dto.getQa_memid().length() > 2 }">
         						${dto.getQa_memid().substring(0,2) }****
         					</c:if>
         				</c:if>
         				
-        				<c:if test="${indent != 0}">
+        				<c:if test="${dto.getQa_indent() != 0}">
         					${dto.getQa_memid() }
         				</c:if>
         			</td>
@@ -44,11 +44,11 @@
         		
         		<tr>
         			<th>
-        				<c:if test="${indent == 0}">
+        				<c:if test="${dto.getQa_indent() == 0}">
         					문의내용
         				</c:if>
         			
-        				<c:if test="${indent != 0}">
+        				<c:if test="${dto.getQa_indent() != 0}">
         					답변내용
         				</c:if>
         			</th>
@@ -70,19 +70,19 @@
 			
 				<tr>
 					<td colspan="2" align="center">
-						<c:if test="${indent != 0}">
+						<c:if test="${dto.getQa_indent() != 0}">
 							<input type="button" value="답변수정" class="btn btn-info"
 								onclick="location.href='admin_qa_reply_update.do?no=${dto.getQa_no()}&page=${page}'">
 							
 							<input type="button" value="답변삭제" class="btn btn-danger"
 								onclick="if(confirm('답변을 삭제하시겠습니까?')) {
-										location.href='admin_qa_reply_delete.do?no=${dto.getQa_no()}&page=${page}'
+										location.href='admin_qa_reply_delete.do?no=${dto.getQa_no()}&page=${page}&group=${dto.getQa_group() }'
 									}else {	return; }">
 						</c:if>
 						
 	        		    <input type="button" class="btn btn-primary"
-	        		    	<c:if test="${indent != 0}"> value="추가 답변하기" </c:if>
-	        		    	<c:if test="${indent == 0}"> value="답변하기" </c:if>
+	        		    	<c:if test="${dto.getQa_indent() != 0}"> value="추가 답변하기" </c:if>
+	        		    	<c:if test="${dto.getQa_indent() == 0}"> value="답변하기" </c:if>
 	        		    	onclick="location.href='admin_qa_reply.do?no=${dto.getQa_no()}&page=${page}'">
 						
 						<input type="button" value="전체목록" class="btn btn-default"

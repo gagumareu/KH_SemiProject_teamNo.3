@@ -45,7 +45,7 @@ public class AdminQaReplyOkAction implements Action {
 		
 		// 원글에 기존에 작성했던 답변글이 존재하는 경우
 		// 해당 답변글에 step을 하나 증가시켜주는 메서드 호출
-		dao.replyUpdate(qa_group, qa_step);
+		//dao.replyUpdate(qa_group, qa_step);
 		
 		// 답변글을 DB에 저장하는 메서드 호출
 		int check = dao.replyQa(dto);

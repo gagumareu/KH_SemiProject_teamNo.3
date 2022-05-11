@@ -90,53 +90,9 @@ public class QaDAO {
 	}	// closeConn() 메서드 end
 	
 	
-	// QnA 전체리스트 가져오기
-	public List<QaDTO> getQaList() {
-		
-		List<QaDTO> list = new ArrayList<QaDTO>();
-				
-		try {
-			openConn();
-			
-			sql = "select * from apc_qa order by qa_no desc";
-			
-			pstmt = con.prepareStatement(sql);
-			
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				QaDTO dto = new QaDTO();
-				
-				dto.setQa_no(rs.getInt("qa_no"));
-				dto.setQa_category(rs.getString("qa_category"));
-				dto.setQa_memid(rs.getString("qa_memid"));
-				dto.setQa_title(rs.getString("qa_title"));
-				dto.setQa_cont(rs.getString("qa_cont"));
-				dto.setQa_pno_fk(rs.getInt("qa_pno_fk"));
-				dto.setQa_pwd(rs.getString("qa_pwd"));
-				dto.setQa_hit(rs.getInt("qa_hit"));
-				dto.setQa_date(rs.getString("qa_date"));
-				dto.setQa_update(rs.getString("qa_update"));
-				dto.setQa_group(rs.getInt("qa_group"));
-				dto.setQa_step(rs.getInt("qa_step"));
-				dto.setQa_indent(rs.getInt("qa_indent"));
-				
-				list.add(dto);
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			closeConn(rs, pstmt, con);
-		}
-		
-		return list;
-		
-	}	// getQaList() 메서드 end
-	
-	
 	//apc_qa 전체 리스트 조회 + 페이징 처리
 	public List<QaDTO> getQaList(int page, int rowsize) {
+		
 			List<QaDTO> list = new ArrayList<QaDTO>();
 		
 			//해당페이지에서 시작 번호
@@ -239,8 +195,8 @@ public class QaDAO {
 		try {
 			openConn();
 			
-			sql="delete from apc_qa where qa_no = ? ";
-			pstmt=con.prepareStatement(sql);
+			sql = "delete from apc_qa where qa_no = ? ";
+			pstmt = con.prepareStatement(sql);
 			
 			pstmt.setInt(1, num);
 			
@@ -253,28 +209,57 @@ public class QaDAO {
 		}
 		
 		return result ;
-	}//qaDelete() end
+		
+	}	//qaDelete() end
 
+	
 	//apc_qa 삭제이벤트가 일어날 경우 qa_no조정해주는 메서드
 	public void adjustQaNo(int num) {
 		
 		try {
 			openConn();
-			sql="update apc_qa set qa_no = qa_no - 1 where qa_no > ? ";
-			pstmt=con.prepareStatement(sql);
 			
+			sql = "update apc_qa set qa_no = qa_no - 1 where qa_no > ? ";
+			
+			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, num);
-			
 			pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+			
 		}finally {
 			closeConn(rs, pstmt, con);
 		}
 		
-	}//adjustQaNo() end
-
+	}	//adjustQaNo() end
+	
+	
+	//apc_qa 삭제이벤트가 일어날 경우 qa_indent를 조정해주는 메서드
+	public void adjustQaIndent(int num, int group) {
+		
+		try {
+			openConn();
+			
+			sql = "update apc_qa set "
+					+ "qa_step = qa_step - 1, qa_indent = qa_indent - 1 "
+					+ "where qa_no > ? and qa_group = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			pstmt.setInt(2, group);
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+	}	//adjustQaNo() end
+	
+	
 	//게시글 조회수 올려주는 메서드
 	public void adjustQaHit(int num) {
 		
@@ -296,6 +281,7 @@ public class QaDAO {
 		
 	}// adjustQaHit() end 
 
+	
 	//수정한 게시글내용을 DB에 저장하는 메서드
 	public int qaUpdate(QaDTO dto, int num) {
 		
@@ -319,8 +305,8 @@ public class QaDAO {
 			closeConn(rs, pstmt, con);
 		}
 		
-		
 		return result;
+		
 	}//qaUpdate() end 
 
 	
@@ -346,9 +332,12 @@ public class QaDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
 		return count;
+		
 	}//getBoardCount() end 
 
+	
 	//검색한 내용에 해당하는 게시글의 전체 수
 	public int getSearchCount(String search_field, String search_word) {
 		
@@ -356,26 +345,28 @@ public class QaDAO {
 		
 		if(search_field.equals("title")) {
 
-		try {
-			openConn();
-
-			sql ="select count(*) from apc_qa where qa_title like ? ";
-			pstmt=con.prepareStatement(sql);
-			
-			pstmt.setString(1, "%"+search_word+"%");
-
-			rs=pstmt.executeQuery();
-
-			if(rs.next()) {
-				count = rs.getInt(1);
+			try {
+				openConn();
+	
+				sql ="select count(*) from apc_qa where qa_title like ? ";
+				pstmt=con.prepareStatement(sql);
+				
+				pstmt.setString(1, "%"+search_word+"%");
+	
+				rs=pstmt.executeQuery();
+	
+				if(rs.next()) {
+					count = rs.getInt(1);
+				}
+	
+				rs.close();pstmt.close();con.close();
+	
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
-
-			rs.close();pstmt.close();con.close();
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+			
 		}else if(search_field.equals("content")) {
+			
 			try {
 				openConn();
 
@@ -395,12 +386,14 @@ public class QaDAO {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+			
 		}else if(search_field.equals("title_content")) {
 			try {
 				openConn();
 
 				sql ="select count(*) from apc_qa where qa_title like ? "
 						+ " or qa_cont like ? ";
+				
 				pstmt=con.prepareStatement(sql);
 				
 				pstmt.setString(1, "%"+search_word+"%");
@@ -418,12 +411,12 @@ public class QaDAO {
 				e.printStackTrace();
 			}
 		}
-		
-		
-		
-		return count;
-	}//getSearchCount() end 
 
+		return count;
+		
+	}	//getSearchCount() end 
+
+	
 	//검색한 내용에 해당하는 QA리스트 조회하는 메서드
 	public List<QaDTO> getSearchList(String search_field, String search_word, int page, int rowsize) {
 		
@@ -441,7 +434,7 @@ public class QaDAO {
 				openConn();
 				
 				sql=" select * from "
-						+ " (select row_number() over ( order by qa_no desc) rnum, "
+						+ " (select row_number() over (order by qa_group desc, qa_step) rnum, "
 						+ " b.* from apc_qa b  where qa_title like ? ) "
 						+ " where rnum >= ? and rnum <= ? " ;
 				
@@ -484,7 +477,7 @@ public class QaDAO {
 					openConn();
 					
 					sql="select * from "
-							+ " (select row_number() over ( order by qa_no desc) rnum, "
+							+ " (select row_number() over (order by qa_group desc, qa_step) rnum, "
 							+ " b.* from apc_qa b  where qa_cont like ? ) "
 							+ " where rnum >= ? and rnum <= ? " ;
 					
@@ -528,7 +521,7 @@ public class QaDAO {
 					openConn();
 					
 					sql="select * from "
-							+ " (select row_number() over ( order by qa_no desc) rnum, "
+							+ " (select row_number() over (order by qa_group desc, qa_step) rnum, "
 							+ " b.* from apc_qa b  "
 							+ " where qa_title like ? or qa_cont like ? ) "
 							+ " where rnum >= ? and rnum <= ? " ;
@@ -604,7 +597,7 @@ public class QaDAO {
 	// QNA 문의사항에 답변글 추가
 	public int replyQa(QaDTO dto) {
 		
-		int result = 0, count = 0;
+		int result = 0, count = 0, step = 0;
 				
 		try {
 			openConn();
@@ -619,6 +612,19 @@ public class QaDAO {
 				count = rs.getInt(1) + 1;
 			}
 			
+			
+			sql = "select max(qa_step) from apc_qa where qa_group = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, dto.getQa_group());
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				step = rs.getInt(1) + 1;
+			}
+			
+			
 			sql = "insert into apc_qa "
 					+ "values(?, ?, '관리자', ?, ?, ?, '', default, sysdate, '', ?, ?, ?)";
 			
@@ -630,8 +636,8 @@ public class QaDAO {
 			pstmt.setInt(5, dto.getQa_pno_fk());
 			
 			pstmt.setInt(6, dto.getQa_group());
-			pstmt.setInt(7, dto.getQa_step() + 1);
-			pstmt.setInt(8, dto.getQa_indent() + 1);
+			pstmt.setInt(7, step);
+			pstmt.setInt(8, step);
 			
 			result = pstmt.executeUpdate();
 			

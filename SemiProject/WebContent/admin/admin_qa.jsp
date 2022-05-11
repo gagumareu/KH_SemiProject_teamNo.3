@@ -62,7 +62,7 @@
 										<img src="<%=request.getContextPath() %>/img/reply-all.png" width="20px">							
 									</c:forEach>
 								</c:if>
-								<a href="<%=request.getContextPath() %>/admin_qa_content.do?no=<%=dto.getQa_no() %>&page=${page}&indent=<%=dto.getQa_indent()%>"> 
+								<a href="<%=request.getContextPath() %>/admin_qa_content.do?no=<%=dto.getQa_no() %>&page=${page}"> 
 									<%=dto.getQa_title() %>
 								</a>		
 							</td>
@@ -87,8 +87,12 @@
   			  <ul class="pagination">
 	    		
 				<c:if test="${page > block }">
-					<li><a href="admin_qa.do?page=1"><<</a></li>
-					<li><a href="admin_qa.do?page=${startBlock - 1 }"><</a></li>
+					<li><a style="font-weight:bold;" href="admin_qa.do?page=1">
+						《
+					</a></li>
+					<li><a style="font-weight:bold;" href="admin_qa.do?page=${startBlock - 1 }">
+						〈
+					</a></li>
 				</c:if>
 				
 				<c:forEach begin="${startBlock }" end="${endBlock }" var="i">
@@ -104,8 +108,12 @@
 				</c:forEach>
 				
 				<c:if test="${endBlock < allPage }">
-					<li><a href="admin_qa.do?page=${endBlock + 1 }">></a></li>
-					<li><a href="admin_qa.do?page=${allPage }">>></a></li>
+					<li><a style="font-weight:bold;" href="admin_qa.do?page=${endBlock + 1 }">
+						〉
+					</a></li>
+					<li><a style="font-weight:bold;" href="admin_qa.do?page=${allPage }">
+						》
+					</a></li>
 				</c:if>
 			  </ul>
 			</nav>
@@ -120,7 +128,7 @@
 					<option value="content">내용</option>
 					<option value="title_content">제목+내용</option>
 				</select>
-				<input type="text" name="search_word" class="form-control">
+				<input type="text" name="search_keyword" class="form-control">
 				<input type="submit" value="검색" class="btn btn-default">
 				
 				</form>

@@ -19,7 +19,6 @@ public class AdminQaContentAction implements Action {
 		
 		int no = Integer.parseInt(request.getParameter("no"));
 		int nowPage = Integer.parseInt(request.getParameter("page"));
-		int indent = Integer.parseInt(request.getParameter("indent"));
 		
 		QaDAO dao = QaDAO.getInstance();
 	
@@ -27,7 +26,6 @@ public class AdminQaContentAction implements Action {
 		
 		request.setAttribute("Cont", dto);
 		request.setAttribute("page", nowPage);
-		request.setAttribute("indent", indent);
 		
 		ActionForward forward = new ActionForward();
 		

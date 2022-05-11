@@ -41,7 +41,7 @@
 						<tr>
 							<td>${dto.getNotice_no() }</td>
 							<td>
-								<a href="<%=request.getContextPath() %>/admin_notice_content.do?no=${dto.getNotice_no() }"> 
+								<a href="<%=request.getContextPath() %>/admin_notice_content.do?no=${dto.getNotice_no() }&page=${page}"> 
 									${dto.getNotice_title() }
 								</a>		
 							</td>
@@ -59,13 +59,60 @@
 					</tr>
 				</c:if>
 			</table>
+			
+			<nav align="center">
+  			  <ul class="pagination">
+	    		
+				<c:if test="${page > block }">
+					<li><a style="font-weight:bold;" href="admin_notice.do?page=1">
+						《
+					</a></li>
+					<li><a style="font-weight:bold;" href="admin_notice.do?page=${startBlock - 1 }">
+						〈
+					</a></li>
+				</c:if>
+				
+				<c:forEach begin="${startBlock }" end="${endBlock }" var="i">
+					
+					<c:if test="${i == page }">
+						<li class="active"><a href="admin_notice.do?page=${i }">${i }</a></li>
+					</c:if>
+					
+					<c:if test="${i != page }">
+						<li><a href="admin_notice.do?page=${i }">${i }</a></li>
+					</c:if>
+					
+				</c:forEach>
+				
+				<c:if test="${endBlock < allPage }">
+					<li><a style="font-weight:bold;" href="admin_notice.do?page=${endBlock + 1 }">
+						〉
+					</a></li>
+					<li><a style="font-weight:bold;" href="admin_notice.do?page=${allPage }">
+						》
+					</a></li>
+				</c:if>
+			  </ul>
+			</nav>
+			
+		
+			<div class="qa_search" align="center">
+				<form method="post" class="form-inline"
+					action="<%=request.getContextPath() %>/admin_notice_search.do">
+					
+				<select name="search_field" class="form-control">
+					<option value="title">제목</option>
+					<option value="content">내용</option>
+					<option value="title_content">제목+내용</option>
+				</select>
+				<input type="text" name="search_keyword" class="form-control">
+				<input type="submit" value="검색" class="btn btn-default">
+				
+				</form>
+			</div>		
+			
 		</div>
 	 </div>
-
-	<footer class="container-fluid navbar-fixed-bottom col-sm-offset-2">
-		<p>하단바 영역</p>
-	</footer>
-	
 	
 </body>
 </html>

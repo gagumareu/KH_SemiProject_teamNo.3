@@ -18,6 +18,7 @@ public class AdminNoticeContentAction implements Action {
 		// 공지사항 상세정보 view page로 보내기
 		
 		int notice_no = Integer.parseInt(request.getParameter("no").trim());
+		int nowPage = Integer.parseInt(request.getParameter("page"));
 		
 		NoticeDAO dao = NoticeDAO.getInstance();
 		
@@ -28,6 +29,7 @@ public class AdminNoticeContentAction implements Action {
 		NoticeDTO dto = dao.noticeContent(notice_no);
 		
 		request.setAttribute("noticeCont", dto);
+		request.setAttribute("page", nowPage);
 		
 		ActionForward forward = new ActionForward();
 		

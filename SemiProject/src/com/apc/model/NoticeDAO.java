@@ -91,16 +91,28 @@ public class NoticeDAO {
 	
 	
 	// 공지사항 전체 목록을 가져오는 메서드
-	public List<NoticeDTO> getNoticeList() {
+	public List<NoticeDTO> getNoticeList(int page, int rowsize) {
 
 		List<NoticeDTO> list = new ArrayList<NoticeDTO>();
+		
+		// 해당 페이지에서 시작 번호
+		int startNo = (page * rowsize) - (rowsize - 1);
+				
+		// 해당 페이지에서 끝 번호
+		int endNo = (page * rowsize);
 		
 		try {
 			openConn();
 			
-			sql = "select * from apc_notice";
+			sql = "select * from "
+					+ " (select row_number() "
+					+ " over(order by notice_no desc) rnum, "
+					+ " b.* from apc_notice b) "
+					+ " where rnum >= ? and rnum <= ?";
 			
 			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, startNo);
+			pstmt.setInt(2, endNo);
 			
 			rs = pstmt.executeQuery();
 			
@@ -338,6 +350,35 @@ public class NoticeDAO {
 		
 	}	// deleteNotice() 메서드 end
 	
+	
+	// 공지사항 전체 게시글 수를 확인하는 메서드 
+	public int getNoticeCount() {
+		
+		int count = 0; 
+
+		try {
+			
+			openConn();
+
+			sql = "select count(*) from apc_notice";
+			
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return count;
+		
+	}	// getNoticeCount() end 
 	
 	
 }
