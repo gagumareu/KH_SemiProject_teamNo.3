@@ -15,7 +15,7 @@ public class MemberUpdateAddrOkAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
-		String mem_id = request.getParameter("mem_id").trim();
+		String mem_id = request.getParameter("id").trim();
 		String first_phone = request.getParameter("first_phone").trim();
 		String middle_phone = request.getParameter("middle_phone").trim();
 		String last_phone = request.getParameter("last_phone").trim();

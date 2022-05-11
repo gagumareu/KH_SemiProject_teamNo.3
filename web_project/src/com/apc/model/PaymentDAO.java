@@ -321,6 +321,8 @@ public class PaymentDAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
+				
+				
 				dto.setOrder_no(rs.getInt("order_no"));
 				dto.setCartno_fk(rs.getInt("cartno_fk"));
 				dto.setOrder_id(rs.getString("order_id"));
@@ -335,6 +337,8 @@ public class PaymentDAO {
 				dto.setOrderaddr(rs.getString("orderaddr"));
 				dto.setOrderphone(rs.getString("orderphone"));
 				dto.setPay_pimage(rs.getString("pay_pimage"));
+				
+				System.out.println("dto등록");
 			}
 			
 		} catch (SQLException e) {
@@ -345,8 +349,6 @@ public class PaymentDAO {
 		}
 		return dto;
 	} // getPaymentContent() end
-	
-	
 	
 	
 	

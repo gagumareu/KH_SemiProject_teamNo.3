@@ -153,17 +153,17 @@
 		</c:if>
 		
 		<form method="post" enctype = "multipart/form-data" id="frm"
-			action="<%=request.getContextPath()%>/review_write_ok.do?num=${cont.getPno()}"> <!-- &id=로그인아이디 -->
-		<input type="hidden" id="p_num" value="${cont.getPno() }">
+			action="<%=request.getContextPath()%>/review_write_ok.do?no=${cont.getOrder_no()}&id=${cont.getOrder_id()}"> <!-- &id=로그인아이디 -->
+		<input type="hidden" id="p_num" value="${cont.getPno_fk() }">
 		<c:if test="${!empty cont }">
 		<div class="review_product_info">
 			<table>
 				<tr>
-					<td width="30%"><img src="<%=request.getContextPath()%>/upload${image}" width="60%" height="60%"></td>
+					<td width="30%"><img src="<%=request.getContextPath()%>/upload${cont.getPay_pimage()}" width="60%" height="60%"></td>
 					<td width="70%">
 					<span class="sub_info">A.P.C. KOREA</span><br>
 					${cont.getPname() }<br>
-					<span class="sub_info">칼라: ${cont.getPcolor() } / 사이즈: ${cont.getPsize() }</span>
+					<span class="sub_info">칼라: ${product.getPcolor() } / 사이즈: ${product.getPsize() }</span>
 					</td>
 				</tr>
 			</table>

@@ -99,7 +99,7 @@ public class ReviewWriteOkAction implements Action {
 		if(result>0) {
 			
 			forward.setRedirect(true);
-			forward.setPath("member/myPage.jsp"); //마이페이지 보여주기
+			forward.setPath("member/orderView.jsp"); //마이페이지 보여주기
 		}else {
 			out.println("<script>");
 			out.println("alert('리뷰등록 실패')");

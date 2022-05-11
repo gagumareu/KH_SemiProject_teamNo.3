@@ -13,10 +13,16 @@ public class ReviewDTO {
 	private String review_image;
 	private String review_pwd;
 	private String review_date;
+	private int orderno_fk;
 	
 	
 	
-	
+	public int getOrderno_fk() {
+		return orderno_fk;
+	}
+	public void setOrderno_fk(int orderno_fk) {
+		this.orderno_fk = orderno_fk;
+	}
 	public String getPname() {
 		return pname;
 	}

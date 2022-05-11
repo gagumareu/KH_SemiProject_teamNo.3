@@ -19,7 +19,7 @@ public class MemberOrderCancelViewAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
-		String mem_id = request.getParameter("mem_id");
+		String mem_id = request.getParameter("id");
 
 		MemberDAO dao = MemberDAO.getInstance();
 		MemberDTO member = dao.getMember(mem_id);

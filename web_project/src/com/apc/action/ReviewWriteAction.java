@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.apc.controller.Action;
 import com.apc.controller.ActionForward;
+import com.apc.model.PaymentDAO;
+import com.apc.model.PaymentDTO;
 import com.apc.model.ProductDAO;
 import com.apc.model.ProductDTO;
 
@@ -16,25 +18,21 @@ public class ReviewWriteAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		//마이페이지 구매내역에서 리뷰쓰기버튼을 누르면 제품번호가 넘어와 DB에서 정보를 조회하여
 		//review_write.jsp로 이동하는 비즈니스 로직 
+		//구매번호를 넘겨받음
+		int no = Integer.parseInt(request.getParameter("no").trim());
 		
-		int num = Integer.parseInt(request.getParameter("num"));
+		PaymentDAO dao = PaymentDAO.getInstance();
+		PaymentDTO dto = dao.getPaymentContent(no);
 		
-		ProductDAO dao = ProductDAO.getInstance();
-		ProductDTO dto = dao.getProductCont(num);
+		//제품 상세정보 가져오기 (사이즈,칼라)
+		ProductDAO pdao = ProductDAO.getInstance();
+		ProductDTO pdto = pdao.getProductCont(dto.getPno_fk());
+		
 
-		
-		String[] img = dao.getPorudctImg(dto);
-		
-		//제품 대표이미지(첫번째이미지)
-		String productImage = img[0];
-		
-		
 		request.setAttribute("cont", dto);
-		request.setAttribute("image", productImage);
-		
+		request.setAttribute("product", pdto);
 		
 		ActionForward forward= new ActionForward();
-		
 		forward.setRedirect(false);
 		forward.setPath("product/review_write.jsp");
 		

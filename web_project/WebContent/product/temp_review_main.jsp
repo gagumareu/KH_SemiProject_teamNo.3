@@ -46,7 +46,7 @@
 		<td>
 		
 		
-			<a href="<%=request.getContextPath()%>/review_write.do?num=${dto.getPno_fk()}" 
+			<a href="<%=request.getContextPath()%>/review_write.do?no=${dto.getOrder_no()}" 
 			onclick="window.open( this.href, '_blank', 'width=470,height=490, scrollbars=yes,directories=no'); return false ">리뷰쓰기</a>
 			<a href="<%=request.getContextPath()%>/qa_write.do?num=${dto.getPno_fk()}">문의하기</a>
 			<a href="<%=request.getContextPath()%>/review_update.do?num=${dto.getPno_fk()}">리뷰수정</a>

@@ -103,18 +103,18 @@
 			<br><br>
 		
 			<b>배송지관리</b> <br>
-			<a href="<%=request.getContextPath() %>/member_addrView.do?mem_id=${mem.getMem_id() }">전체관리</a>
+			<a href="<%=request.getContextPath() %>/member_addrView.do?id=${mem.getMem_id() }">전체관리</a>
 			<br> <br>
 		
 			<b>비밀번호변경</b>	<br>
-			<a href="<%=request.getContextPath() %>/member_updatePwd.do?mem_id=${mem.getMem_id() }">변경하기</a>
+			<a href="<%=request.getContextPath() %>/member_updatePwd.do?id=${mem.getMem_id() }">변경하기</a>
 			<br> <br>
 		</div>
 		
 		<div class="right">
 			<br>
 			<b>온라인상담</b> <br>
-			<a href="<%=request.getContextPath() %>/member_contactView.do?mem_id=${mem.getMem_id() }">전체보기</a>	
+			<a href="<%=request.getContextPath() %>/member_contactView.do?id=${mem.getMem_id() }">전체보기</a>	
 			<br> <br> <br>
 			
 			<b>적립금: ${mem.getMem_mileage() }원</b> <br>
@@ -127,13 +127,13 @@
 		<div class="left">
 			<br>
 			<b>구매 내역</b> <br>
-			<a href="<%=request.getContextPath() %>/member_orderView.do?mem_id=${mem.getMem_id() }">전체보기</a>
+			<a href="<%=request.getContextPath() %>/member_orderView.do?id=${mem.getMem_id() }">전체보기</a>
 		</div>
 		
 		<div class="right">
 			<br>
 			<b>취소/반품 신청</b> <br>
-			<a href="<%=request.getContextPath() %>/member_orderCancelView.do?mem_id=${mem.getMem_id() }">조회하기</a>
+			<a href="<%=request.getContextPath() %>/member_orderCancelView.do?id=${mem.getMem_id() }">조회하기</a>
 		</div>
 	</section>
 	

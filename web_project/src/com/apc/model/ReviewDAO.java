@@ -94,7 +94,7 @@ public class ReviewDAO {
 				count= rs.getInt(1)+1;
 			}
 			
-			sql="insert into apc_review values(?,?,?,?,?,?,?,?,?,?,sysdate)";
+			sql="insert into apc_review values(?,?,?,?,?,?,?,?,?,?,sysdate, ?)";
 			pstmt=con.prepareStatement(sql);
 			
 			pstmt.setInt(1, count);
@@ -107,7 +107,7 @@ public class ReviewDAO {
 			pstmt.setString(8, dto.getReview_cont());
 			pstmt.setString(9, dto.getReview_image());
 			pstmt.setString(10, dto.getReview_pwd());
-			
+			pstmt.setInt(11, dto.getOrderno_fk());
 			result=pstmt.executeUpdate();
 			
 			
@@ -153,7 +153,7 @@ public class ReviewDAO {
 				dto.setReview_image(rs.getString("review_image"));
 				dto.setReview_pwd(rs.getString("review_pwd"));
 				dto.setReview_date(rs.getString("review_date"));
-				
+				dto.setOrderno_fk(rs.getInt("orderno_fk"));
 				list.add(dto);
 			}
 			

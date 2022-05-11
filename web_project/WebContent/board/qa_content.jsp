@@ -217,11 +217,13 @@
 					
 				</tbody>
 			</table>
+			<c:if test="${cont.getQa_indent() == 0}">
 				<div class="qa_bottom_btn" id="btnGroup" align="right">
 					<button type="button" class="btn btn-outline-dark" 
 						onclick="location.href='<%=request.getContextPath() %>/qa_list.do'">
 						목록
 					</button> &nbsp;
+					
 					<button id="qa_delete" type="button" class="btn btn-outline-dark" 
 						onclick="if(confirm('정말로 삭제하시겠습니까?')){
 									qa_del();
@@ -232,8 +234,16 @@
 					삭제
 					</button> &nbsp;
 					<button type="button" class="btn btn-outline-dark" onclick="qa_update();">수정</button> &nbsp;
-					<button type="button" class="btn btn-outline-dark" >답변</button> 
 				</div>
+				</c:if>
+					<c:if test="${cont.getQa_indent() != 0}">
+				<div class="qa_bottom_btn" id="btnGroup" align="right">
+					<button type="button" class="btn btn-outline-dark" 
+						onclick="location.href='<%=request.getContextPath() %>/qa_list.do'">
+						목록
+					</button> &nbsp;
+				</div>
+				</c:if>
 		</form>
 		</div>
 	</div>
