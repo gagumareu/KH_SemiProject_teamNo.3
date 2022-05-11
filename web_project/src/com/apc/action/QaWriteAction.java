@@ -20,7 +20,9 @@ public class QaWriteAction implements Action {
 		//qa_list.jsp에서 글쓰기 버튼을 누르거나 구매목록에서 문의하기버튼을 누르면
 		//상품정보와 qa카테고리와 조회하여 뷰페이지로 전달하는 비즈니스 로직
 		
-QaCategoryDAO dao = QaCategoryDAO.getInstance();
+		String id = request.getParameter("id");
+		
+		QaCategoryDAO dao = QaCategoryDAO.getInstance();
 		
 		ActionForward forward = new ActionForward();
 		
@@ -39,7 +41,7 @@ QaCategoryDAO dao = QaCategoryDAO.getInstance();
 			ProductDTO pDto = pDao.getProductCont(num);
 			String [] image = pDao.getPorudctImg(pDto);
 			
-			
+			request.setAttribute("id", id);
 			request.setAttribute("qac", dto); 		//qa게시판 카테고리 넘겨주기
 			request.setAttribute("pCont", pDto);   //제품정보 넘겨주기
 			request.setAttribute("pimage", image[0]); //제품의 대표이미지 전달
@@ -53,6 +55,7 @@ QaCategoryDAO dao = QaCategoryDAO.getInstance();
 			
 			//get방식으로 넘어온 no가 없으면 (qa_list.jsp에서 글쓰기버튼 누름)
 			request.setAttribute("qac", dto);
+			request.setAttribute("id", id);
 			
 			forward.setRedirect(false);
 			forward.setPath("board/qa_write.jsp");

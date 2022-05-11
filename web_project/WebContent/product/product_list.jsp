@@ -1,146 +1,156 @@
+<%@page import="com.apc.model.CategoryDTO"%>
+<%@page import="com.apc.model.CategoryDAO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.StringTokenizer"%>
+<%@page import="com.apc.model.ProductDTO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="EUC-KR"%>
-    
-    <%@  taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	
+	//PRODUCT페이지 상단 TITLE 3번째 카테고리 이름 뽑아내기 
+	String code = request.getParameter("code");
+	
+	CategoryDAO dao = CategoryDAO.getInstance();
+	CategoryDTO dto = dao.getCategoryCont(code);
+	
+	String first = (String)session.getAttribute("first");
+	String second = (String)session.getAttribute("second");
+	String third = null;//3번째 카테고리 이름 
+	
+	System.out.println(code);
+	System.out.println("카테고리 이름"+dto.getCategory_name());
+	System.out.println("first"+first);
+	System.out.println("second:"+second);
+	
+	if(second == null){//second 카테고리이름이없으면, ex)WOMEN, MEN 
+		if(first.equals("WOMEN")){
+			third = dto.getCategory_name().substring(6);
+		}else if(first.equals("MEN")){
+			third = dto.getCategory_name().substring(4);
+		}
+	}else{//second 카테고리 이름이 있으면  ex) GOLF 
+
+		if(second.equals("WOMEN")){
+			third = dto.getCategory_name().substring(6);
+		}else if(second.equals("MEN")){
+			third = dto.getCategory_name().substring(4);
+		}//ACC는 third 없음 바로 제품리스트 나옴
+	}
+
+	session = request.getSession();
+	session.setAttribute("third", third);
+	System.out.println("thrid:"+third);
+	
+
+%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
+<meta charset="UTF-8">
+<title>A.P.C. 아페쎄 공식 온라인 스토어 > GOLF > 제품 목록</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/main.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style_products.css">
+<script type="text/javascript">
+
+	
+
+</script>
 <style type="text/css">
 
-	
-	.apcTitle{
-		margin-top: 50px;
-		font-size: 63px;
-		margin-left: 15px;
-		font-weight: bold;
-		width: 100%;
-	}
-	
-	.apcTitle > a{
-		color: black;
-		text-decoration: none;
-	}
-	
-	.apcTitle > a:hover{
-		color: white;
-		text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-	}
 
-	.col > a > img{
-		width:100%;
-	}
-	
-	/**************************/
-	
-	
-	.products_wrapper{
-		display: flex;
-		flex-direction: column;
-		min-height: 100vh;	
-	}
-	
-	.container{
-		flex: 1;
-		
-	}
-	
-	.Products_list{
-		display: grid;
-		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-		align-itmes: center;
-	}
-	
-	/**************************/
-	
-	.product > a {
-		text-decoration: none;
-		color: black;
-	}
-	
-	
-	.description_text {
-		text-align: center;
-	}
-	
-	
-	
-	
-	
 </style>
-
-	<link rel="stylesheet" href="../css/style.css">
-	
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" 
-	rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" 
-	crossorigin="anonymous">
-
 </head>
 <body>
-
-	
-	<c:set var="list" value="${productList }"/>
-	<c:set var="ltitleCode" value="${ltitleCode }"/>
-	<c:set var="ctitleCode" value="${ctitleCode }"/>
-	<c:set var="fullCode" value="${fullCode }"/>
-	<c:set var="code1" value="${code1 }"/>
-	
-	<div class="products_wrapper">
-	
-		<jsp:include page="/include/shop_top.jsp"/>
-		<jsp:include page="/include/shop_top_right.jsp"/>
-	
-		<div class="apcTitle">
-			<a href="<%=request.getContextPath() %>/index.jsp">A.P.C.</a> <a href="<%=request.getContextPath() %>/category.do?code=${ctitleCode.getCategory_code() }">${ctitleCode.getCategory_name() }</a> / <span>${ltitleCode.getCategory_name() }</span>
-			
-			<!--  
-			<c:if test="${code1 != 3 } ">
-				<a href="<%=request.getContextPath() %>/category.do?code=${ctitleCode.getCategory_code() }">${ctitleCode.getCategory_name() }</a> / <span>${ltitleCode.getCategory_name() }</span>
-			</c:if>
-			
-			<c:if test="${code1 == 3 }">
-				<a href="<%=request.getContextPath() %>/category.do?code=${ctitleCode.getCategory_code() }">${ctitleCode.getCategory_name() }</a> / <span>${ltitleCode.getCategory_name() }</span>
-			</c:if>
-			-->
-			
-		</div>
+	<jsp:include page="/include/shop_top.jsp"/>
+	<jsp:include page="/include/shop_top_right.jsp"/>
+	<div class="category_wrapper" >
 		
-			<div class="Products_list">
-			
-					<c:if test="${!empty list }">
-					
-						<c:forEach items="${list }" var="dto">	
-							<div class="product">
-				    			<a href="<%=request.getContextPath() %>/product_content.do?no=${dto.getPno() }&name=${dto.getPname() }&code=${fullCode }">
-									<img alt="" src="image_products/${dto.getPimage() }" width="100%"> 
-									<div class="description">
-										<div class="description_text">${dto.getPname() }</div>
-										<div class="description_text"><fmt:formatNumber value="${dto.getPrice() }"/>��</div>
-									</div>
-								</a>
-							</div>
-						</c:forEach>
-						
-					</c:if>
-					
-					<c:if test="${empty list }">
-						<h4>�˻��� ǰ���� �����ϴ�:(</h4>
-					</c:if>
-			
-			</div> <!-- Products_list end -->
-			
-		<jsp:include page="/include/shop_bottom.jsp"/>
-
-	</div> <!-- products_wrapper end -->
+		<div class="page_title">
+		<ul>
+		<li class="page_title1">
+		<a href="<%=request.getContextPath()%>/index.jsp">A.P.C.</a>
+		</li>
+		<c:if test="${first == 'WOMEN' }"> 
+		<li class="page_title2">
+			<a href="<%=request.getContextPath()%>/category.do?code=10000000">${first}</a>
+		</li>
+		</c:if>
+		<c:if test="${first == 'MEN' }"> 
+		<li class="page_title2">
+			<a href="<%=request.getContextPath()%>/category.do?code=20000000">${first}</a>
+		</li>
+		</c:if>
+		<c:if test="${first == 'GOLF' }"> 
+		<li class="page_title2">
+			<a href="<%=request.getContextPath()%>/category.do?code=30000000">${first}</a>
+		</li>
+			<c:if test="${second == 'ACC' }">
+			<li class="page_title3">
+				/ ${second} 
+			</li>
+			</c:if>
+			<c:if test="${second != 'ACC' }">
+			<li class="page_title3">
+				/ <a href="<%=request.getContextPath()%>/2nd_category.do?code=${upperCode}">${second}</a>
+			</li>
+			</c:if>
+		</c:if>
+		<li class="page_title4">
+			/ ${third }
+		</li>
+		</ul>
+		</div><!-- class="page_title" -->
+		
+		
+		<c:set var="list" value="${productList }"/>
+		<c:if test="${empty list }">
+		<h3>정보가 없습니다.</h3>
+		</c:if>
+		<c:if test="${!empty list }">
+		<div class="category_flex_wrapper">
+		<div class="category_flex">
+		<%
+		//DB에 저장된 이미지들을 JSP페이지에 보여주기 
+		List<ProductDTO> list = (List<ProductDTO>)request.getAttribute("productList");
+		
+		
+		StringTokenizer st = null;
+		
+		for(int i=0; i<list.size(); i++){
+			 ProductDTO product = list.get(i);
+			 
+			 String fileName = product.getPimage();
+			 
+			 StringTokenizer token = new StringTokenizer(fileName,",");
+			 String[] arrImg =  new String[token.countTokens()];
+			 
+			 for(int j=0; j<arrImg.length;j++){
+				arrImg[j] = token.nextToken();
+			 }
+		
+		%>
+						<div class="flex_item">
+							<div class="img_box">
+							<a href="<%=request.getContextPath() %>/product_detail.do?num=<%=product.getPno() %>
+											&color=<%=product.getPcolor()%>&size=<%=product.getPsize()%> ">
+								<img alt="arrImg[0]" src="<%=request.getContextPath() %>/upload/<%= arrImg[0] %> ">
+								<div class="img_overlay">
+								
+								
+								</div>
+							</a>						
+							</div>	<!-- class="img_box" -->					
+						</div><!-- class="flex_item" -->
+				
+		<%}%>
+			</div><!-- class="category_flex" -->
+			</div> <!-- class="category_flex_warpper" -->
+		</c:if>
 	
-	
-
-	
-	
-	
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
-	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	</div>
+	<jsp:include page="../include/shop_bottom.jsp"/>
 </body>
 </html>

@@ -1,86 +1,23 @@
-<%@page import="com.apc.model.CategoryDTO"%>
-<%@page import="java.util.List"%>
-<%@page import="java.util.Set"%>
-<%@page import="com.apc.model.CategoryDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="EUC-KR"%>
-    
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-  
-  	<%
-  	CategoryDAO dao = CategoryDAO.getInstance();
-  	
-  	
-  	
-  	%>
-   
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
+<meta charset="UTF-8">
+<title>이슬 category_main2</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/main.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style_products.css">
 <style type="text/css">
 
 	html, body{
-		margin:0px;
+	
+		margin: 0px;
 		padding: 0px;
 	}
-	
 
 
-	/* ****************공통으로 링크걸  css*******/
-
-	.apcTitle{
-		margin-top: 50px;
-		font-size: 63px;
-		margin-left: 15px;
-		font-weight: bold;
-		width: 100%;
-	}
-	
-	.apcTitle > a{
-		color: black;
-		text-decoration: none;
-	}
-	
-	.apcTitle > a:hover{
-		color: white;
-		text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-	}
-
-	.col > a > img{
-		width:100%;
-	}
-
-	/* ****************공통으로 링크걸  css*******/
-	
-	
-	#category_wrapper {
-		display: flex;
-		flex-direction: column;
-		min-heigth: 100vh;
-	}
-	
-	.contents{
-		flex: 1;
-		display: grid;
-		grid-template-columns: 1fr 1fr 1fr;
-	}
-	
-	.content {
-		text-align: center;
-	}
-	
-	.content a {
-		text-decoration: none;
-		line-style-type: none;
-		color: black;
-		
-	}
-	
-	.category_name {
-		font-size: 30px;
-	}
 </style>
 
 	<link rel="stylesheet" href="../css/style.css">
@@ -92,50 +29,75 @@
 </head>
 <body>
 	
+	<jsp:include page="/include/shop_top.jsp"/>
+	<jsp:include page="/include/shop_top_right.jsp"/>
+	<div class="category_wrapper" >
+	<c:set var="list" value="${List }"/>
+	
+		<div class="page_title">
+		<ul>
+		<li class="page_title1">
+		<a href="<%=request.getContextPath()%>/index.jsp">A.P.C.</a>
+		</li>
+		<!--   second이 null (WOMEN, MEN일 경우)   -->
+		<c:if test="${empty second }"> 
+		<li class="page_title2">
+			${first}
+		</li>
+		</c:if>
+		 <!--   second이 null이 아니면 (GOLF일 경우)    -->
+		<c:if test="${!empty second }">
+		<li class="page_title2">
+			<a href="<%=request.getContextPath()%>/category.do?code=30000000">${first}</a>
+		</li>
+		<li class="page_title3">
+			/ ${second}
+		</li>
+		</c:if>
+		</ul>
+		</div><!-- class="page_title" -->
 
-	<div id="category_wrapper">
-	
-		<jsp:include page="/include/shop_top.jsp"/>
-		<jsp:include page="/include/shop_top_right.jsp"/>
 		
-		<c:set var="list" value="${List }"/>
-		<c:set var="ctitleCode" value="${ctitleCode }"/>
-	
-		<div class="apcTitle">
-			<a href="<%=request.getContextPath() %>/index.jsp">A.P.C.</a> <span>${ctitleCode.getCategory_name() }</span>
-		</div>
-		
-		<div class="contents">
-				
 			<c:if test="${!empty list }">
-		
-				<c:forEach items="${list }" var="dto">	
-		   			<div class="content">
-		    			<a href="<%=request.getContextPath() %>/product_list.do?code=${dto.getCategory_code() } ">
-
-							<img class="content_image" alt="" src="image_category/${dto.getCategory_image() }" width="100%" >
-						
-							<div class="category_name">${dto.getCategory_name() }</div>
-						</a>
-		  	 		</div>
-				</c:forEach>
-		
+				<div class="category_flex_wrapper">
+					<div class="category_flex">
+					<c:forEach items="${list }" var="dto">	
+						<div class="flex_item">
+							<div class="img_box">
+							<a href="<%=request.getContextPath() %>/product_list.do?code=${dto.getCategory_code() } ">
+								<img alt="" src="upload/${dto.getCategory_image() }">
+								<div class="img_overlay">
+									<c:if test="${dto.getCategory_name().substring(0,1) == 'W' }">
+								<span> 
+									${dto.getCategory_name().substring(0,6) }<br>
+									${dto.getCategory_name().substring(6) }
+								</span>
+								</c:if>
+								
+								 <c:if test="${dto.getCategory_name().substring(0,1) == 'M'}">
+								<span> 
+									${dto.getCategory_name().substring(0,4) }<br>
+									${dto.getCategory_name().substring(4) }
+								</span>
+								</c:if>
+								</div>
+							</a>						
+							</div>	<!-- class="img_box" -->					
+						</div><!-- class="flex_item" -->
+					</c:forEach>
+					</div><!-- class="category_flex" -->
+				</div> <!-- class="category_flex_warpper" -->
 			</c:if>		
-					
 			<c:if test="${empty list }">
 				<h4>검색된 품목이 없습니다:(</h4>
 			</c:if>
 		
-		</div> <!-- contents end -->
-			
-		
-	<jsp:include page="/include/shop_bottom.jsp"/>
 		
 	</div> <!-- category_wrapper end -->
 		
 	
-	
-	
+
+	<jsp:include page="/include/shop_bottom.jsp"/>
 	
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
