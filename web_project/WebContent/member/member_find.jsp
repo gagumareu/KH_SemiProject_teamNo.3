@@ -20,15 +20,33 @@
 <style type="text/css">
 
 	body {
+		
 		font-family: arial;
+		heigth: 100%;
 	}
 	
-	.wrapper {
-		position: absolute;
+	.find_wrapper {
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
+		align-items: center;
+		
+	}
+	
+	.find_container {
+		
+		flex: 1;
+		
+		
+	}
+	
+	.find_from {
+		/*position: absolute;
 		top: 35%;
-		left: 43%;
+		left: 43%;*/
 		font-family: arial;
 		width: 300px;
+		padding-top: 200px;
 		
 	}
 
@@ -51,6 +69,8 @@
 	.form_list {
 		width: 100%;
 		padding-left: 0;
+		display: flex;
+		flex-direction: column;
 	}
 	
 	.required {
@@ -106,129 +126,185 @@
 		border-bottom: 2px solid black;
 	}
 	
+	
+	/************************************/	
+	
+	.apcTitle{
+		margin-top: 50px;
+		font-size: 63px;
+		margin-left: 15px;
+		font-weight: bold;
+		width: 100%;
+	}
+	
+	.apcTitle > a{
+		color: black;
+		text-decoration: none;
+	}
+	
+	.apcTitle > a:hover{
+		color: white;
+		text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+	}
+
+	.col > a > img{
+		width:100%;
+	}
+	
+	/**************************/	
+	
+	
+	
 </style>
 </head>
 <body>
 
-	<h1>A.P.C LOG IN</h1>
+
+	 <jsp:include page="../include/shop_top.jsp"/>
+	 <jsp:include page="../include/shop_top_right.jsp"/>
 	
-	<div class="wrapper">
-	<div id="tab00">
-		 <form  method="post" id="findId_form" class="find_form"
-		            action="<%=request.getContextPath() %>/findId.do">
-		 <div class="content">
-		     <div class="find_tab">
-		     <div class="tab_title_selected" onclick="TabOpen('00')">아이디 찾기</div>
-		     <div class="tab_title" onclick="TabOpen('01')">비밀번호 찾기</div>
-		     </div>
-		     <br>
-		 <ul class="form_list">
-		 	<li>
-		 		<label for="memberName" class="required">
-		 		이름
-		 		<em>*</em>
-		 		</label>
-		 		<div class="input_box">
-		 		<input type="text" name="memberName" id="memberName" class="input_text" 
-		 				maxlength="20">
-		 		</div>
-		 	</li>
-		 	<br>
-		 	<li>
-		 		<label for="memberPhone" class="required">
-		 		휴대폰번호
-		 		<em>*</em>
-		 		</label>
-		 		<div class="input_box">
-		 		<select name="phone1" class="phone1">
-				<option value="010">010</option>
-				<option value="011">011</option>
-				<option value="016">016</option>
-				<option value="017">017</option>
-				<option value="018">018</option>
-				<option value="019">019</option>
-				</select>
-				-
-				<input type="text" name="phone2" class="phone" maxlength="4">
-				-
-				<input type="text" name="phone3" class="phone" maxlength="4">
-		 		</div>
-		 	</li>
-		 </ul>       
-		 </div>
-		 <br>
-		 <div class="find_button">
-		 <input type="submit" value="아이디 찾기" class="button">
-		 </div>
-		    
-		 <br>
-		 <br>
-		 
-		 <div class="login_link">
-			<input type="button" value="로그인" class="button2"
-				onclick="location.href='loginMain.do'">
-			<input type="button" value="회원가입" class="button2"
-				onclick="location='member/member_join.jsp'">				
-		 </div>
-		 </form>
-		 
-		 
-	</div>
+	<div class="find_wrapper">
+	
+		<div class="apcTitle">
+			<a href="<%=request.getContextPath() %>/index.jsp">A.P.C.
+			</a> LOG IN
+		</div>
 	
 	
-	<div id="tab01">
-		 <form  method="post" id="findpwd_form" class="find_form"
-		            action="<%=request.getContextPath() %>/findPwd.do">
-		 <div class="content">
-		     <div class="find_tab">
-		     <div class="tab_title" onclick="TabOpen('00')">아이디 찾기</div>
-		     <div class="tab_title_selected" onclick="TabOpen('01')">비밀번호 찾기</div>
-		     </div>
-		     <br>  
-		        
-		 <ul class="form_list">
-		 	<li>
-		 		<label for="memberId" class="required">
-		 		회원아이디
-		 		<em>*</em>
-		 		</label>
-		 		<div class="input_box">
-		 		<input type="text" name="memberId" id="memberId" class="input_text" 
-		 				maxlength="20">
-		 		</div>
-		 	</li>
-		 	<br>
-		 	<li>
-		 		<label for="member_email" class="required">
-		 		이메일주소
-		 		<em>*</em>
-		 		</label>
-		 		<div class="input_box">
-		 		<input type="text" name="member_email" id="member_email" class="input_text" 
-		 				maxlength="30">
-		 		</div>
-		 	</li>
-		</ul>   
-		 </div>
-		 <br>
-		 <div class="find_button">
-		 <input type="submit" value="비밀번호 찾기" class="button">
-		 </div>
-		 
-		 <br>
-		 <br>
-		    
-		 <div class="login_link">
-			<input type="button" value="메인으로" class="button2"
-				onclick="location.href='main.do'">
-			<input type="button" value="로그인" class="button2"
-				onclick="location.href='loginMain.do'">				
-		 </div>
-		 
-		 </form>
-		 
-		 
-	</div>
-</div>
+		<div class="find_container">
+		
+			<div class="find_from">
+				<div id="tab00">
+					 <form  method="post" id="findId_form" class="find_form"
+					            action="<%=request.getContextPath() %>/findId.do">
+					 <div class="content">
+					     <div class="find_tab">
+					     <div class="tab_title_selected" onclick="TabOpen('00')">아이디 찾기</div>
+					     <div class="tab_title" onclick="TabOpen('01')">비밀번호 찾기</div>
+					     </div>
+					     <br>
+					 <ul class="form_list">
+					 	<li>
+					 		<label for="memberName" class="required">
+					 		이름
+					 		<em>*</em>
+					 		</label>
+					 		<div class="input_box">
+					 		<input type="text" name="memberName" id="memberName" class="input_text" 
+					 				maxlength="20">
+					 		</div>
+					 	</li>
+					 	<br>
+					 	<li>
+					 		<label for="memberPhone" class="required">
+					 		휴대폰번호
+					 		<em>*</em>
+					 		</label>
+					 		<div class="input_box">
+					 		<select name="phone1" class="phone1">
+							<option value="010">010</option>
+							<option value="011">011</option>
+							<option value="016">016</option>
+							<option value="017">017</option>
+							<option value="018">018</option>
+							<option value="019">019</option>
+							</select>
+							-
+							<input type="text" name="phone2" class="phone" maxlength="4">
+							-
+							<input type="text" name="phone3" class="phone" maxlength="4">
+					 		</div>
+					 	</li>
+					 </ul>       
+					 </div>
+					 <br>
+					 <div class="find_button">
+					 <input type="submit" value="아이디 찾기" class="button">
+					 </div>
+					    
+					 <br>
+					 <br>
+					 
+					 <div class="login_link">
+						<input type="button" value="로그인" class="button2"
+							onclick="location.href='loginMain.do'">
+						<input type="button" value="회원가입" class="button2"
+							onclick="location='member/member_join.jsp'">				
+					 </div>
+					 </form>
+					 
+					 
+				</div>
+		
+		
+				<div id="tab01">
+					 <form  method="post" id="findpwd_form" class="find_form"
+					            action="<%=request.getContextPath() %>/findPwd.do">
+					 <div class="content">
+					     <div class="find_tab">
+					     <div class="tab_title" onclick="TabOpen('00')">아이디 찾기</div>
+					     <div class="tab_title_selected" onclick="TabOpen('01')">비밀번호 찾기</div>
+					     </div>
+					     <br>  
+					        
+					 <ul class="form_list">
+					 	<li>
+					 		<label for="memberId" class="required">
+					 		회원아이디
+					 		<em>*</em>
+					 		</label>
+					 		<div class="input_box">
+					 		<input type="text" name="memberId" id="memberId" class="input_text" 
+					 				maxlength="20">
+					 		</div>
+					 	</li>
+					 	<br>
+					 	<li>
+					 		<label for="member_email" class="required">
+					 		이메일주소
+					 		<em>*</em>
+					 		</label>
+					 		<div class="input_box">
+					 		<input type="text" name="member_email" id="member_email" class="input_text" 
+					 				maxlength="30">
+					 		</div>
+					 	</li>
+					</ul>   
+					 </div>
+					 <br>
+					 <div class="find_button">
+					 <input type="submit" value="비밀번호 찾기" class="button">
+					 </div>
+					 
+					 <br>
+					 <br>
+					    
+					 <div class="login_link">
+						<input type="button" value="메인으로" class="button2"
+							onclick="location.href='main.do'">
+						<input type="button" value="로그인" class="button2"
+							onclick="location.href='loginMain.do'">				
+					 </div>
+					 
+					 </form>
+				</div> <!-- tab01 -->
+			
+			
+			
+			 </div> <!-- find_from end -->
+			 
+			 
+			 
+		</div> <!-- find_container end -->
+	
+	
+	
+
+	
+	</div> <!-- find_wrapper end -->
+		 <jsp:include page="../include/shop_bottom.jsp"/>
+	
+	
+	
 </body>
 </html>

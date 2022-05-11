@@ -116,8 +116,8 @@
 		font-size: 10pt;
 		color: black;
 		font-weight: bold;
-	}
-	*/
+	}*/
+	
 	.tab_title_selected {
 		text-align: center;
 		width: 50%;
@@ -218,7 +218,7 @@
 	                    <br>
 	                    <div class="login_link">
 	                    	<div>
-							<a href="find.do">아이디/비밀번호 찾기</a>
+							<a href="<%=request.getContextPath() %>/find.do">아이디/비밀번호 찾기</a>
 							</div>
 							<div>
 							<a href="<%=request.getContextPath() %>/semiJoin.do">회원가입</a>

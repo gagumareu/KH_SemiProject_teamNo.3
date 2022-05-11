@@ -41,7 +41,7 @@ public class semiLoginAction implements Action {
 			session.setAttribute("memberDb", dto);
 			
 			forward.setRedirect(false);
-			forward.setPath("Main.jsp");  // 메인 페이지로 이동
+			forward.setPath("index.jsp");  // 메인 페이지로 이동
 			
 		}else if(check == -1) {
 			// 비밀번호가 틀린 경우

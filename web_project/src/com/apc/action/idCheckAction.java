@@ -15,7 +15,7 @@ public class idCheckAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
-			throws IOException, ParseException {
+			throws IOException {
 		
 		// 파라미터로 넘어온 아이디가 customer 테이블에 등록되어 있는
 				// 아이디인지 여부를 확인하는 비지니스 로직.
