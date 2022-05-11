@@ -27,7 +27,7 @@ public class AdminProductsInsertOkAction implements Action {
 		
 		ProductsDTO dto = new ProductsDTO();
 		
-		String saveFolder="C:\\Users\\JUNGHWAN\\git\\SemiProject_teamNo.3\\web_project\\WebContent\\image_products";
+		String saveFolder="C:\\Users\\JUNGHWAN\\git\\SemiProject_teamNo.3\\web_project\\WebContent\\upload";
 		
 		int fileSize=1024*1024*10;
 		

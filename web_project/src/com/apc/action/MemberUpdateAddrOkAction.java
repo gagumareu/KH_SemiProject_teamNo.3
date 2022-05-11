@@ -1,4 +1,4 @@
-package com.admin.action;
+package com.apc.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;

@@ -72,9 +72,11 @@
 	</style>
 </head>
 <body>
+
+
 	<header>
-	<h1 style="font-size: 50px;"><a href="mainPage.jsp">A.P.C.</a> 
-	마이페이지</h1>
+		<h1 style="font-size: 50px;"><a href="<%=request.getContextPath()%>/index.jsp">A.P.C.</a> 
+		마이페이지</h1>
 	</header>
 
 	<nav>
@@ -134,5 +136,9 @@
 			<a href="<%=request.getContextPath() %>/member_orderCancelView.do?mem_id=${mem.getMem_id() }">조회하기</a>
 		</div>
 	</section>
+	
+	
+	
+	
 </body>
 </html>

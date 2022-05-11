@@ -42,7 +42,7 @@ public class QaWriteOkAction implements Action {
 		MemberDAO dao = MemberDAO.getInstance();
 		MemberDTO dto = dao.getMemberInfo(writer);
 		
-		String pwd = dto.getMempwd();
+		String pwd = dto.getMem_pwd();
 		
 		System.out.println("pno_fk:"+pno);
 		

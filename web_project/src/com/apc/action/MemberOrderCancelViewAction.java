@@ -1,4 +1,4 @@
-package com.admin.action;
+package com.apc.action;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -9,17 +9,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.apc.controller.Action;
 import com.apc.controller.ActionForward;
+import com.apc.model.CancelDAO;
+import com.apc.model.CancelDTO;
 import com.apc.model.MemberDAO;
 import com.apc.model.MemberDTO;
-import com.apc.model.QaDAO;
-import com.apc.model.QaDTO;
 
-
-public class MemberContactViewAction implements Action {
+public class MemberOrderCancelViewAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		// TODO Auto-generated method stub
 		
 		String mem_id = request.getParameter("mem_id");
 
@@ -58,19 +56,20 @@ public class MemberContactViewAction implements Action {
 		
 		String date_3 = year + "-" + month_s + "-" + day_s;
 		
-		QaDAO qaDAO = QaDAO.getInstance();
-		List<QaDTO> list = qaDAO.getContactQaList(mem_id);
-		
 		request.setAttribute("date_now", now);
 		request.setAttribute("date_3", date_3);
+		
+		CancelDAO cdao = CancelDAO.getInstance();
+		List<CancelDTO> list = cdao.getCancelList(mem_id);
+		
 		request.setAttribute("memDTO", member);
-		request.setAttribute("qaList", list);
+		request.setAttribute("cancelList", list);
 		
 		ActionForward forward = new ActionForward();
 		
 		forward.setRedirect(false);
 		
-		forward.setPath("member/contactView.jsp");
+		forward.setPath("member/orderCancelView.jsp");
 		
 		return forward;
 	}

@@ -25,7 +25,7 @@ public class semiLogoutAction implements Action {
 		ActionForward forward = new ActionForward();
 				
 		forward.setRedirect(false);
-		forward.setPath("Main.jsp");
+		forward.setPath("index.jsp");
 				
 				
 		return forward;

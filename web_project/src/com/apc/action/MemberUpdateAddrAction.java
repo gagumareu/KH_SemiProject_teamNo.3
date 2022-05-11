@@ -1,4 +1,4 @@
-package com.admin.action;
+package com.apc.action;
 
 import java.io.IOException;
 
@@ -10,7 +10,7 @@ import com.apc.controller.ActionForward;
 import com.apc.model.MemberDAO;
 import com.apc.model.MemberDTO;
 
-public class MemberUpdatePwdAction implements Action {
+public class MemberUpdateAddrAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -26,7 +26,7 @@ public class MemberUpdatePwdAction implements Action {
 		
 		forward.setRedirect(false);
 		
-		forward.setPath("member/updatePwd.jsp");
+		forward.setPath("member/updateAddr.jsp");
 		
 		return forward;
 	}

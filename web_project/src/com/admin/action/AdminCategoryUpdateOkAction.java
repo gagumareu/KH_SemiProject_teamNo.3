@@ -21,7 +21,7 @@ public class AdminCategoryUpdateOkAction implements Action {
 		// 수정 폼 페이지에서 수정이 완료되면 db로 데이터를 이동시킨다. 
 		
 		//첨부파일
-		String saveFolder = "C:\\Users\\JUNGHWAN\\git\\SemiProject_teamNo.3\\web_project\\WebContent\\image_category";
+		String saveFolder = "C:\\Users\\JUNGHWAN\\git\\SemiProject_teamNo.3\\web_project\\WebContent\\upload";
 		
 		int fileSize = 1024*1024*10;
 		

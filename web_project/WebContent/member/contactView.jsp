@@ -125,7 +125,7 @@
 		<input type="button" value="조회" class="black" />
 		&nbsp; &nbsp;
 		<input type="button" value="문의하기" class="white" 
-			onclick="location.href='member_writeContact.do?mem_id=${mem.getMem_id() }'"
+			onclick="location.href='qa_write.do?id=${mem.getMem_id() }'"
 			style="width: 75px;"/>
 		<br> <br> <br>
 		<hr>
