@@ -157,7 +157,8 @@
 						<c:forEach items="${list }" var="dto">	
 						
 							<div class="product">
-				    			<a href="<%=request.getContextPath() %>/product_content.do?no=${dto.getPno() }&name=${dto.getPname() }&code=${dto.getPcategory_fk() }">
+								<!-- 20220511 이슬 수정 : product_detail.do로 통일 -->
+				    			<a href="<%=request.getContextPath() %>/product_detail.do?num=${dto.getPno() }&color=${dto.getPcolor() }&size=${dto.getPsize() }">
 									<img alt="" src="image_products/${dto.getPimage() }" width="100%"> 
 									<div class="description">
 										<div class="description_text">${dto.getPname() }</div>

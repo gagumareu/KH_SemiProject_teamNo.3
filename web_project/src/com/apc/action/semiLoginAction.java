@@ -38,7 +38,7 @@ public class semiLoginAction implements Action {
 		if(check > 0) {
 			// 회원인 경우
 			MemberDTO dto = dao.getMemberInfo(member_id);
-			session.setAttribute("memberDb", dto);
+			session.setAttribute("member_id", dto.getMemid()); //20220511이슬 수정
 			
 			forward.setRedirect(false);
 			forward.setPath("index.jsp");  // 메인 페이지로 이동

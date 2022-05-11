@@ -10,51 +10,39 @@ import com.apc.controller.Action;
 import com.apc.controller.ActionForward;
 import com.apc.model.CategoryDAO;
 import com.apc.model.CategoryDTO;
+import com.apc.model.ProductDAO;
 import com.apc.model.ProductDTO;
-import com.apc.model.ProductsDAO;
-import com.apc.model.ProductsDTO;
 
 public class ProductListAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		//category_main2.jsp에서 넘어온 번호에 해당하는 제품리스트를 조회하여
+		//view page로 이동하는 비즈니스 로직
+		
+		//참고: 골프-악세사리는 3A000000으로 넘어옴 그외는 코드4자리+0000
+		String fullcode = request.getParameter("code").trim();
+		String code = fullcode.substring(0,5);
+		
+		ProductDAO dao = ProductDAO.getInstance();
+		List<ProductDTO> productlist = dao.getProductList(code);
+		
+		//현재 단계에있는 카테고리 상위의 카테고리 정보를 가져오기 
+		CategoryDAO cDao = CategoryDAO.getInstance();
+		CategoryDTO cDto = cDao.getUpperCategory(fullcode);
+		
+		System.out.println("uppderCode"+cDto.getCategory_code());
 		
 		
-		String fullCode = request.getParameter("code").trim();  //code : xxxx0000
-		String code1 = fullCode.substring(0, 1);  // code : 첫번째 자리 
-//		String code5 = fullCode.substring(0,5);   // 이슬님 로직
-		
-		System.out.println("list fullCode >>>" + fullCode);
-		System.out.println("list code1 >>>" + code1);
-		
-		ProductsDAO dao = ProductsDAO.getInstance();
-		
-//		List<ProductDTO> productlist = dao.getProductList(code5); // 이슬님 로직
-
-		List<ProductsDTO> dto = dao.getShopProductList(fullCode);
-		
-		request.setAttribute("productList", dto);
-		request.setAttribute("fullCode", fullCode);
-		
-		// 상단 카테고리 title  
-		CategoryDAO cDao = CategoryDAO.getInstance();	
-		CategoryDTO ctitleCode = cDao.getCategoryTitle(fullCode);		
-		CategoryDTO ltitleCode = cDao.getListTitle(fullCode);	  // 앞 4자리 	
-		
-		CategoryDTO cDto = cDao.getUpperCategory(fullCode);  // 이슬님 로직
+		request.setAttribute("productList", productlist);
 		request.setAttribute("upperCode", cDto.getCategory_code());
-
-		
-		request.setAttribute("code1", code1);
-		request.setAttribute("ltitleCode", ltitleCode);		
-		request.setAttribute("ctitleCode", ctitleCode);
-				
 		
 		ActionForward forward = new ActionForward();
-		
 		forward.setRedirect(false);
-		
 		forward.setPath("product/product_list.jsp");
+		
+		
+		
 		
 		return forward;
 	}

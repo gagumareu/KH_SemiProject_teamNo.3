@@ -1,28 +1,48 @@
-<%@page import="com.apc.model.CategoryDTO"%>
-<%@page import="java.util.List"%>
-<%@page import="com.apc.model.QaDTO"%>
 <%@page import="com.apc.model.QaCategoryDTO"%>
 <%@page import="com.apc.model.QaCategoryDAO"%>
 <%@page import="com.apc.model.ProductDTO"%>
 <%@page import="com.apc.model.ProductDAO"%>
+<%@page import="com.apc.model.QaDTO"%>
+<%@page import="java.util.List"%>
+<%@page import="com.apc.model.QaDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
-	List<QaDTO> search = (List<QaDTO>)request.getAttribute("Search");
+	List<QaDTO> qa = (List<QaDTO>)request.getAttribute("List");
+	
+	pageContext.setAttribute("List", qa);
 
-	pageContext.setAttribute("List", search);
+
 %>
+<!-- 지금은 jsp에서 바로 리스트불러오고 qa_list.do가 jsp페이지이동만하고있음, 병합하면  qa_list.do를 액션으로 다시 잡아줘야함  -->
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Q&A게시판> "${search_word }"검색결과</title>
+<title>Q&A게시판</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/main.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/qa.css">
+<script type="text/javascript">
+
+	//form을 submit버튼이아닌 javascript로 액션 처리 하는 방법 
+	function qa_category(){
+	
+		let code = document.getElementById("code").value;
+		
+		//form(name=frm)의 action경로 지정
+		document.frm.action = "<%=request.getContextPath()%>/qa_category.do?code="+code;
+	
+		//form(frm)에 submit 메서드 호출해 데이터 전달
+		document.frm.submit();
+	
+}
+
+
+</script>
 <style type="text/css">
 	body{
 		font-family: "arial";
@@ -100,9 +120,9 @@
 </style>
 </head>
 <body>
-	<jsp:include page="/include/shop_top.jsp" />
-	<jsp:include page="/include/shop_top_right.jsp" />
-	<div class="qa_container">
+		<jsp:include page="/include/shop_top.jsp"/>
+		<jsp:include page="/include/shop_top_right.jsp"/>
+		<div class="qa_container">
 		
 		<div class="alltitle">
 		<div class="apcTitle">
@@ -112,16 +132,59 @@
 			/  Q&A
 		</div>
 		</div>
-		
+	
 		<div class="qa_body">
 			<form class="qa_category" name="frm" method="post">
-				<select id="code" name="qa_class" onchange="qa_change()">
-					<option value="all">전체</option>
-					<option value="cr">취소/환불</option>
+				<select id="code" name="qa_class" onchange="qa_category()">
+				<c:choose>
+					<c:when test="${code == 'cr' }">
+					<option value="all" >전체</option>
+					<option value="cr" selected>취소/환불</option>
 					<option value="iq">상품문의</option>
 					<option value="del">배송</option>
 					<option value="sb">반품</option>
 					<option value="etc">기타</option>
+					</c:when>
+					<c:when test="${code == 'iq' }">
+					<option value="all" >전체</option>
+					<option value="cr" >취소/환불</option>
+					<option value="iq" selected>상품문의</option>
+					<option value="del">배송</option>
+					<option value="sb">반품</option>
+					<option value="etc">기타</option>
+					</c:when>
+					<c:when test="${code == 'del' }">
+					<option value="all" >전체</option>
+					<option value="cr" >취소/환불</option>
+					<option value="iq">상품문의</option>
+					<option value="del" selected>배송</option>
+					<option value="sb">반품</option>
+					<option value="etc">기타</option>
+					</c:when>
+					<c:when test="${code == 'sb' }">
+					<option value="all" >전체</option>
+					<option value="cr" >취소/환불</option>
+					<option value="iq">상품문의</option>
+					<option value="del">배송</option>
+					<option value="sb" selected>반품</option>
+					<option value="etc">기타</option>
+					</c:when>
+					<c:when test="${code == 'etc' }">
+					<option value="all" >전체</option>
+					<option value="cr" >취소/환불</option>
+					<option value="iq">상품문의</option>
+					<option value="del">배송</option>
+					<option value="sb">반품</option>
+					<option value="etc" selected>기타</option>
+					</c:when>
+				</c:choose>
+				<!-- <option value="all" selected>전체</option>
+					<option value="cr">취소/환불</option>
+					<option value="iq">상품문의</option>
+					<option value="del">배송</option>
+					<option value="sb">반품</option>
+					<option value="etc">기타</option> -->
+					
 			</select>
 			</form>
 			<table class="table table-hover" align="center">
@@ -147,9 +210,9 @@
 					<c:if test="${!empty list }"> 
 					
 					<%
-					for(int i=0; i<search.size(); i++){
+					for(int i=0; i<qa.size(); i++){
 						
-						QaDTO dto = search.get(i);
+						QaDTO dto = qa.get(i);
 					%>	
 					<tr >
 				<!--                    조회수                                               -->
@@ -190,37 +253,58 @@
 						
 					<!--                       제목                                               -->	
 						<td width="40%">
+						<%if(dto.getQa_indent() != 0 ){
+							for(int k =1; k<= dto.getQa_indent(); k++){
+						%>	
+							└ 
+						<% 	}//for문
+						%>	
+						<a href="<%=request.getContextPath() %>/qa_content.do?num=<%=dto.getQa_no()%>&page=${page}">답글:<%=dto.getQa_title() %></a>
+						<% }else{%>
 						<a href="<%=request.getContextPath() %>/qa_content.do?num=<%=dto.getQa_no()%>&page=${page}"><%=dto.getQa_title() %></a>
+						<% }%>
+						
 						</td>
 					<!--                       작성자                                              -->		
-						<td width="15%" align="center"><%=dto.getQa_memid() %></td>
+						<td width="15%" align="center">
+						<%if(!(dto.getQa_memid().equals("admin"))){//관리자가 아니라면 
+							if(dto.getQa_memid().length() > 1){
+						%>	
+								<%=dto.getQa_memid().substring(0,2) %>****
+						<%	}
+						}else{//관리자면
+						%>	
+							관리자
+						<% } %>
+						</td>
 					<!--                       작성일자                                              -->		
 						<td width="15%" align="center"><%=dto.getQa_date().substring(0, 10) %></td>
 					<!--                       조회수                                             -->		
 						<td width="5%" align="center"><%=dto.getQa_hit() %></td>
 					</tr>
 					<% }//for%>
-				
+					
 			</c:if>
 				</tbody>
 			</table>
 				<div class="qa_bottom_btn"align="right">
-					<button type="button" class="btn btn-outline-dark" onclick="location.href='<%=request.getContextPath()%>/qa_list.do'">
-					목록
+					<!-- 로그인 검사  -->
+					<button type="button" class="btn btn-outline-dark" onclick="location.href='<%=request.getContextPath()%>/qa_write.do'">
+					글쓰기
 					</button>			
 				</div>
-			</div><!--class="qa_body"  -->
+			</div><!-- class="qa_body" -->
 			<br>
 			
 			<div class="qa_paging" align="center">
 			<c:if test="${page > block }">
 				<!-- 현재페이지가 block(3)보다 큰경우,  예를들어 현재페이지가 4일 경우  -->
-				<a href="<%=request.getContextPath()%>/qa_search.do?page=1&search_field=${search_field}&search_word=${search_word}">
+				<a href="<%=request.getContextPath()%>/qa_category.do?page=1&code=${code}">
 				<img src="e_image/btn_first.png" alt="btn_first">
 				</a>
 				<!-- 1페이지로 이동 (최초페이지로 이동)-->
 				<a
-					href="<%=request.getContextPath() %>/qa_search.do?page=${startBlock-1}&search_field=${search_field}&search_word=${search_word}">
+					href="<%=request.getContextPath() %>/qa_category.do?page=${startBlock-1}&code=${code}">
 					<img src="e_image/btn_prev.png" alt="btn_prev">
 				</a>
 				<!-- 3페이지로 이동(이전페이지로 이동)  -->
@@ -229,26 +313,26 @@
 				<c:if test="${i == page }">
 					<!-- startBlock == page, 현재페이지라면 -->
 					<b><a
-						href="<%=request.getContextPath()%>/qa_search.do?page=${i}&search_field=${search_field}&search_word=${search_word}">[${i }]</a></b>
+						href="<%=request.getContextPath()%>/qa_category.do?page=${i}&code=${code}">[${i }]</a></b>
 				</c:if>
 				<c:if test="${i != page }">
 					<!-- startBlock != page, 현재재페이지가 아니라면 -->
-					<a href="<%=request.getContextPath()%>/qa_search.do?page=${i}&search_field=${search_field}&search_word=${search_word}">[${i }]</a>
+					<a href="<%=request.getContextPath()%>/qa_category.do?page=${i}&code=${code}">[${i }]</a>
 				</c:if>
 			</c:forEach>
 
 			<c:if test="${endBlock < allPage }">
 				<!-- endBlock이 전체페이지 수보다 작은경우, 예를 들어 endBlock이 6페이지인경우 -->
-				<a href="<%=request.getContextPath()%>/qa_search.do?page=${endBlock + 1 }&search_field=${search_field}&search_word=${search_word}">
+				<a href="qa_category.do?page=${endBlock + 1 }&code=${code}">
 				<img src="e_image/btn_next.png" alt="btn_next">
 				</a>
 				<!-- 7페이지로 이동(다음 페이지로 이동) -->
-				<a href="<%=request.getContextPath()%>/qa_search.do?page=${allPage }&search_field=${search_field}&search_word=${search_word}">
+				<a href="qa_category.do?page=${allPage }&code=${code}">
 				<img src="e_image/btn_last.png"alt="btn_last">
 				</a>
 				<!-- 마지막페이지로 이동  -->
 			</c:if>
-		</div><!-- class="qa_paging -->
+		</div>
 		<br>
 		<div class="qa_search" align="center">
 			<form method="post" action="<%=request.getContextPath() %>/qa_search.do">
@@ -260,9 +344,9 @@
 			<input type="text" name="search_word">
 			<input type="submit" value="검색">
 			</form>
-		</div><!--class="qa_search"  -->
+		</div>
 
 		</div><!-- class="qna_container  -->
-		<jsp:include page="/include/shop_bottom.jsp"/>
+	<jsp:include page="/include/shop_bottom.jsp"/>
 </body>
 </html>

@@ -27,9 +27,9 @@
 		</div>
 		
 		<div class="qa_body">
-		<form id="qa_form" method="post" name="frm" >
-		<input type="hidden" id="qa_no" name="qa_no" value="${cont.getQa_no() }">
-		<input type="hidden" id="page" name="page" value="${page }">
+		<form id="qa_form" method="post" name="frm" action="<%=request.getContextPath()%>/qa_write_ok.do" >
+		<input type="hidden" id="pno" name="pno" value="${pCont.getPno() }">
+		<%-- <input type="hidden" id="num" name="num" value="${num }"> --%>
 		
 		<table class="qa_top_table" >
 		<c:if test="${empty pCont }"><!-- 넘겨받은 제품정보가 없으면  -->
@@ -41,7 +41,7 @@
 			<tr>
 				<td rowspan="2">
 					<button type="button" class="btn btn-outline-dark" 
-					onclick="window.open( 'board/qa_popup_product.jsp', '', 'width=600,height=400, scrollbars=yes,directories=no') ">
+					onclick="window.open( '<%=request.getContextPath()%>/board/qa_popup_product.jsp', '', 'width=500,height=400, scrollbars=yes,directories=no') ">
 					제품 정보선택
 					</button>
 				</td>
@@ -52,8 +52,13 @@
 				<td rowspan="2" width="50%">
 				<img src="<%=request.getContextPath() %>/upload/${pimage}" width="100%" height="100%">
 				</td>
+				<td><span>${pCont.getPname() }</span> <br>
+					<span>SIZE: ${pCont.getPsize() }/ COLOR : ${pCont.getPcolor() }</span><br>
+					<span>${pCont.getPrice() }원</span>
+				</td>
 			</tr>
 			<tr>
+				
 				<td width="50%">
 					<button type="button" class="btn btn-outline-dark" 
 					onclick="loaction.href='product_detail.do?num=${pCont.getPno() }&color=${pCont.getPcolor() }&size=${pCont.getPsize() }'">
@@ -87,7 +92,11 @@
 			
 				<tbody>
 					<tr>
-						<td class= "table-light"> 제목 </td>
+					<td class= "table-light"> 제목 </td>
+					<td><input name="qa_title" style="border: none; background: transparent;" size="100"></td></td>
+					</tr>
+					<tr>
+						<td class= "table-light"> 분류 </td>
 						<td>
 							<select name="qa_category">
 							<c:set var="list" value="${qac }" />
@@ -96,28 +105,30 @@
 							</c:if>
 							<c:if test="${!empty list }">
 							<c:forEach items="${list }" var="dto">
-								<option value=${dto.getCategory_code() }>${dto.getCategory_name() }</option>
+								<option value="${dto.getCategory_code()}">${dto.getCategory_name() }</option>
 							</c:forEach>
 							</c:if>
 							</select>
-						<input name="qa_title" style="border: none; background: transparent;" size="100"></td>
+						
 					</tr>
 					<tr>
 						<td class="table-light">작성자</td>
 						<td>
-						<input name="qa_writer" style="border: none; background: transparent;" size="100">
+						<input name="qa_writer" style="border: none; background: transparent;" size="100" value="${member_id }" readonly>
 						</td>
 					</tr>
 					<tr>
 						<td colspan="2">
 						<textarea rows="20" cols="200" name="qa_cont">${cont.getQa_cont() }</textarea> </td>
 					</tr>
-					<tr>
+					
+					<!-- 비밀번호는 로그인 아이디 비밀번호 그대로 사용 굳이 추가할 필요없을듯 -->
+					<!-- 	<tr>
 						<td class="table-light">비밀번호</td>
 						<td><input name="qa_pwd" type="password" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline" >
 							<br><span id="passwordHelpInline" class="form-text"> </span>
 						</td>
-						</tr>
+						</tr>  -->
 				</tbody>
 			</table>
 				<div id="btnGroup" >
@@ -128,7 +139,7 @@
 					</button>
 					</div>
 					<div id="groupItem2" align="right">
-					<button type="button" class="btn btn-outline-dark" onclick="location.href='<%=request.getContextPath()%>/qa_write_ok.do'">등록</button>
+					<input type="submit" class="btn btn-outline-dark"  value="등록">
 					<button type="button" class="btn btn-outline-dark" onclick="location.href='<%=request.getContextPath()%>/index.jsp'">취소</button>
 					</div>
 				</div>

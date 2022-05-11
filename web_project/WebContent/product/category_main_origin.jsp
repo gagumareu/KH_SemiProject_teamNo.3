@@ -90,21 +90,32 @@
 		letter-spacing: 3px;	
 	}
 	
+	.golf_category_wrapper {
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
+	}
+	
+	#golf_main_container {
+		flex: 1;
+	}
+	
 	
 </style>
 </head>
 <body>
-
-	<jsp:include page="/include/shop_top.jsp"/>
-	<jsp:include page="/include/shop_top_right.jsp"/>
+	
+	
 	<c:set var="list" value="${List }"/>
 	<c:if test="${empty list }">
 		<h3>해당정보가 없습니다.</h3>
 		</c:if>
+	<div class="golf_category_wrapper">
 		
-	<div id="golf_main_container" > <!-- GOFL에만 있는 페이지 -->
 	
-		
+	<jsp:include page="/include/shop_top.jsp"/>
+	<jsp:include page="/include/shop_top_right.jsp"/>
+	
 		<div class="page_title">
 		<ul>
 		<li class="page_title1">
@@ -128,7 +139,9 @@
 		</ul>
 		</div><!-- class="page_title" --> --%>
 		
-	
+	<div id="golf_main_container" > <!-- GOFL에만 있는 페이지 -->
+		
+		
 		<div id="golf_middle">
 			<img src="e_image/golf_main.jpg" width="100%" height="100%">
 		</div><!-- id="golf_middle" -->
@@ -171,6 +184,14 @@
 		</div>
 	</c:if>
 	</div> <!-- id="golf_main_container" -->
-		<jsp:include page="/include/shop_bottom.jsp"/>
+	
+	
+	<jsp:include page="/include/shop_bottom.jsp"/>
+	
+	</div> <!-- golf_category_wrapper -->
+	
+	
+	
+	
 </body>
 </html>
