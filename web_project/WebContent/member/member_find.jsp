@@ -281,7 +281,7 @@
 					    
 					 <div class="login_link">
 						<input type="button" value="메인으로" class="button2"
-							onclick="location.href='main.do'">
+							onclick="location.href='<%=request.getContextPath()%>/main.do'">
 						<input type="button" value="로그인" class="button2"
 							onclick="location.href='loginMain.do'">				
 					 </div>
