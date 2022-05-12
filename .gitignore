@@ -109,6 +109,6 @@ replay_pid*
 *.wat
 *.xhtml
 
-controller/
+controller/*
 
 # End of https://www.toptal.com/developers/gitignore/api/eclipse,java,web
