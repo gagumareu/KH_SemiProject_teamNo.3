@@ -1,0 +1,23 @@
+
+@charset "UTF-8";
+	
+	
+	
+	
+	html, body {
+		/*font-family: Arial Black;*/
+		
+		font-family: "APC-Helvetica", "Helvetica Neue", "Helvetica", "Noto Sans KR", "Arial", sans-serif;
+		
+		height: 100vh;
+		margin:0px;
+		padding: 0px;
+		
+	}
+	
+	
+	
+	
+	
+	/********* 공통  CSS end ***************/
+	
