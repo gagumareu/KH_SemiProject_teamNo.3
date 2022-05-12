@@ -15,6 +15,8 @@
 		<span>LOG IN</span>
 	</h1>
 	<br>
+	<br>
+	<br>
 	
 	<div align="center">
 	<h3>관리자 로그인</h3>
@@ -22,10 +24,11 @@
 	<br>
 	
 	
+	
 
 	
 	<form method="post" action="<%=request.getContextPath() %>/admin_login_ok.do">
-	<table border="0" cellspacing="0" width="280" >		
+	<table border="0" cellspacing="0" width="287px" >		
 		<tr>
 			<td class="id_pwd">관리자 아이디<em>*</em></td>
 						
@@ -45,7 +48,7 @@
 		
 		<tr>
 			<td>
-				<input type="password" name="admin_pwd" class="text_id_pwd">			<!-- 20220512이슬:비밀번호로 수정 -->
+				<input name="admin_pwd" class="text_id_pwd">				
 			</td>
 		</tr>
 		
