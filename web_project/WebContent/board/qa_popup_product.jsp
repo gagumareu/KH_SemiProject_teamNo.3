@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <%@page import="com.apc.model.ProductDAO"%>
 <%@page import="com.apc.model.ProductDTO"%>
 <%@page import="java.util.List"%>
@@ -335,6 +336,8 @@
 </body>
 >>>>>>> b5b017b77949f772bb1c6d06447e6be282c81a17
 =======
+=======
+>>>>>>> 3172e66bcb309bc29a8536919d50874a96a41345
 <%@page import="com.apc.model.ProductDAO"%>
 <%@page import="com.apc.model.ProductDTO"%>
 <%@page import="java.util.List"%>
@@ -501,5 +504,4 @@
 	
 
 </body>
->>>>>>> origin/junghwan
 </html>

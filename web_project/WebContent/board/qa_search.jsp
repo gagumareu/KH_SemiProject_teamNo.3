@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <%@page import="com.apc.model.CategoryDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="com.apc.model.QaDTO"%>
@@ -537,6 +538,8 @@
 </body>
 >>>>>>> b5b017b77949f772bb1c6d06447e6be282c81a17
 =======
+=======
+>>>>>>> 3172e66bcb309bc29a8536919d50874a96a41345
 <%@page import="com.apc.model.CategoryDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="com.apc.model.QaDTO"%>
@@ -804,5 +807,4 @@
 		</div><!-- class="qna_container  -->
 		<jsp:include page="/include/shop_bottom.jsp"/>
 </body>
->>>>>>> origin/junghwan
 </html>

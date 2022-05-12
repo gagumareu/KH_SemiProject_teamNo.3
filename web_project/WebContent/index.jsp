@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <%@page import="com.apc.model.CategoryDTO"%>
 <%@page import="com.apc.model.CategoryDAO"%>
 <%@page import="java.util.List"%>
@@ -197,6 +198,8 @@
 </body>
 >>>>>>> b5b017b77949f772bb1c6d06447e6be282c81a17
 =======
+=======
+>>>>>>> 3172e66bcb309bc29a8536919d50874a96a41345
 <%@page import="com.apc.model.CategoryDTO"%>
 <%@page import="com.apc.model.CategoryDAO"%>
 <%@page import="java.util.List"%>
@@ -250,9 +253,6 @@
 					<div id="main_title">
 					A.P.C.
 					</div> 
-					<div id="main_title">
-					test git hub
-					</div> 
 					
 					<div>
 						<a class="wCategory" href="<%=request.getContextPath() %>/category.do?code=${list[0].getCategory_code() }">A.P.C. WOMEN</a>
@@ -297,5 +297,4 @@
 	
 
 </body>
->>>>>>> origin/junghwan
 </html>

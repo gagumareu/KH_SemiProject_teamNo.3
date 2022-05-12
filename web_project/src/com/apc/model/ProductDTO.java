@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 package com.apc.model;
 
 public class ProductDTO {
@@ -193,28 +194,19 @@ public class ProductDTO {
 }
 >>>>>>> b5b017b77949f772bb1c6d06447e6be282c81a17
 =======
+=======
+>>>>>>> 3172e66bcb309bc29a8536919d50874a96a41345
 package com.apc.model;
 
-<<<<<<< HEAD:web_project/src/com/apc/model/ProductsDTO.java
-public class ProductsDTO {
-=======
 public class ProductDTO {
->>>>>>> origin/junghwan:web_project/src/com/apc/model/ProductDTO.java
 	
 	private int pno;
 	private String pname;
 	private String pcategory_fk;
 	private String pimage;
 	private int pqty;
-	private int price;		
+	private int price;
 	private String psize;
-<<<<<<< HEAD:web_project/src/com/apc/model/ProductsDTO.java
-	private String pcolor;	
-	private String pcontents;		
-	private int mileage;
-	private String pinputdate;
-	
-=======
 	private String pcolor;
 //	private String picon;
 	private String pcontents;
@@ -222,7 +214,6 @@ public class ProductDTO {
 	private String pinputdate;
 	
 	
->>>>>>> origin/junghwan:web_project/src/com/apc/model/ProductDTO.java
 	public int getPno() {
 		return pno;
 	}
@@ -271,8 +262,6 @@ public class ProductDTO {
 	public void setPcolor(String pcolor) {
 		this.pcolor = pcolor;
 	}
-<<<<<<< HEAD:web_project/src/com/apc/model/ProductsDTO.java
-=======
 //	public String getPicon() {
 //		return picon;
 //	}
@@ -280,18 +269,13 @@ public class ProductDTO {
 //		this.picon = picon;
 //	}
 	
->>>>>>> origin/junghwan:web_project/src/com/apc/model/ProductDTO.java
 	public String getPcontents() {
 		return pcontents;
 	}
 	public void setPcontents(String pcontents) {
 		this.pcontents = pcontents;
 	}
-<<<<<<< HEAD:web_project/src/com/apc/model/ProductsDTO.java
-
-=======
 	
->>>>>>> origin/junghwan:web_project/src/com/apc/model/ProductDTO.java
 	public int getMileage() {
 		return mileage;
 	}
@@ -306,12 +290,4 @@ public class ProductDTO {
 	}
 	
 	
-<<<<<<< HEAD:web_project/src/com/apc/model/ProductsDTO.java
-	
-	
-	
-	
-=======
->>>>>>> origin/junghwan:web_project/src/com/apc/model/ProductDTO.java
 }
->>>>>>> origin/junghwan
