@@ -60,7 +60,7 @@
 								<%-- 답변인 경우 --%>
 								<c:if test="${dto.getQa_indent() != 0 }">
 									<c:forEach begin="1" end="<%=dto.getQa_indent()%>">
-										<img src="<%=request.getContextPath() %>/img/reply-all.png" width="20px">							
+										<img src="<%=request.getContextPath() %>/admin_img/reply-all.png" width="20px">							
 									</c:forEach>
 								</c:if>
 								<a href="<%=request.getContextPath() %>/admin_qa_content.do?no=<%=dto.getQa_no() %>&page=${page}"> 

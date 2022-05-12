@@ -45,7 +45,7 @@
 		
 		<tr>
 			<td>
-				<input name="admin_pwd" class="text_id_pwd">				
+				<input type="password" name="admin_pwd" class="text_id_pwd">			<!-- 20220512이슬:비밀번호로 수정 -->
 			</td>
 		</tr>
 		

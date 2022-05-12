@@ -78,7 +78,7 @@
 						<td>
 							<c:forTokens var="fileName" items="${dto.getPimage() }" delims="," varStatus="st">
 								<c:if test="${st.first }">
-									<img src="<%=request.getContextPath() %>/image_products/${fileName }" width="100" height="80">
+									<img src="<%=request.getContextPath() %>/upload/${fileName }" width="100" height="80">
 												
 								</c:if>
 							</c:forTokens>

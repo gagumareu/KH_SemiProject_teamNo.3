@@ -54,7 +54,7 @@ $(document).ready(function() {
 			<div class="page-header">
 				<span style="font-size:20px;">A.P.C Products</span>
 				<a href="<%=request.getContextPath() %>/admin_products_list.do" style="float:right; font-size:16px; color:black;">
-					<img src="<%=request.getContextPath() %>/img/plus.png">&nbsp;more
+					<img src="<%=request.getContextPath() %>/admin_img/plus.png">&nbsp;more
 				</a>
 			</div>
 		    
@@ -79,7 +79,7 @@ $(document).ready(function() {
           <div class="page-header" style="margin-left:30px;">
 			&nbsp;&nbsp;<span style="font-size:18px;">공지사항</span>
 			<a href="<%=request.getContextPath() %>/admin_notice.do" style="float:right; font-size:16px; color:black;">
-				<img src="<%=request.getContextPath() %>/img/plus.png">&nbsp;more
+				<img src="<%=request.getContextPath() %>/admin_img/plus.png">&nbsp;more
 			</a>
 		  </div>
 
@@ -114,7 +114,7 @@ $(document).ready(function() {
           <div class="page-header">
 			&nbsp;<span style="font-size:18px;">고객 Q&A</span>
 			<a href="<%=request.getContextPath() %>/admin_qa.do" style="float:right; font-size:16px; color:black;">
-				<img src="<%=request.getContextPath() %>/img/plus.png">&nbsp;more
+				<img src="<%=request.getContextPath() %>/admin_img/plus.png">&nbsp;more
 			</a>
 		  </div>
 		  
