@@ -1,0 +1,63 @@
+@charset "UTF-8";
+
+
+	
+	tr th{
+		font-family: airal;	
+		background-color: black;
+		color:white;
+		height: 50px;
+		font-family: airal;
+		
+	}
+	
+	tr td{
+		font-family: airal;	
+		text-align: center;
+	
+	}
+	
+	tr:hover{		
+		background-color: #eee;
+		
+	}
+	.btn_add{
+		color: white;
+		background-color: black;
+		font-family: airal;		
+		width:100px;
+		height: 30px;
+		float: right;		
+	}
+	
+	.btn{
+		font-family: airal;
+		
+		background-color: transparent;
+		border:0;
+		outline:0;	
+	}
+	
+	table{
+		margin-left: 0;
+	}
+	
+	div.catePaging{
+		text-align: left;
+		width: 100%;
+		margin: 1px;
+	}
+	
+	a.paging{
+		text-decoration: none;		
+		font-family: airal;
+		font-size: 21px;
+		color: black;
+		
+		width:20px;
+		border:2px solid gray;
+		border-radius: 9px 9px 0px 0px;
+		
+		padding:0px 5px;
+		margin: 0px;	
+	}

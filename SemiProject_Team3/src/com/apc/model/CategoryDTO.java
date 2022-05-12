@@ -1,11 +1,13 @@
 package com.apc.model;
 
 public class CategoryDTO {
-
+	
 	private int category_no;
 	private String category_code;
 	private String category_name;
 	private String category_image;
+	
+	
 	public int getCategory_no() {
 		return category_no;
 	}
@@ -35,5 +37,5 @@ public class CategoryDTO {
 	
 	
 	
-	
+
 }

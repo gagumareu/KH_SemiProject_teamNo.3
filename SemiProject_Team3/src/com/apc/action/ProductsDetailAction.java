@@ -33,7 +33,7 @@ public class ProductsDetailAction implements Action {
 		
 		ProductsDTO productDetail = dao.getProductCont(product_no);
 		
-		// title dao
+		// 상단 카테고리 네이 네비링크 
 		CategoryDAO cDao = CategoryDAO.getInstance();
 		
 		CategoryDTO ctitleCode = cDao.getCategoryTitle(fullCode);
@@ -42,9 +42,9 @@ public class ProductsDetailAction implements Action {
 	
 		request.setAttribute("fullCode", fullCode);
 		
-		request.setAttribute("ltitleCode", ltitleCode);
+		request.setAttribute("ltitleCode", ltitleCode);  // 앞 네자리(카테고리분류) 
 		
-		request.setAttribute("ctitleCode", ctitleCode);
+		request.setAttribute("ctitleCode", ctitleCode);  // 앞 한자리 (남녀골프 분류)
 		
 		request.setAttribute("Detail", productDetail);
 		

@@ -1,22 +1,18 @@
 package com.apc.model;
 
 public class ProductsDTO {
-
 	
 	private int pno;
-	private String Pname;
+	private String pname;
 	private String pcategory_fk;
 	private String pimage;
 	private int pqty;
-	private int price;
+	private int price;		
 	private String psize;
-	private String pcolor;
-	private String picon;
-	private String pcontents;
+	private String pcolor;	
+	private String pcontents;		
 	private int mileage;
 	private String pinputdate;
-	
-	
 	
 	public int getPno() {
 		return pno;
@@ -25,10 +21,10 @@ public class ProductsDTO {
 		this.pno = pno;
 	}
 	public String getPname() {
-		return Pname;
+		return pname;
 	}
 	public void setPname(String pname) {
-		Pname = pname;
+		this.pname = pname;
 	}
 	public String getPcategory_fk() {
 		return pcategory_fk;
@@ -66,18 +62,13 @@ public class ProductsDTO {
 	public void setPcolor(String pcolor) {
 		this.pcolor = pcolor;
 	}
-	public String getPicon() {
-		return picon;
-	}
-	public void setPicon(String picon) {
-		this.picon = picon;
-	}
 	public String getPcontents() {
 		return pcontents;
 	}
 	public void setPcontents(String pcontents) {
 		this.pcontents = pcontents;
 	}
+
 	public int getMileage() {
 		return mileage;
 	}
@@ -90,6 +81,9 @@ public class ProductsDTO {
 	public void setPinputdate(String pinputdate) {
 		this.pinputdate = pinputdate;
 	}
+	
+	
+	
 	
 	
 	

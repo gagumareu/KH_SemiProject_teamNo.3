@@ -7,14 +7,20 @@ public class CartDTO {
 	private String cart_memid;
 	private String cart_pname;
 	private int cart_pqty;
-	private String cart_psize;
+	private String cart_psize; 
 	private String cart_pcolor;
 	private int cart_price;
 	private int cart_trans;
 	private String cart_pimage;
+	private int cart_mileage;
 	
 	
-	
+	public int getCart_mileage() {
+		return cart_mileage;
+	}
+	public void setCart_mileage(int cart_mileage) {
+		this.cart_mileage = cart_mileage;
+	}
 	public int getCart_no() {
 		return cart_no;
 	}
@@ -54,8 +60,8 @@ public class CartDTO {
 	public String getCart_pcolor() {
 		return cart_pcolor;
 	}
-	public void setCart_pcolor(String cart_pcolor) {
-		this.cart_pcolor = cart_pcolor;
+	public void setCart_pcolor(String cart_color) {
+		this.cart_pcolor = cart_color;
 	}
 	public int getCart_price() {
 		return cart_price;
@@ -75,9 +81,6 @@ public class CartDTO {
 	public void setCart_pimage(String cart_pimage) {
 		this.cart_pimage = cart_pimage;
 	}
-	
-	
-	
 	
 	
 }

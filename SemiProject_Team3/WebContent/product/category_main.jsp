@@ -1,178 +1,219 @@
-<%@page import="com.apc.model.CategoryDTO"%>
-<%@page import="com.apc.model.CategoryDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    
-    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 
-	<link rel="stylesheet" href="../css/style.css">
-	
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" 
-	rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" 
-	crossorigin="anonymous">
+<title>A.P.C. 아페쎄 코리아 온라인 스토어 </title>
 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/main.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style_products.css">
 
 <style type="text/css">
 
-
-	.apcTitle{
-		margin-top: 50px;
-		font-size: 63px;
-		margin-left: 15px;
-		font-weight: bold;
-		width: 100%;
-
-	}
-	.apcTitle > ul {
-		display: flex;
-		flex-direction: column;
-		line-height: 1;
+	body{
+		font-family: "arial";
 	}
 	
-	.apcTitle a{
-		color: black;
-		text-decoration: none;
-	}
-	
-	.apcTitle a:hover{
-		color: white;
-		text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-	}
-
-	.col > a > img{
-		width:100%;
-	}
-	
-	
-	/********************************/
-	
-	
-	.category_main_wrapper{
-		display: flex;
-		flex-direction: column;
-		width: 100%;
+	#golf_main_container{
+		margin-bottom: 30px;
 		flex: 1;
 	}
 	
-	
-	.main_image{
-		margin-bottom: 5px;
+	.page_title {
+		padding	:0px;
 	}
+	.page_title ul{
+		display:block;
+	}
+	
+	.page_title li{
+		display:block;
 		
-	.main_image > img{
+	}
+
+	.page_title1{
+		color:black;
+		font-size: 60px;
+		font-weight: bold;
+	}
+	
+	.page_title1 a{
+		text-decoration:none;
+		color: black;
+	}
+	
+	.page_title1 a:hover{
+		color: white;
+		text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+	}
+	
+	.page_title2{
+		color:black;
+		font-size:110px;
+		margin-top:-40px;
+		margin-bottom:-30px;
+		margin-left:-10px;
+	}
+	
+	
+	#golf_bottom{
+		display:flex;
+		justify-content: space-between;
+		
+	}
+	.golf_item{
+		width:33%;
+		height:33%;
+		margin-top:10px;
+		margin-right:3px;
+		position: relative;
+		
+	}
+	
+	.golf_itme img{
+		width:100%;
+		height:100%;
+	}
+	
+	.img_overlay{
+		position:absolute;
+		top:30%;
+		left:28%;
+		width:100%;
+		height:100%;
+		
+		font-family: "Arial Black";
+		font-size:2.3em;
+		color:white;
+		letter-spacing: 3px;	
+	}
+	
+	.golf_wrapper {
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
+	}
+	
+	.golf_bottom {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-betwwen;
+	}
+	
+	.golf_item {
+		width: 100%;
+		
+	}
+	
+	
+	.golf_sub {
+		width: 150%;
+	}
+	
+	.golf_item > a > img {
+	
 		width: 100%;
 	}
 	
-	
-	
-	/****** category ***********/
-	
-	.cetegory_wrpper {
-		display: grid;
-		grid-template-columns: 1fr 1fr 1fr;
-		margin-bottom: 10px;
-		
+	#golf_item_center {
+		margin: 10px 10px 0px 10px;
 	}
 	
-	
-	.category_image > a > img{
-		width: 99%;
-		
-	}
-	
-	.cImage_center{
-	}
-	
-	.category_title {
-		font-size: 120px;
-	
-	}
 	
 	
 </style>
-
 </head>
 <body>
 
 	<jsp:include page="/include/shop_top.jsp"/>
 	<jsp:include page="/include/shop_top_right.jsp"/>
-
+	
+	<c:set var="list" value="${List }"/>
+	<c:if test="${empty list }">
+		<h3>해당정보가 없습니다.</h3>
+	</c:if>
+		
+		
+	<div class="golf_wrapper">
+	
+		<div id="golf_main_container" > <!-- GOFL에만 있는 페이지 -->
+		
+			<div class="page_title">
+				<ul>
+					<li class="page_title1">
+						<a href="<%=request.getContextPath()%>/index.jsp">A.P.C.</a>
+					</li>
+					<li class="page_title2">
+						${first}
+					</li>
+				</ul>
+			</div><!-- class="page_title" -->
+		
 			
-	<div class="category_main_wrapper" >
-		
-		<c:set var="cTitleCode" value="${ctitleCode }"/>
-		
-		<div class="apcTitle">
+	<%-- 		<div class="page_title">
 			<ul>
-				<li>
-					<a href="<%=request.getContextPath() %>/index.jsp">A.P.C.</a>
-				</li>
-				<li>
-					<span class="category_title">GOLF</span>
-				</li>
+			<li class="page_title1">
+			<a href="<%=request.getContextPath()%>/index.jsp">A.P.C.</a>
+			</li>
+			<li class="page_title2">
+				${first}
+			</li>
 			</ul>
-		</div>
+			</div><!-- class="page_title" --> --%>
+			
 		
-	
-		<div class="main_image">
-			<img class="main_image" src="images/golf_main.jpg">
-		</div>
-		
-		<div class="cetegory_wrpper">	
-			<c:set var="list" value="${List }"/>
-				<c:if test="${!empty list }">
-				
-					<div class="category_image left">
-						<a href="<%=request.getContextPath() %>/2nd_category.do?code=${list[0].getCategory_code() }">
-							<img alt="" src="images/golf_left.jpg">
-						</a>
+			<div id="golf_middle">
+				<img src="images/golf_main.jpg" width="100%" height="100%">
+			</div><!-- id="golf_middle" -->
+			
+			
+			 <c:if test="${!empty list }">
+				<div id="golf_bottom">
+					<div class="golf_item">	
+							<a href="<%=request.getContextPath() %>/2nd_category.do?code=${list[0].getCategory_code()}">
+								<img class="golf_sub" src="images/golf_sub1.jpg" alt="golf_women"  height="100%">
+								<div class="img_overlay">
+									<p>GOLF/<br>WOMEN</p>
+								</div>
+							</a>
 					</div>
 					
-					<div class="category_image center">
-						<a href="<%=request.getContextPath() %>/2nd_category.do?code=${list[1].getCategory_code() }">
-							<img class="cImage_center" alt="" src="images/golf_center.jpg">
+				<div class="golf_item" id="golf_item_center">
+						<a href="<%=request.getContextPath() %>/2nd_category.do?code=${list[1].getCategory_code()}">
+							<img class="golf_sub" src="images/golf_sub2.jpg" alt="golf_men" height="100%"> 
+							<div class="img_overlay">
+								<p>GOLF/<br>MEN</p>
+							</div>
 						</a>
-					</div>
+				</div>
 					
-					<div class="category_image right">
-						<a href="<%=request.getContextPath() %>/2nd_category.do?code=${list[2].getCategory_code() }">					
-							<img class="cImage_right" alt="" src="images/golf_right.jpg">
+				<div class="golf_item">
+						<a href="<%=request.getContextPath() %>/2nd_category.do?code=${list[2].getCategory_code()}">
+							<img class="golf_sub" src="images/golf_sub3.jpg" alt="golf_acc" height="100%"> 
+							<div class="img_overlay">
+								<p>GOLF/<br>ACC</p>
+							</div>
 						</a>
-					</div>
-					
-				</c:if> 
-			
-				<c:if test="${empty list }">
-					<h2>품목이 없습니다</h2>
-				
-				</c:if>
-		</div> <!-- cetegory_wrpper end -->
-			
-			
-			
-			
+				</div>
+				</div> <!-- golf_bottom  -->
+			</c:if>
+		
+		</div> <!-- id="golf_main_container" -->
+		
+	</div> <!-- golf_wrapper -->
+	
+	
+	<jsp:include page="/include/shop_bottom.jsp"/>
 		
 		
-	<jsp:include page="/include/shop_bottom.jsp"/> 
 		
-		
-	</div> <!-- category_main_wrapper end -->
-	
-		
-	
-	
-	
-	
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
-	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-	
-
 </body>
 </html>
