@@ -88,6 +88,10 @@ table th {
   margin-top: 0;
 }
 
+.main-header {
+	margin-top: 0;
+	border: 1px solid #ccc;
+}
 
 /*
  * Placeholder dashboard ideas

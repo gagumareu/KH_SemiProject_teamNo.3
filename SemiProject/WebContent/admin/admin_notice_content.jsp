@@ -43,12 +43,7 @@
 						</c:if>
 					</td>
 				</tr>
-				
-				<tr>
-					<th>조회수</th>
-					<td>${dto.getNotice_hit() }</td>
-				</tr>
-					
+
 				<tr>
 				<c:if test="${empty dto.getNotice_update() }">
 					<th>작성일자</th>

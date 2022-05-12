@@ -654,4 +654,50 @@ public class QaDAO {
 	}	// replyQa() 메서드 end
 	
 	
+	
+	// admin_main 에서 Q&A 조회
+	public List<QaDTO> getQaList() {
+		
+		List<QaDTO> list = new ArrayList<QaDTO>();
+					
+		try {
+			openConn();
+			
+			sql = "select * from apc_qa where rownum<= 6 and qa_step=0 order by qa_no";
+							
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				QaDTO dto = new QaDTO();
+				
+				dto.setQa_no(rs.getInt("qa_no"));
+				dto.setQa_category(rs.getString("qa_category"));
+				dto.setQa_memid(rs.getString("qa_memid"));
+				dto.setQa_title(rs.getString("qa_title"));
+				dto.setQa_cont(rs.getString("qa_cont"));
+				dto.setQa_pno_fk(rs.getInt("qa_pno_fk"));
+				dto.setQa_pwd(rs.getString("qa_pwd"));
+				dto.setQa_hit(rs.getInt("qa_hit"));
+				dto.setQa_date(rs.getString("qa_date"));
+				dto.setQa_update(rs.getString("qa_update"));
+				dto.setQa_group(rs.getInt("qa_group"));
+				dto.setQa_step(rs.getInt("qa_step"));
+				dto.setQa_indent(rs.getInt("qa_indent"));
+				
+				
+				list.add(dto);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return list;
+	}
+	
 }

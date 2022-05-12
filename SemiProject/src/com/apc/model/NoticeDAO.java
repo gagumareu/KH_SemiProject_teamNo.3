@@ -609,5 +609,44 @@ public class NoticeDAO {
 	}	//getSearchList() end
 	
 	
+	// admin_main에서 공지사항 가져오기
+	public List<NoticeDTO> getNoticeList() {
 
+		List<NoticeDTO> list = new ArrayList<NoticeDTO>();
+
+		try {
+			openConn();
+			
+			sql = "select * from apc_notice where notice_no < 7 order by notice_no";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				NoticeDTO dto = new NoticeDTO();
+				
+				dto.setNotice_no(rs.getInt("notice_no"));
+				dto.setNotice_writer(rs.getString("notice_writer"));
+				dto.setNotice_title(rs.getString("notice_title"));
+				dto.setNotice_cont(rs.getString("notice_cont"));
+				dto.setNotice_image(rs.getString("notice_image"));
+				dto.setNotice_pwd(rs.getString("notice_pwd"));
+				dto.setNotice_hit(rs.getInt("notice_hit"));
+				dto.setNotice_date(rs.getString("notice_date"));
+				dto.setNotice_update(rs.getNString("notice_update"));
+				
+				list.add(dto);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return list;
+		
+	}	// getNoticeList() 메서드 end
 }

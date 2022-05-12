@@ -69,9 +69,7 @@
 		</form>
     </div>
 
-	<footer class="container-fluid navbar-fixed-bottom col-sm-offset-2">
-		<p>하단바 영역</p>
-	</footer>
+
 	
 </body>
 </html>

@@ -6,13 +6,14 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
-	List<QaDTO> qa = (List<QaDTO>)request.getAttribute("qaList");
+	List<QaDTO> qa = (List<QaDTO>)request.getAttribute("search");
 
 	pageContext.setAttribute("List", qa);
 %>
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 </head>
 <body>
 
@@ -25,11 +26,12 @@
         
         	<table class="table table-bordered table-hover">
 				<colgroup>
+					<col width="5%">
 					<col width="10%">
-					<col width="15%">
 					<col width="50%">
 					<col width="10%">
 					<col width="15%">
+					<col width="10%">
 				</colgroup>
 				
 				<tr style="background-color: #383636; color:white;">
@@ -38,9 +40,10 @@
 					<th>제목</th>
 					<th>작성자</th>
 					<th>작성일</th>
+					<th>조회수</th>
 				</tr>
 				
-				<c:set var="list" value="${qaList }" />
+				<c:set var="list" value="${search }" />
 				<c:if test="${!empty list }">
 				   <%
 					 for(int i=0; i<qa.size(); i++){
@@ -66,6 +69,7 @@
 							</td>
 							<td><%=dto.getQa_memid() %></td>
 							<td><%=dto.getQa_date().substring(0,10) %></td>
+							<td><%=dto.getQa_hit() %></td>
 						</tr>
 						
 					<% } // for문 end %>
@@ -115,25 +119,12 @@
 			  </ul>
 			</nav>
 			
-		
-			<div class="qa_search" align="center">
-				<form method="post" class="form-inline"
-					action="<%=request.getContextPath() %>/admin_qa_search.do">
-					
-				<select name="search_field" class="form-control">
-					<option value="title">제목</option>
-					<option value="content">내용</option>
-					<option value="title_content">제목+내용</option>
-				</select>
-				<input type="text" name="search_keyword" class="form-control">
-				<input type="submit" value="검색" class="btn btn-default">
-				
-				</form>
+			<div align="center">
+				<input type="button" value="전체목록" class="btn btn-default"
+								onclick="location.href='admin_qa.do?page=1'">		
 			</div>		
-		
         </div>
        </div>
-       
        
 </body>
 </html>

@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 </head>
 <body>
-
 	<jsp:include page="../include/admin_top.jsp" />
 		        
 		<div class="col-sm-8 col-sm-offset-3">
@@ -22,17 +21,19 @@
 			<table class="table table-bordered table-hover">
 				<colgroup>
 					<col width="10%">
-					<col width="70%">
+					<col width="60%">
+					<col width="10%">
 					<col width="20%">
 				</colgroup>
 				
 				<tr style="background-color: #383636; color:white;">
 					<th>NO</th>
 					<th>제목</th>
+					<th>조회수</th>
 					<th>작성일자</th>
 				</tr>
 				
-				<c:set var="list" value="${noticeList }" />
+				<c:set var="list" value="${search }" />
 				<c:if test="${!empty list }">
 					<c:forEach items="${list }" var="dto">
 						<tr>
@@ -42,6 +43,7 @@
 									${dto.getNotice_title() }
 								</a>		
 							</td>
+							<td>${dto.getNotice_hit() }</td>
 							<td>${dto.getNotice_date().substring(0,10) }</td>
 						</tr>
 					</c:forEach>
@@ -91,24 +93,12 @@
 			  </ul>
 			</nav>
 			
-		
-			<div class="qa_search" align="center">
-				<form method="post" class="form-inline"
-					action="<%=request.getContextPath() %>/admin_notice_search.do">
-					
-				<select name="search_field" class="form-control">
-					<option value="title">제목</option>
-					<option value="content">내용</option>
-					<option value="title_content">제목+내용</option>
-				</select>
-				<input type="text" name="search_keyword" class="form-control">
-				<input type="submit" value="검색" class="btn btn-default">
-				
-				</form>
-			</div>		
+			<div align="center">
+				<input type="button" value="전체목록" class="btn btn-default"
+								onclick="location.href='admin_notice.do?page=1'">		
+			</div>	
 			
 		</div>
-	 </div>
-	
+	  </div>	
 </body>
 </html>

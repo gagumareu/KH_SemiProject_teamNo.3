@@ -482,19 +482,44 @@ public class ProductDAO {
 		return sizes;
 	}//getProductSize() end 
 
-
 	
-
-
-
-	
-
-
-
-
-
-
-	
-	
+	// admin_main에서 제품 이미지 가져오기
+	public List<ProductDTO> getProductsImage() {
+			
+		List<ProductDTO> list = new ArrayList<ProductDTO>();
+					
+		try {
+			openConn();
+			
+			sql = "select * from apc_products where pno < 11 order by pno";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			String[] img;
+							
+			while(rs.next()) {
+				
+				img = rs.getString("PIMAGE").split(",");
+				
+				ProductDTO dto = new ProductDTO();
+				
+				dto.setPno(rs.getInt("pno"));
+				dto.setPimage(img[0]);
+				
+				list.add(dto);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return list;
+		
+	}	// getProductsImage2() end
 	
 }
