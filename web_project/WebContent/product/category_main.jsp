@@ -5,12 +5,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>A.P.C. 아페쎄 온라인 스토어 > GOLF</title>
+
+<title>A.P.C. 아페쎄 코리아 온라인 스토어 </title>
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/main.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style_products.css">
+
 <style type="text/css">
 
 	body{
@@ -19,6 +24,7 @@
 	
 	#golf_main_container{
 		margin-bottom: 30px;
+		flex: 1;
 	}
 	
 	.page_title {
@@ -90,6 +96,38 @@
 		letter-spacing: 3px;	
 	}
 	
+	.golf_wrapper {
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
+	}
+	
+	.golf_bottom {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-betwwen;
+	}
+	
+	.golf_item {
+		width: 100%;
+		
+	}
+	
+	
+	.golf_sub {
+		width: 150%;
+	}
+	
+	.golf_item > a > img {
+	
+		width: 100%;
+	}
+	
+	#golf_item_center {
+		margin: 10px 10px 0px 10px;
+	}
+	
+	
 	
 </style>
 </head>
@@ -97,80 +135,85 @@
 
 	<jsp:include page="/include/shop_top.jsp"/>
 	<jsp:include page="/include/shop_top_right.jsp"/>
+	
 	<c:set var="list" value="${List }"/>
 	<c:if test="${empty list }">
 		<h3>해당정보가 없습니다.</h3>
-		</c:if>
-		
-	<div id="golf_main_container" > <!-- GOFL에만 있는 페이지 -->
-	
-		
-		<div class="page_title">
-		<ul>
-		<li class="page_title1">
-		<a href="<%=request.getContextPath()%>/index.jsp">A.P.C.</a>
-		</li>
-		<li class="page_title2">
-			${first}
-		</li>
-		</ul>
-		</div><!-- class="page_title" -->
-	
-		
-<%-- 		<div class="page_title">
-		<ul>
-		<li class="page_title1">
-		<a href="<%=request.getContextPath()%>/index.jsp">A.P.C.</a>
-		</li>
-		<li class="page_title2">
-			${first}
-		</li>
-		</ul>
-		</div><!-- class="page_title" --> --%>
-		
-	
-		<div id="golf_middle">
-			<img src="e_image/golf_main.jpg" width="100%" height="100%">
-		</div><!-- id="golf_middle" -->
-		
-		
-
-		 <c:if test="${!empty list }">
-		<div id="golf_bottom">
-			<div class="golf_item">
-				
-				<div class="img_box">
-				<a href="<%=request.getContextPath() %>/2nd_category.do?code=${list[0].getCategory_code()}">
-					<img class="golf_sub" src="e_image/golf_sub1.jpg" alt="golf_women" width="100%" height="100%">
-					<div class="img_overlay">
-						<p>GOLF/<br>WOMEN</p>
-					</div>
-				</a>
-				</div>
-			</div>
-			<div class="golf_item">
-				<div class="img_box">
-				<a href="<%=request.getContextPath() %>/2nd_category.do?code=${list[1].getCategory_code()}">
-					<img class="golf_sub" src="e_image/golf_sub2.jpg" alt="golf_men"width="100%" height="100%"> 
-					<div class="img_overlay">
-						<p>GOLF/<br>MEN</p>
-					</div>
-				</a>
-				</div>
-			</div>
-			<div class="golf_item">
-				<div class="img_box">
-				<a href="<%=request.getContextPath() %>/2nd_category.do?code=${list[2].getCategory_code()}">
-					<img class="golf_sub" src="e_image/golf_sub3.jpg" alt="golf_acc"width="100%" height="100%"> 
-					<div class="img_overlay">
-						<p>GOLF/<br>ACC</p>
-					</div>
-				</a>
-				</div>
-			</div>
-		</div>
 	</c:if>
-	</div> <!-- id="golf_main_container" -->
-		<jsp:include page="/include/shop_bottom.jsp"/>
+		
+		
+	<div class="golf_wrapper">
+	
+		<div id="golf_main_container" > <!-- GOFL에만 있는 페이지 -->
+		
+			<div class="page_title">
+				<ul>
+					<li class="page_title1">
+						<a href="<%=request.getContextPath()%>/index.jsp">A.P.C.</a>
+					</li>
+					<li class="page_title2">
+						${first}
+					</li>
+				</ul>
+			</div><!-- class="page_title" -->
+		
+			
+	<%-- 		<div class="page_title">
+			<ul>
+			<li class="page_title1">
+			<a href="<%=request.getContextPath()%>/index.jsp">A.P.C.</a>
+			</li>
+			<li class="page_title2">
+				${first}
+			</li>
+			</ul>
+			</div><!-- class="page_title" --> --%>
+			
+		
+			<div id="golf_middle">
+				<img src="e_image/golf_main.jpg" width="100%" height="100%">
+			</div><!-- id="golf_middle" -->
+			
+			
+			 <c:if test="${!empty list }">
+				<div id="golf_bottom">
+					<div class="golf_item">	
+							<a href="<%=request.getContextPath() %>/2nd_category.do?code=${list[0].getCategory_code()}">
+								<img class="golf_sub" src="e_image/golf_sub1.jpg" alt="golf_women"  height="100%">
+								<div class="img_overlay">
+									<p>GOLF/<br>WOMEN</p>
+								</div>
+							</a>
+					</div>
+					
+				<div class="golf_item" id="golf_item_center">
+						<a href="<%=request.getContextPath() %>/2nd_category.do?code=${list[1].getCategory_code()}">
+							<img class="golf_sub" src="e_image/golf_sub2.jpg" alt="golf_men" height="100%"> 
+							<div class="img_overlay">
+								<p>GOLF/<br>MEN</p>
+							</div>
+						</a>
+				</div>
+					
+				<div class="golf_item">
+						<a href="<%=request.getContextPath() %>/2nd_category.do?code=${list[2].getCategory_code()}">
+							<img class="golf_sub" src="e_image/golf_sub3.jpg" alt="golf_acc" height="100%"> 
+							<div class="img_overlay">
+								<p>GOLF/<br>ACC</p>
+							</div>
+						</a>
+				</div>
+				</div> <!-- golf_bottom  -->
+			</c:if>
+		
+		</div> <!-- id="golf_main_container" -->
+		
+	</div> <!-- golf_wrapper -->
+	
+	
+	<jsp:include page="/include/shop_bottom.jsp"/>
+		
+		
+		
 </body>
 </html>

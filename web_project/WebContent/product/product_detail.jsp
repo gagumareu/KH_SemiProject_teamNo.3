@@ -155,6 +155,21 @@ $(function(){
 		color: black;
 	}
 	
+	.category_wrapper {
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
+		
+	}
+	
+	.product_section {
+		min-height: 100vh;
+	}
+	.product_section_aside {
+		height: 500px;
+		position: sticky;
+		top: 0px;
+	}
 	
 </style>
 </head>
@@ -164,152 +179,163 @@ $(function(){
 	<jsp:include page="/include/shop_top_right.jsp"/>
 	
 	<div class="category_wrapper">
-	<input type="hidden" id="loginId" value="<%=session.getAttribute("member_id") %>" v>
+	
+	<input type="hidden" id="loginId" value="<%=session.getAttribute("member_id") %>" >
+	
 		<div class="page_title">
-		<ul>
-		<li class="page_title1">
-		<a href="<%=request.getContextPath()%>/index.jsp">A.P.C.</a>
-		</li>
-		<c:if test="${first == 'WOMEN' }"> 
-		<li class="page_title2">
-			<a href="<%=request.getContextPath()%>/category.do?code=10000000">${first}</a>
-		</li>
-		</c:if>
-		<c:if test="${first == 'MEN' }"> 
-		<li class="page_title2">
-			<a href="<%=request.getContextPath()%>/category.do?code=20000000">${first}</a>
-		</li>
-		</c:if>
-		<c:if test="${first == 'GOLF' }"> 
-		<li class="page_title2">
-			<a href="<%=request.getContextPath()%>/category.do?code=30000000">${first}</a>
-		</li>
-			<c:if test="${second == 'ACC' }">
-			<li class="page_title3">
-				/ ${second} 
-			</li>
+			<ul>
+				<li class="page_title1">
+					<a href="<%=request.getContextPath()%>/index.jsp">A.P.C.</a>
+				</li>
+			<c:if test="${first == 'WOMEN' }"> 
+				<li class="page_title2">
+					<a href="<%=request.getContextPath()%>/category.do?code=10000000">${first}</a>
+				</li>
 			</c:if>
-			<c:if test="${second != 'ACC' }">
-			<li class="page_title3">
-				/ <a href="<%=request.getContextPath()%>/2nd_category.do?code=${upperCode}">${second}</a>
-			</li>
+			<c:if test="${first == 'MEN' }"> 
+				<li class="page_title2">
+					<a href="<%=request.getContextPath()%>/category.do?code=20000000">${first}</a>
+				</li>
 			</c:if>
-		</c:if>
-		<li class="page_title4">
-			/  <a href="<%=request.getContextPath()%>/product_list.do?code=${categoryCode}"> ${third }</a>
-		</li>
-		</ul>
+			<c:if test="${first == 'GOLF' }"> 
+				<li class="page_title2">
+					<a href="<%=request.getContextPath()%>/category.do?code=30000000">${first}</a>
+				</li>
+				<c:if test="${second == 'ACC' }">
+					<li class="page_title3">
+						/ ${second} 
+					</li>
+				</c:if>
+				<c:if test="${second != 'ACC' }">
+					<li class="page_title3">
+						/ <a href="<%=request.getContextPath()%>/2nd_category.do?code=${upperCode}">${second}</a>
+					</li>
+				</c:if>
+			</c:if>
+				<li class="page_title4">
+					/  <a href="<%=request.getContextPath()%>/product_list.do?code=${categoryCode}"> ${third }</a>
+				</li>
+			</ul>
 		</div><!-- class="page_title" -->
 		
-		<c:set var="dto" value="${cont }"/>
-		<div class="product_section">
-		<div class="product_section_aside">
-			<hr width="90%">
-		<form id="frm" name="frm" method="post">
-		<input type="hidden" id="p_name" value="${dto.getPname() }">
-		<input type="hidden" id="p_color" value="${dto.getPcolor()}">
 		
-			<table class="product_content">
-				<tr>
-					<th colspan="2">
-					<span id="product_name">${dto.getPname() }</span>
-					</th>
-				</tr>
-				<tr>
-					<td colspan="2">
-					<span id="product_cont">${dto.getPcontents() }</span>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-					<span id="product_price"><fmt:formatNumber value="${dto.getPrice() }"/>원 </span></span>
-					</td>
-				</tr>
-				<tr>
-					<td >색상</td>
-					<td><span id="product_color" >${dto.getPcolor() }</span></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td>
-						<ul class="colors">
-							<c:if test="${empty colors }">
-							칼라정보 없음
-							</c:if>
-							<c:if test="${! empty colors }">
-							<%
-								String [] colors = (String[])request.getAttribute("colors");		
-								
-								int num =0; 
-								
-								for(int i =0; i<colors.length ; i++){
-							%>		
-								<li>
-								<a href="<%=request.getContextPath()%>/product_check.do?name=${dto.getPname() }&color=<%=colors[i]%>">
-								<span><img src="<%=request.getContextPath() %>/e_image/<%=colors[i] %>.jpg"> </span>
-								</a>
-								</li>
-							<% 		
-								}
-								
-							%>
-								
-								
-							</c:if>
-						</ul>
-					</td>
-				</tr>
-				<tr>
-					<td>사이즈</td>
-					<td>
-						<select id="p_size" name="p_size">
-							<c:if test="${empty sizes }">
-							<option value="">:::없음:::</option>
-							</c:if>
-							<c:if test="${!empty sizes }">
-							<c:forEach items="${sizes }" var="s">
-								<option value="${s }">${s }</option>							
-							</c:forEach>
-							</c:if>
+		
+		<c:set var="dto" value="${cont }"/>
+		
+		
+		<div class="product_section">
+		
+			<div class="product_section_aside">
+				<hr width="90%">
+			<form id="frm" name="frm" method="post">
+				<input type="hidden" id="p_name" value="${dto.getPname() }">
+				<input type="hidden" id="p_color" value="${dto.getPcolor()}">
+		
+				<table class="product_content">
+					<tr>
+						<th colspan="2">
+						<span id="product_name">${dto.getPname() }</span>
+						</th>
+					</tr>
+					<tr>
+						<td colspan="2">
+						<span id="product_cont">${dto.getPcontents() }</span>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+						<span id="product_price"><fmt:formatNumber value="${dto.getPrice() }"/>원 </span></span>
+						</td>
+					</tr>
+					<tr>
+						<td >색상</td>
+						<td><span id="product_color" >${dto.getPcolor() }</span></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+							<ul class="colors">
+								<c:if test="${empty colors }">
+								칼라정보 없음
+								</c:if>
+								<c:if test="${! empty colors }">
+								<%
+									String [] colors = (String[])request.getAttribute("colors");		
+									
+									int num =0; 
+									
+									for(int i =0; i<colors.length ; i++){
+								%>		
+									<li>
+									<a href="<%=request.getContextPath()%>/product_check.do?name=${dto.getPname() }&color=<%=colors[i]%>">
+									<span><img src="<%=request.getContextPath() %>/e_image/<%=colors[i] %>.jpg"> </span>
+									</a>
+									</li>
+								<% 		
+									}
+									
+								%>
+									
+									
+								</c:if>
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<td>사이즈</td>
+						<td>
+							<select id="p_size" name="p_size">
+								<c:if test="${empty sizes }">
+								<option value="">:::없음:::</option>
+								</c:if>
+								<c:if test="${!empty sizes }">
+								<c:forEach items="${sizes }" var="s">
+									<option value="${s }">${s }</option>							
+								</c:forEach>
+								</c:if>
+							
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>수량</td>
+						<td><input type="number" name="p_qty" value="1"  min="1" max="${dto.getPqty() }"></td>
+					</tr>
+					<tr>
+						<td>적립금</td>
+						<td>
 						
-						</select>
-					</td>
-				</tr>
-				<tr>
-					<td>수량</td>
-					<td><input type="number" name="p_qty" value="1"  min="1" max="${dto.getPqty() }"></td>
-				</tr>
-				<tr>
-					<td>적립금</td>
-					<td>
-					
-					<span id="mileage"><fmt:formatNumber value="${dto.getMileage() }"/>원 </span></td>
-				</tr>
-				<tr>
-					<td colspan="2" class="extrainfo">SIZE GUIDE  </td>
-					
-				</tr>
-				<tr>
-					<td colspan="2" class="extrainfo" valign="top">무이자 할부 안내</td>
-				</tr>
-				<tr>
-				</tr>
-				<tr>
-					<td colspan="2">
-					
-					<!-- <a href="#1" class="payBtn">바로구매</a>
-					<a href="#a" class="cartBtn">장바구니</a> -->
-					
-			<input type="button" class="payBtn"  id="payBtn_css"  value="바로구매" >
-			<input type="button" class="cartBtn" id="cartBtn_css" value="장바구니" onclick="go_cart()"></button>
-					
-					<!-- <input id="go_pay_btn"class="btn btn-dark" type="button" value="바로구매" onclick="go_pay()"> &nbsp;
-					<input id="go_cart_btn" class="btn btn-light" type="button" value="장바구니" onclick="go_cart()"> -->
-					</td>
-				</tr>
+						<span id="mileage"><fmt:formatNumber value="${dto.getMileage() }"/>원 </span></td>
+					</tr>
+					<tr>
+						<td colspan="2" class="extrainfo">SIZE GUIDE  </td>
+						
+					</tr>
+					<tr>
+						<td colspan="2" class="extrainfo" valign="top">무이자 할부 안내</td>
+					</tr>
+				
+					<tr>
+						<td colspan="2">
+						
+						<!-- <a href="#1" class="payBtn">바로구매</a>
+						<a href="#a" class="cartBtn">장바구니</a> -->
+						
+							<input type="button" class="payBtn"  id="payBtn_css"  value="바로구매" >
+							<input type="button" class="cartBtn" id="cartBtn_css" value="장바구니" onclick="go_cart()"></button>
+						
+						<!-- <input id="go_pay_btn"class="btn btn-dark" type="button" value="바로구매" onclick="go_pay()"> &nbsp;
+						<input id="go_cart_btn" class="btn btn-light" type="button" value="장바구니" onclick="go_cart()"> -->
+						</td>
+					</tr>
 			</table>
 		</form>
 		</div><!-- class="product_detail_aside" -->
+		
+		
+		
+		
+		
 		<!-- **************레이어 팝업창*********************              -->
 		<div class="pay_popup">
 			회원으로 주문하시면 더 많은 혜택이 제공됩니다. <br>
@@ -330,6 +356,9 @@ $(function(){
 			
 		</div>
 		<!-- **************레이어 팝업창*********************              -->
+		
+		
+		
 		
 		<div class="product_section_main">
 			<div class="detail_image">
@@ -418,6 +447,7 @@ $(function(){
 	
 	
 	</div> <!-- class="category_wrapper" end-->
+	
 	<jsp:include page="../include/shop_bottom.jsp"/>
 
 <script type="text/javascript">

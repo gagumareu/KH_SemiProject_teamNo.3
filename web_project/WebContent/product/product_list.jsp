@@ -49,7 +49,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>A.P.C. 아페쎄 공식 온라인 스토어 > GOLF > 제품 목록</title>
+<title>A.P.C. 아페쎄 코리아 공식 온라인 스토어  GOLF > 제품 목록</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/main.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style_products.css">
@@ -60,58 +60,74 @@
 </script>
 <style type="text/css">
 
-
+	.category_wrapper {
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
+	}
+	.category_flex_wrapper {
+		flex: 1;
+	}
+	
+	.category_flex {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+	
+	}
+	
 </style>
 </head>
 <body>
 	<jsp:include page="/include/shop_top.jsp"/>
 	<jsp:include page="/include/shop_top_right.jsp"/>
+	
 	<div class="category_wrapper" >
 		
 		<div class="page_title">
-		<ul>
-		<li class="page_title1">
-		<a href="<%=request.getContextPath()%>/index.jsp">A.P.C.</a>
-		</li>
-		<c:if test="${first == 'WOMEN' }"> 
-		<li class="page_title2">
-			<a href="<%=request.getContextPath()%>/category.do?code=10000000">${first}</a>
-		</li>
-		</c:if>
-		<c:if test="${first == 'MEN' }"> 
-		<li class="page_title2">
-			<a href="<%=request.getContextPath()%>/category.do?code=20000000">${first}</a>
-		</li>
-		</c:if>
-		<c:if test="${first == 'GOLF' }"> 
-		<li class="page_title2">
-			<a href="<%=request.getContextPath()%>/category.do?code=30000000">${first}</a>
-		</li>
-			<c:if test="${second == 'ACC' }">
-			<li class="page_title3">
-				/ ${second} 
-			</li>
-			</c:if>
-			<c:if test="${second != 'ACC' }">
-			<li class="page_title3">
-				/ <a href="<%=request.getContextPath()%>/2nd_category.do?code=${upperCode}">${second}</a>
-			</li>
-			</c:if>
-		</c:if>
-		<li class="page_title4">
-			/ ${third }
-		</li>
-		</ul>
+			<ul>
+				<li class="page_title1">
+					<a href="<%=request.getContextPath()%>/index.jsp">A.P.C.</a>
+				</li>
+				<c:if test="${first == 'WOMEN' }"> 
+					<li class="page_title2">
+						<a href="<%=request.getContextPath()%>/category.do?code=10000000">${first}</a>
+					</li>
+				</c:if>
+				<c:if test="${first == 'MEN' }"> 
+					<li class="page_title2">
+						<a href="<%=request.getContextPath()%>/category.do?code=20000000">${first}</a>
+					</li>
+				</c:if>
+				<c:if test="${first == 'GOLF' }"> 
+					<li class="page_title2">
+						<a href="<%=request.getContextPath()%>/category.do?code=30000000">${first}</a>
+					</li>
+						<c:if test="${second == 'ACC' }">
+							<li class="page_title3">
+								/ ${second} 
+							</li>
+						</c:if>
+					<c:if test="${second != 'ACC' }">
+						<li class="page_title3">
+							/ <a href="<%=request.getContextPath()%>/2nd_category.do?code=${upperCode}">${second}</a>
+						</li>
+					</c:if>
+				</c:if>
+				<li class="page_title4">
+					/ ${third }
+				</li>
+			</ul>
 		</div><!-- class="page_title" -->
 		
 		
 		<c:set var="list" value="${productList }"/>
 		<c:if test="${empty list }">
-		<h3>정보가 없습니다.</h3>
+			<h3>정보가 없습니다.</h3>
 		</c:if>
 		<c:if test="${!empty list }">
 		<div class="category_flex_wrapper">
-		<div class="category_flex">
+		
+			<div class="category_flex">
 		<%
 		//DB에 저장된 이미지들을 JSP페이지에 보여주기 
 		List<ProductDTO> list = (List<ProductDTO>)request.getAttribute("productList");
@@ -131,20 +147,19 @@
 				arrImg[j] = token.nextToken();
 			 }
 		
-		%>
-						<div class="flex_item">
-							<div class="img_box">
-							<a href="<%=request.getContextPath() %>/product_detail.do?num=<%=product.getPno() %>
-											&color=<%=product.getPcolor()%>&size=<%=product.getPsize()%> ">
-								<img alt="arrImg[0]" src="<%=request.getContextPath() %>/upload/<%= arrImg[0] %> ">
-								<div class="img_overlay">
-								
-								
-								</div>
-							</a>						
-							</div>	<!-- class="img_box" -->					
-						</div><!-- class="flex_item" -->
-				
+		%>	
+					
+				<div class="img_box">
+					<a href="<%=request.getContextPath() %>/product_detail.do?num=<%=product.getPno() %>
+									&color=<%=product.getPcolor()%>&size=<%=product.getPsize()%> ">
+						<img alt="arrImg[0]" src="<%=request.getContextPath() %>/upload/<%= arrImg[0] %> ">
+						<div class="img_overlay">
+						
+						
+						</div>
+					</a>						
+				</div>	<!-- class="img_box" --> 					
+							
 		<%}%>
 			</div><!-- class="category_flex" -->
 			</div> <!-- class="category_flex_warpper" -->

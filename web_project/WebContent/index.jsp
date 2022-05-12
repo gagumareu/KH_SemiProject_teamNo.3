@@ -40,12 +40,14 @@
 	<jsp:include page="include/shop_top_right.jsp"/>
 		
 	<div id="mainPage_wrapper">
-		
 				
 			<div id="left_side">
+			
 						
 				<div id="left_text">
-				
+					
+					
+					
 					<div id="main_title">
 					A.P.C.
 					</div> 
