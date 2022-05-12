@@ -50,7 +50,7 @@
 			align: right;
 		}
 		
-		section{
+		.transfort_content {
 			margin: 75px 325px 25px 100px;
 			padding: 0px 100px;
 			font-size: 13px;
@@ -72,45 +72,100 @@
 			background-color: black;
 			color: white;
 		}
+		
+		
+		.home_link:hover{
+			font-family: Arial;
+			color : white;
+			text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+		}
+		
+		.header_title_nav {
+			font-family: Arial;
+			font-weight: bold;
+			font-size: 60px;
+			padding-top: 60px;
+		}
+		.transfort_wrapper {
+			display: flex;
+			flex-direction: column;
+			min-height: 100vh;
+			margin-left: 15px;
+			
+		}
+		.transfort_container {
+			flex: 1;
+			margin-top: 40px;
+		}
+		
+		.transfort_container {
+			display: grid;
+			grid-template-columns: 200px 100%;
+		}
+		
+		html, body {
+			margin: 0;
+			padding: 0;
+			
+		}
+		
+		
 	</style>
 </head>
 <body>
-	<header>
-	<h1 style="font-size: 50px;"><a href="mainPage.jsp">A.P.C.</a> 
-	배송지관리</h1>
-	</header>
 
-	<nav>
-		<jsp:include page="../include/leftLayout.jsp" />
-	</nav>
+	<jsp:include page="../include/shop_top.jsp"/>
+	<jsp:include page="../include/shop_top_right.jsp"/>
 
-	<section>
-	<b>배송지</b>
-	<hr width="100%">
-	<br> 
 	
-	<div class="left">
-		<c:set var="mem" value="${memDTO }" />
-		<br>
-		<b>${mem.getMem_name() }</b>&nbsp;${mem.getAddr() } <br>
-		${mem.getPhone().substring(0,3) }-${mem.getPhone().substring(3,7) }-${mem.getPhone().substring(7,11) }
+	
+	<div class="transfort_wrapper">
+
+	<div class="header_title_nav">
+		<a class="home_link" href="<%=request.getContextPath()%>/index.jsp">A.P.C.</a> 
+		배송지관리
+	</div>
+
+	<div class="transfort_container">
+		<nav>
+			<jsp:include page="../include/leftLayout.jsp" />
+		</nav>
+	
+			<section class="transfort_content">
+			<b>배송지</b>
+			<hr width="100%">
+			<br> 
+			
+			<div class="left">
+				<c:set var="mem" value="${memDTO }" />
+				<br>
+				<b>${mem.getMem_name() }</b>&nbsp;${mem.getAddr() } <br>
+				${mem.getPhone().substring(0,3) }-${mem.getPhone().substring(3,7) }-${mem.getPhone().substring(7,11) }
+			</div>
+			
+			<div class="right">
+				<br>
+				<table border="0" cellspacing="0">
+					<tr align="right">
+						<td>
+							<button onclick="location.href='<%=request.getContextPath() %>/member_updateAddr.do?mem_id=${mem.getMem_id() }'" ><b>수정</b></button>
+						</td>
+					</tr>
+				</table>
+			</div>
+			
+			<br><br><br><br><br>
+			<hr width="100%">
+			<br>
+			<a onclick="history.back()" style="font-size:12px">◀ 돌아가기</a>
+			</section>
+	
+	
+		</div>
 	</div>
 	
-	<div class="right">
-		<br>
-		<table border="0" cellspacing="0">
-			<tr align="right">
-				<td>
-					<button onclick="location.href='<%=request.getContextPath() %>/member_updateAddr.do?mem_id=${mem.getMem_id() }'" ><b>수정</b></button>
-				</td>
-			</tr>
-		</table>
-	</div>
+	<jsp:include page="../include/shop_bottom.jsp"/>
 	
-	<br><br><br><br><br>
-	<hr width="100%">
-	<br>
-	<a onclick="history.back()" style="font-size:12px">◀ 돌아가기</a>
-	</section>
+	
 </body>
 </html>

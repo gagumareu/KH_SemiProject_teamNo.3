@@ -67,38 +67,87 @@
 			background-color: white;
 			color: black;
 		}
+		
+		
+		
+		
+		.home_link:hover{
+			font-family: Arial;
+			color : white;
+			text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+		}
+		
+		
+		.header_title_nav {
+			font-family: Arial;
+			font-weight: bold;
+			font-size: 60px;
+			padding-top: 60px;
+		}
+		.confirmPws_wrapper {
+			display: flex;
+			flex-direction: column;
+			min-height: 100vh;
+			margin-left: 15px;
+			
+		}
+		.confirmPws_container {
+			flex: 1;
+			margin-top: 40px;
+		}
+		
+		html, body {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+		}
+		
 	</style>
 	
 </head>
 <body>
 	
-	<header>
-	<h1 style="font-size: 50px;"><a href="<%=request.getContextPath()%>/index.jsp">A.P.C.</a> 
-	비밀번호 확인</h1>
-	</header>
-
-	<nav>
-		<jsp:include page="../include/leftLayout.jsp" />
-	</nav>
-
-	<section>
-	<b>비밀번호 확인</b>
-	<hr width="100%">
-	<br>
-	<span style="color: gray;">회원님의 개인정보 보호를 위한 본인 확인 절차입니다.<br>
-	비밀번호를 입력해 주세요.</span>
-	<br><br><br>
-	<b>비밀번호</b><br><br>
-	<input type="password" name="" /><br><br><br>
-	<hr>
-	<div class="left">
-		<br>
-		<a onclick="history.back()" style="font-size:12px">◀ 돌아가기</a>
-	</div>
-	<div class="right">
-		<button><b>비밀번호 확인</b></button>
-	</div>
-	</section>
+	<jsp:include page="../include/shop_top.jsp"/>
+	<jsp:include page="../include/shop_top_right.jsp"/>
 	
+		
+	<div class="confirmPws_wrapper">
+	
+		<div class="header_title_nav">
+			<a class="home_link" href="<%=request.getContextPath()%>/index.jsp">A.P.C.</a> 
+			비밀번호 확인
+		</div>
+		
+		<div class="confirmPws_container" >
+	
+			<nav>
+				<jsp:include page="../include/leftLayout.jsp" />
+			</nav>
+	
+			<section>
+			<b>비밀번호 확인</b>
+			<hr width="100%">
+			<br>
+			<span style="color: gray;">회원님의 개인정보 보호를 위한 본인 확인 절차입니다.<br>
+			비밀번호를 입력해 주세요.</span>
+			<br><br><br>
+			<b>비밀번호</b><br><br>
+			<input type="password" name="" /><br><br><br>
+			<hr>
+			<div class="left">
+				<br>
+				<a onclick="history.back()" style="font-size:12px">◀ 돌아가기</a>
+			</div>
+			<div class="right">
+				<button><b>비밀번호 확인</b></button>
+			</div>
+			</section>
+			
+			
+		</div>
+	</div>
+	
+	
+	<jsp:include page="../include/shop_bottom.jsp"/>
 </body>
 </html>

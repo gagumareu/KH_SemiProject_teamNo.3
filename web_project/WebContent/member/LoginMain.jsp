@@ -19,6 +19,11 @@
 </script>
 <style type="text/css">
 
+	html, body {
+	
+		margin: 0px;
+	}
+
 	.login_wrapper {
 		display: flex;
 		flex-direction: column;
@@ -161,6 +166,10 @@
 	/**************************/	
 		
 </style>
+
+
+
+ 
 </head>
 <body>
 

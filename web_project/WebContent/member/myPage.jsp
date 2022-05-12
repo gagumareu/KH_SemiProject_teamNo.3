@@ -9,135 +9,225 @@
 <title>Insert title here</title>
 	
 	<style>
+	
+	
 		a{
 			text-decoration: none;
 			color: black;
 			font-family: 나눔고딕;
 		}
 		
-		header a{
+		
+		
+		.header_title_nav {
 			font-family: Arial;
+			font-weight: bold;
+			font-size: 60px;
+			padding-top: 60px;
 		}
 		
-		header a:hover{
+		.home_link:hover{
 			font-family: Arial;
 			color : white;
 			text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 		}
 		
-		nav{
-			float: left;
-			margin: 10px;
-		}
 		
-		section{
-			margin: 75px 325px 25px 100px;
-			padding: 0px 100px;
+	
+		section{	
 			font-size: 0.75em;
 			font-family: 나눔고딕;
 		}
 		
-		div{
-			width: 100%;
-			height: 250px;
-		}
-		
-		div.left{
-			width: 45%;
-			float: left;
-		}
-		
-		div.right{
-			width: 55%;
-			float: right;
-		}
-		
-		span.left{
-			width: 94%;
-			float: left;
-		}
-		span.right{
-			width: 6%;
-			float: right;
-			font-size: 1em;
-		}
+	
+
 		span a:hover {
 			color: black;
 		}
 		
-		section a {
+		
+		.right_content a {
 			font-size: 0.75em;
 			color: gray;
 		}
+		
+		
+		
+		html, body {
+			height: 100%;
+			padding: 0;
+			margin: 0;
+			
+		}
+		
+		.container {
+			flex: 1;
+			width: 80%;
+			margin-top: 40px;
+		}
+		
+		.myPage_wrapper {
+			display: flex;
+			flex-direction: column;
+			min-height: 100%;
+			margin-left: 15px;
+		}
+		
+		.container {
+			display: grid;
+			grid-template-columns: 200px 100%;
+			grid-template-rows: 400px 100%;
+			margin-top: 40px;
+		}
+		
+		.left_bar {
+			grid-column: 1;
+			grid-row: 1 / 2;
+		
+		}
+		
+		
+		
+		.member_info_wrapper {
+			display: flex;
+			flex-direction: column;
+			grid-column-start: 2;
+			grid-row: 1;
+		}
+		
+		.order_info {
+			display: flex;
+			flex-direction: column;
+			grid-column: 2;
+			grid-row: 2;
+		}
+		
+		.member_infor {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			margin-bottom: 100px;
+			
+		}
+		
+		. member_info_left {
+			grid-column: 1;
+		
+		}
+		
+		.member_info_right {
+			grid-column: 2; 	
+		}
+		
+		.info_modify_btn > a {
+			float: right;
+		
+		}
+		.right_content {
+			width: 83%;
+		
+		}
+	
+		
 	</style>
 </head>
 <body>
+	
+	<jsp:include page="../include/shop_top.jsp"/>
+	<jsp:include page="../include/shop_top_right.jsp"/>
 
 
-	<header>
-		<h1 style="font-size: 50px;"><a href="<%=request.getContextPath()%>/index.jsp">A.P.C.</a> 
-		마이페이지</h1>
-	</header>
-
-	<nav>
-		<jsp:include page="../include/leftLayout.jsp" />
-	</nav>
-
-	<section>
-		<span class="left">
-			<h1 style="display:inline; font-size: 50px;">회원정보</h1>
-		</span>
-		<span class="right">
-			<br> <br> <br>
-			<a href="<%=request.getContextPath() %>/member_confirmPsw.do?mem_id=${mem.getMem_id() }">정보수정</a>
-		</span>
-
-		<hr width="100%">
-		
-		<div class="left">	
-			<br>
-			<c:set var="mem" value="${memDTO }" />
-			<b>${mem.getMem_name() }</b> <br>
-			${mem.getPhone().substring(0,3) }-${mem.getPhone().substring(3,7) }-${mem.getPhone().substring(7,11) } <br>
-			${mem.getEmail() }
-			<br><br>
-		
-			<b>배송지관리</b> <br>
-			<a href="<%=request.getContextPath() %>/member_addrView.do?id=${mem.getMem_id() }">전체관리</a>
-			<br> <br>
-		
-			<b>비밀번호변경</b>	<br>
-			<a href="<%=request.getContextPath() %>/member_updatePwd.do?id=${mem.getMem_id() }">변경하기</a>
-			<br> <br>
+	<div class="myPage_wrapper">
+	
+	
+		<div class="header_title_nav">
+			<nav>
+			<a class="home_link" href="<%=request.getContextPath()%>/index.jsp">A.P.C.</a> 
+			마이페이지
+			</nav>
 		</div>
 		
-		<div class="right">
-			<br>
-			<b>온라인상담</b> <br>
-			<a href="<%=request.getContextPath() %>/member_contactView.do?id=${mem.getMem_id() }">전체보기</a>	
-			<br> <br> <br>
+		
+
+		<section class="container">
 			
-			<b>적립금: ${mem.getMem_mileage() }원</b> <br>
-			<a href="mileageView.jsp">전체보기</a>
-		</div>
+			<div class="left_bar">			
+			<jsp:include page="../include/leftLayout.jsp" />
+			</div>
+			
+			<div class="right_content">
+			
+				<div class="member_info_wrapper">
+				
+					<div class="member_infor_container">
+						<h1 style="display:inline; font-size: 50px;">회원정보</h1>
+					</div> <!-- member_infor -->
+				
+					<span class="info_modify_btn">
+						<a href="<%=request.getContextPath() %>/member_confirmPsw.do?mem_id=${mem.getMem_id() }">정보수정</a>
+					</span> <!-- info_modify_btn -->
+			
+					<hr width="100%">
+					
+					<div class="member_infor">
+						<div class="member_info_left">	
+							<br>
+							<c:set var="mem" value="${memDTO }" />
+							<b>${mem.getMem_name() }</b> <br>
+							${mem.getPhone().substring(0,3) }-${mem.getPhone().substring(3,7) }-${mem.getPhone().substring(7,11) } <br>
+							${mem.getEmail() }
+							<br><br>
+						
+							<b>배송지관리</b> <br>
+							<a href="<%=request.getContextPath() %>/member_addrView.do?id=${mem.getMem_id() }">전체관리</a>
+							<br> <br>
+						
+							<b>비밀번호변경</b>	<br>
+							<a href="<%=request.getContextPath() %>/member_updatePwd.do?id=${mem.getMem_id() }">변경하기</a>
+							<br> <br>
+						</div> <!--  member_info -->
+						
+						<div class="member_info_right">
+							<br>
+							<b>온라인상담</b> <br>
+							<a href="<%=request.getContextPath() %>/member_contactView.do?id=${mem.getMem_id() }">전체보기</a>	
+							<br> <br> <br>
+							
+							<b>적립금: ${mem.getMem_mileage() }원</b> <br>
+							<a href="mileageView.jsp">전체보기</a>
+						</div>
+					</div>	<!--  -->
+				</div> <!-- member_info_wrapper -->
+				
+				
+			
+				<h1 style="display:inline; font-size: 50px;">구매 내역</h1>
+				<hr width="100%">
+				<div class="member_infor">		
+					<div class="member_info_left">		
+						<br>
+						<b>구매 내역</b> <br>
+						<a href="<%=request.getContextPath() %>/member_orderView.do?id=${mem.getMem_id() }">전체보기</a>	
+					</div> <!-- member_info_left -->
+					
+					
+					<div class="member_info_right">	
+						<br>
+						<b>취소/반품 신청</b> <br>
+						<a href="<%=request.getContextPath() %>/member_orderCancelView.do?id=${mem.getMem_id() }">조회하기</a>
+					</div> <!-- member_info_right -->
+				</div>
+				
+			</div>
 		
-		<h1 style="display:inline; font-size: 50px;">구매 내역</h1>
-		<hr width="100%">
+			
+		</section> <!-- container -->
 		
-		<div class="left">
-			<br>
-			<b>구매 내역</b> <br>
-			<a href="<%=request.getContextPath() %>/member_orderView.do?id=${mem.getMem_id() }">전체보기</a>
-		</div>
 		
-		<div class="right">
-			<br>
-			<b>취소/반품 신청</b> <br>
-			<a href="<%=request.getContextPath() %>/member_orderCancelView.do?id=${mem.getMem_id() }">조회하기</a>
-		</div>
-	</section>
+		
+		
+	</div> <!-- myPage_wrapper -->
 	
-	
+	<jsp:include page="../include/shop_bottom.jsp"/>
 	
 	
 </body>

@@ -7,9 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-</head>
-<body>
-	<style>
+
+<style>
 		
 		a{
 			text-decoration: none;
@@ -44,7 +43,7 @@
 			font-size: 12px;
 			font-family: 나눔고딕;
 		}
-		
+	
 		input.black {
 			font-size : 12px;
 			width: 50px; 
@@ -121,16 +120,35 @@
 			width: 70%;
 			height: 40px;
 		}
-	</style>
-</head>
-<body>
+		
+		
+		.home_link:hover{
+			font-family: Arial;
+			color : white;
+			text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+		}
+		
+		.header_title_nav {
+			font-family: Arial;
+			font-weight: bold;
+			font-size: 60px;
+			padding-top: 60px;
+		}
+</style>
+
 <script type="text/javascript"> 
 		window.name = "revie_parent";
-	</script>
-	<header>
-	<h1 style="font-size: 50px;"><a href="<%=request.getContextPath()%>/index.jsp">A.P.C.</a> 
-	구매내역</h1>
-	</header>
+</script>
+	
+</head>
+
+<body>
+
+	
+	<div class="header_title_nav">
+		<a class="home_link" href="<%=request.getContextPath()%>/index.jsp">A.P.C.</a> 
+		구매내역
+	</div>
 
 	<nav>
 		<jsp:include page="../include/leftLayout.jsp" />
