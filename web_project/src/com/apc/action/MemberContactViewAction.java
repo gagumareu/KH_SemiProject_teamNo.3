@@ -21,7 +21,7 @@ public class MemberContactViewAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// TODO Auto-generated method stub
 		
-		String mem_id = request.getParameter("mem_id");
+		String mem_id = request.getParameter("id");
 
 		MemberDAO dao = MemberDAO.getInstance();
 		MemberDTO member = dao.getMember(mem_id);
