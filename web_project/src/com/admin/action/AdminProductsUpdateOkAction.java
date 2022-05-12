@@ -25,7 +25,7 @@ public class AdminProductsUpdateOkAction implements Action {
 		// 수정 폼 페이지에서 넘어온 정보를 db에 저장하는 비즈니스 로직.
 		ProductsDTO dto = new ProductsDTO();
 		
-		String saveFolder="C:\\Users\\jsjo5\\git\\KH_SemiProjeckt_teamNo3_da\\web_project\\WebContent\\image_products";
+		String saveFolder="C:\\Users\\JUNGHWAN\\git\\SemiProject_teamNo.3\\web_project\\WebContent\\image_products";
 		
 		int fileSize=1024*1024*10;
 		
@@ -50,13 +50,15 @@ public class AdminProductsUpdateOkAction implements Action {
 		
 		for(int i=0; i<splitStr.length; i++) {
 			list.add(splitStr[i]);	
-		}			
+		}
+		
+		
 		
 		//삭제할 파일
 		for(int i=0; i<list.size(); i++) {
 			if(multi.getParameter("index"+i) == null) {
-				//System.out.println("index"+i);
-				//System.out.println(multi.getParameter("index"+i));
+				System.out.println("index"+i);
+				System.out.println(multi.getParameter("index"+i));
 				if(list.get(i) != null) {
 					String fileName = list.get(i);
 					File file = new File(saveFolder+fileName);
@@ -66,7 +68,7 @@ public class AdminProductsUpdateOkAction implements Action {
 			}		
 		}
 		
-		//새로 추가된 파일
+				
 		Enumeration enu = multi.getFileNames();
 		
 		while(enu.hasMoreElements()) {
@@ -74,14 +76,9 @@ public class AdminProductsUpdateOkAction implements Action {
 			File value = multi.getFile(parameter);
 			String fileName = multi.getFilesystemName(parameter);
 		
-			if(value !=null) {
+			if(parameter !=null) {
 				
 				String homedir = saveFolder+"/"+p_code;
-				File path = new File(homedir);
-				
-				if(!path.exists()) {
-					path.mkdir();
-				}
 				value.renameTo(new File(homedir +"/"+ fileName));
 				
 				String fileDBName = "/"+p_code+"/"+fileName;

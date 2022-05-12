@@ -35,7 +35,7 @@
 		<c:if test="${empty pCont }"><!-- 넘겨받은 제품정보가 없으면  -->
 			<tr >
 				<td rowspan="2">
-				<img src="<%=request.getContextPath() %>/images/img_no.gif" width="100%" height="100%">
+				<img src="<%=request.getContextPath() %>/e_image/img_no.gif" width="100%" height="100%">
 				</td>
 			</tr>
 			<tr>

@@ -15,8 +15,6 @@
 		<span>LOG IN</span>
 	</h1>
 	<br>
-	<br>
-	<br>
 	
 	<div align="center">
 	<h3>관리자 로그인</h3>
@@ -24,11 +22,10 @@
 	<br>
 	
 	
-	
 
 	
 	<form method="post" action="<%=request.getContextPath() %>/admin_login_ok.do">
-	<table border="0" cellspacing="0" width="287px" >		
+	<table border="0" cellspacing="0" width="280" >		
 		<tr>
 			<td class="id_pwd">관리자 아이디<em>*</em></td>
 						

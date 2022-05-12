@@ -8,6 +8,27 @@
 <title>카페고리 수정 폼 페이지</title>
 <link rel="stylesheet" href="./css/admin_register.css">
 
+<style type="text/css">
+	#c_code{
+		border:none;
+	}
+	
+	.btnBottom{
+		color: black;
+		background-color: white;
+		font-family: airal;
+		font-size:12px;
+		font-weight:bold;
+		padding: 6px;
+		
+		border:1px solid gray;
+		border-radius: 4px;
+		width:65px;
+		
+		box-shadow: -1px -1px 0px gray;
+	}
+
+</style>
 </head>
 <body>
 
@@ -29,8 +50,8 @@
 				<th>카테고리 대분류</th>
 				<td>
 					<select name="c_no"> 
-						<option value="0"
-						<c:if test="${dto.getCategory_no()=='0'}">selected</c:if>>
+						<option value=""
+						<c:if test="${dto.getCategory_no()==''}">selected</c:if>>
 						선택
 						</option>
 						
@@ -80,9 +101,8 @@
 			
 			<tr>
 				<td class="lastTr" colspan ="2" align="center">
-				<input class="btnBottom" type="submit" value="수정하기">&nbsp;&nbsp;	
-				<input class="btnBottom" type="button" value="목록으로"
-					onclick="location.href='<%=request.getContextPath()%>/admin_category_list.do?num=${dto.getCategory_no() }'">							
+				<input class="btnBottom" type="submit" value="수정하기">&nbsp;&nbsp;
+				<input class="btnBottom" type="reset" value="다시 작성">									
 				</td>
 					
 			</table>

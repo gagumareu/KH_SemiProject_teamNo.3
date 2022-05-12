@@ -8,7 +8,6 @@
 	border-right: none;
 	text-align: center;
 	font-family: airal;
-	height: 80px;
 	}
 	
 	table tr th{
@@ -16,8 +15,8 @@
 	border-right: none;
 	background-color: #383636;
 	color: white;
+	height: 40px;
 	font-family: airal;
-	height: 50px;
 	
 	}
 	

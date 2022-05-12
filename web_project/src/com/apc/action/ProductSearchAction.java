@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.apc.controller.Action;
 import com.apc.controller.ActionForward;
-import com.apc.model.ProductDAO;
-import com.apc.model.ProductDTO;
 import com.apc.model.ProductsDAO;
 import com.apc.model.ProductsDTO;
 
@@ -22,10 +20,9 @@ public class ProductSearchAction implements Action {
 		
 		String keyword = request.getParameter("keyword").trim();
 		
-		ProductDAO dao = ProductDAO.getInstance();
+		ProductsDAO dao = ProductsDAO.getInstance();
 		
-		//20220512 이슬 코드 수정 : Products -> ProductDTO/DAO
-		List<ProductDTO> list = dao.productSearch(keyword);
+		List<ProductsDTO> list = dao.productSearch(keyword);
 		
 		request.setAttribute("productList", list);
 		

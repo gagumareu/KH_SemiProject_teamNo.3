@@ -28,24 +28,20 @@ public class AdminProductsUpdateAction implements Action {
 		
 		String pimage = dto.getPimage();
 		
-		System.out.println("pimage>>" +pimage);
-		
 		//다중 파일이 들어갈 list 생성
 		List<String> list = new ArrayList<String>();
 		
-		if(pimage!=null) {
-			String[] splitStr = pimage.split(",");
-			
-			for(int i=0; i<splitStr.length; i++) {
-				list.add(splitStr[i]);
-			}
-			
-			request.setAttribute("pimageList",list);
-			
-			System.out.println("pimageList>>" +pimage);
-			
-			
+		
+		String[] splitStr = pimage.split(",");
+		
+		for(int i=0; i<splitStr.length; i++) {
+			list.add(splitStr[i]);
 		}
+		
+		request.setAttribute("pimageList",list);
+		
+		System.out.println("pimageList>>" +pimage);
+
 		ActionForward forward = new ActionForward();
 		
 		forward.setRedirect(false);

@@ -79,47 +79,47 @@ public class ProductsDAO {
 //****************************** 동아님********************************	
 	
 	//제품 전체 리스트 cap_products 테이블에서 가져오는 메서드
-		public List<ProductsDTO> getProductList(){
+	public List<ProductsDTO> getAdminProductList(){
+		
+		List<ProductsDTO> list = new ArrayList<ProductsDTO>();
+				
+		try {
+			openConn();
 			
-			List<ProductsDTO> list = new ArrayList<ProductsDTO>();
-					
-			try {
-				openConn();
+			sql = "select * from apc_products order by pcategory_fk";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
 				
-				sql = "select * from apc_products order by pcategory_fk";
+				ProductsDTO dto = new ProductsDTO();
 				
-				pstmt = con.prepareStatement(sql);
+				dto.setPno(rs.getInt("pno"));
+				dto.setPname(rs.getString("pname"));
+				dto.setPcategory_fk(rs.getString("pcategory_fk"));
+				dto.setPimage(rs.getString("pimage"));
+				dto.setPqty(rs.getInt("pqty"));
+				dto.setPrice(rs.getInt("price"));				
+				dto.setPsize(rs.getString("psize"));
+				dto.setPcolor(rs.getString("pcolor"));				
+				dto.setPcontents(rs.getString("pcontents"));
+				dto.setMileage(rs.getInt("mileage"));				
+				dto.setPinputdate(rs.getString("pinputdate"));
 				
-				rs = pstmt.executeQuery();
-				
-				while(rs.next()) {
-					
-					ProductsDTO dto = new ProductsDTO();
-					
-					dto.setPno(rs.getInt("pno"));
-					dto.setPname(rs.getString("pname"));
-					dto.setPcategory_fk(rs.getString("pcategory_fk"));
-					dto.setPimage(rs.getString("pimage"));
-					dto.setPqty(rs.getInt("pqty"));
-					dto.setPrice(rs.getInt("price"));				
-					dto.setPsize(rs.getString("psize"));
-					dto.setPcolor(rs.getString("pcolor"));				
-					dto.setPcontents(rs.getString("pcontents"));
-					dto.setMileage(rs.getInt("mileage"));				
-					dto.setPinputdate(rs.getString("pinputdate"));
-					
-					list.add(dto);			
-				}
-						
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}finally {
-				closeConn(rs, pstmt, con);
+				list.add(dto);			
 			}
-			return list;
-			
-		}//getProductList() end
+					
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		return list;
+		
+	}//getProductList() end
 	
 	// 제품 등록 폼 페이지에 입력된 정보가 DB에 저장되도록 하는 메서드
 	public int prodcutsInsert(ProductsDTO dto) {

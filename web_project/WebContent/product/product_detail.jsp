@@ -268,7 +268,7 @@ $(function(){
 								%>		
 									<li>
 									<a href="<%=request.getContextPath()%>/product_check.do?name=${dto.getPname() }&color=<%=colors[i]%>">
-									<span><img src="<%=request.getContextPath() %>/images/<%=colors[i] %>.jpg"> </span>
+									<span><img src="<%=request.getContextPath() %>/e_image/<%=colors[i] %>.jpg"> </span>
 									</a>
 									</li>
 								<% 		

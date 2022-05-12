@@ -90,6 +90,38 @@
 			
 			<div class="category_flex_wrapper">
 			
+				
+					
+				<!--<c:forEach items="${list }" var="dto">	
+					
+						<div class="flex_item">
+							<div class="img_box">
+								<a href="<%=request.getContextPath() %>/product_list.do?code=${dto.getCategory_code() } ">
+									<img alt="" src="upload/${dto.getCategory_image() }">
+									<div class="img_overlay">
+										<c:if test="${dto.getCategory_name().substring(0,1) == 'W' }">
+											<span> 
+												${dto.getCategory_name().substring(0,6) }<br>
+												${dto.getCategory_name().substring(6) }
+											</span>
+										</c:if>
+									
+										 <c:if test="${dto.getCategory_name().substring(0,1) == 'M'}">
+											<span> 
+												${dto.getCategory_name().substring(0,4) }<br>
+												${dto.getCategory_name().substring(4) }
+											</span>
+										</c:if>
+									</div>
+								</a>						
+							</div>	<!-- class="img_box" -->					
+					<!--</div><!-- class="flex_item" -->
+						
+					
+				<!--  	</c:forEach>-->
+				
+					
+		
 						
 					<section class="category_main2_grid">
 							<c:forEach items="${list }" var="dto">	
@@ -97,7 +129,7 @@
 							<div class="flex_item">
 								<div class="img_box">
 									<a href="<%=request.getContextPath() %>/product_list.do?code=${dto.getCategory_code() } ">
-										<img alt="" src="image_category/${dto.getCategory_image() }">
+										<img alt="" src="upload/${dto.getCategory_image() }">
 										<div class="img_overlay">
 											<c:if test="${dto.getCategory_name().substring(0,1) == 'W' }">
 												<span> 

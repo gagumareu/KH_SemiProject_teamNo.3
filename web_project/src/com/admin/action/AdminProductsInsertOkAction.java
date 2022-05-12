@@ -27,8 +27,7 @@ public class AdminProductsInsertOkAction implements Action {
 		
 		ProductsDTO dto = new ProductsDTO();
 		
-		// ***********업로드 파일경로: 파일이름은 'upload'로 해주세요*************8
-		String saveFolder="C:\\Users\\ayss3\\Documents\\KH_SemiProjeckt_teamNo.3\\web_project\\WebContent\\upload";
+		String saveFolder="C:\\Users\\JUNGHWAN\\git\\SemiProject_teamNo.3\\web_project\\WebContent\\upload";
 		
 		int fileSize=1024*1024*10;
 		
@@ -41,89 +40,75 @@ public class AdminProductsInsertOkAction implements Action {
 		int pirce = Integer.parseInt(multi.getParameter("price").trim());
 		int mileage = Integer.parseInt(multi.getParameter("mileage").trim());		
 		int pqty = Integer.parseInt(multi.getParameter("pqty").trim());
-		String p_cont = multi.getParameter("p_cont").trim();	
+		String p_cont = multi.getParameter("p_cont").trim();
 		
+		
+		
+		//이미지 파일
+		List<String> fileList = new ArrayList<String>();
+	
+		Enumeration enu = multi.getFileNames();
+		
+		while(enu.hasMoreElements()) {
+			String parameter = (String)enu.nextElement();
+			File value = multi.getFile(parameter);
+			String fileName = multi.getFilesystemName(parameter);
+			//System.out.println("parameter >>"+  parameter);
+			//System.out.println("value >>"+  value);
+			
+			if(parameter != null) {
+				
+				String homedir = saveFolder+"/"+ p_code ;
+				File path = new File(homedir);
+				
+				if(!path.exists()) {
+					path.mkdir();
+				}		
+				value.renameTo(new File(homedir+"/"+fileName));
+				
+				String fileDBName = "/"+p_code+"/"+fileName;
+				
+				fileList.add(fileDBName);		
+			}else if(parameter == null) continue;
+			
+		}
+		dto.setPimage(String.join(",",fileList).trim());	
+		
+		//System.out.println("tostring"+ String.join(",",fileList).trim());
+
+		
+		dto.setPcategory_fk(p_code);
+		dto.setPname(p_name);
+		dto.setPsize(p_size);
+		dto.setPcolor(p_color);
+		dto.setPrice(pirce);
+		dto.setMileage(mileage);		
+		dto.setPqty(pqty);
+		dto.setPcontents(p_cont);
+		
+		
+		ProductsDAO dao = ProductsDAO.getInstance();
+		
+		int check = dao.prodcutsInsert(dto);
 		
 		PrintWriter out = response.getWriter();
 		
 		ActionForward forward = new ActionForward();
 		
-		System.out.println("p_name>>"+p_name);
-		
-		if(p_name.equals("")) {
+		if(check>0) {
+			forward.setRedirect(true);
+			forward.setPath("admin_products_list.do");
+			
+			
+		}else {
 			out.println("<script>");
-			out.println("alert('상품명을 입력해주세요')");
+			out.println("alert('상품 추가에 실패했습니다.')");
 			out.println("history.back()");
 			out.println("</script>");
-			
-		}else {						
-			
-			//이미지 파일
-			List<String> fileList = new ArrayList<String>();
-		
-			Enumeration enu = multi.getFileNames();
-			
-			while(enu.hasMoreElements()) {
-				String parameter = (String)enu.nextElement();
-				File value = multi.getFile(parameter);
-				String fileName = multi.getFilesystemName(parameter);
-				//System.out.println("parameter >>"+  parameter);
-				//System.out.println("value >>"+  value);
-				
-				if(value != null) {
-					
-					String homedir = saveFolder+"/"+ p_code ;
-					File path = new File(homedir);
-					
-					if(!path.exists()) {
-						path.mkdir();
-					}		
-					value.renameTo(new File(homedir+"/"+fileName));
-					
-					String fileDBName = "/"+p_code+"/"+fileName;
-					
-					fileList.add(fileDBName);		
-				}else if(value == null) continue;
-				
-			}
-			dto.setPimage(String.join(",",fileList).trim());	
-			
-			//System.out.println("tostring"+ String.join(",",fileList).trim());
-	
-			
-			dto.setPcategory_fk(p_code);
-			dto.setPname(p_name);
-			dto.setPsize(p_size);
-			dto.setPcolor(p_color);
-			dto.setPrice(pirce);
-			dto.setMileage(mileage);		
-			dto.setPqty(pqty);
-			dto.setPcontents(p_cont);
-			
-			
-			ProductsDAO dao = ProductsDAO.getInstance();
-			
-			int check = dao.prodcutsInsert(dto);
-			
-			
-			
-			if(check>0) {
-				forward.setRedirect(true);
-				forward.setPath("admin_products_list.do");
-				
-				
-			}else {
-				out.println("<script>");
-				out.println("alert('상품 등록에 실패했습니다.')");
-				out.println("history.back()");
-				out.println("</script>");
-				
-			}
-		
 			
 		}
 				
 		return forward;
 	}
-	
+
 }

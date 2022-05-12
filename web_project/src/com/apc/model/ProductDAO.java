@@ -688,66 +688,7 @@ public class ProductDAO {
 		return dto;
 	} // getProductContent() end
 	
-	
-	// *******************정환님***********************************
-	
-	
-	// shop 상단 서치 창에서 이름 검색시 중복 제거 후 모든 제품 나열
-		public List<ProductDTO> productSearch(String keyword){
-			
-			List<ProductDTO> list = new ArrayList<ProductDTO>();
-			
-			try {
-				
-				openConn();
-				
-				//sql ="select * from apc_products where pno in (select min(pno) from apc_products where upper(pname) like upper(?) "
-				//		+ " and lower(pname) like lower(?) order by pcategory_fk)";
-				
-				//sql ="select * from apc_products where pno in (select min(pno) "
-				//		+ " from apc_products where uppder(pname) like upper(?))";
-				
-				sql ="select * from apc_products where pno in (select min(pno) from apc_products where upper(pname) like upper(?))";  
-						
-				pstmt = con.prepareStatement(sql);
-				
-				pstmt.setString(1, "%"+keyword+"%");
-				//pstmt.setString(2, "%"+keyword+"%");
-				
-				
-				rs = pstmt.executeQuery();
-				
-				while(rs.next()) {
-					
-					ProductDTO dto = new ProductDTO();
-					
-					dto.setPno(rs.getInt("pno"));
-					dto.setPname(rs.getString("pname"));
-					dto.setPcategory_fk(rs.getString("pcategory_fk"));
-					dto.setPimage(rs.getString("pimage"));
-					dto.setPqty(rs.getInt("pqty"));
-					dto.setPrice(rs.getInt("price"));
-					dto.setPsize(rs.getString("psize"));
-					dto.setPcolor(rs.getNString("pcolor"));
-					dto.setPcontents(rs.getString("pcontents"));
-					dto.setMileage(rs.getInt("mileage"));
-					dto.setPinputdate(rs.getString("pinputdate"));
-					
-					list.add(dto);
-					
-					
-				}
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}finally {
-				
-				closeConn(rs, pstmt, con);
-			}
-			
-			return list;
-			
-		} // productSearch() end
+
 
 
 
