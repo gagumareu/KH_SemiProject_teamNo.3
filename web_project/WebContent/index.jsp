@@ -52,7 +52,8 @@
 					A.P.C.
 					</div> 
 					<div id="main_title">
-					main test
+					main test2
+					from junghwan
 					</div> 
 					
 					<div>
