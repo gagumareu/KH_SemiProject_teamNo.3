@@ -1,6 +1,14 @@
 package com.apc.model;
 
+<<<<<<< HEAD
+<<<<<<< HEAD:web_project/src/com/apc/model/ProductsDTO.java
 public class ProductsDTO {
+=======
+public class ProductDTO {
+>>>>>>> origin/junghwan:web_project/src/com/apc/model/ProductDTO.java
+=======
+public class ProductsDTO {
+>>>>>>> origin/junghwan
 	
 	private int pno;
 	private String pname;
@@ -9,11 +17,27 @@ public class ProductsDTO {
 	private int pqty;
 	private int price;		
 	private String psize;
+<<<<<<< HEAD
+<<<<<<< HEAD:web_project/src/com/apc/model/ProductsDTO.java
+=======
+>>>>>>> origin/junghwan
 	private String pcolor;	
 	private String pcontents;		
 	private int mileage;
 	private String pinputdate;
 	
+<<<<<<< HEAD
+=======
+	private String pcolor;
+//	private String picon;
+	private String pcontents;
+	private int mileage;
+	private String pinputdate;
+	
+	
+>>>>>>> origin/junghwan:web_project/src/com/apc/model/ProductDTO.java
+=======
+>>>>>>> origin/junghwan
 	public int getPno() {
 		return pno;
 	}
@@ -62,13 +86,34 @@ public class ProductsDTO {
 	public void setPcolor(String pcolor) {
 		this.pcolor = pcolor;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD:web_project/src/com/apc/model/ProductsDTO.java
+=======
+//	public String getPicon() {
+//		return picon;
+//	}
+//	public void setPicon(String picon) {
+//		this.picon = picon;
+//	}
+	
+>>>>>>> origin/junghwan:web_project/src/com/apc/model/ProductDTO.java
+=======
+>>>>>>> origin/junghwan
 	public String getPcontents() {
 		return pcontents;
 	}
 	public void setPcontents(String pcontents) {
 		this.pcontents = pcontents;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD:web_project/src/com/apc/model/ProductsDTO.java
 
+=======
+	
+>>>>>>> origin/junghwan:web_project/src/com/apc/model/ProductDTO.java
+=======
+
+>>>>>>> origin/junghwan
 	public int getMileage() {
 		return mileage;
 	}
@@ -83,8 +128,17 @@ public class ProductsDTO {
 	}
 	
 	
+<<<<<<< HEAD
+<<<<<<< HEAD:web_project/src/com/apc/model/ProductsDTO.java
+=======
+>>>>>>> origin/junghwan
 	
 	
 	
 	
+<<<<<<< HEAD
+=======
+>>>>>>> origin/junghwan:web_project/src/com/apc/model/ProductDTO.java
+=======
+>>>>>>> origin/junghwan
 }

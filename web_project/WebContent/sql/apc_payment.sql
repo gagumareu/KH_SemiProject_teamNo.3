@@ -17,7 +17,10 @@ create table apc_payment(
 	orderphone varchar2(50) not null,				-- 주문자 연락처
 	pay_pimage varchar2(500),						-- 상품 이미지
 	
+<<<<<<< HEAD
+=======
 	foreign key (category_fk) references apc_category(category_code),
+>>>>>>> origin/junghwan
 	foreign key (pno_fk) references apc_product(pno)
 	
 );

@@ -18,7 +18,11 @@ public class AdminQaReplyOkAction implements Action {
 		// 문의사항 답변 저장하기
 		
 		String reply_title = request.getParameter("reply_title").trim();
+<<<<<<< HEAD
+		String reply_content = request.getParameter("reply_content").trim().replace("\r\n","<br>");
+=======
 		String reply_content = request.getParameter("reply_content").trim();
+>>>>>>> origin/junghwan
 		
 		int qa_no = Integer.parseInt(request.getParameter("qa_no").trim());
 		String qa_category = request.getParameter("qa_category").trim();
