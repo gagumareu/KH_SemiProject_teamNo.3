@@ -128,7 +128,7 @@
 		window.name = "revie_parent";
 	</script>
 	<header>
-	<h1 style="font-size: 50px;"><a href="mainPage.jsp">A.P.C.</a> 
+	<h1 style="font-size: 50px;"><a href="<%=request.getContextPath()%>/index.jsp">A.P.C.</a> 
 	구매내역</h1>
 	</header>
 
