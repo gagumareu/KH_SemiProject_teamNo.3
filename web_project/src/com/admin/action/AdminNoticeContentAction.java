@@ -23,7 +23,11 @@ public class AdminNoticeContentAction implements Action {
 		NoticeDAO dao = NoticeDAO.getInstance();
 		
 		// 조회수 증가
+<<<<<<< HEAD
 		// dao.noticeHit(notice_no);
+=======
+		dao.noticeHit(notice_no);
+>>>>>>> origin/junghwan
 		
 		// 상세내역 조회
 		NoticeDTO dto = dao.noticeContent(notice_no, 1);
