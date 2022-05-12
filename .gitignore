@@ -1,7 +1,13 @@
+<<<<<<< HEAD
 bin/
 .classpath
 # Created by https://www.toptal.com/developers/gitignore/api/java,eclipse
 # Edit at https://www.toptal.com/developers/gitignore?templates=java,eclipse
+=======
+
+# Created by https://www.toptal.com/developers/gitignore/api/eclipse,java
+# Edit at https://www.toptal.com/developers/gitignore?templates=eclipse,java
+>>>>>>> origin/junghwan
 
 ### Eclipse ###
 .metadata
@@ -63,7 +69,11 @@ local.properties
 
 # Uncomment this line if you wish to ignore the project description file.
 # Typically, this file would be tracked if it contains build/dependency configurations:
+<<<<<<< HEAD
 .project
+=======
+#.project
+>>>>>>> origin/junghwan
 
 ### Eclipse Patch ###
 # Spring Boot Tooling
@@ -95,7 +105,11 @@ local.properties
 hs_err_pid*
 replay_pid*
 
+<<<<<<< HEAD
 # End of https://www.toptal.com/developers/gitignore/api/java,eclipse
 /target/
 /bin/
 /.gradle/
+=======
+# End of https://www.toptal.com/developers/gitignore/api/eclipse,java
+>>>>>>> origin/junghwan
