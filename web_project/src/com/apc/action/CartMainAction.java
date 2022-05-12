@@ -18,7 +18,7 @@ public class CartMainAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-		String mem_id = request.getParameter("mem_id");
+		String mem_id = request.getParameter("id");
 
 		MemberDAO dao = MemberDAO.getInstance();
 		MemberDTO member = dao.getMember(mem_id);
@@ -26,15 +26,26 @@ public class CartMainAction implements Action {
 		CartDAO cdao = CartDAO.getInstance();
 		List<CartDTO> list = cdao.getCartList(mem_id);
 		
+		int pSum = 0, mSum = 0, transCost = 3000;
+		for(int i = 0; i < list.size(); i++) {
+			pSum += list.get(i).getCart_price() * list.get(i).getCart_pqty();
+			mSum += list.get(i).getCart_mileage() * list.get(i).getCart_pqty();
+		}
+		if(pSum > 1000000) {
+			transCost = 0;
+		}
+		
 		request.setAttribute("memDTO", member);
 		request.setAttribute("cartList", list);
+		request.setAttribute("price_sum", pSum);
+		request.setAttribute("mileage_sum", mSum);
+		request.setAttribute("tCost", transCost);
 		
 		ActionForward forward = new ActionForward();
 		
 		forward.setRedirect(false);
 		
 		forward.setPath("cart/cart_main.jsp");
-		
 		
 		return forward;
 	}
