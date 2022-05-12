@@ -51,6 +51,9 @@
 					<div id="main_title">
 					A.P.C.
 					</div> 
+					<div id="main_title">
+					test git hub
+					</div> 
 					
 					<div>
 						<a class="wCategory" href="<%=request.getContextPath() %>/category.do?code=${list[0].getCategory_code() }">A.P.C. WOMEN</a>
