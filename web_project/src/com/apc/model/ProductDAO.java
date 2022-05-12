@@ -707,7 +707,7 @@ public class ProductDAO {
 				//sql ="select * from apc_products where pno in (select min(pno) "
 				//		+ " from apc_products where uppder(pname) like upper(?))";
 				
-				sql ="select * from apc_products where pno in (select min(pno) from apc_products where upper(pname) like upper(?))";  
+				sql ="select * from apc_products where pno in (select min(pno) from apc_products where upper(pname) like upper(?) group by pname)";  
 						
 				pstmt = con.prepareStatement(sql);
 				

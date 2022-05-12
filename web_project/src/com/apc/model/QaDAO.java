@@ -133,7 +133,6 @@ public class QaDAO {
 				dto.setQa_group(rs.getInt("qa_group"));
 				dto.setQa_step(rs.getInt("qa_step"));
 				dto.setQa_indent(rs.getInt("qa_indent"));
-				dto.setQa_orderno(rs.getInt("qa_orderno"));
 				
 				list.add(dto);
 			}
@@ -176,7 +175,6 @@ public class QaDAO {
 				dto.setQa_group(rs.getInt("qa_group"));
 				dto.setQa_step(rs.getInt("qa_step"));
 				dto.setQa_indent(rs.getInt("qa_indent"));
-				dto.setQa_orderno(rs.getInt("qa_orderno"));
 			}
 			
 			
@@ -496,7 +494,6 @@ public class QaDAO {
 					dto.setQa_group(rs.getInt("qa_group"));
 					dto.setQa_step(rs.getInt("qa_step"));
 					dto.setQa_indent(rs.getInt("qa_indent"));
-					dto.setQa_orderno(rs.getInt("qa_orderno"));
 					
 					list.add(dto);
 				}
@@ -539,7 +536,6 @@ public class QaDAO {
 						dto.setQa_group(rs.getInt("qa_group"));
 						dto.setQa_step(rs.getInt("qa_step"));
 						dto.setQa_indent(rs.getInt("qa_indent"));
-						dto.setQa_orderno(rs.getInt("qa_orderno"));
 						
 						list.add(dto);
 					}
@@ -585,7 +581,6 @@ public class QaDAO {
 						dto.setQa_group(rs.getInt("qa_group"));
 						dto.setQa_step(rs.getInt("qa_step"));
 						dto.setQa_indent(rs.getInt("qa_indent"));
-						dto.setQa_orderno(rs.getInt("qa_orderno"));
 						
 						list.add(dto);
 					}
@@ -660,7 +655,7 @@ public class QaDAO {
 			
 			
 			sql = "insert into apc_qa "
-					+ "values(?, ?, '관리자', ?, ?, ?, '', default, sysdate, '', ?, ?, ?, '')";
+					+ "values(?, ?, '관리자', ?, ?, ?, '', default, sysdate, '', ?, ?, ?)";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, count);
@@ -720,7 +715,6 @@ public class QaDAO {
 				dto.setQa_group(rs.getInt("qa_group"));
 				dto.setQa_step(rs.getInt("qa_step"));
 				dto.setQa_indent(rs.getInt("qa_indent"));
-				dto.setQa_orderno(rs.getInt("qa_orderno"));
 				
 				
 				list.add(dto);
@@ -794,7 +788,7 @@ public class QaDAO {
          System.out.println("dto.getQa_pno_fk():"+dto.getQa_pno_fk());
          
          if(dto.getQa_pno_fk()>0) {
-         sql="insert into apc_qa values(?,?,?,?,?,?,?, default, sysdate, '', ?, 0, 0, '')";
+         sql="insert into apc_qa values(?,?,?,?,?,?,?, default, sysdate, '', ?, 0, 0)";
          pstmt=con.prepareStatement(sql);
          
          pstmt.setInt(1, count);
@@ -808,7 +802,7 @@ public class QaDAO {
          
          result=pstmt.executeUpdate();
          } else {
-            sql="insert into apc_qa values(?,?,?,?,?,'',?, default, sysdate, '', ?, 0, 0, '')";
+            sql="insert into apc_qa values(?,?,?,?,?,'',?, default, sysdate, '', ?, 0, 0)";
             pstmt=con.prepareStatement(sql);
             
             pstmt.setInt(1, count);
@@ -877,7 +871,6 @@ public class QaDAO {
             dto.setQa_group(rs.getInt("qa_group"));
             dto.setQa_step(rs.getInt("qa_step"));
             dto.setQa_indent(rs.getInt("qa_indent"));
-            dto.setQa_orderno(rs.getInt("qa_orderno"));
 
             list.add(dto);
             System.out.println("dto등록");
@@ -892,6 +885,8 @@ public class QaDAO {
       return list;
    }
 	
+   
+   // cancelQA 나중에 삭제하기
 // ************** 경연님 ************************
    public int cancelQa(QaDTO dto) {
 		
@@ -917,7 +912,6 @@ public class QaDAO {
 			pstmt.setString(4, dto.getQa_title());
 			pstmt.setString(5, dto.getQa_cont());
 			pstmt.setInt(6, dto.getQa_pno_fk());
-			pstmt.setInt(7, dto.getQa_orderno());
 			
 			result = pstmt.executeUpdate();
 			
@@ -952,7 +946,7 @@ public class QaDAO {
 				dto.setQa_date(rs.getString("qa_date"));
 				dto.setQa_update(rs.getString("qa_update"));
 				dto.setQa_indent(rs.getInt("qa_indent"));
-				dto.setQa_orderno(rs.getInt("qa_orderno"));
+				
 				list.add(dto);
 			}
 			

@@ -42,7 +42,7 @@
 		
 		
 		<tr>
-			<td class="id_pwd">비밀번호<em>*</em></td>
+			<td type="password" class="id_pwd">비밀번호<em>*</em></td> <!--20220512이슬수정  -->
 			
 		</tr>
 		
