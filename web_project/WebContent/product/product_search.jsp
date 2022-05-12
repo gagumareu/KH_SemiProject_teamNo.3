@@ -1,3 +1,6 @@
+<%@page import="com.apc.model.ProductDAO"%>
+<%@page import="com.apc.model.ProductDTO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -154,21 +157,29 @@
 			
 					<c:if test="${!empty list }">
 					
-						<c:forEach items="${list }" var="dto">	
-						
+					<!-- 20220512 이슬 코드 추가 및 수정  -->
+					<%
+						List<ProductDTO> list= (List<ProductDTO>)request.getAttribute("productList");
+					
+						for(int i =0; i<list.size(); i++){
+							
+							ProductDTO pdto = list.get(i);
+							
+							ProductDAO pdao = ProductDAO.getInstance();
+							String[] arrImg = pdao.getPorudctImg(pdto);
+						%>	
+							
 							<div class="product">
 								<!-- 20220511 이슬 수정 : product_detail.do로 통일 -->
-				    			<a href="<%=request.getContextPath() %>/product_detail.do?num=${dto.getPno() }&color=${dto.getPcolor() }&size=${dto.getPsize() }">
-									<img alt="" src="image_products/${dto.getPimage() }" width="100%"> 
+				    			<a href="<%=request.getContextPath() %>/product_detail.do?num=<%=pdto.getPno() %>&color=<%=pdto.getPcolor() %>&size=<%=pdto.getPsize()%>">
+									<img alt="" src="upload/<%=arrImg[0] %>" width="100%"> 
 									<div class="description">
-										<div class="description_text">${dto.getPname() }</div>
-										<div class="description_text"><fmt:formatNumber value="${dto.getPrice() }"/>원</div>
+										<div class="description_text"><%=pdto.getPname() %></div>
+										<div class="description_text"><fmt:formatNumber value="<%=pdto.getPrice() %>"/>원</div>
 									</div>
 								</a>
 							</div>
-							
-						</c:forEach>
-						
+						<% }%>
 					</c:if>
 					
 					

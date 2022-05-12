@@ -171,7 +171,7 @@
 			
 		
 			<div id="golf_middle">
-				<img src="e_image/golf_main.jpg" width="100%" height="100%">
+				<img src="images/golf_main.jpg" width="100%" height="100%">
 			</div><!-- id="golf_middle" -->
 			
 			
@@ -179,7 +179,7 @@
 				<div id="golf_bottom">
 					<div class="golf_item">	
 							<a href="<%=request.getContextPath() %>/2nd_category.do?code=${list[0].getCategory_code()}">
-								<img class="golf_sub" src="e_image/golf_sub1.jpg" alt="golf_women"  height="100%">
+								<img class="golf_sub" src="images/golf_sub1.jpg" alt="golf_women"  height="100%">
 								<div class="img_overlay">
 									<p>GOLF/<br>WOMEN</p>
 								</div>
@@ -188,7 +188,7 @@
 					
 				<div class="golf_item" id="golf_item_center">
 						<a href="<%=request.getContextPath() %>/2nd_category.do?code=${list[1].getCategory_code()}">
-							<img class="golf_sub" src="e_image/golf_sub2.jpg" alt="golf_men" height="100%"> 
+							<img class="golf_sub" src="images/golf_sub2.jpg" alt="golf_men" height="100%"> 
 							<div class="img_overlay">
 								<p>GOLF/<br>MEN</p>
 							</div>
@@ -197,7 +197,7 @@
 					
 				<div class="golf_item">
 						<a href="<%=request.getContextPath() %>/2nd_category.do?code=${list[2].getCategory_code()}">
-							<img class="golf_sub" src="e_image/golf_sub3.jpg" alt="golf_acc" height="100%"> 
+							<img class="golf_sub" src="images/golf_sub3.jpg" alt="golf_acc" height="100%"> 
 							<div class="img_overlay">
 								<p>GOLF/<br>ACC</p>
 							</div>
