@@ -252,29 +252,18 @@ public CartDTO getCartContent(int num){
 		
 		try {
 			openConn();
-			sql = "select pno, pimage from apc_products where pcolor=? and psize=? and pname=?";
+			sql = "update apc_cart set pno_fk=?, cart_pcolor=?, cart_psize=?, cart_pimage=? where cart_no=?";
 			pstmt = con.prepareStatement(sql);
-
-			pstmt.setString(1, dto.getCart_pcolor());
-			pstmt.setString(2, dto.getCart_psize());
-			pstmt.setString(3, dto.getCart_pname());
-			rs = pstmt.executeQuery();
-			if(rs.next()) {
-				int pno = rs.getInt("pno");
-				String pimage = rs.getString("pimage");
-				
-				sql = "update apc_cart set pno_fk=?, cart_pcolor=?, cart_psize=?, cart_pimage=? where cart_no=?";
-				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, pno);
-				pstmt.setString(2, dto.getCart_pcolor());
-				pstmt.setString(3, dto.getCart_psize());
-				pstmt.setNString(4, pimage);
-				pstmt.setInt(5, dto.getCart_no());
-				result = pstmt.executeUpdate();
-				
-			}else {
-				result = -1;
-			}
+			
+			pstmt.setInt(1, dto.getPno_fk());
+			pstmt.setString(2, dto.getCart_pcolor());
+			pstmt.setString(3, dto.getCart_psize());
+			pstmt.setString(4, dto.getCart_pimage());
+			pstmt.setInt(5, dto.getCart_no());
+			
+			result = pstmt.executeUpdate();
+			
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

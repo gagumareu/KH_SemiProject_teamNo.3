@@ -49,6 +49,7 @@ public class GoCartAction implements Action {
 		if(memberid == null) {
 			MemberDAO mdao = MemberDAO.getInstance();
 			memberid = mdao.nonMemberId();
+			session.setAttribute("member_id", memberid);
 		}
 		System.out.println("GoCartAction - memberid : "+memberid);
 		
@@ -59,7 +60,7 @@ public class GoCartAction implements Action {
 		cDto.setCart_pname(dto.getPname());
 		cDto.setCart_pqty(qty);			//form에서 고객이 입력한 수량 
 		cDto.setCart_psize(dto.getPsize());
-		cDto.setCart_psize(dto.getPcolor());
+		cDto.setCart_pcolor(dto.getPcolor());
 		cDto.setCart_price(dto.getPrice());
 		//배송비는 DB에서 default 3000, 일정금액은 0원으로 설정?
 		cDto.setCart_pimage(pimage[0]);
@@ -75,7 +76,7 @@ public class GoCartAction implements Action {
 		//저장한 정보를 cart_list.do로 전달하기
 		
 		forward.setRedirect(true);
-		forward.setPath("cart_list.do");
+		forward.setPath("cart_main.do");
 		
 		}else {
 			out.println("<script>");

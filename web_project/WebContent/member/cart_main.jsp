@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>A.P.C. 장바구니</title>
 </head>
 <body>
 	

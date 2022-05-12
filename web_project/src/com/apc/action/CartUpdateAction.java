@@ -24,11 +24,13 @@ public class CartUpdateAction implements Action {
 		CartDTO cdto = cdao.getCartContent(cart_no);
 
 		String pname = cdto.getCart_pname();
+		String subStr = pname.substring(0,5);
+
 		System.out.println(pname);
 		
 		ProductDAO pdao = ProductDAO.getInstance();
-		List<String> pColor = pdao.getPColor(pname);
-		List<String> pSize = pdao.getPSize(pname);
+		List<String> pColor = pdao.getPColor(subStr);
+		List<String> pSize = pdao.getPSize(subStr);
 		
 		request.setAttribute("cartDTO", cdto);
 		request.setAttribute("colorList", pColor);
@@ -38,7 +40,7 @@ public class CartUpdateAction implements Action {
 		
 		forward.setRedirect(false);
 		
-		forward.setPath("cart/cart_update.jsp");
+		forward.setPath("member/cart_update.jsp");
 				
 		return forward;
 	}

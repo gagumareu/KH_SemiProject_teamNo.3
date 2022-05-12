@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.apc.controller.Action;
 import com.apc.controller.ActionForward;
@@ -17,14 +18,30 @@ public class CartMainAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	
+		
+		HttpSession session = request.getSession();
+		String loginId = (String) session.getAttribute("member_id");
+		
+		System.out.println("loginId"+loginId);
+		
+		if(loginId == null) {//로그인되어있지 않다면,
+			if(session.getAttribute("nonMember_id") == null) {//비회원 아이디도 생성되기 전이라면
+				MemberDAO dao = MemberDAO.getInstance();
+				loginId = dao.nonMemberId();
+			}else {//비회원 아이디가 있다면
+				loginId=(String) session.getAttribute("nonMember_id");
+				
+			}
+		}
 
-		String mem_id = request.getParameter("id");
-
+		System.out.println("최종 loginId"+loginId);
+		
 		MemberDAO dao = MemberDAO.getInstance();
-		MemberDTO member = dao.getMember(mem_id);
+		MemberDTO member = dao.getMember(loginId);
 
 		CartDAO cdao = CartDAO.getInstance();
-		List<CartDTO> list = cdao.getCartList(mem_id);
+		List<CartDTO> list = cdao.getCartList(loginId);
 		
 		int pSum = 0, mSum = 0, transCost = 3000;
 		for(int i = 0; i < list.size(); i++) {
@@ -45,7 +62,7 @@ public class CartMainAction implements Action {
 		
 		forward.setRedirect(false);
 		
-		forward.setPath("cart/cart_main.jsp");
+		forward.setPath("member/cart_main.jsp");
 		
 		return forward;
 	}

@@ -10,6 +10,8 @@ import com.apc.controller.Action;
 import com.apc.controller.ActionForward;
 import com.apc.model.CartDAO;
 import com.apc.model.CartDTO;
+import com.apc.model.ProductDAO;
+import com.apc.model.ProductDTO;
 
 public class CartUpdateOkAction implements Action {
 
@@ -23,11 +25,18 @@ public class CartUpdateOkAction implements Action {
 		String id = request.getParameter("id");
 		String pname = request.getParameter("pname");
 		
+		ProductDAO pdao = ProductDAO.getInstance();
+		ProductDTO pdto = pdao.getProductCont(pname,pColor, pSize);
+		
+		String [] arrImg = pdao.getPorudctImg(pdto);
+		
 		CartDTO dto = new CartDTO();
 		dto.setCart_no(cart_no);
 		dto.setCart_pcolor(pColor);
 		dto.setCart_psize(pSize);
 		dto.setCart_pname(pname);
+		dto.setPno_fk(pdto.getPno());
+		dto.setCart_pimage(arrImg[0]);
 		
 		CartDAO cdao = CartDAO.getInstance();
 		int result = cdao.updateCart(dto);
@@ -39,13 +48,6 @@ public class CartUpdateOkAction implements Action {
 			
 			forward.setRedirect(true);
 			forward.setPath("cart_main.do?id=" + id);
-			
-		}else if(result == -1){
-			
-			out.println("<script>");
-			out.println("alert('해당 상품의 재고가 존재하지 않습니다.')");
-			out.println("history.back()");
-			out.println("</script>");
 			
 		}else {
 			

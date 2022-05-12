@@ -696,7 +696,7 @@ public List<String> getPColor(String name) {
 		
 		try {
 			openConn();
-			sql = "select distinct pcolor from apc_products where pname = ?";
+			sql = "select distinct pcolor from apc_products where substr(pname,1,5) = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, name);
 			rs = pstmt.executeQuery();
@@ -723,7 +723,7 @@ public List<String> getPColor(String name) {
 		
 		try {
 			openConn();
-			sql = "select distinct psize from apc_products where pname = ?";
+			sql = "select distinct psize from apc_products where substr(pname,1,5) = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, name);
 			rs = pstmt.executeQuery();
