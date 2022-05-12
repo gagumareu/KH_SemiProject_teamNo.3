@@ -52,13 +52,6 @@
 					A.P.C.
 					</div> 
 					<div id="main_title">
-					main test2
-					from junghwan
-					</div> 
-					<div id="main_title">
-					main test3
-					from main
-					</div> 
 					
 					<div>
 						<a class="wCategory" href="<%=request.getContextPath() %>/category.do?code=${list[0].getCategory_code() }">A.P.C. WOMEN</a>
