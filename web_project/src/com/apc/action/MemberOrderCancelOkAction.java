@@ -53,6 +53,7 @@ public class MemberOrderCancelOkAction implements Action {
 		dto.setPname(pname);
 		dto.setPcolor(pcolor);
 		dto.setPsize(psize);
+		
 		dto.setPqty(pqty);
 		dto.setCancel_category(category);
 		dto.setCancel_cont(cont);

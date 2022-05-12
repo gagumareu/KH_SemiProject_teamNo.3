@@ -7,8 +7,6 @@
 		margin: 0;
 		border-collapse:collapse;
 		
-	
-		
 	}
 	
 	table th{
@@ -31,6 +29,7 @@
 		font-family: airal;
 		font-size: 12px;
 		padding-left:8px;
+		
 	
 	}
 	.lastTr{
@@ -41,9 +40,15 @@
 	
 	input{
 		font-family: airal;
-		width: 250px;
+		width: 210px;
 	}
 	
+	input.type_number{
+		text-align: right;
+		
+	}
+	
+
 	textarea{
 		width: 250px;
 		height: 200px;
@@ -64,19 +69,33 @@
 		box-shadow: -1px -1px 0px gray;
 	}
 	
+	.btnBottom:haver{
+		background-color: #D7D7D7;
+		
+	}
+	
+	.selectedFile{			
+			width:170px;	
+			display:none;					
+	}
+	
 	.fileBtn{
 		width:40px;
 		text-align: center;
 		font-size:4px;
 		font-family:airal;				
 		margin-left: 5px;
-		padding:1px;		
+		
+		padding:1px;
 	}
-	
-	
 	
 	select{
 		font-family: airal;
+	}
+	
+	/* 카테고리 코드 readonly -> border제거  */
+	#c_code{
+		border:none;
 	}
 	
 	

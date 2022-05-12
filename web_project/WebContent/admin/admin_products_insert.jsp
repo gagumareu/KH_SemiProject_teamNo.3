@@ -12,30 +12,17 @@
 <script type="text/javascript">
 	var cnt =2;
 	function addFile(){
-		$("#d_file").append("<input type='file' name='file" +cnt + "'/><br>");
+		$("#d_file").append("<div class='fileGroup"+cnt+"'>"
+				+"<input type='file' class='selectedFile' name='file" +cnt + "'>"
+				+"<input type='button' class='fileBtn' value='삭제' onclick='deleteFile("+cnt+")'><br></div>");
 		cnt++;		
 	}
 	
-</script>
-
-<style type="text/css">
-	.btnBottom{
-		color: black;
-		background-color: white;
-		font-family: airal;
-		font-size:12px;
-		font-weight:bold;
-		padding: 6px;
-		
-		border:1px solid gray;
-		border-radius: 4px;
-		width:65px;
-		
-		box-shadow: -1px -1px 0px gray;
-	
+	function deleteFile(num){
+		document.querySelector(".fileGroup"+num).remove();		
 	}
-
-</style>
+	
+</script>
 
 </head>
 <body>
@@ -103,21 +90,21 @@
 				<tr>
 					<th>상품 가격</th>
 					<td>
-						<input name="price"> 
+						<input class="type_number" name="price" value=0>
 					</td>					
 				</tr>
 				
 				<tr>
 					<th>상품 마일리지</th>
 					<td>
-						<input name="mileage"> 
+						<input class="type_number" name="mileage" value=0>
 					</td>					
 				</tr>
 				
 				<tr>
 					<th>재고 수량</th>
 					<td>
-						<input name="pqty"> 
+						<input class="type_number" name="pqty" value=0>
 					</td>					
 				</tr>
 				
