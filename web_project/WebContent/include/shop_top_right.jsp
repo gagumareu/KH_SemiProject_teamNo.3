@@ -48,7 +48,7 @@
 
 	$(function (){
 		$('.cart').click(function(){
-			window.open('<%=request.getContextPath()%>/product/cart.jsp', '_blank', 'width="200"');
+			window.open('<%=request.getContextPath()%>/semiCartList.do', '_blank', 'width="200"');
 		});
 	});
 

@@ -26,7 +26,7 @@ public class CartQtyDownAction implements Action {
 		if(result > 0) {
 			
 			forward.setRedirect(true);
-			forward.setPath("cart_main.do?id=tlsruddus");
+			forward.setPath("cart_main.do");
 			
 		}else {
 			

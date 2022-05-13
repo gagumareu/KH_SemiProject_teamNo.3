@@ -10,6 +10,13 @@
 
 <style>
 		
+		html, body {
+			padding: 0px;
+			margin: 0px;
+			height: 100%;
+			
+		}
+		
 		a{
 			text-decoration: none;
 			color: black;
@@ -162,6 +169,9 @@
 
 <body>
 
+	<jsp:include page="../include/shop_top.jsp"/>
+	<jsp:include page="../include/shop_top_right.jsp"/>
+
 	
 	<div class="header_title_nav">
 		<a class="home_link" href="<%=request.getContextPath()%>/index.jsp">A.P.C.</a> 
@@ -273,5 +283,11 @@
 		</c:forEach>
 	</div>
 	</section>
+	
+		<jsp:include page="../include/shop_bottom.jsp"/>
+	
+	
+	
+	
 </body>
 </html>
