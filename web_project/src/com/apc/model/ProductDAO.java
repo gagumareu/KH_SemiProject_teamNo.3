@@ -842,10 +842,6 @@ public List<String> getPColor(String name) {
 		      return list;
 		      
 		   }   // getProductsImage() end
-
-
-
-	
 	
 	
 }
