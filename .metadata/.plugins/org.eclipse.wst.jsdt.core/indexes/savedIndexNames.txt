@@ -1,1 +1,0 @@
-INDEX VERSION 1.4+C:\Users\JUNGHWAN\Documents\SourceTree\SourceTree_jung\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
