@@ -90,9 +90,9 @@
 		
 	<div class="link">
 			<input type="button" value="메인으로" class="button"
-				onclick="location.href='loginMain.do'">
+				onclick="location.href='main.do'">
 			<input type="button" value="결제내역" class="button"
-				onclick="location.href='find.do'">				
+				onclick="location.href='member_orderView.do?id=${dto.getMem_id() }'">				
 	</div>
 		
 	</div>

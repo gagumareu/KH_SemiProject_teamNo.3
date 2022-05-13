@@ -487,7 +487,7 @@ $(document).ready(function() {
 	
 	<c:if test="${total >= 1000000 }">
 	<th class="td3">
-	
+		<p class="totalPay2">${total2 }원</p>
 	</th>
 	</c:if>
 	</tr>
