@@ -13,7 +13,7 @@
     	List<CategoryDTO> list = dao.getShopCategory();
     	
     	pageContext.setAttribute("List", list);
-    %>
+    %> 
     
 <!DOCTYPE html>
 <html>

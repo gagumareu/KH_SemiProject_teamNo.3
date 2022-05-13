@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.apc.controller.Action;
 import com.apc.controller.ActionForward;
-import com.apc.model.CartDAO_origin;
+import com.apc.model.CartDAO;
 import com.apc.model.CartDTO;
 import com.apc.model.MemberDAO;
 import com.apc.model.MemberDTO;
@@ -27,7 +27,7 @@ public class semiOrderAction implements Action {
 		
 		MemberDAO dao = MemberDAO.getInstance();
 		
-		CartDAO_origin dao2 = CartDAO_origin.getInstance();
+		CartDAO dao2 = CartDAO.getInstance();
 		
 		MemberDTO dto = dao.orderMemberInfo(member_id);
 		
