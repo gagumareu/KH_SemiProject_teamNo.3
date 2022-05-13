@@ -18,7 +18,7 @@ import com.apc.model.PaymentDTO;
 import com.apc.model.ProductDAO;
 import com.apc.model.ProductDTO;
 
-public class GoPayAction implements Action {
+public class GoPayAction_origin implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
