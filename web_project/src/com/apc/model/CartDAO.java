@@ -384,7 +384,29 @@ public int qtyDown(int no) {
 		}
 
 
-
+		// 결제 완료된 카트제품을 카트 테이블에서 삭제시키는 메서드
+		public void deleteAllCart(int cartno) {
+				
+				try {
+					openConn();
+					
+					sql = "delete from apc_cart where cart_no = ?";
+					
+					pstmt = con.prepareStatement(sql);
+					
+					pstmt.setInt(1, cartno);
+					
+					pstmt.executeUpdate();
+					
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}finally {
+					closeConn(rs, pstmt, con);
+				}
+				
+					
+			}
 	
 	
 	

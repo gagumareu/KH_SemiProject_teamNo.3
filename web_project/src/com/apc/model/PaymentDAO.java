@@ -351,7 +351,63 @@ public class PaymentDAO {
 	} // getPaymentContent() end
 	
 	
-	
+	// payment에 구매목록을 집어넣는 메서드
+			public int paymentInsert(PaymentDTO dto) {
+				
+				int result = 0, count = 0;
+				
+					try {
+						openConn();
+						
+							
+						sql = "select max(order_no) from apc_payment";
+						
+						pstmt = con.prepareStatement(sql);
+						
+						rs = pstmt.executeQuery();
+						
+						if(rs.next()) {
+							count = rs.getInt(1) + 1;
+						}
+						
+						sql = "insert into apc_payment "
+								+ " values(?, ?, ?, ?, ?, ?, ?, ?, ?, sysdate, ?, ? ,?, ?)";
+						
+						pstmt = con.prepareStatement(sql);
+						
+						pstmt.setInt(1, count);
+						pstmt.setInt(2, dto.getCartno_fk());
+						pstmt.setString(3, dto.getOrder_id());
+						pstmt.setInt(4, dto.getPno_fk());
+						pstmt.setString(5, dto.getPname());
+						pstmt.setInt(6, dto.getPqty());
+						pstmt.setInt(7, dto.getPrice());
+						pstmt.setInt(8, dto.getTranscost());
+						pstmt.setInt(9, dto.getPaytype());
+						pstmt.setString(10, dto.getOrdername());
+						pstmt.setString(11, dto.getOrderaddr());
+						pstmt.setString(12, dto.getOrderphone());
+						pstmt.setString(13, dto.getPay_pimage());
+						
+						result = pstmt.executeUpdate();
+						
+						sql = "update apc_products set pqty = pqty - ? where pno = ?";
+						
+						pstmt = con.prepareStatement(sql);
+						
+						pstmt.setInt(1, dto.getPqty());
+						pstmt.setInt(2, dto.getPno_fk());
+						
+						pstmt.executeUpdate();
+						
+						
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				
+				return result;
+			}
 	
 	
 	

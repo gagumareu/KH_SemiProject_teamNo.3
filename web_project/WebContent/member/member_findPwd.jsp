@@ -8,16 +8,65 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+
+	.wrapper {
+		position: absolute;
+		top: 35%;
+		left: 40%;
+		font-family: arial;
+		width: 500px;
+	}
+	
+	.fieldset {
+		height: 200px;
+		border: 3px double black;
+	}
+	
+	legend {
+		font-size: 17pt;
+		font-weight: bold;
+		color: black;
+	}
+	
+	.login_link {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+	}
+	
+	.button2 {
+		width: 45%;
+		height: 35px;
+		background-color: black;
+		color: white;
+		font-weight: bold;
+	}
+	
+	.content {
+		font-weight: bold;
+		font-size: 14pt;
+		padding-left: 28%;
+		padding-top: 12%;
+	
+	}
+
+</style>
 </head>
 <body>
 
-	<div class="content" align="center">
+	<h1>A.P.C MEMBER JOIN</h1>
+
+	<div class="wrapper">
 	
 	<fieldset class="fieldset">
 		<legend>비밀번호 찾기</legend>
-		${mem_Id }님의 비밀번호는 <span>${mem_Pwd.substring() } 
+		<div class="content">
+		${memId }님의 비밀번호는 <br>
+		<span>${memPwd.substring(0, 4) } ****
 		
 		</span> 입니다.
+		</div>
 	</fieldset>
 	
 	<br>

@@ -13,6 +13,7 @@ import com.apc.controller.ActionForward;
 import com.apc.model.CartDAO;
 import com.apc.model.CartDTO;
 import com.apc.model.MemberDAO;
+import com.apc.model.MemberDTO;
 import com.apc.model.PaymentDAO;
 import com.apc.model.PaymentDTO;
 import com.apc.model.ProductDAO;
@@ -50,6 +51,7 @@ public class GoPayAction implements Action {
 		ProductDAO productDao = ProductDAO.getInstance();
 		ProductDTO productDto = productDao.getProductCont(pname, color, size);
 
+		
 		//제품 대표이미지 불러오기 (pimage[0] : 대표이미지)
 		String[] pimage =  productDao.getPorudctImg(productDto);
 		
@@ -71,6 +73,9 @@ public class GoPayAction implements Action {
 		//장바구니 테이블에 저장 
 		int result = cdao.cartInsert(cdto);
 		
+		// 멤버 정보 불러오기
+		MemberDAO fdao = MemberDAO.getInstance();
+		
 		ActionForward forward= new ActionForward();
 		PrintWriter out = response.getWriter();
 		
@@ -79,8 +84,12 @@ public class GoPayAction implements Action {
 		//뷰페이지에서 list로 foreach문을 돌리기때문에 통일시켜 바로구매 로직에서도 list로 받기
 //		cdto = cdao.getCartContent(loginId, productDto.getPno());
 		List<CartDTO> list = cdao.getCartContent(loginId, productDto.getPno());
+		MemberDTO dto = fdao.orderMemberInfo(loginId);
+		
 		
 		request.setAttribute("cartInfo", list);
+		request.setAttribute("memberInfo", dto);
+		
 		
 		forward.setRedirect(false);
 		forward.setPath("member/member_order.jsp");
