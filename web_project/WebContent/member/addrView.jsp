@@ -122,7 +122,7 @@
 	<div class="transfort_wrapper">
 
 	<div class="header_title_nav">
-		<a class="home_link" href="<%=request.getContextPath()%>/index.jsp">A.P.C.</a> 
+		<a class="home_link" style="font-family: Arial;" href="<%=request.getContextPath()%>/index.jsp">A.P.C.</a> 
 		배송지관리
 	</div>
 
@@ -140,7 +140,7 @@
 				<c:set var="mem" value="${memDTO }" />
 				<br>
 				<b>${mem.getMem_name() }</b>&nbsp;${mem.getAddr() } <br>
-				${mem.getPhone().substring(0,3) }-${mem.getPhone().substring(3,7) }-${mem.getPhone().substring(7,11) }
+				${mem.getPhone() }
 			</div>
 			
 			<div class="right">
@@ -148,7 +148,7 @@
 				<table border="0" cellspacing="0">
 					<tr align="right">
 						<td>
-							<button onclick="location.href='<%=request.getContextPath() %>/member_updateAddr.do?mem_id=${mem.getMem_id() }'" ><b>수정</b></button>
+							<button onclick="location.href='<%=request.getContextPath() %>/member_updateAddr.do?id=${mem.getMem_id() }'" ><b>수정</b></button>
 						</td>
 					</tr>
 				</table>

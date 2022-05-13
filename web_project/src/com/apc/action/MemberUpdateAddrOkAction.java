@@ -15,36 +15,33 @@ public class MemberUpdateAddrOkAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
-		String mem_id = request.getParameter("id").trim();
+		String id = request.getParameter("id");
 		String first_phone = request.getParameter("first_phone").trim();
 		String middle_phone = request.getParameter("middle_phone").trim();
 		String last_phone = request.getParameter("last_phone").trim();
 		String first_addr = request.getParameter("first_addr").trim();
 		String last_addr = request.getParameter("last_addr").trim();
 		
-		String phone = first_phone + middle_phone + last_phone;
+		String phone = first_phone + "-" + middle_phone + "-" + last_phone;
 		System.out.println(phone);
 		String addr = first_addr + " " + last_addr;
 		System.out.println(addr);
 		
 		MemberDAO dao = MemberDAO.getInstance();
-		int result = dao.updateAddr(mem_id, phone, addr);
+		int result = dao.updateAddr(id, phone, addr);
 		
 		ActionForward forward = new ActionForward();
 		PrintWriter out = response.getWriter();
 		
 		if(result > 0) {
-			
-			out.println("<script>");
-			out.println("alert('배송지 저장 되었습니다.')");		// 이게 안뜬다...
-			out.println("</script>");
-			
+
 			forward.setRedirect(true);
-			forward.setPath("member_addrView.do");
+			forward.setPath("member_addrView.do?id=" + id);
 			
 		}else {
 			out.println("<script>");
-			out.println("alert('실패')");				// apc 홈페이지에서는 실패 조건이 없는 듯 하다.
+			out.println("alert('실패')");	
+			out.println("history.back()");
 			out.println("</script>");
 		}
 		return forward;

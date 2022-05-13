@@ -55,16 +55,16 @@
 		<c:set var="cDTO" value="${cartDTO }" />
 		<c:set var="colorList" value="${colorList }"/>
 		<c:set var="sizeList" value="${sizeList }"/>
+		<c:set var="pDTO" value="${productDTO }" />
 		<hr width="50%" color="lightgray">
 		<form method="post" action="<%=request.getContextPath() %>/cart_update_ok.do">
 			<input type="hidden" name="cart_no" value="${cDTO.getCart_no() }" />
-			<input type="hidden" name="id" value="${cDTO.getCart_memid() }" />
 			<input type="hidden" name="pname" value="${cDTO.getCart_pname() }" />
 			<br>
 			<div class="left">
 				<!-- 여기는 진짜 ajax 무조건 필요하다. -->
 				<a><img src="<%=request.getContextPath() %>/upload/${cDTO.getCart_pimage() }"
-					    width="200" height="200"></a>
+					    width="300" height="300"></a>
 			</div>
 			
 			<div class="right">
@@ -80,7 +80,7 @@
 						</c:if>
 					</c:forEach>
 				</select> <br><br>
-				사이즈<br>
+				사이즈 선택<br>
 				<select name="size">
 					<c:forEach items="${sizeList }" var="sList">
 						<c:if test="${sList == cDTO.getCart_psize()}">
@@ -88,6 +88,17 @@
 						</c:if>
 						<c:if test="${sList != cDTO.getCart_psize()}">
 							<option value="${sList }">${sList }</option>
+						</c:if>
+					</c:forEach>
+				</select> <br><br>
+				수량 선택<br>
+				<select name="qty">
+					<c:forEach begin="1" end="${pDTO.getPqty() }" var="k">
+						<c:if test="${k == cDTO.getCart_pqty()}">
+							<option value="${k }" selected>${k }</option>
+						</c:if>
+						<c:if test="${k != cDTO.getCart_pqty()}">
+							<option value="${k }">${k }</option>
 						</c:if>
 					</c:forEach>
 				</select> <br><br>

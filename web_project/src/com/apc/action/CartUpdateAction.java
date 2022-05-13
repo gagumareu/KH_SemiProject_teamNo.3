@@ -11,6 +11,7 @@ import com.apc.controller.ActionForward;
 import com.apc.model.CartDAO;
 import com.apc.model.CartDTO;
 import com.apc.model.ProductDAO;
+import com.apc.model.ProductDTO;
 
 public class CartUpdateAction implements Action {
 
@@ -29,10 +30,12 @@ public class CartUpdateAction implements Action {
 		System.out.println(pname);
 		
 		ProductDAO pdao = ProductDAO.getInstance();
+		ProductDTO	pdto = pdao.getProductCont(cdto.getPno_fk());
 		List<String> pColor = pdao.getPColor(subStr);
 		List<String> pSize = pdao.getPSize(subStr);
 		
 		request.setAttribute("cartDTO", cdto);
+		request.setAttribute("productDTO", pdto);
 		request.setAttribute("colorList", pColor);
 		request.setAttribute("sizeList", pSize);
 		

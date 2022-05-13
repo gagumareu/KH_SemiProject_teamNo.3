@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.apc.controller.Action;
 import com.apc.controller.ActionForward;
 import com.apc.model.CartDAO;
+import com.apc.model.CartDTO;
 
 public class CartQtyUpAction implements Action {
 
@@ -18,7 +19,9 @@ public class CartQtyUpAction implements Action {
 		int cart_no = Integer.parseInt(request.getParameter("num"));
 		
 		CartDAO cdao = CartDAO.getInstance();
-		int result = cdao.qtyUp(cart_no);
+		CartDTO cdto = cdao.getCartContent(cart_no);
+
+		int result = cdao.qtyUp(cart_no, cdto.getPno_fk());
 		
 		ActionForward forward = new ActionForward();
 		PrintWriter out = response.getWriter();
@@ -26,12 +29,12 @@ public class CartQtyUpAction implements Action {
 		if(result > 0) {
 			
 			forward.setRedirect(true);
-			forward.setPath("cart_main.do?id=tlsruddus");
+			forward.setPath("cart_main.do");
 			
 		}else {
 			
 			out.println("<script>");
-			out.println("alert('실패')");	
+			out.println("alert('재고가 부족합니다.')");	
 			out.println("history.back()");
 			out.println("</script>");
 		}

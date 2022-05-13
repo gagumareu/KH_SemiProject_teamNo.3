@@ -54,7 +54,7 @@
 		<hr width="30%" color="lightgray">
 		<c:set var="mem" value="${memDTO }" />
 		<form method="post" action="<%=request.getContextPath() %>/member_updateAddr_ok.do">
-			<input type="hidden" name="mem_id" value="${mem.getMem_id() }">
+			<input type="hidden" name="id" value="${mem.getMem_id() }">
 			받으시는 분 <br>
 			<input type="text" value="${mem.getMem_name() }" readonly />
 			<br> 
@@ -70,9 +70,9 @@
 	        	<option value="019">019</option>
 	      	</select>
 	      	-
-			<input class="small" type="text" name="middle_phone" value="${mem.getPhone().substring(3,7) }" />
+			<input class="small" type="text" name="middle_phone" value="${mem.getPhone().substring(4,8) }" />
 			-
-			<input class="small" type="text" name="last_phone" value="${mem.getPhone().substring(7,11) }" />
+			<input class="small" type="text" name="last_phone" value="${mem.getPhone().substring(9,13) }" />
 			<br>
 			<br>
 			배송지주소 <br>			<!-- 이 부분 고민 해보기 -->
@@ -83,9 +83,7 @@
 			<br>
 			<div align="center">
 										<!-- 지금은 confirm으로 했지만 나중에 창 하나 만들어서 띄워야 한다. -->
-			<button type="submit" onclick="if(confirm('입력하신 내용으로 배송지를 저장 하시겠습니까?')) {
-											}else
-											{ return; }">저장하기</button>
+			<button type="submit">저장하기</button>
 			</div>
 		</form>
 	</div>
