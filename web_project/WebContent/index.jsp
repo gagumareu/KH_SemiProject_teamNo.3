@@ -52,6 +52,11 @@
 					A.P.C.
 					</div> 
 					
+					<div id="main_title">
+					test from main 
+					</div> 
+					
+					
 					<div>
 						<a class="wCategory" href="<%=request.getContextPath() %>/category.do?code=${list[0].getCategory_code() }">A.P.C. WOMEN</a>
 					</div>
