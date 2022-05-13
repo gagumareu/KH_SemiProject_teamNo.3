@@ -33,7 +33,7 @@
  
 </head>
 <body>
-
+	브랜치이슬 test
 	<c:set var="list" value="${List }"/>
 	
 	<jsp:include page="include/shop_top.jsp"/>
