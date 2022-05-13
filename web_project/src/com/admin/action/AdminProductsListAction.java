@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.apc.controller.Action;
 import com.apc.controller.ActionForward;
+import com.apc.model.ProductDAO;
+import com.apc.model.ProductDTO;
 import com.apc.model.ProductsDAO;
 import com.apc.model.ProductsDTO;
 
@@ -37,9 +39,8 @@ public class AdminProductsListAction implements Action {
 		int endNo = (page *rowsize);
 		int startBlock = (((page-1)/block)*block) +1;
 		int endBlock = (((page-1)/block)*block) + block;
-
-		ProductsDAO dao = ProductsDAO.getInstance();
 		
+		ProductsDAO dao = ProductsDAO.getInstance();
 		totalRecode = dao.getBoardCount();
 		System.out.println("totalRecode >>" + totalRecode);
 		
