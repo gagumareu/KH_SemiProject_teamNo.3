@@ -220,7 +220,7 @@
 								<td> </td> <!-- 답변글에는 이미지 안보임 -->
 					<% 		}else{
 					%>		
-							<td  width="10%" align="center">
+							<td class="list_td"  width="10%" align="center">
 							<a href="<%=request.getContextPath() %>/product_detail.do?num=<%= pDto.getPno() %>">
 							<img src="<%=request.getContextPath() %>/upload/<%=arrImg[0]%>" width="70%" height="100%">
 							</a>					
