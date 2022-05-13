@@ -74,7 +74,7 @@
 									
 							%>		
 									<td align="center">
-										<img src="<%=request.getContextPath() %>/upload/<%=arrImg[0]%>" width="100%" height="100%">
+										<img src="<%=request.getContextPath() %>/image_products/<%=arrImg[0]%>" width="100%" height="100%">
 									</td>
 							<% 		
 								}//else 

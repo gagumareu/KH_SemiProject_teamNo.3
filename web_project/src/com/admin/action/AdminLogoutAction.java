@@ -22,7 +22,7 @@ public class AdminLogoutAction implements Action {
 		
 		forward.setRedirect(false);
 		
-		forward.setPath("admin/admin_login.jsp");
+		forward.setPath("admin/admin_Login.jsp");
 				
 		return forward;
 	}

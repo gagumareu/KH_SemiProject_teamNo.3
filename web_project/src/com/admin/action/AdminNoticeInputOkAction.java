@@ -25,7 +25,7 @@ public class AdminNoticeInputOkAction implements Action {
 		
 		// 첨부파일 저장 경로
 		String saveFolder = 
-			"C:\\Users\\JUNGHWAN\\git\\SemiProject_teamNo.3\\web_project\\WebContent\\upload";
+			"C:\\NCS\\workspace(jsp)\\webproject\\WebContent\\upload\\notice";
 		
 		// 첨부파일 최대 크기
 		int fileSize = 10 * 1024 * 1024;
