@@ -15,6 +15,11 @@ table th {
 	vertical-align: middle !important;
 }
 
+.nav-sidebar li {
+	padding-top:10px;
+	padding-bottom:10px;
+}
+
 /*
  * Top navigation
  * Hide default border to remove 1px line.
@@ -83,6 +88,10 @@ table th {
   margin-top: 0;
 }
 
+.main-header {
+	margin-top: 0;
+	border: 1px solid #ccc;
+}
 
 /*
  * Placeholder dashboard ideas

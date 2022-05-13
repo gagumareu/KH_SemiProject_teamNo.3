@@ -16,7 +16,6 @@
 
 </script>
 <link rel="stylesheet" href="./css/admin_products_list.css">
-
 	
 </head>
 <body>
@@ -65,7 +64,7 @@
 			<th>가격</th>
 			<th>재고량</th>
 			<th>등록일</th>
-			<th>수정 | 삭제</th>
+			<th>수정  | 삭제</th>
 		</tr>
 		
 		<c:set var="list" value="${ProductsList }"/>
@@ -96,7 +95,7 @@
 						<td>
 							<a href="<%=request.getContextPath() %>/admin_products_update.do?no=${dto.getPno() }">
 							수정</a>
-							|
+							&nbsp;|&nbsp;
 							<a href="<%=request.getContextPath() %>/admin_products_delete.do?no=${dto.getPno() }&image=${dto.getPimage() }" 
 							onclick="return delchk();">
 							삭제</a>
@@ -143,13 +142,9 @@
 		</div>
 		
 		<br>
-		<hr>
 	</div>
 	</div>
-	
-	<footer class="container-fluid navbar-fixed-bottom col-sm-offset-2">
-		<p>하단바 영역</p>
-	</footer>
+
 	
 
 </body>
