@@ -11,7 +11,8 @@
 
    <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
-      	<a class="navbar-brand" href="<%=request.getContextPath() %>/admin_main.do"><span style="font-size:24px;">A.P.C ADMIN PAGE</span></a>
+      	<a class="navbar-brand" href="<%=request.getContextPath() %>/index.jsp"><span style="font-size:24px;">A.P.C</span></a>
+      	<a class="navbar-brand" href="<%=request.getContextPath() %>/admin_main.do"><span style="font-size:24px;">/ADMIN PAGE</span></a>
 
 		<ul class="nav navbar-nav navbar-right">
         	<li><a href="#">${adminName }님 환영합니다.</a></li>
