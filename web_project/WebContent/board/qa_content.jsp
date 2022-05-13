@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -167,7 +168,7 @@
 				<td width="50%">
 					<div>
 					<span class="qa_product_name">${pDto.getPname() }</span> <br>
-					<span class="qa_product_price">${pDto.getPrice() }</span>
+					<span class="qa_product_price"><fmt:formatNumber value="${pDto.getPrice() }" />원 </span>
 					</div>
 				</td>
 			</tr>
@@ -240,7 +241,7 @@
 				<div class="qa_bottom_btn" id="btnGroup" align="right">
 					<button type="button" class="btn btn-outline-dark" 
 						onclick="location.href='<%=request.getContextPath() %>/qa_list.do'">
-						목록
+						목록  
 					</button> &nbsp;
 				</div>
 				</c:if>

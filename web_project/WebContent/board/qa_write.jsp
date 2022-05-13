@@ -11,13 +11,97 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/main.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/qa.css">
+<style type="text/css">
+
+	body{
+		font-family: "arial";
+	}
+
+	.table {
+		width: 95%;
+		
+	}
+	
+	#qa_category{
+		margin-left:30px;
+	}
+
+	html, body{
+	
+		margin: 0px;
+		padding: 0px;
+	}
+
+
+	.apcTitle, .apcTitle_sub{
+	margin-top: 50px;
+	font-size: 58px;
+	margin-left: 15px;
+	font-weight: bold;
+	width: 180px; /* 이슬 수정 */
+	}
+	
+	.apcTitle > a{
+	color: black;
+	text-decoration: none;
+	}
+	
+	.apcTitle > a:hover{
+	color: white;
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+	}
+
+	
+	.col > a > img{
+	width:100%;
+
+	}
+	
+	.col{
+	width: 800px;
+	}
+	
+	.container{
+	margin: 0px;
+	width: 100%;
+	}
+
+	.row{
+	}
+	
+	.container{
+	}
+
+	.class{
+		
+	}
+
+	/* 이슬 추가  */
+	.alltitle{
+		display:flex;
+	}
+	
+	#btnGroup{
+		display:flex;
+	}
+	
+	#groupItem1 {
+		width:50%;
+		padding-left: 35px; 	
+	}
+
+	#groupItem2{
+		width:50%;
+		padding-right:35px;
+	}
+
+</style>
 </head>
 <body>
-		<jsp:include page="/include/shop_top.jsp"/>
-		<jsp:include page="/include/shop_top_right.jsp"/>
+		<jsp:include page="/include/shop_top.jsp" />
+	<jsp:include page="/include/shop_top_right.jsp" />
 	<div class="qa_container">
-
-		<div class="alltitle">
+			<div class="alltitle">
 		<div class="apcTitle">
 			<a href="<%=request.getContextPath()%>/index.jsp">A.P.C.</a>
 		</div>
@@ -26,12 +110,13 @@
 		</div>
 		</div>
 		
-		<div class="qa_body">
+		
+		<div class="qa_body" align="center">
 		<form id="qa_form" method="post" name="frm" action="<%=request.getContextPath()%>/qa_write_ok.do" >
 		<input type="hidden" id="pno" name="pno" value="${pCont.getPno() }">
 		<%-- <input type="hidden" id="num" name="num" value="${num }"> --%>
 		
-		<table class="qa_top_table" >
+		<table class="qa_top_table" align="left" >
 		<c:if test="${empty pCont }"><!-- 넘겨받은 제품정보가 없으면  -->
 			<tr >
 				<td rowspan="2">
@@ -68,25 +153,6 @@
 			</tr>
 		</c:if>
 		</table>
-		
-<%-- 		<table id="qa_top_table" >
-			<tr >
-				<td rowspan="2">
-				<img src="<%=request.getContextPath() %>/upload/${fileName}" width="10%" height="10%">
-				</td>
-				<td>
-					${pDto.getPname() } <br>
-					${pDto.getPrice() }
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<button type="button" class="btn btn-outline-dark" onclick="loaction.href='<%=request.getContextPath()%>/product_list.do?num=${pDto.getPno() }'">
-					제품 상세보기
-					</button>
-				</td>
-			</tr>
-		</table> --%>
 			
 			<table class="table">
 			
@@ -133,19 +199,19 @@
 			</table>
 				<div id="btnGroup" >
 					<div id="groupItem1" align="left">
-					<button type="button" class="btn btn-outline-dark" 
+					<button id="listBtn" type="button" class="btn btn-outline-dark" 
 						onclick="location.href='<%=request.getContextPath() %>/qa_list.do'">
 						목록
 					</button>
 					</div>
 					<div id="groupItem2" align="right">
 					<input type="submit" class="btn btn-outline-dark"  value="등록">
-					<button type="button" class="btn btn-outline-dark" onclick="location.href='<%=request.getContextPath()%>/index.jsp'">취소</button>
+					<button type="button" class="btn btn-outline-dark" onclick="location.href='<%=request.getContextPath()%>/qa_list.do?page=1'">취소</button>
 					</div>
 				</div>
 		</form>
 		</div>
 	</div> <!-- class="qa_container" -->
-	
+	<jsp:include page="/include/shop_bottom.jsp"/>
 </body>
 </html>
