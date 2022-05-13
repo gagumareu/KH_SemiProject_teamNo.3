@@ -1,0 +1,74 @@
+@charset "UTF-8";
+
+body {
+  font-family:arial;
+ 
+}
+
+h1 span{
+	font-size: 50px;
+	font-family:arial;
+}
+
+h3{
+	padding-bottom: 0px;
+	margin-bottom:0px;
+	font-family:arial;
+}
+.id_pwd {
+	font-size: 5px;
+	color: black;
+	padding-top: 10px;
+	padding-bottom: 3px;
+	font-family:arial;
+}
+
+.text_id_pwd {
+	width: 280px;
+	height: 29px;
+	background-color: white;
+	border-color: gray;
+	border-width: 1px;
+	font-family:arial;
+}
+
+a {
+	text-decoration: none;
+	font-size: 7px;
+	color: black;
+	font-weight: bold;
+	margin-top: 5px;
+	font-family:arial;
+}
+
+#cb1 {
+	font-size: 5px;
+	font-family:arial;
+}
+
+hr {
+height: 2px;
+background-color: black;
+	
+}
+
+tr td span{
+	font-size: 5px;
+	margin-top: 0;
+	
+}
+
+#btn_login{
+	width: 287px;
+	height: 31px;
+	margin-top: 10px;
+	background-color: black;
+	color: white;
+	font-size: 7px;
+	font-weight:bold;
+	border-color: black;
+	font-family:arial;
+
+}
+
+
