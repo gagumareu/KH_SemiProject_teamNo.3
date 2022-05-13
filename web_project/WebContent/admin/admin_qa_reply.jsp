@@ -4,6 +4,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style type="text/css">
+	th{background-color : #eee;}
+</style>
 <meta charset="UTF-8">
 </head>
 <body>

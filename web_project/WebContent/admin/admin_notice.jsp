@@ -22,15 +22,13 @@
 			<table class="table table-bordered table-hover">
 				<colgroup>
 					<col width="10%">
-					<col width="60%">
-					<col width="10%">
+					<col width="70%">
 					<col width="20%">
 				</colgroup>
 				
 				<tr style="background-color: #383636; color:white;">
 					<th>NO</th>
 					<th>제목</th>
-					<th>조회수</th>
 					<th>작성일자</th>
 				</tr>
 				
@@ -44,7 +42,6 @@
 									${dto.getNotice_title() }
 								</a>		
 							</td>
-							<td>${dto.getNotice_hit() }</td>
 							<td>${dto.getNotice_date().substring(0,10) }</td>
 						</tr>
 					</c:forEach>
@@ -111,6 +108,7 @@
 			</div>		
 			
 		</div>
+	 </div>
 	
 </body>
 </html>

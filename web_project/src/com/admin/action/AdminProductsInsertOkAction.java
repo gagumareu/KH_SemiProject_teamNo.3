@@ -28,7 +28,7 @@ public class AdminProductsInsertOkAction implements Action {
 		ProductsDTO dto = new ProductsDTO();
 		
 		// ***********업로드 파일경로: 파일이름은 'upload'로 해주세요*************8
-		String saveFolder="C:\\Users\\ayss3\\Documents\\KH_SemiProjeckt_teamNo.3\\web_project\\WebContent\\upload";
+		String saveFolder="C:\\Users\\ayss3\\Documents\\JSP_PROJECT\\web_project\\WebContent\\upload";
 		
 		int fileSize=1024*1024*10;
 		

@@ -6,8 +6,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style type="text/css">
+	th{background-color : #eee;}
+</style>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 </head>
 <body>
 
@@ -44,10 +46,6 @@
 					</td>
 				</tr>
 				
-				<tr>
-					<th>조회수</th>
-					<td>${dto.getNotice_hit() }</td>
-				</tr>
 					
 				<tr>
 				<c:if test="${empty dto.getNotice_update() }">

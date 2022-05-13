@@ -101,6 +101,7 @@ public class AdminDAO {
 					if(rs.next()) {
 						dto.setAdmin_id(rs.getString("admin_id"));
 						dto.setAdmin_pwd(rs.getString("admin_pwd"));
+						dto.setAdmin_name(rs.getString("admin_name"));
 					}
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block

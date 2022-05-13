@@ -12,24 +12,19 @@
 		<div class="col-sm-8 col-sm-offset-3">
 		<br><br><br>
         <div class="page-header" align="center"><h2>공지사항</h2></div>
-        <div align="right">
-        	<button type="button" class="btn btn-primary"
-        		onclick="location.href='<%=request.getContextPath() %>/admin_notice_input.do'">공지사항 등록</button>
-        </div>
+        
         <br>
         
 			<table class="table table-bordered table-hover">
 				<colgroup>
 					<col width="10%">
-					<col width="60%">
-					<col width="10%">
+					<col width="70%">
 					<col width="20%">
 				</colgroup>
 				
 				<tr style="background-color: #383636; color:white;">
 					<th>NO</th>
 					<th>제목</th>
-					<th>조회수</th>
 					<th>작성일자</th>
 				</tr>
 				
@@ -43,7 +38,6 @@
 									${dto.getNotice_title() }
 								</a>		
 							</td>
-							<td>${dto.getNotice_hit() }</td>
 							<td>${dto.getNotice_date().substring(0,10) }</td>
 						</tr>
 					</c:forEach>

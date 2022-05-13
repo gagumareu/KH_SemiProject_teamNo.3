@@ -4,6 +4,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style type="text/css">
+	th{background-color : #eee;}
+</style>
 <meta charset="UTF-8">
 </head>
 <body>
@@ -42,7 +45,7 @@
         		
         		<tr>
         			<th>답변 내용</th>
-        			<td><textarea class="form-control" rows="7" cols="100" name="reply_content">${dto.getQa_cont() }</textarea></td>
+        			<td><textarea class="form-control" rows="7" cols="100" name="reply_content">${dto.getQa_cont().replace("<br>", "&#10;") }</textarea></td>
         		</tr>
         		
         		<tr>

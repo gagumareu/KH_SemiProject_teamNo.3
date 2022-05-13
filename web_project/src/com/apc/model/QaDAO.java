@@ -133,6 +133,7 @@ public class QaDAO {
 				dto.setQa_group(rs.getInt("qa_group"));
 				dto.setQa_step(rs.getInt("qa_step"));
 				dto.setQa_indent(rs.getInt("qa_indent"));
+	
 				
 				list.add(dto);
 			}
@@ -715,6 +716,7 @@ public class QaDAO {
 				dto.setQa_group(rs.getInt("qa_group"));
 				dto.setQa_step(rs.getInt("qa_step"));
 				dto.setQa_indent(rs.getInt("qa_indent"));
+				dto.setQa_orderno(rs.getInt("qa_orderno"));
 				
 				
 				list.add(dto);
@@ -788,7 +790,7 @@ public class QaDAO {
          System.out.println("dto.getQa_pno_fk():"+dto.getQa_pno_fk());
          
          if(dto.getQa_pno_fk()>0) {
-         sql="insert into apc_qa values(?,?,?,?,?,?,?, default, sysdate, '', ?, 0, 0)";
+         sql="insert into apc_qa values(?,?,?,?,?,?,?, default, sysdate, '', ?, 0, 0, '')";
          pstmt=con.prepareStatement(sql);
          
          pstmt.setInt(1, count);
@@ -802,7 +804,7 @@ public class QaDAO {
          
          result=pstmt.executeUpdate();
          } else {
-            sql="insert into apc_qa values(?,?,?,?,?,'',?, default, sysdate, '', ?, 0, 0)";
+            sql="insert into apc_qa values(?,?,?,?,?,'',?, default, sysdate, '', ?, 0, 0, '')";
             pstmt=con.prepareStatement(sql);
             
             pstmt.setInt(1, count);
@@ -871,6 +873,7 @@ public class QaDAO {
             dto.setQa_group(rs.getInt("qa_group"));
             dto.setQa_step(rs.getInt("qa_step"));
             dto.setQa_indent(rs.getInt("qa_indent"));
+            dto.setQa_orderno(rs.getInt("qa_orderno"));
 
             list.add(dto);
             System.out.println("dto등록");
@@ -885,8 +888,6 @@ public class QaDAO {
       return list;
    }
 	
-   
-   // cancelQA 나중에 삭제하기
 // ************** 경연님 ************************
    public int cancelQa(QaDTO dto) {
 		
@@ -912,6 +913,7 @@ public class QaDAO {
 			pstmt.setString(4, dto.getQa_title());
 			pstmt.setString(5, dto.getQa_cont());
 			pstmt.setInt(6, dto.getQa_pno_fk());
+			pstmt.setInt(7, dto.getQa_orderno());
 			
 			result = pstmt.executeUpdate();
 			
@@ -946,7 +948,7 @@ public class QaDAO {
 				dto.setQa_date(rs.getString("qa_date"));
 				dto.setQa_update(rs.getString("qa_update"));
 				dto.setQa_indent(rs.getInt("qa_indent"));
-				
+				dto.setQa_orderno(rs.getInt("qa_orderno"));
 				list.add(dto);
 			}
 			
@@ -960,7 +962,50 @@ public class QaDAO {
 	}
 	
 	
-	
+	// admin_main 에서 Q&A 조회
+	public List<QaDTO> getMainQaList() {
+		
+		List<QaDTO> list = new ArrayList<QaDTO>();
+					
+		try {
+			openConn();
+			
+			sql = "select * from apc_qa where rownum<= 6 and qa_step=0 order by qa_no";
+							
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				QaDTO dto = new QaDTO();
+				
+				dto.setQa_no(rs.getInt("qa_no"));
+				dto.setQa_category(rs.getString("qa_category"));
+				dto.setQa_memid(rs.getString("qa_memid"));
+				dto.setQa_title(rs.getString("qa_title"));
+				dto.setQa_cont(rs.getString("qa_cont"));
+				dto.setQa_pno_fk(rs.getInt("qa_pno_fk"));
+				dto.setQa_pwd(rs.getString("qa_pwd"));
+				dto.setQa_hit(rs.getInt("qa_hit"));
+				dto.setQa_date(rs.getString("qa_date"));
+				dto.setQa_update(rs.getString("qa_update"));
+				dto.setQa_group(rs.getInt("qa_group"));
+				dto.setQa_step(rs.getInt("qa_step"));
+				dto.setQa_indent(rs.getInt("qa_indent"));
+				
+				
+				list.add(dto);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return list;
+	}
 	
 	
 	

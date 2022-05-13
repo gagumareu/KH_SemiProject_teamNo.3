@@ -5,6 +5,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style type="text/css">
+	th{background-color : #eee;}
+</style>
 <meta charset="UTF-8">
 </head>
 <body>
@@ -69,9 +72,6 @@
 		</form>
     </div>
 
-	<footer class="container-fluid navbar-fixed-bottom col-sm-offset-2">
-		<p>하단바 영역</p>
-	</footer>
 	
 </body>
 </html>
