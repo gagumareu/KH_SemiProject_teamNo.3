@@ -125,10 +125,10 @@
 			color: black;
   		    background-color: white;
             border: 1px solid black;
-            width: 82px;
+            width: 132px;
             height: 33.7px;
             text-align: center;
-            margin-left: 36px;
+            margin-left: 58px;
             margin-bottom: 5px;
 			
 		}
