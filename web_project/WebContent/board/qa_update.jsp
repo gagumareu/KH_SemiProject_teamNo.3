@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -125,7 +126,29 @@ function qa_update_ok(){
 		</c:if>		
 		
 		<c:if test="${cont.getQa_pno_fk() > 0 }">
-		<table class="qa_top_table" algin="left">
+		<table class="qa_top_table" align="left" >
+			<tr >
+				<td rowspan="2" width="50%">
+				<img src="<%=request.getContextPath() %>/upload/${img }" width="100%" height="100%">
+				</td>
+				<td><span>${product.getPname()}</span> <br>
+					<span>SIZE: ${product.getPsize() }/ COLOR : ${product.getPcolor() }</span><br>
+					<span class="qa_product_price"><fmt:formatNumber value="${product.getPrice() }" />원</span>
+				</td>
+			</tr>
+			<tr>
+				
+				<td width="50%">
+					<button type="button" class="btn btn-outline-dark" 
+					onclick="location.href='product_detail.do?num=${product.getPno() }&color=${product.getPcolor() }&size=${product.getPsize() }'">
+					제품 상세보기
+					</button>
+				</td>
+			</tr>
+		</table>
+		
+		
+<%-- 		<table class="qa_top_table" algin="left">
 			<tr >
 				<td rowspan="2">
 				<img src="<%=request.getContextPath() %>/upload/${fileName}" >
@@ -142,7 +165,7 @@ function qa_update_ok(){
 					</button>
 				</td>
 			</tr>
-		</table>
+		</table> --%>
 		</c:if>
 		
 	

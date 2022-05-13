@@ -716,7 +716,6 @@ public class QaDAO {
 				dto.setQa_group(rs.getInt("qa_group"));
 				dto.setQa_step(rs.getInt("qa_step"));
 				dto.setQa_indent(rs.getInt("qa_indent"));
-				dto.setQa_orderno(rs.getInt("qa_orderno"));
 				
 				
 				list.add(dto);
@@ -790,7 +789,7 @@ public class QaDAO {
          System.out.println("dto.getQa_pno_fk():"+dto.getQa_pno_fk());
          
          if(dto.getQa_pno_fk()>0) {
-         sql="insert into apc_qa values(?,?,?,?,?,?,?, default, sysdate, '', ?, 0, 0, '')";
+         sql="insert into apc_qa values(?,?,?,?,?,?,?, default, sysdate, '', ?, 0, 0)";
          pstmt=con.prepareStatement(sql);
          
          pstmt.setInt(1, count);
@@ -804,7 +803,7 @@ public class QaDAO {
          
          result=pstmt.executeUpdate();
          } else {
-            sql="insert into apc_qa values(?,?,?,?,?,'',?, default, sysdate, '', ?, 0, 0, '')";
+            sql="insert into apc_qa values(?,?,?,?,?,'',?, default, sysdate, '', ?, 0, 0)";
             pstmt=con.prepareStatement(sql);
             
             pstmt.setInt(1, count);
@@ -948,7 +947,6 @@ public class QaDAO {
 				dto.setQa_date(rs.getString("qa_date"));
 				dto.setQa_update(rs.getString("qa_update"));
 				dto.setQa_indent(rs.getInt("qa_indent"));
-				dto.setQa_orderno(rs.getInt("qa_orderno"));
 				list.add(dto);
 			}
 			

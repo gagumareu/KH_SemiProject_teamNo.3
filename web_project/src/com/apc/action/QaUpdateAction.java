@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.apc.controller.Action;
 import com.apc.controller.ActionForward;
+import com.apc.model.ProductDAO;
+import com.apc.model.ProductDTO;
+import com.apc.model.ProductsDTO;
 import com.apc.model.QaDAO;
 import com.apc.model.QaDTO;
 
@@ -20,10 +23,20 @@ public class QaUpdateAction implements Action {
 		int num = Integer.parseInt(request.getParameter("num"));
 		int page = Integer.parseInt(request.getParameter("page"));
 		
+		System.out.println("num:"+num);
+		System.out.println("page:"+page);
+		
 		QaDAO dao = QaDAO.getInstance();
 		QaDTO dto = dao.getQaContent(num);
 		
+		ProductDAO pdao =  ProductDAO.getInstance();
+		ProductDTO pdto = pdao.getProductCont(dto.getQa_pno_fk());
+		
+		String[] arrImg = pdao.getPorudctImg(pdto);
+		
 		request.setAttribute("cont", dto);
+		request.setAttribute("product", pdto);
+		request.setAttribute("img", arrImg[0]);
 		request.setAttribute("page", page);
 		
 		ActionForward forward= new ActionForward();
