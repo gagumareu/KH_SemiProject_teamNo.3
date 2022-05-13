@@ -5,6 +5,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+<<<<<<< HEAD
+=======
+<style type="text/css">
+	th{background-color : #eee;}
+</style>
+>>>>>>> parent of a36433b (삭젲ㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉ)
 <meta charset="UTF-8">
 </head>
 <body>
@@ -69,9 +75,12 @@
 		</form>
     </div>
 
+<<<<<<< HEAD
 	<footer class="container-fluid navbar-fixed-bottom col-sm-offset-2">
 		<p>하단바 영역</p>
 	</footer>
+=======
+>>>>>>> parent of a36433b (삭젲ㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉ)
 	
 </body>
 </html>

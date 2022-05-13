@@ -4,6 +4,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+<<<<<<< HEAD
+=======
+<style type="text/css">
+	th{background-color : #eee;}
+</style>
+>>>>>>> parent of a36433b (삭젲ㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉ)
 <meta charset="UTF-8">
 </head>
 <body>

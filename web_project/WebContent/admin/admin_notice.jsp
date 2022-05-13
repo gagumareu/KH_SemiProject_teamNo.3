@@ -22,15 +22,22 @@
 			<table class="table table-bordered table-hover">
 				<colgroup>
 					<col width="10%">
+<<<<<<< HEAD
 					<col width="60%">
 					<col width="10%">
+=======
+					<col width="70%">
+>>>>>>> parent of a36433b (삭젲ㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉ)
 					<col width="20%">
 				</colgroup>
 				
 				<tr style="background-color: #383636; color:white;">
 					<th>NO</th>
 					<th>제목</th>
+<<<<<<< HEAD
 					<th>조회수</th>
+=======
+>>>>>>> parent of a36433b (삭젲ㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉ)
 					<th>작성일자</th>
 				</tr>
 				
@@ -44,7 +51,10 @@
 									${dto.getNotice_title() }
 								</a>		
 							</td>
+<<<<<<< HEAD
 							<td>${dto.getNotice_hit() }</td>
+=======
+>>>>>>> parent of a36433b (삭젲ㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉ)
 							<td>${dto.getNotice_date().substring(0,10) }</td>
 						</tr>
 					</c:forEach>
@@ -111,6 +121,10 @@
 			</div>		
 			
 		</div>
+<<<<<<< HEAD
+=======
+	 </div>
+>>>>>>> parent of a36433b (삭젲ㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉ)
 	
 </body>
 </html>

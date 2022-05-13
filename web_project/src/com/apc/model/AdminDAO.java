@@ -101,6 +101,10 @@ public class AdminDAO {
 					if(rs.next()) {
 						dto.setAdmin_id(rs.getString("admin_id"));
 						dto.setAdmin_pwd(rs.getString("admin_pwd"));
+<<<<<<< HEAD
+=======
+						dto.setAdmin_name(rs.getString("admin_name"));
+>>>>>>> parent of a36433b (삭젲ㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉ)
 					}
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block

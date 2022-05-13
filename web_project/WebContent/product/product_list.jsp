@@ -71,7 +71,11 @@
 	
 	.category_flex {
 		display: grid;
+<<<<<<< HEAD
 		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+=======
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+>>>>>>> parent of a36433b (삭젲ㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉ)
 	
 	}
 	

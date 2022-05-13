@@ -12,24 +12,35 @@
 		<div class="col-sm-8 col-sm-offset-3">
 		<br><br><br>
         <div class="page-header" align="center"><h2>공지사항</h2></div>
+<<<<<<< HEAD
         <div align="right">
         	<button type="button" class="btn btn-primary"
         		onclick="location.href='<%=request.getContextPath() %>/admin_notice_input.do'">공지사항 등록</button>
         </div>
+=======
+        
+>>>>>>> parent of a36433b (삭젲ㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉ)
         <br>
         
 			<table class="table table-bordered table-hover">
 				<colgroup>
 					<col width="10%">
+<<<<<<< HEAD
 					<col width="60%">
 					<col width="10%">
+=======
+					<col width="70%">
+>>>>>>> parent of a36433b (삭젲ㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉ)
 					<col width="20%">
 				</colgroup>
 				
 				<tr style="background-color: #383636; color:white;">
 					<th>NO</th>
 					<th>제목</th>
+<<<<<<< HEAD
 					<th>조회수</th>
+=======
+>>>>>>> parent of a36433b (삭젲ㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉ)
 					<th>작성일자</th>
 				</tr>
 				
@@ -43,7 +54,10 @@
 									${dto.getNotice_title() }
 								</a>		
 							</td>
+<<<<<<< HEAD
 							<td>${dto.getNotice_hit() }</td>
+=======
+>>>>>>> parent of a36433b (삭젲ㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉ)
 							<td>${dto.getNotice_date().substring(0,10) }</td>
 						</tr>
 					</c:forEach>

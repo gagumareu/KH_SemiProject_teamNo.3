@@ -24,7 +24,25 @@ public class AdminQaContentAction implements Action {
 	
 		QaDTO dto = dao.getQaContent(no);
 		
+<<<<<<< HEAD
 		request.setAttribute("Cont", dto);
+=======
+		ProductDAO pDao = ProductDAO.getInstance();
+		ProductDTO pDto = null;
+		String fileName = null; 
+		
+		//qa게시판에 이미지가 있다면 상품 정보 및 이미지 파일이름 받기
+		if(dto.getQa_pno_fk() != 0 ) {
+		
+			pDto = pDao.getProductCont(dto.getQa_pno_fk());
+			String arrImg[] = pDao.getPorudctImg(pDto);
+			fileName = arrImg[0];
+		}
+		
+		request.setAttribute("Cont", dto);
+		request.setAttribute("pDto", pDto);
+		request.setAttribute("fileName", fileName);
+>>>>>>> parent of a36433b (삭젲ㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉ)
 		request.setAttribute("page", nowPage);
 		
 		ActionForward forward = new ActionForward();

@@ -5,7 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>관리자 로그인 페이지</title>
+<<<<<<< HEAD
 <link rel="stylesheet" href="../css/admin_login.css">
+=======
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/admin_login.css">
+>>>>>>> parent of a36433b (삭젲ㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉ)
 
 
 </head>
@@ -15,8 +19,11 @@
 		<span>LOG IN</span>
 	</h1>
 	<br>
+<<<<<<< HEAD
 	<br>
 	<br>
+=======
+>>>>>>> parent of a36433b (삭젲ㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉ)
 	
 	<div align="center">
 	<h3>관리자 로그인</h3>
@@ -24,11 +31,18 @@
 	<br>
 	
 	
+<<<<<<< HEAD
 	
 
 	
 	<form method="post" action="<%=request.getContextPath() %>/admin_login_ok.do">
 	<table border="0" cellspacing="0" width="287px" >		
+=======
+
+	
+	<form method="post" action="<%=request.getContextPath() %>/admin_login_ok.do">
+	<table border="0" cellspacing="0" width="280" >		
+>>>>>>> parent of a36433b (삭젲ㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉ)
 		<tr>
 			<td class="id_pwd">관리자 아이디<em>*</em></td>
 						
@@ -42,7 +56,11 @@
 		
 		
 		<tr>
+<<<<<<< HEAD
 			<td type="password" class="id_pwd">비밀번호<em>*</em></td> <!--20220512이슬수정  -->
+=======
+			<td class="id_pwd">비밀번호<em>*</em></td>
+>>>>>>> parent of a36433b (삭젲ㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉ)
 			
 		</tr>
 		

@@ -4,6 +4,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+<<<<<<< HEAD
+=======
+<style type="text/css">
+	th{background-color : #eee;}
+</style>
+>>>>>>> parent of a36433b (삭젲ㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉ)
 <meta charset="UTF-8">
 </head>
 <body>
@@ -16,6 +22,30 @@
         <br>
         
         	<c:set var="dto" value="${Cont }" />
+<<<<<<< HEAD
+=======
+        	
+        	<c:if test="${dto.getQa_pno_fk() == 0 }">
+				<div>
+		
+				</div>
+			</c:if>		
+		
+			<c:if test="${dto.getQa_pno_fk() > 0 }">
+			<div class="row">
+			  <div align="center">
+			    <div class="thumbnail">
+			      <img width="200px" src="<%=request.getContextPath() %>/image_products/${fileName}" >
+			      <div class="caption">
+			        <h3>${pDto.getPname() }</h3>
+			        <p>${pDto.getPrice() }</p>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+		</c:if>
+		
+>>>>>>> parent of a36433b (삭젲ㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉ)
         	<table class="table table-bordered table-hover">
         		<colgroup>
         			<col width="20%">
@@ -52,7 +82,13 @@
         					답변내용
         				</c:if>
         			</th>
+<<<<<<< HEAD
         			<td>${dto.getQa_cont() }</td>
+=======
+        			<td>
+        				<br>${dto.getQa_cont() }<br><br>
+        			</td>
+>>>>>>> parent of a36433b (삭젲ㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉ)
         		<tr>
         		
        		

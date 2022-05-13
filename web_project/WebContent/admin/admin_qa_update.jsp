@@ -4,6 +4,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+<<<<<<< HEAD
+=======
+<style type="text/css">
+	th{background-color : #eee;}
+</style>
+>>>>>>> parent of a36433b (삭젲ㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉ)
 <meta charset="UTF-8">
 </head>
 <body>
@@ -42,7 +48,11 @@
         		
         		<tr>
         			<th>답변 내용</th>
+<<<<<<< HEAD
         			<td><textarea class="form-control" rows="7" cols="100" name="reply_content">${dto.getQa_cont() }</textarea></td>
+=======
+        			<td><textarea class="form-control" rows="7" cols="100" name="reply_content">${dto.getQa_cont().replace("<br>", "&#10;") }</textarea></td>
+>>>>>>> parent of a36433b (삭젲ㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉ)
         		</tr>
         		
         		<tr>

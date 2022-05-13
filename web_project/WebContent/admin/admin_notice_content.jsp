@@ -6,8 +6,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+<<<<<<< HEAD
 <meta charset="UTF-8">
 <title>Insert title here</title>
+=======
+<style type="text/css">
+	th{background-color : #eee;}
+</style>
+<meta charset="UTF-8">
+>>>>>>> parent of a36433b (삭젲ㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉ)
 </head>
 <body>
 
@@ -44,10 +51,13 @@
 					</td>
 				</tr>
 				
+<<<<<<< HEAD
 				<tr>
 					<th>조회수</th>
 					<td>${dto.getNotice_hit() }</td>
 				</tr>
+=======
+>>>>>>> parent of a36433b (삭젲ㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉ)
 					
 				<tr>
 				<c:if test="${empty dto.getNotice_update() }">

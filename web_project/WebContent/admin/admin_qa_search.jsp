@@ -26,12 +26,20 @@
         
         	<table class="table table-bordered table-hover">
 				<colgroup>
+<<<<<<< HEAD
 					<col width="5%">
 					<col width="10%">
 					<col width="50%">
 					<col width="10%">
 					<col width="15%">
 					<col width="10%">
+=======
+					<col width="10%">
+					<col width="15%">
+					<col width="50%">
+					<col width="10%">
+					<col width="15%">
+>>>>>>> parent of a36433b (삭젲ㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉ)
 				</colgroup>
 				
 				<tr style="background-color: #383636; color:white;">
@@ -40,7 +48,10 @@
 					<th>제목</th>
 					<th>작성자</th>
 					<th>작성일</th>
+<<<<<<< HEAD
 					<th>조회수</th>
+=======
+>>>>>>> parent of a36433b (삭젲ㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉ)
 				</tr>
 				
 				<c:set var="list" value="${search }" />
@@ -60,7 +71,11 @@
 								<%-- 답변인 경우 --%>
 								<c:if test="${dto.getQa_indent() != 0 }">
 									<c:forEach begin="1" end="<%=dto.getQa_indent()%>">
+<<<<<<< HEAD
 										<img src="<%=request.getContextPath() %>/admin_img/reply-all.png" width="20px">							
+=======
+										<img src="<%=request.getContextPath() %>/img/reply-all.png" width="20px">							
+>>>>>>> parent of a36433b (삭젲ㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉ)
 									</c:forEach>
 								</c:if>
 								<a href="<%=request.getContextPath() %>/admin_qa_content.do?no=<%=dto.getQa_no() %>&page=${page}"> 
@@ -69,7 +84,10 @@
 							</td>
 							<td><%=dto.getQa_memid() %></td>
 							<td><%=dto.getQa_date().substring(0,10) %></td>
+<<<<<<< HEAD
 							<td><%=dto.getQa_hit() %></td>
+=======
+>>>>>>> parent of a36433b (삭젲ㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉㅉ)
 						</tr>
 						
 					<% } // for문 end %>
