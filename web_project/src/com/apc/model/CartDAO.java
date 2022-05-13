@@ -153,7 +153,7 @@ public class CartDAO {
 				dto.setCart_trans(rs.getInt("cart_trans"));
 				dto.setCart_price(rs.getInt("cart_price"));
 				dto.setCart_pimage(rs.getString("cart_pimage"));
-				dto.setCart_pimage(rs.getString("cart_mileage"));
+				dto.setCart_mileage(rs.getInt("cart_mileage"));
 				
 				list.add(dto);
 			}
