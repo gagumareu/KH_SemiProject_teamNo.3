@@ -1,0 +1,71 @@
+@charset "UTF-8";
+
+	
+
+
+	table tr td {
+	border-left: none;
+	border-right: none;
+	text-align: center;
+	font-family: airal;
+	height: 80px;
+	}
+	
+	table tr th{
+	border-left: none;
+	border-right: none;
+	background-color: #383636;
+	color: white;
+	font-family: airal;
+	height: 50px;
+	
+	}
+	
+	table tr:hover{	
+		background-color: #eee;
+	
+	}
+	
+	table a{
+	text-decoration: none;
+	font-family: airal;
+	
+	}
+	
+	.btn{
+		background-color: #383636;
+		color:white;
+		font-weight:bold;	
+		font-family: airal;	
+		width:113px;
+		height: 35px;		
+		/* margin-top: 14px;
+		margin-left: 841px; */	
+
+	}
+	
+	div.search{
+		width: 100%;
+		margin: 0 0 10px 0;
+	}
+	
+	select{
+		font-family: airal;
+	}
+
+	input {
+		font-family: airal;
+	}
+	
+	.paging{
+		width:3px;
+		height:4px;
+		text-decoration: none;
+		border:1px solid gray;
+		
+		font-size: 18px;
+		color:black;
+		padding: 2px 10px 2px 10px;
+		
+	}
+	
