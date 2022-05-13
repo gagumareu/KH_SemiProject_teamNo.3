@@ -62,6 +62,7 @@ public class GoCartAction implements Action {
 		cDto.setCart_psize(dto.getPsize());
 		cDto.setCart_pcolor(dto.getPcolor());
 		cDto.setCart_price(dto.getPrice());
+		cDto.setCart_mileage(dto.getMileage());
 		//배송비는 DB에서 default 3000, 일정금액은 0원으로 설정?
 		cDto.setCart_pimage(pimage[0]);
 		cDto.setCart_mileage(dto.getMileage());
