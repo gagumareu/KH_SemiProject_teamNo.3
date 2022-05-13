@@ -121,6 +121,24 @@
 			height: 40px;
 		}
 		
+		#review_btn{
+			color: black;
+  		    background-color: white;
+            border: 1px solid black;
+            width: 82px;
+            height: 33.7px;
+            text-align: center;
+            margin-left: 36px;
+            margin-bottom: 5px;
+			
+		}
+		
+		#review_btn a {
+			vertical-align: middle;
+			display:inline-block;
+			margin-top: 10px;
+		}
+		
 		
 		.home_link:hover{
 			font-family: Arial;
@@ -190,7 +208,7 @@
 			</c:if>
 			
 			<div class="left2">
-				<a><img src="<%=request.getContextPath() %>/upload/${pDTO.getPay_pimage() }"
+				<a><img src="<%=request.getContextPath() %>/upload${pDTO.getPay_pimage() }"
 					    width="100" height="100"></a>
 			</div>
 					
@@ -232,8 +250,9 @@
 				</c:forEach>
 				<c:if test="${c == 0 }">
 				
-					<a href="<%=request.getContextPath()%>/review_write.do?no=${pDTO.getOrder_no()}" 
-			onclick="window.open( this.href, '_blank', 'width=470,height=490, scrollbars=yes,directories=no'); return false ">리뷰쓰기</a><br><br>
+					<div id="review_btn" align="right">
+					<a  href="<%=request.getContextPath()%>/review_write.do?no=${pDTO.getOrder_no()}" 
+			onclick="window.open( this.href, '_blank', 'width=470,height=490, scrollbars=yes,directories=no'); return false ">리뷰쓰기</a></div>
 				</c:if>
 				
 				<c:forEach items="${cancelList }" var="qaDTO">
