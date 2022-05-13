@@ -75,7 +75,7 @@
 	
 	}
 	
-</style>
+</style>	i
 </head>
 <body>
 	<jsp:include page="/include/shop_top.jsp"/>
