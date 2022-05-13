@@ -32,7 +32,7 @@ public class CartUpdateAction implements Action {
 		ProductDAO pdao = ProductDAO.getInstance();
 		ProductDTO	pdto = pdao.getProductCont(cdto.getPno_fk());
 		List<String> pColor = pdao.getPColor(subStr);
-		List<String> pSize = pdao.getPSize(subStr);
+		List<String> pSize = pdao.getPSize(subStr);	
 		
 		request.setAttribute("cartDTO", cdto);
 		request.setAttribute("productDTO", pdto);

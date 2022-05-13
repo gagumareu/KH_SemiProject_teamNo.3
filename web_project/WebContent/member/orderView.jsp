@@ -10,6 +10,13 @@
 
 <style>
 		
+		html, body {
+			padding: 0px;
+			margin: 0px;
+			height: 100%;
+			
+		}
+		
 		a{
 			text-decoration: none;
 			color: black;
@@ -125,10 +132,10 @@
 			color: black;
   		    background-color: white;
             border: 1px solid black;
-            width: 82px;
+            width: 132px;
             height: 33.7px;
             text-align: center;
-            margin-left: 36px;
+            margin-left: 58px;
             margin-bottom: 5px;
 			
 		}
@@ -161,6 +168,9 @@
 </head>
 
 <body>
+
+	<jsp:include page="../include/shop_top.jsp"/>
+	<jsp:include page="../include/shop_top_right.jsp"/>
 
 	
 	<div class="header_title_nav">
@@ -273,5 +283,11 @@
 		</c:forEach>
 	</div>
 	</section>
+	
+		<jsp:include page="../include/shop_bottom.jsp"/>
+	
+	
+	
+	
 </body>
 </html>

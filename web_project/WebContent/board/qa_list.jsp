@@ -114,11 +114,30 @@
 		display:flex;
 	}
 	
-	.qa_body{
+	#list_table td{
 	
+		height: 80px;
+	
+	}
+	
+	.list_td{
+		padding-top:30px;
+	}	
+	
+	#qa_no {
+		padding-top:30px;
+		text-align: center;
+	}
+	
+	#list_table a{
+		/* display:inline-block;
+		margin-top:10px; */
+		text-decoration: none;
+		color: black;
 		
 	}
-
+	
+	
 </style>
 </head>
 <body>
@@ -148,7 +167,7 @@
 					
 			</select>
 			</form>
-			<table class="table table-hover" align="center">
+			<table id="list_table" class="table table-hover" align="center">
 				<thead>
 					<tr align="center">
 						<th scope="col">번호</th>
@@ -176,8 +195,8 @@
 						QaDTO dto = qa.get(i);
 					%>	
 					<tr >
-				<!--                    조회수                                               -->
-						<th scope="row" width="5%" align="center"><%=dto.getQa_no() %></th>
+				<!--                    게시판 번호                                             -->
+						<th id="qa_no" scope="row" width="5%" align="center"><%=dto.getQa_no() %></th>
 							
 				<!--                    상품정보                                              -->
 					<%
@@ -196,13 +215,17 @@
 							System.out.println("dto.getQa_pno_fk():"+dto.getQa_pno_fk());
 							System.out.println("arrImg[0]:"+arrImg[0]);
 							
+							if(dto.getQa_indent() != 0 ){
+					%>
+								<td> </td> <!-- 답변글에는 이미지 안보임 -->
+					<% 		}else{
 					%>		
-							<td width="10%" align="center">
+							<td  width="10%" align="center">
 							<a href="<%=request.getContextPath() %>/product_detail.do?num=<%= pDto.getPno() %>">
-							<img src="<%=request.getContextPath() %>/upload/<%=arrImg[0]%>" width="100%" height="100%">
+							<img src="<%=request.getContextPath() %>/upload/<%=arrImg[0]%>" width="70%" height="100%">
 							</a>					
 							</td>
-					<% 		
+					<% 	}	
 						}//else 
 					%>		
 					<!--                    카테고리                                               -->
@@ -210,10 +233,10 @@
 							QaCategoryDAO qcDao = QaCategoryDAO.getInstance();
 							QaCategoryDTO qcDto = qcDao.getCategoryCont(dto.getQa_category());
 						%>		
-						<td width="10%" align="center"><%=qcDto.getCategory_name() %></td>
+						<td class="list_td" width="10%" align="center"><%=qcDto.getCategory_name() %></td>
 						
 					<!--                       제목                                               -->	
-						<td width="40%">
+						<td class="list_td" width="40%">
 						<%if(dto.getQa_indent() != 0 ){
 							for(int k =1; k<= dto.getQa_indent(); k++){
 						%>	
@@ -227,21 +250,20 @@
 						
 						</td>
 					<!--                       작성자                                              -->		
-						<td width="15%" align="center">
-						<%if(!(dto.getQa_memid().equals("admin"))){//관리자가 아니라면 
+						<td class="list_td" width="15%" align="center">
+						<%if((dto.getQa_memid().equals("admin"))){//관리자라면
+						%>		관리자
+						<% }else{
 							if(dto.getQa_memid().length() > 1){
 						%>	
-								<%=dto.getQa_memid().substring(0,2) %>****
-						<%	}
-						}else{//관리자면
-						%>	
-							관리자
-						<% } %>
+							<%=dto.getQa_memid().substring(0,2) %>****
+						<% }
+						}%>	
 						</td>
 					<!--                       작성일자                                              -->		
-						<td width="15%" align="center"><%=dto.getQa_date().substring(0, 10) %></td>
+						<td class="list_td"  width="15%" align="center"><%=dto.getQa_date().substring(0, 10) %></td>
 					<!--                       조회수                                             -->		
-						<td width="5%" align="center"><%=dto.getQa_hit() %></td>
+						<td class="list_td" width="5%" align="center"><%=dto.getQa_hit() %></td>
 					</tr>
 					<% }//for%>
 					

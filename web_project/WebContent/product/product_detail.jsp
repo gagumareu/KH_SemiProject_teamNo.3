@@ -124,9 +124,14 @@ $(function(){
 
 <style type="text/css">
 
-	
+	.review_top{
+		width:90%;
+		border-bottom:1px solid #c0c0c0;
+	}
 	.review_box{
+		width:90%;	
 		display:none;
+		border-bottom: 1px solid #c0c0c0;
 	}
 	
 	#load{
@@ -169,6 +174,20 @@ $(function(){
 		height: 500px;
 		position: sticky;
 		top: 0px;
+	}
+	
+	.review_table{
+	
+		width: 90%;
+		
+	}
+	
+	.review_table tr{
+		height: 55px;
+	}
+	
+	.review_table td{
+		padding: 10px;
 	}
 	
 </style>
@@ -336,6 +355,7 @@ $(function(){
 		
 		
 		
+		
 		<!-- **************레이어 팝업창*********************              -->
 		<div class="pay_popup">
 			회원으로 주문하시면 더 많은 혜택이 제공됩니다. <br>
@@ -380,7 +400,7 @@ $(function(){
 				<div class="review_content">
 				<c:forEach items="${rlist }" var="dto">
 				<div class="review_box">
-					<table class="review_table" border="1">
+					<table class="review_table" >
 						<tr>
 							<td>
 								<c:choose>
@@ -422,7 +442,8 @@ $(function(){
 								</c:choose>
 							</td>
 							<td>
-								SIZE: ${dto.getPsize() } / COLOR: ${dto.getPcolor() }
+								
+								<font style="color:gray;">SIZE: ${dto.getPsize() } / COLOR: ${dto.getPcolor() }</font>
 							</td>
 							<td>${dto.getReview_date().substring(0,10) }</td>
 							<td rowspan="2">${dto.getMemid_fk() }님 리뷰</td>

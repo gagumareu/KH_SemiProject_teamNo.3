@@ -31,10 +31,26 @@
 		border: 5px solid gray;
 	}
 	
-	.qa_paging{
-	
-		/* display:none; */
+	.qa_paging a{
+		text-decoration: none;
+		color:black;
 	}
+	
+	#popup_img{
+		width:30%;
+	}
+	
+	#popup_info div{
+		margin-top:40px;
+	}
+	
+	#popup_btn input{
+		background-color:black;
+		color:white;
+		margin-top: 55px;
+		font-size:0.9em;
+	}
+	
 </style>
 </head>
 <body>
@@ -80,12 +96,17 @@
 							
 					%>
 					<tr>
-						<td><img alt="arrImg[0]" src="<%=request.getContextPath() %>/upload/<%= img[0] %> " width="30%" height="30%"></td>
-						<td><%=product.getPname() %><br>
-							<span>SIZE: <%=product.getPsize() %>/COLOR: <%=product.getPcolor() %></span><br>
-							<span><%=product.getPrice() %></span>					
+						<td id="popup_img">
+						<img alt="arrImg[0]" src="<%=request.getContextPath() %>/upload/<%= img[0] %> " width="100%" height="100%">
 						</td>
-						<td> 
+						<td id="popup_info">
+							<div>
+							<%=product.getPname() %><br>
+							<span>SIZE: <%=product.getPsize() %>/COLOR: <%=product.getPcolor() %></span><br>
+							<span><%=product.getPrice() %></span>
+							</div>		
+						</td>
+							<td id="popup_btn"> 
 							<input type="button" onclick="parentscall(<%=product.getPno() %>)" value="선택">
 						</td>
 					</tr>
@@ -106,10 +127,11 @@
 					
 			</table>
 			<c:if test="${empty search }">
-					데이터없음
+					<script type="text/javascript">
+						console.log("데이터없음");
+					</script>
 					</c:if>
 		</div>
-		
 		
 			<div class="qa_paging" align="center">
 			<c:if test="${page > block }">
