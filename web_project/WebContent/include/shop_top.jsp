@@ -166,17 +166,13 @@
 						
 						<span class="seach_text">search</span>	
 					</a>
-					<!-- <a href="#pop1">	
-						<img id="search_icon3" alt="Search image" data-search_window="date/search_test.jsp" 
-						src="images/icon-search-bold.svg" width="18px">
-					</a> -->
+					
 				</div>
 				
 			</li>
 		</ul>
 	</div> <!-- navr end -->
 	
-	<div class="popup" id="pop1"></div>
 	
 
 	
