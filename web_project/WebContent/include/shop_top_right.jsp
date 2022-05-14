@@ -215,6 +215,10 @@
 		display: none;
 	}
 	
+	.empty_semiCart {
+		
+		
+	}
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.js"></script>
 
@@ -261,6 +265,7 @@
 
 	<input type="checkbox" id="menuicon">
 	
+	<c:set var="list" value="${semiCartList }"/>
 	
 	<div id="right_menu">
 		<ul>
@@ -288,19 +293,16 @@
 	
 	
 	
-	<c:set var="list" value="${semiCartList }"/>
 	
 	<div class="semiCart_sidebar">
 	
-		
+	
 		<div class="close_btn">X Close</div>
-
-
+		
 		<c:forEach items="${list }" var="dto">
+		
+			<div class="semiCart_container">
 	
-	
-		<div class="semiCart_container">
-			
 			<div class="semi_image">
 			<img alt="" src="<%=request.getContextPath()%>/upload/${dto.getCart_pimage() }">
 			</div>
@@ -348,28 +350,35 @@
 					
 					
 					
-			</div> <!-- semiCart_container -->
-			</c:forEach>
+		</div> <!-- semiCart_container -->
+		</c:forEach>
 			
 		
-			<div class="sub_text">
-				A.P.C.KOREA 온라인 스토어는 무료배송 서비스를 제공합니다.(제주, 도서산간 지역도 무료)
-			</div>
-			
-			<c:set var="total" value="0"/>
-			<c:forEach items="${list }" var="sum">
-			<c:set var="total" value="${total+sum.getCart_price() }"/>
-			</c:forEach>
-			
-			<div class="totalPrice">
-				<div>TOTAL PRICE</div> <div><fmt:formatNumber value="${total }"/>원</div>
-			</div>
-			
-			<div class="btn">
-				<div class="cart_btn"><div>장바구니</div></div>
-				<div class="contin_btn">쇼핑계속</div>
-			</div>
-			
+		<div class="sub_text">
+			A.P.C.KOREA 온라인 스토어는 무료배송 서비스를 제공합니다.(제주, 도서산간 지역도 무료)
+		</div>
+		
+		<c:set var="total" value="0"/>
+		<c:forEach items="${list }" var="sum">
+		<c:set var="total" value="${total+sum.getCart_price() }"/>
+		</c:forEach>
+		
+		<div class="totalPrice">
+			<div>TOTAL PRICE</div> <div><fmt:formatNumber value="${total }"/>원</div>
+		</div>
+		
+		<div class="btn">
+			<div class="cart_btn"><div>장바구니</div></div>
+			<div class="contin_btn">쇼핑계속</div>
+		</div>
+
+ 	 
+<!-- 	<c:if test="${empty list }">
+		<div class="empty_semiCart">
+		<p>장바구니가 비었습니다.</p>
+		</div>
+	</c:if>-->
+ 
 	</div> <!-- semiCart_sidebar -->
 	
 	
