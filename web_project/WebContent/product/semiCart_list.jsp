@@ -16,11 +16,13 @@
 		height: 100%;
 	}
 	
+/****************************************************/
 	
 	.btn {
 		font-weight: bold;
 		padding: 20px 0px;
 		text-align: center;
+		
 	}
 	
 	
@@ -74,7 +76,7 @@
 	
 	.semiCart_container {
 		display: grid;
-		grid-template-columns: 15% 15% 45% 25%; 
+		grid-template-columns: 15% 15% 70%; 
 	
 		border-bottom: 1px solid gray;
 		
@@ -140,8 +142,32 @@
 	.totalPrice {
 		padding: 14px 0px 0px 0px;
 		font-weight: bold;
+		display: flex;
+		justify-content: space-between;
 	}
+	
+	.close_btn {
+		align-self: end;
+	}
+	
+	.delete {
+		font-weight: bold;
+		align-content: end;
+	}
+	
+	/****************************************************/
 </style>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.js"></script>
+
+<script type="text/javascript">
+
+	
+	
+	
+		
+		
+</script>
 </head>
 <body>
 	
@@ -150,11 +176,12 @@
 	<div class="semiCart_wrapper">
 	
 		
+			<div class="close_btn">X Close</div>
 		
 			<c:forEach items="${list }" var="dto">
 			
-			
-			<div class="semiCart_container">	
+			<div class="semiCart_container">
+				
 					<div class="semi_image">
 					<img alt="" src="<%=request.getContextPath()%>/upload/${dto.getCart_pimage() }">
 					</div>
@@ -175,6 +202,9 @@
 							<li>
 								QTY
 							</li>
+							<li class="delete">
+								<div class="delete_btn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;X</div>
+							</li>
 						</ul>	
 						
 						<ul class="ulList">
@@ -187,17 +217,19 @@
 							<li class="semi_right_side">
 								${dto.getCart_pqty() }
 							</li>
-												
+							<li class="semi_right_side">
+								<fmt:formatNumber value="${dto.getCart_price()*dto.getCart_pqty() }" />원
+							</li>				
 						</ul>
 					</div>	
 					
 					<div class="semi_price">
-					<fmt:formatNumber value="${dto.getCart_price()*dto.getCart_pqty() }" />원
-							
-					</div>
-
 					
-				</div>
+					</div>
+					
+					
+					
+			</div> <!-- semiCart_container -->
 			</c:forEach>
 			
 	
@@ -205,9 +237,13 @@
 				A.P.C.KOREA 온라인 스토어는 무료배송 서비스를 제공합니다.(제주, 도서산간 지역도 무료)
 			</div>
 			
+			<c:set var="total" value="0"/>
+			<c:forEach items="${list }" var="sum">
+			<c:set var="total" value="${total+sum.getCart_price() }"/>
+			</c:forEach>
+			
 			<div class="totalPrice">
-				<span>TOTAL PRICE</span>
-				<span></span>
+				<div>TOTAL PRICE</div> <div><fmt:formatNumber value="${total }"/>원</div>
 			</div>
 			
 			<div class="btn">
@@ -215,7 +251,7 @@
 				<div class="contin_btn">쇼핑계속</div>
 			</div>
 			
-	</div>
+	</div> <!-- semiCart_wrapper -->
 
 
 

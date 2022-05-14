@@ -21,7 +21,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-	body{
+
+	
+	#left_text {
 		font-size: 60px;
 		font-weight: bold;
 	}
