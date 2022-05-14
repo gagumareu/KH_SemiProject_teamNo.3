@@ -48,14 +48,16 @@
 
 	/****************************************************/
 	
-	.btn {
+	.semiCart_btn {
 		font-weight: bold;
 		padding: 20px 0px;
 		text-align: center;
 		
 	}
 	
-	
+	.semiCart_btn a {
+		text-decoration: none;
+	}
 	.cart_btn {
 		background-color: black;
 		color: white;
@@ -103,7 +105,7 @@
 		grid-template-columns: 15% 15% 70%; 
 	
 		border-bottom: 1px solid gray;
-		
+		text-align: cetner;
 		font-size: 14px;
 		height: 100px;
 	}
@@ -128,7 +130,8 @@
 	
 	}
 	.semi_list {
-		gird-column: 3;
+		display: grid
+		
 	}
 	
 	.semi_price {
@@ -155,6 +158,7 @@
 	.ulList {
 		display: flex;
 		flex-direction: row;
+		padding-top: 18px;
 	}
 	.sub_text {
 		padding: 20px 0px 0px 0px;
@@ -180,8 +184,14 @@
 	}
 	
 	.delete {
-		font-weight: bold;
 		align-content: end;
+		display: flex;
+		justify-content: center;
+	}
+	
+	.delete a {
+		cursor: pointer;
+		text-decoration: none;
 	}
 	
 	/****************************************************/
@@ -221,10 +231,12 @@
 	}
 	
 	.empty_semiCart {
-		
-		
 	}
 	
+	.empty {
+		text-align: center;
+	
+	}
 	.semiCart_wrapper {
 		
 		margin: 20px 15px;
@@ -296,11 +308,11 @@
 	
 	
 	<div class="semiCart_sidebar">
-		
-		<div id="close_btn"><label for="menuicon" class="munubtn close_btn" >X Close</label></div>
+	
+		<div id="close_btn"><label for="menuicon" class="munubtn close_btn" ><b>X Close</b></label></div>
 		
 		<div class="semiCart_wrapper">
-		
+		<c:if test="${!empty list }">
 		<c:forEach items="${list }" var="dto">
 		
 			<div class="semiCart_container">
@@ -326,7 +338,10 @@
 						QTY
 					</li>
 					<li class="delete">
-						<div class="delete_btn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;X</div>
+						<a onclick="if(confirm('해당 상품을 쇼핑백에서 삭제하시겠습니까?')){
+									location.href='<%=request.getContextPath() %>/semiCart_delete.do?num=${dto.getCart_no() }'}
+									else{ return; }" ><div class="delete_btn">X</div></a>
+						
 					</li>
 				</ul>	
 				
@@ -369,18 +384,18 @@
 			<div>TOTAL PRICE</div> <div><fmt:formatNumber value="${total }"/>원</div>
 		</div>
 		
-		<div class="btn">
+		<div class="semiCart_btn">
 			<a href="<%=request.getContextPath()%>/cart_main.do"><div class="cart_btn"><div>장바구니</div></div></a>
 			
 			<div class="close_btn close_btn"><label for="menuicon" class="munubtn close_btn" >쇼핑계속</label></div>
 		</div>
 
- 	 
-<!-- 	<c:if test="${empty list }">
+ 	 </c:if>
+	<c:if test="${empty list }">
 		<div class="empty_semiCart">
-		<p>장바구니가 비었습니다.</p>
+		<p class="empty">장바구니가 비었습니다.</p>
 		</div>
-	</c:if>-->
+	</c:if>
  	</div>
 	</div> <!-- semiCart_sidebar -->
 	

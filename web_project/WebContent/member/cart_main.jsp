@@ -7,8 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>A.P.C. 장바구니</title>
-</head>
-<body>
+
 	
 	<style>
 		a{
@@ -111,7 +110,7 @@
 		}
 		
 	</style>
-</head>
+
 <body>
 	<header>
 		<h1 style="font-size: 60px;"><a href="index.jsp">A.P.C.</a> 

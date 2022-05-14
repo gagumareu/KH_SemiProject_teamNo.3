@@ -491,6 +491,44 @@ public class CartDAO {
 	} // getSemiCartList() end 
 
 	
+	public int semiCartDelete(int no) {
+		
+		int result = 0;
+		
+		
+		try {
+			
+			openConn();
+			
+			sql = "delete from apc_cart where cart_no = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, no);
+			
+			result = pstmt.executeUpdate();
+			
+			sql = "update apc_cart set cart_no = cart_no -1 where cart_no > ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, no);
+			
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			
+			closeConn(rs, pstmt, con);
+		}
+		
+		return result; 
+
+	} // semiCartDelete() end
+	
+	
+	
 	
 	
 } // end 
