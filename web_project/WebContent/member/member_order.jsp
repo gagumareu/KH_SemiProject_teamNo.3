@@ -107,7 +107,7 @@ $(document).ready(function() {
 		margin-top: 5px;
 	}
 	
-	p {
+	.information {
 		font-size: 9pt;
 	}
 	
@@ -148,11 +148,12 @@ $(document).ready(function() {
 	}
 	
 	.td2 {
-		width: 50%;
 		text-align: left;
+		font-weight: bold;
+		padding: 0;
+		margin: 0;
 	}
 	.td3 {
-		width: 50%;
 		text-align: right;
 	}
 	
@@ -185,6 +186,20 @@ $(document).ready(function() {
 		text-decoration: none;
 		color:black;
 	}
+	
+	.sidebar_menu {
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		padding: 0;
+		margin: 0;
+	}
+	
+	hr {
+		margin-top: 20px;
+	}
+	
 </style>
 </head>
 <body>
@@ -312,7 +327,7 @@ $(document).ready(function() {
 		<br>
 		
 		</li>
-		<p>변경하시는 주문고객 정보는 이번 주문에만 적용됩니다. <br>
+		<p class="information">변경하시는 주문고객 정보는 이번 주문에만 적용됩니다. <br>
 		 회원정보에는 반영되지 않습니다.</p>
 		</ul>	
 		</div>
@@ -447,34 +462,34 @@ $(document).ready(function() {
 	
 	<hr>
 	
-	<div id="total_mileage">
-	<ul>
-		<li> <div class="td2"> 총 상품 마일리지 </div> </li>
-		<li> <div class="td3"> <fmt:formatNumber value="${total_mileage }" />원  </div> </li>
+	<div class="total_mileage">
+	<ul class="sidebar_menu">
+		<li class="sidbar_li"> <div class="td2"> 총 상품 마일리지 </div> </li>
+		<li class="sidbar_li"> <div class="td3"> <fmt:formatNumber value="${total_mileage }" />원  </div> </li>
 	</ul>
 	</div>
 	
 	<hr>
 	
-	<table id="payInfo">
-	<tr>
-		<th class="td2">상품판매가</th>
-		<th class="td3"> <fmt:formatNumber value="${total }" /> 원 </th>
-	</tr>
+	<div id="payInfo">
+	<ul class="sidebar_menu">
+		<li class="sidbar_li"> <div class="td2">상품판매가</div>
+		<li class="sidbar_li"> <div class="td3"> <fmt:formatNumber value="${total }" /> 원 </div>
+	</ul>
 	
-	<tr>
+	<ul class="sidebar_menu">
 		<c:set var="use_mileage" value="${dto.getMem_mileage() }" />
-		<td class="td2"> 마일리지사용 </td> 
-		<td class="td3"> <p id="mileage_used">0원</p> </td>
-	</tr>
+		<li class="sidbar_li"> <div class="td2"> <p> 마일리지사용 </p></div>  </li>
+		<li class="sidbar_li"> <div class="td3"> <p id="mileage_used">0원</p> </div> </li>
+	</ul>
 	
-	<tr>
+	<ul class="sidebar_menu">
 		<c:if test="${!empty list }">
 		<c:forEach items="${list }" var="cart">
 		</c:forEach>
 		</c:if>
-		<td class="td2"> 배송비 </td>
-		<td class="td3">
+		<li class="sidbar_li"> <div class="td2"> 배송비 </div> </li>
+		<li class="sidbar_li"> <div class="td3">
 		<c:if test="${total < 1000000 }">
 		3,000원
 		<c:set var="total2" value="${total + 3000}" />
@@ -485,29 +500,28 @@ $(document).ready(function() {
 		<c:set var="total2" value="${total }" />
 		<input type="text" value="${total2 }" class="hidden_totalPay">
 		</c:if>
-		
-		</td>
-	</tr>
-	</table>
+		</div> </li>
+	</ul>
+	</div>
 	
 	<hr>
 	
-	<table id="totalpay">
-	<tr>
-	<th class="td2"> 총 결제금액 </th>
+	<div id="totalpay">
+	<ul class="sidebar_menu">
+	<li> <div class="td2"> <p> 총 결제금액 </p> </div> </li>
 	<c:if test="${total < 1000000 }">
-	<th class="td3">
+	<li> <div class="td3">
 		<p class="totalPay2">${total2 }원</p>
-	</th>
+	</div> </li>
 	</c:if>
 	
 	<c:if test="${total >= 1000000 }">
-	<th class="td3">
+	<li> <div class="td3">
 		<p class="totalPay2">${total2 }원</p>
-	</th>
+	</div> </li>
 	</c:if>
-	</tr>
-	</table>
+	</ul>
+	</div>
 	
 	<hr>
 	
