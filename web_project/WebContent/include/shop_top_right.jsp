@@ -62,7 +62,7 @@
 		width: 100%;
 		height: 40px;
 		margin-bottom: 30px;
-		
+		cursor: pointer;
 	}
 	
 	.cart_btn:hover {
@@ -76,9 +76,9 @@
 		padding-top: 10px;
 	}
 
-	.contin_btn {
+	.close_btn {
 		padding: 20xp 0px;
-		
+		cursor: pointer;
 	
 	}
 
@@ -161,6 +161,8 @@
 		font-size: 0.8em;
 		font-weight: 600;
 	
+		
+	
 	}
 	
 	.totalPrice {
@@ -170,8 +172,11 @@
 		justify-content: space-between;
 	}
 	
-	.close_btn {
-		align-self: end;
+	#close_btn {
+		margin-top: 20px;
+		margin-right: 25px;
+		display: flex;
+		justify-content: end;
 	}
 	
 	.delete {
@@ -192,9 +197,9 @@
 		right: -500px;
 		width: 500px;
 		height: 100%;
-		border: 1px solid #eee;
+		border-left: 1px solid black;
 		z-index: 30;
-		transition:.35s;
+		transition:.36s;
 		background: white;
 		display: flex;
 		flex-direction: column;
@@ -219,16 +224,19 @@
 		
 		
 	}
+	
+	.semiCart_wrapper {
+		
+		margin: 20px 15px;
+		
+	}
+	
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.js"></script>
 
 <script type="text/javascript">
 
-//	$(function (){
-//		$('.cart').click(function(){
-//			window.open('<%=request.getContextPath()%>/semiCartList.do', '_blank', 'width="200"');
-//		});
-//	});
+
 
 	//20220511 이슬추가
 	$(function(){
@@ -237,26 +245,19 @@
 		
 		if(id != "null"){
 			$("#login").hide();
-			$("#mypage").show();
+			$("#mypage").show();	
 		}
 		
 	});
 	
-	
-	$(documnet).ready(function(){
-		$('#cartBtn').click(function(){
-			$('.semiCart_sidebar').addClass('active');
-			$('.test').addClass('test1');
-
-		});
-	});
-	
 	$(function(){
-		$('#cartBtn').click(function(){
-			$('test').addClass('test1');
+		$('.continue_btn').click(function(){
+			$(location).attr("href", "<%=request.getContextPath() %>/cart_main.do");
 		});
+			
 	});
 	
+
 
 	
 </script>
@@ -270,7 +271,7 @@
 	<div id="right_menu">
 		<ul>
 			<li class="cart">
-				<label for="menuicon" class="munubtn"><img src="images/icon-bag.svg" width="12px"> 장바구니</label>
+				<label for="menuicon" class="munubtn close"><img src="images/icon-bag.svg" width="12px"> 장바구니</label>
 				
 			</li>
 			<li id="login"><a href="<%=request.getContextPath() %>/member/LoginMain.jsp">내계정/로그인</a></li>
@@ -295,9 +296,10 @@
 	
 	
 	<div class="semiCart_sidebar">
-	
-	
-		<div class="close_btn">X Close</div>
+		
+		<div id="close_btn"><label for="menuicon" class="munubtn close_btn" >X Close</label></div>
+		
+		<div class="semiCart_wrapper">
 		
 		<c:forEach items="${list }" var="dto">
 		
@@ -360,7 +362,7 @@
 		
 		<c:set var="total" value="0"/>
 		<c:forEach items="${list }" var="sum">
-		<c:set var="total" value="${total+sum.getCart_price() }"/>
+		<c:set var="total" value="${total+sum.getCart_price()*sum.getCart_pqty() }"/>
 		</c:forEach>
 		
 		<div class="totalPrice">
@@ -368,8 +370,9 @@
 		</div>
 		
 		<div class="btn">
-			<div class="cart_btn"><div>장바구니</div></div>
-			<div class="contin_btn">쇼핑계속</div>
+			<a href="<%=request.getContextPath()%>/cart_main.do"><div class="cart_btn"><div>장바구니</div></div></a>
+			
+			<div class="close_btn close_btn"><label for="menuicon" class="munubtn close_btn" >쇼핑계속</label></div>
 		</div>
 
  	 
@@ -378,7 +381,7 @@
 		<p>장바구니가 비었습니다.</p>
 		</div>
 	</c:if>-->
- 
+ 	</div>
 	</div> <!-- semiCart_sidebar -->
 	
 	
