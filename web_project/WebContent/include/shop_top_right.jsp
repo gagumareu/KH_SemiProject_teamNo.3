@@ -3,6 +3,13 @@
     
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+    
+    <%
+    
+    String member_id = (String)session.getAttribute("member_id");
+    
+    %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,34 +18,34 @@
 <style type="text/css">
 
 	#right_menu{
-	margin-top: 10px;
-	width: 100px;
-	position: absolute;
-	right: 0px;
-	top: 0px;
+		margin-top: 10px;
+		width: 100px;
+		position: absolute;
+		right: 0px;
+		top: 0px;
 	
 	}
 	
 	#right_menu>ul{
-	display:flex;
-	flex-direction:column;
-	font-size: 12px;
+		display:flex;
+		flex-direction:column;
+		font-size: 12px;
 	}
 	
 	
 	#right_menu ul> li > a{
-	text-decoration: none;
-	color: black;
+		text-decoration: none;
+		color: black;
 	}
 	
 	#right_menu >ul > li > a:hover{
-	text-decoration: underline;
+		text-decoration: underline;
 	}
 	
-	.hello:hover{
-	text-decoration: underline;
+	.right_menu_ul {
+		padding: 0;
+		list-style:none;
 	}
-	
 	/********** right side end **********/
 	
 	#mypage {
@@ -243,6 +250,10 @@
 		
 	}
 	
+	.munubtn {
+		cursor: pointer;
+	}
+	
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.js"></script>
 
@@ -281,7 +292,7 @@
 	<c:set var="list" value="${semiCartList }"/>
 	
 	<div id="right_menu">
-		<ul>
+		<ul class="right_menu_ul">
 			<li class="cart">
 				<label for="menuicon" class="munubtn close"><img src="images/icon-bag.svg" width="12px"> 장바구니</label>
 				

@@ -14,11 +14,7 @@
 
 
 	
-	
-	li {
-		list-style-type: none;
-	}
-	
+
 	.seach_text{
 		display: none;
 	
@@ -40,25 +36,24 @@
 	#navr_ul{
 		height: 20px;
 		padding-left: 10px;
-	}
-	
-	
-	ul {
 		display: flex;
 		flex-direction: row;
 		justify-content: flex-start;
 		/*justify-content: space-evenly;*/
 		padding-left: 0px;
 		margin: 0px;
-	
-	
 	}
+	
+	
+	
 	
 	
 	#navr_ul > li{
 		font-size: 14px;
 		font-weight: bold;
 		padding: 0 38px 0px 0px;
+		list-style-type: none;
+		
 	}
 	
 	
@@ -68,8 +63,10 @@
 	.dropDown{
 		display: flex;
 		flex-direction: column;
-		display: none;
 		background-color: pink;
+		padding: 0px;
+		display: none;
+		
 	}
 	
 
@@ -88,26 +85,17 @@
 	
 	/********** left side end **********/
 	
+	a {
+		text-decoration: none;
+		color: black;
+	}
+	.women{
+		
+		
+	}
 
 	
-
-	/************modal**********************/
 	
-	.search_modal_container {
-		position: absolute;
-	}
-	
-	
-	.popup {
-	
-		position: absolute;
-		left: 50%;
-		top: 50%;
-		transform: translate(-50%, -50%);
-		whdth: 500px;
-		heigth: 500px;
-		z-index: 3;
-	}
 	
 </style>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
@@ -134,21 +122,32 @@
 	
 	<div id="navr">
 		<ul id="navr_ul">
-			<li>Women
-				<ul class="dropDown">
-					<li>New Arrivals</li>
-					<li>Permanent</li>
-					<li>Dresses</li>
-					<li>Outerwear</li>
-					<li>Jackets</li>
-					<li>Jeans</li>
-					<li>Pants</li>
-					<li>Skirts, Shors</li>
-					<li>T-Shirts, Tops</li>
-					<li>Blouses, Shirts</li>
-					<li>Knitwear</li>
-					<li>Sweatshirts</li>
-				</ul>
+			<li class="women">
+				<a href="#">Women</a>
+				<div>
+					<ul class="dropDown">
+						<li>New Arrivals</li>
+						<li>Permanent</li>
+						<li>Dresses</li>
+						<li>Outerwear</li>
+						<li>Jackets</li>
+						<li>Jeans</li>
+						<li>Pants</li>
+						<li>Skirts, Shors</li>
+						<li>T-Shirts, Tops</li>
+						<li>Blouses, Shirts</li>
+						<li>Knitwear</li>
+						<li>Sweatshirts</li>
+					</ul>
+				</div>
+				<div class="dropDown">
+					<ul>
+						<li>Jessica Ogden</li>
+						<li>A.P.C. Sneakers</li>
+						<li>Denim</li>
+						<li>Lookbook</li>
+					</ul>
+				</div>
 			</li>
 			<li>Men</li>
 			<li>Denim</li>

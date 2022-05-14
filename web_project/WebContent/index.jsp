@@ -27,12 +27,75 @@
 		font-size: 60px;
 		font-weight: bold;
 	}
+	
+	
+	
 </style>
 
  <link rel="stylesheet" href="css/style.css">
 
  <link rel="stylesheet" href="css/index.css">
  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+ <script type="text/javascript">
+ 
+// 	$(function(){
+// 		$('.wCategory').hover(function(){
+// 			$('.right_image-1').attr("src",$(this).attr('src').replace(".jsg", "women.jpg"))
+// 		});
+// 	});
+ 		
+ 	$(function(){
+ 		$('.btn').click(function(){
+ 			$(this).css('color', 'red')
+ 		})
+ 	})
+ 
+	
+	$(document).ready(function(){  
+  		$(".wCategory").hover(function(){  
+  			 $('.right_image-1').attr('src', 'images/women.jpg'); 
+ 
+  		});  
+	});  
+ 	
+ 	$(document).ready(function(){  
+  		$(".mCategory").hover(function(){  
+  			 $('.right_image-1').attr('src', 'images/1mN4TpY4ng.jpg'); 
+ 
+  		});  
+	}); 
+ 	
+ 	$(document).ready(function(){  
+  		$(".dCategory").hover(function(){  
+  			 $('.right_image-1').attr('src', 'images/denim.jpg'); 
+ 
+  		});  
+	});  
+ 	
+ 	$(document).ready(function(){  
+  		$(".sCategory").hover(function(){  
+  			 $('.right_image-1').attr('src', 'images/SURPLUS.jpg'); 
+ 
+  		});  
+	});  
+
+ 	$(document).ready(function(){  
+  		$(".jCategory").hover(function(){  
+  			 $('.right_image-1').attr('src', 'images/X JESSICA OGDEN.jpg'); 
+ 
+  		});  
+	});  
+ 	
+ 	$(document).ready(function(){  
+  		$(".gCategory").hover(function(){  
+  			 $('.right_image-1').attr('src', 'images/GOLF2.jpg'); 
+ 
+  		});  
+	});  
+
+ 
+ </script>
 </head>
 <body>
 
@@ -51,7 +114,7 @@
 					
 					
 					<div id="main_title">
-					A.P.C.
+						A.P.C.
 					</div> 
 					
 					<div>
@@ -63,7 +126,7 @@
 					</div>
 					
 					<div>
-						<a href="#">A.P.C. DENIM</a>
+						<a href="#" class="dCategory">A.P.C. DENIM</a>
 					</div>
 					
 					<div>
@@ -71,11 +134,11 @@
 					</div>
 					
 					<div>
-						<a href="#">A.P.C. SURPLUS</a>
+						<a href="#" class="sCategory">A.P.C. SURPLUS</a>
 					</div>
 					
 					<div>
-						<a href="#">A.P.C. X JESSICA <br>OGDEN</a>
+						<a href="#" class="jCategory">A.P.C. X JESSICA <br>OGDEN</a>
 					</div>
 				</div>
 			</div>
