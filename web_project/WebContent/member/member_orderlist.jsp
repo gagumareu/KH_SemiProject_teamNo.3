@@ -30,11 +30,18 @@
 		color: white;
 		font-weight: bold;
 	}
+	
+	h1 a{
+		margin-left:10px;
+		text-decoration: none;
+		color:black;
+	}
+	
 </style>
 </head>
 <body>
 
-	<h1>A.P.C 주문내역</h1>
+	<h1><a href="<%=request.getContextPath()%>/index.jsp">A.P.C.</a>/주문내역</h1>
 
 	<div class="wrapper">
 

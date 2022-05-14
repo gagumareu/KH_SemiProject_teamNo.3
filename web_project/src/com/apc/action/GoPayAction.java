@@ -35,7 +35,7 @@ public class GoPayAction implements Action {
 			//비회원용 아이디 생성
 			MemberDAO dao = MemberDAO.getInstance();
 			loginId= dao.nonMemberId();
-			session.setAttribute("nonMember_id", loginId); //비회원용아이디 세션에 저장
+			session.setAttribute("member_id", loginId); //비회원용아이디 세션에 저장
 		}
 		
 		
@@ -61,7 +61,7 @@ public class GoPayAction implements Action {
 		CartDTO cdto = new CartDTO();
 		
 		cdto.setPno_fk(productDto.getPno());
-		cdto.setCart_memid(loginId); //나중에 로그인 자료받으면 넣기
+		cdto.setCart_memid(loginId); 
 		cdto.setCart_pname(productDto.getPname());
 		cdto.setCart_pqty(pqty);			//form에서 고객이 입력한 수량 
 		cdto.setCart_psize(productDto.getPsize());
@@ -84,15 +84,23 @@ public class GoPayAction implements Action {
 		//뷰페이지에서 list로 foreach문을 돌리기때문에 통일시켜 바로구매 로직에서도 list로 받기
 //		cdto = cdao.getCartContent(loginId, productDto.getPno());
 		List<CartDTO> list = cdao.getCartContent(loginId, productDto.getPno());
-		MemberDTO dto = fdao.orderMemberInfo(loginId);
 		
+		MemberDTO dto = fdao.orderMemberInfo(loginId); 
+		
+		//20220514이슬 수정 : 비회원 또는 정회원에 따라 넘기는 값 차이  
+		if(loginId.substring(0,3).equals("non")) {
+			request.setAttribute("nonId", loginId);
+		}else {
+			
+			request.setAttribute("memberInfo", dto);
+			
+		}
 		
 		request.setAttribute("cartInfo", list);
-		request.setAttribute("memberInfo", dto);
-		
-		
 		forward.setRedirect(false);
 		forward.setPath("member/member_order.jsp");
+		
+		
 		}else {
 			out.println("<script>");
 			out.println("alert('장바구니 저장실패')");

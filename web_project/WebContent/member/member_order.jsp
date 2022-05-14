@@ -52,7 +52,12 @@ $(document).ready(function() {
 	
 });
 </script>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/main.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
 <style type="text/css">
+
+
+
 	.wrapper2 {
 		position: absolute;
 		top: 10%;
@@ -175,17 +180,31 @@ $(document).ready(function() {
 	.hidden_totalPay {
 		display: none;
 	}
+	h1 a{
+		margin-left:10px;
+		text-decoration: none;
+		color:black;
+	}
 </style>
 </head>
 <body>
 
-	<h1>A.P.C 주문결제</h1>
+
+	<h1><a href="<%=request.getContextPath()%>/index.jsp">A.P.C.</a>/주문결제</h1>
 	<c:set var="dto" value="${memberInfo }" />
 	<c:set var="list" value="${cartInfo }" />
 	
+	<!-- 20220514이슬수정 : 회원가입이 되어있을경우, dto / 비회원일경우 nonId 값을 loginId에 넣기 -->
+	<c:if test="${empty nonId }">
+	<c:set var="loginId" value="${dto.getMem_id() }"/>
+	</c:if>
+	<c:if test="${!empty nonId }">
+	<c:set var="loginId" value="${nonId }"/>
+	</c:if>
+	
 	<div class="wrapper">
 	<form method="post" 
-		action="<%=request.getContextPath() %>/order_ok.do?member_id=${dto.getMem_id() }">
+		action="<%=request.getContextPath() %>/order_ok.do?member_id=${loginId }">
 	
 	<div class="wrapper2">
 	
@@ -217,7 +236,14 @@ $(document).ready(function() {
 		<label for="member_phone" class="required">휴대폰 번호<em>*</em></label>
 		    <div class="input-box">
 		    <select name="phone1" class="phone1" >
-			
+			<c:if test="${empty dto.getPhone() }">
+			<option value="010" selected>010</option>
+			<option value="011">011</option>
+			<option value="016">016</option>
+			<option value="017">017</option>
+			<option value="018">018</option>
+			<option value="019">019</option>
+			</c:if>
 			<c:if test="${dto.getPhone().substring(0, 3) == 010 }">
 			<option value="010" selected>010</option>
 			<option value="011">011</option>
