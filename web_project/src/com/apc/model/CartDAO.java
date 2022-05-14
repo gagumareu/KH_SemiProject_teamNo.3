@@ -153,7 +153,7 @@ public class CartDAO {
 				dto.setCart_trans(rs.getInt("cart_trans"));
 				dto.setCart_price(rs.getInt("cart_price"));
 				dto.setCart_pimage(rs.getString("cart_pimage"));
-				dto.setCart_pimage(rs.getString("cart_mileage"));
+				dto.setCart_mileage(rs.getInt("cart_mileage"));
 				
 				list.add(dto);
 			}
@@ -344,51 +344,102 @@ public class CartDAO {
 	}
 	// **************************** 동찬님**********************
 
-		public List<CartDTO> orderCartInfo(String id) {
-			
-			List<CartDTO> list = new ArrayList<CartDTO>();
-			
-			try {
-				openConn();
-				
-				sql = "select * from apc_cart where cart_memid = ?";
-				
-				pstmt = con.prepareStatement(sql);
-				
-				pstmt.setString(1, id);
-				
-				rs = pstmt.executeQuery();
-				
-				while(rs.next()) {
-					
-					CartDTO dto = new CartDTO();
-					
-					dto.setCart_no(rs.getInt("cart_no"));
-					dto.setPno_fk(rs.getInt("pno_fk"));
-					dto.setCart_memid(rs.getString("cart_memid"));
-					dto.setCart_pname(rs.getString("cart_pname"));
-					dto.setCart_pqty(rs.getInt("cart_pqty"));
-					dto.setCart_psize(rs.getString("cart_psize"));
-					dto.setCart_pcolor(rs.getString("cart_pcolor"));
-					dto.setCart_price(rs.getInt("cart_price"));
-					dto.setCart_trans(rs.getInt("cart_trans"));
-					dto.setCart_mileage((int)(rs.getInt("cart_price") * 0.05));
-					dto.setCart_pimage(rs.getString("cart_pimage"));
-					
-					list.add(dto);
-					
-				}
-				
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} finally {
-				closeConn(rs, pstmt, con);
+	public List<CartDTO> orderCartInfo(String id) {
+
+		List<CartDTO> list = new ArrayList<CartDTO>();
+
+		try {
+			openConn();
+
+			sql = "select * from apc_cart where cart_memid = ?";
+
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, id);
+
+			rs = pstmt.executeQuery();
+
+			while(rs.next()) {
+
+				CartDTO dto = new CartDTO();
+
+				dto.setCart_no(rs.getInt("cart_no"));
+				dto.setPno_fk(rs.getInt("pno_fk"));
+				dto.setCart_memid(rs.getString("cart_memid"));
+				dto.setCart_pname(rs.getString("cart_pname"));
+				dto.setCart_pqty(rs.getInt("cart_pqty"));
+				dto.setCart_psize(rs.getString("cart_psize"));
+				dto.setCart_pcolor(rs.getString("cart_pcolor"));
+				dto.setCart_price(rs.getInt("cart_price"));
+				dto.setCart_trans(rs.getInt("cart_trans"));
+				dto.setCart_mileage((int)(rs.getInt("cart_price") * 0.05));
+				dto.setCart_pimage(rs.getString("cart_pimage"));
+
+				list.add(dto);
+
 			}
-			
-			return list;
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
 		}
 
+		return list;
+	}
+
+
+	// 결제 완료된 카트제품을 카트 테이블에서 삭제시키는 메서드
+	public void deleteAllCart(int cartno) {
+
+		try {
+			openConn();
+
+			sql = "delete from apc_cart where cart_no = ?";
+
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setInt(1, cartno);
+
+			pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+
+
+	}
+
+
+	// 결제 완료된 카트제품을 카트 테이블에서 삭제시키는 메서드
+	public void deleteAllCart(String id) {
+
+		try {
+			openConn();
+
+			sql = "delete from apc_cart where cart_memid = ?";
+
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, id);
+
+			pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+
+
+	}
+		
+		
 	// ************* 정환 ********************
 	
 	public List<CartDTO> getSemiCartList(String id){

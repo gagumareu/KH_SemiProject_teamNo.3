@@ -92,8 +92,26 @@
 		display:flex;
 	}
 	
-	.qa_body{
+	#list_table td{
 	
+		height: 80px;
+	
+	}
+	
+	.list_td{
+		padding-top:30px;
+	}	
+	
+	#qa_no {
+		padding-top:30px;
+		text-align: center;
+	}
+	
+	#list_table a{
+		/* display:inline-block;
+		margin-top:10px; */
+		text-decoration: none;
+		color: black;
 		
 	}
 
@@ -124,7 +142,7 @@
 					<option value="etc">기타</option>
 			</select>
 			</form>
-			<table class="table table-hover" align="center">
+			<table id="list_table" class="table table-hover" align="center">
 				<thead>
 					<tr align="center">
 						<th scope="col">번호</th>
@@ -152,8 +170,8 @@
 						QaDTO dto = search.get(i);
 					%>	
 					<tr >
-				<!--                    조회수                                               -->
-						<th scope="row" width="5%" align="center"><%=dto.getQa_no() %></th>
+				<!--                   게시글번호                                              -->
+						<th id="qa_no" scope="row" width="5%" align="center"><%=dto.getQa_no() %></th>
 							
 				<!--                    상품정보                                              -->
 					<%
@@ -173,9 +191,9 @@
 							System.out.println("arrImg[0]:"+arrImg[0]);
 							
 					%>		
-							<td width="10%" align="center">
+							<td  class="list_td"  width="10%" align="center">
 							<a href="<%=request.getContextPath() %>/product_detail.do?num=<%= pDto.getPno() %>">
-							<img src="<%=request.getContextPath() %>/upload/<%=arrImg[0]%>" width="100%" height="100%">
+							<img src="<%=request.getContextPath() %>/upload/<%=arrImg[0]%>" width="70%" height="100%">
 							</a>					
 							</td>
 					<% 		
@@ -186,18 +204,18 @@
 							QaCategoryDAO qcDao = QaCategoryDAO.getInstance();
 							QaCategoryDTO qcDto = qcDao.getCategoryCont(dto.getQa_category());
 						%>		
-						<td width="10%" align="center"><%=qcDto.getCategory_name() %></td>
+						<td class="list_td"  width="10%" align="center"><%=qcDto.getCategory_name() %></td>
 						
 					<!--                       제목                                               -->	
-						<td width="40%">
+						<td class="list_td"  width="40%">
 						<a href="<%=request.getContextPath() %>/qa_content.do?num=<%=dto.getQa_no()%>&page=${page}"><%=dto.getQa_title() %></a>
 						</td>
 					<!--                       작성자                                              -->		
-						<td width="15%" align="center"><%=dto.getQa_memid() %></td>
+						<td class="list_td"  width="15%" align="center"><%=dto.getQa_memid() %></td>
 					<!--                       작성일자                                              -->		
-						<td width="15%" align="center"><%=dto.getQa_date().substring(0, 10) %></td>
+						<td class="list_td"  width="15%" align="center"><%=dto.getQa_date().substring(0, 10) %></td>
 					<!--                       조회수                                             -->		
-						<td width="5%" align="center"><%=dto.getQa_hit() %></td>
+						<td class="list_td"  width="5%" align="center"><%=dto.getQa_hit() %></td>
 					</tr>
 					<% }//for%>
 				

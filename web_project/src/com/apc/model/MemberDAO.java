@@ -514,7 +514,32 @@ public class MemberDAO {
 		return pwd;
 	}
 	
-	
+
+	// 마일리지 추가 액션
+	public void mileageInsert(String id, int mileage) {
+
+
+		try {
+			openConn();
+
+			sql = "update apc_member set mem_mileage = mem_mileage + ? where mem_id = ?";
+
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setInt(1, mileage);
+			pstmt.setNString(2, id);
+
+			pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+
+
+	}
 	
 	
 	

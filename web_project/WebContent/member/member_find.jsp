@@ -7,18 +7,13 @@
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script type="text/javascript">
-
 	function TabOpen(number) {
     document.getElementById('tab00').style.display='none';
     document.getElementById('tab01').style.display='none';
-
-
     document.getElementById('tab' + number).style.display='block';
 	}
-
 </script>
 <style type="text/css">
-
 	body {
 		
 		font-family: arial;
@@ -49,7 +44,6 @@
 		padding-top: 200px;
 		
 	}
-
 	#tab01 {
 		display: none;
 	}
@@ -146,7 +140,6 @@
 		color: white;
 		text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 	}
-
 	.col > a > img{
 		width:100%;
 	}

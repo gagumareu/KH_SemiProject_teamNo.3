@@ -13,6 +13,7 @@ import com.apc.controller.ActionForward;
 import com.apc.model.CartDAO;
 import com.apc.model.CartDTO;
 import com.apc.model.MemberDAO;
+import com.apc.model.MemberDTO;
 import com.apc.model.PaymentDAO;
 import com.apc.model.PaymentDTO;
 import com.apc.model.ProductDAO;
@@ -34,7 +35,7 @@ public class GoPayAction implements Action {
 			//비회원용 아이디 생성
 			MemberDAO dao = MemberDAO.getInstance();
 			loginId= dao.nonMemberId();
-			session.setAttribute("nonMember_id", loginId); //비회원용아이디 세션에 저장
+			session.setAttribute("member_id", loginId); //비회원용아이디 세션에 저장
 		}
 		
 		
@@ -50,6 +51,7 @@ public class GoPayAction implements Action {
 		ProductDAO productDao = ProductDAO.getInstance();
 		ProductDTO productDto = productDao.getProductCont(pname, color, size);
 
+		
 		//제품 대표이미지 불러오기 (pimage[0] : 대표이미지)
 		String[] pimage =  productDao.getPorudctImg(productDto);
 		
@@ -59,7 +61,7 @@ public class GoPayAction implements Action {
 		CartDTO cdto = new CartDTO();
 		
 		cdto.setPno_fk(productDto.getPno());
-		cdto.setCart_memid(loginId); //나중에 로그인 자료받으면 넣기
+		cdto.setCart_memid(loginId); 
 		cdto.setCart_pname(productDto.getPname());
 		cdto.setCart_pqty(pqty);			//form에서 고객이 입력한 수량 
 		cdto.setCart_psize(productDto.getPsize());
@@ -71,6 +73,9 @@ public class GoPayAction implements Action {
 		//장바구니 테이블에 저장 
 		int result = cdao.cartInsert(cdto);
 		
+		// 멤버 정보 불러오기
+		MemberDAO fdao = MemberDAO.getInstance();
+		
 		ActionForward forward= new ActionForward();
 		PrintWriter out = response.getWriter();
 		
@@ -80,10 +85,22 @@ public class GoPayAction implements Action {
 //		cdto = cdao.getCartContent(loginId, productDto.getPno());
 		List<CartDTO> list = cdao.getCartContent(loginId, productDto.getPno());
 		
-		request.setAttribute("cartInfo", list);
+		MemberDTO dto = fdao.orderMemberInfo(loginId); 
 		
+		//20220514이슬 수정 : 비회원 또는 정회원에 따라 넘기는 값 차이  
+		if(loginId.substring(0,3).equals("non")) {
+			request.setAttribute("nonId", loginId);
+		}else {
+			
+			request.setAttribute("memberInfo", dto);
+			
+		}
+		
+		request.setAttribute("cartInfo", list);
 		forward.setRedirect(false);
 		forward.setPath("member/member_order.jsp");
+		
+		
 		}else {
 			out.println("<script>");
 			out.println("alert('장바구니 저장실패')");

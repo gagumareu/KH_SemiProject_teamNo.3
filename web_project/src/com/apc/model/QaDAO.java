@@ -873,7 +873,6 @@ public class QaDAO {
             dto.setQa_group(rs.getInt("qa_group"));
             dto.setQa_step(rs.getInt("qa_step"));
             dto.setQa_indent(rs.getInt("qa_indent"));
-            dto.setQa_orderno(rs.getInt("qa_orderno"));
 
             list.add(dto);
             System.out.println("dto등록");
@@ -913,7 +912,6 @@ public class QaDAO {
 			pstmt.setString(4, dto.getQa_title());
 			pstmt.setString(5, dto.getQa_cont());
 			pstmt.setInt(6, dto.getQa_pno_fk());
-			pstmt.setInt(7, dto.getQa_orderno());
 			
 			result = pstmt.executeUpdate();
 			
