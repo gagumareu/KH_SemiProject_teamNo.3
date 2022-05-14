@@ -32,18 +32,20 @@ $(function() {
 	
 	$("#same").on("click", function() {
 		$.ajax({
-			url : "/19_Project/sameMember.do",
+			url : "/web_project/sameMember.do",
 			datatype : "xml",
 			data : {name : $("#member_name").val()},
 			success : function(data) {
 				
 				$(data).find("member").each(function() {
 					
-					// $("#order_name").text($(this).find("name").text());
+					$("#order_name").val($(this).find("name").text());
 					
-					alert($(this).find("name").text());
+					$("#phone1").val($(this).find("phone").text().substring(0, 3));
+					$("#phone2").val($(this).find("phone").text().substring(4, 8));
+					$("#phone3").val($(this).find("phone").text().substring(9, 13));
 					
-					// $("#order_addr").text($(this).find("addr").text());
+					 $("#order_addr").val($(this).find("addr").text());
 							
 				 });
 				
