@@ -1,3 +1,5 @@
+<%@page import="com.apc.model.CartDTO"%>
+<%@page import="com.apc.model.CartDAO"%>
 <%@page import="com.apc.model.CategoryDTO"%>
 <%@page import="com.apc.model.CategoryDAO"%>
 <%@page import="java.util.List"%>
@@ -5,15 +7,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    
-    <%
-    	CategoryDAO dao = CategoryDAO.getInstance();
-    	
-    	List<CategoryDTO> list = dao.getShopCategory();
-    	
-    	pageContext.setAttribute("List", list);
-    %>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ 
+ <%
+  	CategoryDAO dao = CategoryDAO.getInstance();
+  	
+  	List<CategoryDTO> list = dao.getShopCategory();
+  	
+  	pageContext.setAttribute("List", list);
+  	
+  	
+  	// 쇼핑몰 우측 상단 장바구니 구현에 필요한 로직
+	CartDAO semiDao = CartDAO.getInstance();
+  	HttpSession semiSession = request.getSession();
+  	String id = (String)semiSession.getAttribute("member_id");
+	List<CartDTO> semiList = semiDao.getSemiCartList(id);
+  	request.setAttribute("semiCartList", semiList);
+
+  	
+  %>
     
 <!DOCTYPE html>
 <html>
@@ -39,18 +51,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
  <script type="text/javascript">
  
-// 	$(function(){
-// 		$('.wCategory').hover(function(){
-// 			$('.right_image-1').attr("src",$(this).attr('src').replace(".jsg", "women.jpg"))
-// 		});
-// 	});
- 		
- 	$(function(){
- 		$('.btn').click(function(){
- 			$(this).css('color', 'red')
- 		})
- 	})
- 
+
+
 	
 	$(document).ready(function(){  
   		$(".wCategory").hover(function(){  

@@ -1,3 +1,6 @@
+<%@page import="com.apc.model.CartDTO"%>
+<%@page import="java.util.List"%>
+<%@page import="com.apc.model.CartDAO"%>
 <%@page import="com.apc.model.ProductDAO"%>
 <%@page import="java.util.StringTokenizer"%>
 <%@page import="com.apc.model.ProductDTO"%>
@@ -12,6 +15,14 @@
 	String[] arrImg = dao.getPorudctImg(dto);
 	
 	pageContext.setAttribute("arrImg", arrImg);
+	
+	CartDAO semeDao = CartDAO.getInstance();
+	HttpSession semiSession = request.getSession();
+	String id = (String)semiSession.getAttribute("member_id");
+	List<CartDTO> semeList =  semeDao.getSemiCartList(id);
+	request.setAttribute("semiCartList", semeList);
+	
+	
 %>
 <!DOCTYPE html>
 <html>
