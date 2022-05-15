@@ -16,12 +16,6 @@
 	
 	pageContext.setAttribute("arrImg", arrImg);
 	
-	CartDAO semeDao = CartDAO.getInstance();
-	HttpSession semiSession = request.getSession();
-	String id = (String)semiSession.getAttribute("member_id");
-	List<CartDTO> semeList =  semeDao.getSemiCartList(id);
-	request.setAttribute("semiCartList", semeList);
-	
 	
 %>
 <!DOCTYPE html>

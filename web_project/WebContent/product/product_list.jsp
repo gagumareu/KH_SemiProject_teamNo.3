@@ -45,12 +45,7 @@
 	session.setAttribute("third", third);
 	System.out.println("thrid:"+third);
 	
-	// 쇼핑몰 우측 상단 장바구니 구현에 필요한 로직
-	CartDAO semiDao = CartDAO.getInstance();
-	HttpSession semiSession = request.getSession();
-	String id = (String)semiSession.getAttribute("member_id");
-	List<CartDTO> semeList = semiDao.getSemiCartList(id);
-	request.setAttribute("semiCartList", semeList);
+	
 		
 
 %>

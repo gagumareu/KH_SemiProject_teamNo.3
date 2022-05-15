@@ -5,17 +5,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%
-	//쇼핑몰 우측 상단 장바구니 구현에 필요한 로직
-	CartDAO semiDao = CartDAO.getInstance();
-	HttpSession semiSession = request.getSession();
-	String id = (String)semiSession.getAttribute("member_id");
-	List<CartDTO> semeList = semiDao.getSemiCartList(id);
-	request.setAttribute("semiCartList", semeList);
-
-
-%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -149,9 +138,8 @@
 	<jsp:include page="../include/shop_top.jsp"/>
 	<jsp:include page="../include/shop_top_right.jsp"/>
 
-
-	<div class="myPage_wrapper">
 	
+	<div class="myPage_wrapper">
 	
 		<div class="header_title_nav">
 			<nav>
@@ -163,6 +151,7 @@
 		
 
 		<section class="container">
+		
 			
 			<div class="left_bar">			
 			<jsp:include page="../include/leftLayout.jsp" />

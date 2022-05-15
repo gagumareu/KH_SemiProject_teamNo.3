@@ -15,13 +15,6 @@
 	
 	pageContext.setAttribute("List", qa);
 	
-	CartDAO semeDao = CartDAO.getInstance();
-	HttpSession semiSession = request.getSession();
-	String id = (String)semiSession.getAttribute("member_id");
-	List<CartDTO> semeList =  semeDao.getSemiCartList(id);
-	request.setAttribute("semiCartList", semeList);
-
-
 %>
 <!-- 지금은 jsp에서 바로 리스트불러오고 qa_list.do가 jsp페이지이동만하고있음, 병합하면  qa_list.do를 액션으로 다시 잡아줘야함  -->
 <!DOCTYPE html>

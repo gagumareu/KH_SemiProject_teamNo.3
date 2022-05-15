@@ -6,13 +6,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
-	CartDAO semeDao = CartDAO.getInstance();
-	HttpSession semiSession = request.getSession();
-	String id = (String)semiSession.getAttribute("member_id");
-	List<CartDTO> semeList =  semeDao.getSemiCartList(id);
-	request.setAttribute("semiCartList", semeList);
-%>
+
 <!DOCTYPE html>
 <html>
 <head>

@@ -1,3 +1,6 @@
+<%@page import="com.apc.model.CartDTO"%>
+<%@page import="java.util.List"%>
+<%@page import="com.apc.model.CartDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -6,8 +9,12 @@
     
     <%
     
-    String member_id = (String)session.getAttribute("member_id");
-    
+ // 쇼핑몰 우측 상단 장바구니 구현에 필요한 로직
+ 	CartDAO semiDao = CartDAO.getInstance();
+ 	HttpSession semiSession = request.getSession();
+ 	String id = (String)semiSession.getAttribute("member_id");
+ 	List<CartDTO> semeList = semiDao.getSemiCartList(id);
+ 	request.setAttribute("semiCartList", semeList);    
     %>
     
 <!DOCTYPE html>
@@ -115,6 +122,7 @@
 		text-align: cetner;
 		font-size: 14px;
 		height: 100px;
+		
 	}
 	
 	.semi_image {
@@ -141,10 +149,6 @@
 		
 	}
 	
-	.semi_price {
-		grid-column: 4;
-		padding-top: 35px;
-	}
 	
 	.semi_list > ul > li{
 		width: 100%;
@@ -328,59 +332,53 @@
 		
 			<div class="semiCart_container">
 			
-			<div class="semi_image">
-			<a href="<%=request.getContextPath() %>/product_detail.do?num=${dto.getPno_fk() }"><img alt="" src="<%=request.getContextPath()%>/upload/${dto.getCart_pimage() }"></a>
-			</div>
+				<div class="semi_image">
+				<a href="<%=request.getContextPath() %>/product_detail.do?num=${dto.getPno_fk() }"><img alt="" src="<%=request.getContextPath()%>/upload/${dto.getCart_pimage() }"></a>
+				</div>
 			
-			<div class="semi_Name">	
-				<div class="semi_Name_text">${dto.getCart_pname() }</div>
-			</div>
+				<div class="semi_Name">	
+					<div class="semi_Name_text">${dto.getCart_pname() }</div>
+				</div>
 			
-			<div class="semi_list">
-			
-				<ul class="ulList">
-					<li>
-						SIZE
-					</li>
-					<li>
-						COLOR
-					</li>
-					<li>
-						QTY
-					</li>
-					<li class="delete">
-						<a onclick="if(confirm('해당 상품을 쇼핑백에서 삭제하시겠습니까?')){
-									location.href='<%=request.getContextPath() %>/semiCart_delete.do?num=${dto.getCart_no() }'}
-									else{ return; }" ><div class="delete_btn">X</div></a>
-						
-					</li>
-				</ul>	
+				<div class="semi_list">
 				
-				<ul class="ulList">
-					<li class="semi_right_side">
-						${dto.getCart_psize() }	
-					</li>
-					<li class="semi_right_side">
-						${dto.getCart_pcolor() }
-					</li>
-					<li class="semi_right_side">
-						${dto.getCart_pqty() }
-					</li>
-					<li class="semi_right_side">
-						<fmt:formatNumber value="${dto.getCart_price()*dto.getCart_pqty() }" />원
-					</li>				
-				</ul>
-			</div>	
+					<ul class="ulList">
+						<li>
+							SIZE
+						</li>
+						<li>
+							COLOR
+						</li>
+						<li>
+							QTY
+						</li>
+						<li class="delete">
+							<a onclick="if(confirm('해당 상품을 쇼핑백에서 삭제하시겠습니까?')){
+										location.href='<%=request.getContextPath() %>/semiCart_delete.do?num=${dto.getCart_no() }'}
+										else{ return; }" ><div class="delete_btn">X</div></a>
+							
+						</li>
+					</ul>	
+					
+					<ul class="ulList">
+						<li class="semi_right_side">
+							${dto.getCart_psize() }	
+						</li>
+						<li class="semi_right_side">
+							${dto.getCart_pcolor() }
+						</li>
+						<li class="semi_right_side">
+							${dto.getCart_pqty() }
+						</li>
+						<li class="semi_right_side">
+							<fmt:formatNumber value="${dto.getCart_price()*dto.getCart_pqty() }" />원
+						</li>				
+					</ul>
+				</div>	
+						
+			</div> <!-- semiCart_container -->
 			
-			<div class="semi_price">
-			
-			</div>
-					
-					
-					
-		</div> <!-- semiCart_container -->
 		</c:forEach>
-			
 		
 		<div class="sub_text">
 			A.P.C.KOREA 온라인 스토어는 무료배송 서비스를 제공합니다.(제주, 도서산간 지역도 무료)
