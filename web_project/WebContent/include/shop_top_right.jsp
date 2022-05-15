@@ -100,7 +100,7 @@
 	}
 	
 	
-	.semi_image > img {
+	.semi_image > a > img {
 		width: 100%;
 		
 	}
@@ -122,7 +122,7 @@
 		grid-column: 1;
 		
 	}
-	.semi_image > img {
+	.semi_image > a > img {
 		width: 100%;
 	}
 	
@@ -327,9 +327,9 @@
 		<c:forEach items="${list }" var="dto">
 		
 			<div class="semiCart_container">
-	
+			
 			<div class="semi_image">
-			<img alt="" src="<%=request.getContextPath()%>/upload/${dto.getCart_pimage() }">
+			<a href="<%=request.getContextPath() %>/product_detail.do?num=${dto.getPno_fk() }"><img alt="" src="<%=request.getContextPath()%>/upload/${dto.getCart_pimage() }"></a>
 			</div>
 			
 			<div class="semi_Name">	
