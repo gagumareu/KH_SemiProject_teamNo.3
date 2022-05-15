@@ -59,42 +59,31 @@
   			 $('.right_image-1').attr('src', 'images/women.jpg'); 
  
   		});  
-	});  
- 	
- 	$(document).ready(function(){  
   		$(".mCategory").hover(function(){  
-  			 $('.right_image-1').attr('src', 'images/1mN4TpY4ng.jpg'); 
- 
-  		});  
-	}); 
- 	
- 	$(document).ready(function(){  
-  		$(".dCategory").hover(function(){  
-  			 $('.right_image-1').attr('src', 'images/denim.jpg'); 
- 
-  		});  
-	});  
- 	
- 	$(document).ready(function(){  
-  		$(".sCategory").hover(function(){  
-  			 $('.right_image-1').attr('src', 'images/SURPLUS.jpg'); 
- 
-  		});  
-	});  
+ 			 $('.right_image-1').attr('src', 'images/1mN4TpY4ng.jpg'); 
 
- 	$(document).ready(function(){  
+ 		}); 
+  		$(".dCategory").hover(function(){  
+ 			 $('.right_image-1').attr('src', 'images/denim.jpg'); 
+
+ 		});  
+  		$(".sCategory").hover(function(){  
+ 			 $('.right_image-1').attr('src', 'images/SURPLUS.jpg'); 
+
+ 		}); 
+  		
   		$(".jCategory").hover(function(){  
-  			 $('.right_image-1').attr('src', 'images/X JESSICA OGDEN.jpg'); 
- 
-  		});  
+ 			 $('.right_image-1').attr('src', 'images/X JESSICA OGDEN.jpg'); 
+
+ 		}); 
+  		
+  		$(".gCategory").hover(function(){  
+ 			 $('.right_image-1').attr('src', 'images/GOLF2.jpg'); 
+
+ 		}); 
 	});  
  	
- 	$(document).ready(function(){  
-  		$(".gCategory").hover(function(){  
-  			 $('.right_image-1').attr('src', 'images/GOLF2.jpg'); 
- 
-  		});  
-	});  
+ 	
 
  
  </script>
@@ -152,6 +141,8 @@
 				
 			</div> <!-- right_side end -->
 			
+	
+
 	
 		
 	</div> <!-- mainPage_wrapper end   --> 

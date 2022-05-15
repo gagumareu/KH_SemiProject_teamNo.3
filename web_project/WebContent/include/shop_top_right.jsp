@@ -169,7 +169,7 @@
 	}
 	.sub_text {
 		padding: 20px 0px 0px 0px;
-		font-size: 0.8em;
+		font-size: 0.9em;
 		font-weight: 600;
 	
 		
@@ -211,8 +211,8 @@
 	.semiCart_sidebar {
 		position: fixed;
 		top: 0;
-		right: -500px;
-		width: 500px;
+		right: -620px;
+		width: 620px;
 		height: 100%;
 		border-left: 1px solid black;
 		z-index: 30;
