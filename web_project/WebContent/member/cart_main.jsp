@@ -90,6 +90,7 @@
 			width: 15%;
 			float: right;
 			text-align:right;
+			cursor: pointer;
 		}
 		
 		button.black{
