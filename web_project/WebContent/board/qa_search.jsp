@@ -1,3 +1,5 @@
+<%@page import="com.apc.model.CartDTO"%>
+<%@page import="com.apc.model.CartDAO"%>
 <%@page import="com.apc.model.CategoryDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="com.apc.model.QaDTO"%>
@@ -12,6 +14,13 @@
 	List<QaDTO> search = (List<QaDTO>)request.getAttribute("Search");
 
 	pageContext.setAttribute("List", search);
+	
+	
+	CartDAO semeDao = CartDAO.getInstance();
+	HttpSession semiSession = request.getSession();
+	String id = (String)semiSession.getAttribute("member_id");
+	List<CartDTO> semeList =  semeDao.getSemiCartList(id);
+	request.setAttribute("semiCartList", semeList);
 %>
 <!DOCTYPE html>
 <html>
