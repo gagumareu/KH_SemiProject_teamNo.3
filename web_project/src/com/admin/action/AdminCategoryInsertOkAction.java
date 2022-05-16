@@ -22,7 +22,7 @@ public class AdminCategoryInsertOkAction implements Action {
 
 
 		//첨부파일
-		String saveFolder = "C:\\Users\\jsjo5\\git\\KH_SemiProjeckt_teamNo3_da\\web_project\\WebContent\\image_category";
+		String saveFolder = "C:\\Users\\ayss3\\Documents\\JSP_PROJECT\\web_project\\WebContent\\image_category";
 		
 		int fileSize = 1024*1024*10;	//10MB
 				
