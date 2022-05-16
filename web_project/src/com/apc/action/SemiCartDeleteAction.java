@@ -28,8 +28,10 @@ public class SemiCartDeleteAction implements Action {
 		
 		if(result > 0) {
 			
-			forward.setRedirect(false);
-			forward.setPath("#");
+			out.println(cart_no);//shop_top_right.jsp에 삭제할 카트넘버 보내기
+			
+//		    forward.setRedirect(false);
+//			forward.setPath("");
 			
 		}else {
 			
@@ -38,7 +40,7 @@ public class SemiCartDeleteAction implements Action {
 			out.println("history.back()");
 			out.println("</script>");
 		}
-		return forward;
+		return null; //forward -> null 수정
 		
 		
 	}

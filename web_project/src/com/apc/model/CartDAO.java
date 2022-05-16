@@ -333,6 +333,7 @@ public class CartDAO {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, no);
 			result = pstmt.executeUpdate();
+			
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

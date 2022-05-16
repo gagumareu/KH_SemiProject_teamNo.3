@@ -321,7 +321,7 @@ $(document).ready(function() {
 				value="${dto.getPhone().substring(4, 8) }">
 			-
 			<input type="text" name="phone3" class="phone" maxlength="4"
-				value="${dto.getPhone().substring(9, 13) }">
+				value="${dto.getPhone().substring(9, 13) }"> 
 		    </div>
 		</li>
 		
