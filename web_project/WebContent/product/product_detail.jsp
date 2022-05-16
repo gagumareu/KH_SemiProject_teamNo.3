@@ -204,6 +204,16 @@ $(function(){
 	.cartBtn {
 		cursor: pointer;
 	}
+	
+	.popup_close{
+	
+	  text-decoration: none;
+   	  color: black;
+  	  font-size: 0.6em;
+  	  margin-top: 5px;
+  	  margin-right: 7px;
+}
+	}
 </style>
 </head>
 <body>
