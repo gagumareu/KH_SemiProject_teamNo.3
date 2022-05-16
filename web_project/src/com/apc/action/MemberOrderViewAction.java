@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.apc.controller.Action;
 import com.apc.controller.ActionForward;
+import com.apc.model.CancelDAO;
+import com.apc.model.CancelDTO;
 import com.apc.model.MemberDAO;
 import com.apc.model.MemberDTO;
 import com.apc.model.PaymentDAO;
@@ -64,11 +66,11 @@ public class MemberOrderViewAction implements Action {
 		PaymentDAO paydao = PaymentDAO.getInstance();
 		List<PaymentDTO> list = paydao.getOrderPaymentList(mem_id);
 		
-		QaDAO qadao = QaDAO.getInstance();
-		List<QaDTO> cancelList = qadao.viewCancelQa(mem_id);
+		CancelDAO cDAO = CancelDAO.getInstance();
+		List<CancelDTO> cancelList = cDAO.getCancelList(mem_id);
 		
 		ReviewDAO rdao = ReviewDAO.getInstance();
-		List<ReviewDTO> reviewList = rdao.getReviewList(mem_id);
+		List<ReviewDTO> reviewList = rdao.getRateList(mem_id);
 		
 		request.setAttribute("date_now", now);
 		request.setAttribute("date_3", date_3);
