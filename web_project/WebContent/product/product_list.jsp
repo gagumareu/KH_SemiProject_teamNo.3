@@ -57,19 +57,10 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/main.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style_products.css">
+<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
 <script type="text/javascript">
 
 
-	$(function(){
-		
-		$("#product_img").hover(function(){
-			
-			$("#product_img").
-			
-		});
-		
-		
-	});
 
 </script>
 <style type="text/css">
@@ -170,9 +161,9 @@
 				<div class="img_box">
 					<a href="<%=request.getContextPath() %>/product_detail.do?num=<%=product.getPno() %>
 									&color=<%=product.getPcolor()%>&size=<%=product.getPsize()%> ">
-						<img id="product_img" alt="arrImg[0]" src="<%=request.getContextPath() %>/upload/<%= arrImg[0] %> ">
-						<img id="img_hover" alt="arrImg[1]" src="<%=request.getContextPath() %>/upload/<%= arrImg[1] %>">
-												
+						<img class="img<%=product.getPno() %>" alt="arrImg[0]" src="<%=request.getContextPath() %>/upload/<%= arrImg[0] %> ">
+						
+			
 						
 					</a>						
 				</div>	<!-- class="img_box" --> 					

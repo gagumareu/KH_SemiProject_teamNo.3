@@ -83,6 +83,10 @@
 		width: 80%;
 	}
 	
+	.input1 {
+		width: 68%;
+	}
+	
 	.input_box {
 		width: 100%;
 		height: 30px;
@@ -116,7 +120,7 @@
 	}
 	
 	#idcheck_btn {
-		width: 100px;
+		width: 100%;
 		height: 35px;
 		margin-left: 10px;
 		background-color: black;
@@ -183,12 +187,13 @@
 			<label for="userId" class="label">아이디</label>
 			<em>*</em>
 			</div>
-			<div class="input">
+			<div class="input1">
 			<input type="text" id="userId" name="userId" class="input_box" maxlength="15">
 			</div>
-			<div>
+			<div class="idcheck_btn">
 			<input type="button" value="중복체크" id="idcheck_btn">
 			</div>
+			
 		</li>	
 			<div class="checkbutton">
 			<span id="idcheck"></span>
