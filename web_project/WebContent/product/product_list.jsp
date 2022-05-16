@@ -1,3 +1,5 @@
+<%@page import="com.apc.model.CartDTO"%>
+<%@page import="com.apc.model.CartDAO"%>
 <%@page import="com.apc.model.CategoryDTO"%>
 <%@page import="com.apc.model.CategoryDAO"%>
 <%@page import="java.util.ArrayList"%>
@@ -43,6 +45,8 @@
 	session.setAttribute("third", third);
 	System.out.println("thrid:"+third);
 	
+	
+		
 
 %>
 <!DOCTYPE html>

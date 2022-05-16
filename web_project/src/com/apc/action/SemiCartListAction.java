@@ -30,9 +30,10 @@ public class SemiCartListAction implements Action {
 		
 		ActionForward forward = new ActionForward();
 		
+		
 		forward.setRedirect(false);
 		
-		forward.setPath("product/semiCart_list.jsp");
+		forward.setPath("index.jsp");
 		
 		
 		return forward;

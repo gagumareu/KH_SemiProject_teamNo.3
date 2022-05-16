@@ -1,14 +1,17 @@
+<%@page import="com.apc.model.CartDTO"%>
+<%@page import="java.util.List"%>
+<%@page import="com.apc.model.CartDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>A.P.C. 장바구니</title>
-</head>
-<body>
+
 	
 	<style>
 		a{
@@ -76,6 +79,7 @@
 			width: 15%;
 			float: right;
 			text-align:right;
+			cursor: pointer;
 		}
 		
 		button.black{
@@ -83,6 +87,7 @@
 			color: white;
 			width: 100%;
 			height: 40px;
+			cursor: pointer;
 		}
 		
 		button.white{
@@ -111,7 +116,7 @@
 		}
 		
 	</style>
-</head>
+
 <body>
 	<header>
 		<h1 style="font-size: 60px;"><a href="index.jsp">A.P.C.</a> 

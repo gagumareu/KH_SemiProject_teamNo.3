@@ -54,11 +54,19 @@
 		display: flex;
 		flex-direction: column;
 		padding-right: 50px;
+		list-style-type: none;		
+		
 	}
 	
 	.sns {
 		padding-top: 20px;
 		
+	}
+	
+	.sns ul {
+		display: flex;
+		flex-direction: row;
+		list-style-type: none;		
 	}
 	
 	.sns i{

@@ -1,3 +1,5 @@
+<%@page import="com.apc.model.CartDTO"%>
+<%@page import="com.apc.model.CartDAO"%>
 <%@page import="com.apc.model.CategoryDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="com.apc.model.QaDTO"%>
@@ -12,6 +14,7 @@
 	List<QaDTO> search = (List<QaDTO>)request.getAttribute("Search");
 
 	pageContext.setAttribute("List", search);
+	
 %>
 <!DOCTYPE html>
 <html>
