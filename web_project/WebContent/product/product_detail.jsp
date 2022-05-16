@@ -39,16 +39,41 @@
 		
 		//20220516 카트버튼을 label로 지정해서 click action 설정해줌 
 		$(".cartBtn").click(function(){
-			let pname = document.getElementById("p_name").value;
-			let pcolor = document.getElementById("p_color").value;
-			let psize = document.getElementById("p_size").value;
 			
+			let pname = $("#p_name").val();
+			let color = $("#p_color").val();
+			let size = $("#p_size").val();
+			let qty = $("#p_qty").val();
 			
-			//form(name=frm)의 action경로 지정
-			document.frm.action = "<%=request.getContextPath()%>/go_cart.do?name="+pname+"&color="+pcolor+"&size="+psize ;
-		
-			//form(frm)에 submit 메서드 호출해 데이터 전달
-			document.frm.submit();
+			console.log(pname);
+			console.log(color);
+			console.log(size);
+			console.log(qty);
+			
+			$.ajax({
+				url:"go_cart.do",
+				data: {
+					name:pname,
+					color:color,
+					size:size,
+					qty:qty
+				},
+				type:"post",
+				datatype:"jason",
+					
+				ContentType : "application/x-www-form-urlencoded;charset=UTF-8",
+				success:function(data){
+					if(data>0){
+						loaction.reload();
+						alert("저장완료");
+	
+					}
+					
+				},
+				error:function(data){
+					alert("통신오류");
+				}
+			});
 			
 		});
 		
@@ -364,7 +389,7 @@ $(function(){
 					</tr>
 					<tr>
 						<td>수량</td>
-						<td><input type="number" name="p_qty" value="1"  min="1" max="${dto.getPqty() }"></td>
+						<td><input type="number" id="p_qty" name="p_qty" value="1"  min="1" max="${dto.getPqty() }"></td>
 					</tr>
 					<tr>
 						<td>적립금</td>

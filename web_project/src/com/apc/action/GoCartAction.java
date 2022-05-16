@@ -27,8 +27,9 @@ public class GoCartAction implements Action {
 		String size = request.getParameter("size");
 
 		//form에 있던 자료
-		int qty = Integer.parseInt(request.getParameter("p_qty"));
-		
+//		int qty = Integer.parseInt(request.getParameter("p_qty"));
+		int qty = Integer.parseInt(request.getParameter("qty"));
+		System.out.println("gocart"+ pname+"/"+color+"/"+size+"/"+qty);
 		//pname,color,size에 맞는 pno를 찾기
 		ProductDAO dao = ProductDAO.getInstance();
 		ProductDTO dto = dao.getProductCont(pname, color, size);
@@ -77,8 +78,11 @@ public class GoCartAction implements Action {
 		if ( result>0) {
 		//저장한 정보를 cart_list.do로 전달하기
 		
-		forward.setRedirect(true);
-		forward.setPath("cart_main.do");
+		out.println(result);
+			
+			
+//		forward.setRedirect(true);
+//		forward.setPath("cart_main.do");
 		
 		}else {
 			out.println("<script>");
@@ -87,7 +91,7 @@ public class GoCartAction implements Action {
 			out.println("</script>");
 			
 		}
-		return forward;
+		return null;
 	}
 
 }
