@@ -25,7 +25,7 @@ public class GoCartAction implements Action {
 		String pname = request.getParameter("name");
 		String color = request.getParameter("color");
 		String size = request.getParameter("size");
-		
+
 		//form에 있던 자료
 		int qty = Integer.parseInt(request.getParameter("p_qty"));
 		

@@ -22,7 +22,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>뭐야</title>
+<title>Insert title here</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
@@ -55,21 +55,20 @@
 	});
 	
 
-<%-- 	function go_cart(){
+	function go_cart(){
 		
-	/* 	let pname = document.getElementById("p_name").value;
+		let pname = document.getElementById("p_name").value;
 		let pcolor = document.getElementById("p_color").value;
-		let psize = document.getElementById("p_size").value; */
+		let psize = document.getElementById("p_size").value;
 		
 		
 		//form(name=frm)의 action경로 지정
 		document.frm.action = "<%=request.getContextPath()%>/go_cart.do?name="+pname+"&color="+pcolor+"&size="+psize ;
-		document.frm.action = "<%=request.getContextPath()%>/go_cart.do" ;
 	
 		//form(frm)에 submit 메서드 호출해 데이터 전달
 		document.frm.submit();
 		
-	} --%>
+	}
 	
 	function go_nonPay(){
 		
