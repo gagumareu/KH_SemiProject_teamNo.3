@@ -1,9 +1,7 @@
-<%@page import="com.apc.model.CartDTO"%>
-<%@page import="java.util.List"%>
-<%@page import="com.apc.model.CartDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -13,14 +11,11 @@
 	
 	<style>
 	
-	
 		a{
 			text-decoration: none;
 			color: black;
 			font-family: 나눔고딕;
 		}
-		
-		
 		
 		.header_title_nav {
 			font-family: Arial;
@@ -35,26 +30,19 @@
 			text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 		}
 		
-		
-	
 		section{	
 			font-size: 0.75em;
 			font-family: 나눔고딕;
 		}
 		
-	
-
 		span a:hover {
 			color: black;
 		}
-		
 		
 		.right_content a {
 			font-size: 0.75em;
 			color: gray;
 		}
-		
-		
 		
 		html, body {
 			height: 100%;
@@ -89,8 +77,6 @@
 		
 		}
 		
-		
-		
 		.member_info_wrapper {
 			display: flex;
 			flex-direction: column;
@@ -112,7 +98,7 @@
 			
 		}
 		
-		. member_info_left {
+		.member_info_left {
 			grid-column: 1;
 		
 		}
@@ -125,12 +111,12 @@
 			float: right;
 		
 		}
+		
 		.right_content {
-			width: 83%;
+			width: 75%;
 		
 		}
 	
-		
 	</style>
 </head>
 <body>
@@ -138,23 +124,22 @@
 	<jsp:include page="../include/shop_top.jsp"/>
 	<jsp:include page="../include/shop_top_right.jsp"/>
 
-	
+
 	<div class="myPage_wrapper">
+	
 	
 		<div class="header_title_nav">
 			<nav>
-			<a class="home_link" href="<%=request.getContextPath()%>/index.jsp">A.P.C.</a> 
+			<a class="home_link" style="font-family: Arial;" href="<%=request.getContextPath()%>/index.jsp">A.P.C.</a> 
 			마이페이지
 			</nav>
 		</div>
 		
-		
 
 		<section class="container">
-		
 			
 			<div class="left_bar">			
-			<jsp:include page="../include/leftLayout.jsp" />
+				<jsp:include page="../include/leftLayout.jsp" />
 			</div>
 			
 			<div class="right_content">
@@ -166,7 +151,7 @@
 					</div> <!-- member_infor -->
 				
 					<span class="info_modify_btn">
-						<a href="<%=request.getContextPath() %>/member_confirmPsw.do?mem_id=${mem.getMem_id() }">정보수정</a>
+						<a>정보수정</a>
 					</span> <!-- info_modify_btn -->
 			
 					<hr width="100%">
@@ -176,7 +161,7 @@
 							<br>
 							<c:set var="mem" value="${memDTO }" />
 							<b>${mem.getMem_name() }</b> <br>
-							${mem.getPhone().substring(0,3) }-${mem.getPhone().substring(3,7) }-${mem.getPhone().substring(7,11) } <br>
+							${mem.getPhone() } <br>
 							${mem.getEmail() }
 							<br><br>
 						
@@ -195,8 +180,7 @@
 							<a href="<%=request.getContextPath() %>/member_contactView.do?id=${mem.getMem_id() }">전체보기</a>	
 							<br> <br> <br>
 							
-							<b>적립금: ${mem.getMem_mileage() }원</b> <br>
-							<a href="mileageView.jsp">전체보기</a>
+							<b>적립금: <fmt:formatNumber value="${mem.getMem_mileage() }" />원</b> <br>
 						</div>
 					</div>	<!--  -->
 				</div> <!-- member_info_wrapper -->
@@ -224,7 +208,6 @@
 		
 			
 		</section> <!-- container -->
-		
 		
 		
 		

@@ -542,7 +542,26 @@ public class MemberDAO {
 	}
 	
 	
-	
+	public int updatePwd(String id, String pwd) {
+		
+		int result = 0;
+		
+		try {
+			openConn();
+			sql = "update apc_member set mem_pwd = ? where mem_id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, pwd);
+			pstmt.setString(2, id);
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		return result;
+	}
 	
 	
 	

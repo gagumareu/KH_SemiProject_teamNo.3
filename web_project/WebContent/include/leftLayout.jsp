@@ -29,9 +29,9 @@
 
 	<div class="left_bar">
 		<a href="<%=request.getContextPath() %>/member_myPage.do?id=<%=session.getAttribute("member_id")%>">마이페이지</a>
-		<a href="<%=request.getContextPath() %>/member_confirmPsw.do?id=<%=session.getAttribute("member_id")%>">회원정보관리</a>
-		<a href="<%=request.getContextPath() %>/member/pswUpdate.jsp">비밀번호관리</a>
-		<a href="<%=request.getContextPath() %>/member/mileageView.jsp">적립금관리</a>
+		<a>회원정보관리</a>
+		<a href="<%=request.getContextPath() %>/member_updatePwd.do?id=<%=session.getAttribute("member_id")%>">비밀번호관리</a>
+		<a>적립금관리</a>
 		<a href="<%=request.getContextPath() %>/member_orderView.do?id=<%=session.getAttribute("member_id")%>">구매내역</a>
 		<a href="<%=request.getContextPath() %>/member_orderCancelView.do?id=<%=session.getAttribute("member_id")%>">취소/반품조회</a>
 		<a href="<%=request.getContextPath() %>/member_addrView.do?id=<%=session.getAttribute("member_id")%>">배송지관리</a>

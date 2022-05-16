@@ -132,12 +132,14 @@
 </script>
 </head>
 <body>
-	
+
+
+	<jsp:include page="../include/shop_top.jsp"/>
+	<jsp:include page="../include/shop_top_right.jsp"/>
 	
 	<div class="search_wrapper">
 	
-	<jsp:include page="../include/shop_top.jsp"/>
-	<jsp:include page="../include/shop_top_right.jsp"/>
+	
 	
 		<div class="apcTitle">
 	
