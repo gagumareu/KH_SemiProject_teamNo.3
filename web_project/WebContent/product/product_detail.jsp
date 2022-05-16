@@ -64,7 +64,7 @@
 				ContentType : "application/x-www-form-urlencoded;charset=UTF-8",
 				success:function(data){
 					if(data>0){
-						loaction.reload();
+						location.reload();
 						alert("저장완료");
 	
 					}
@@ -410,7 +410,8 @@ $(function(){
 						
 						
 							<input type="button" class="payBtn"  id="payBtn_css"  value="바로구매" >
-							<label for="menuicon" class="cartBtn" id="cartBtn_css">장바구니</label>
+						<label for="menuicon" class="cartBtn" id="cartBtn_css">장바구니</label>
+							<!-- <label class="cartBtn" id="cartBtn_css">장바구니</label> -->
 						
 						
 						</td>
