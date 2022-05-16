@@ -157,7 +157,7 @@
 		</div>
 
 		<div class="orderView_container">
-			<div class="orderView_grind"> 
+		<div class="orderView_grind"> 
 		
 			<div class="left_contents">
 				<nav>
@@ -235,9 +235,7 @@
 										<c:set var="star" value="${star - 1 }" />
 									</c:forEach>
 									<br><br>
-									<b><button class="white" 
-									onclick="location.href='<%=request.getContextPath() %>/member_viewReview.do?num=${rDTO.getOrderno_fk() }'">
-									내가 쓴 리뷰</button></b><br><br>
+									
 									<c:set var="c" value="1" />
 								</c:if>
 							</c:forEach>
@@ -263,6 +261,7 @@
 						<br><br>
 						<c:set var="a" value="${pDTO.getOrderdate().substring(0,10) }" />
 					</c:forEach>
+					<br><br><br><br>
 				</div>
 			</div>
 		</div>
