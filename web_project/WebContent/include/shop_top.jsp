@@ -1,9 +1,19 @@
+<%@page import="com.apc.model.CategoryDTO"%>
+<%@page import="java.util.List"%>
+<%@page import="com.apc.model.CategoryDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
      <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
-    
+    <%
+    	CategoryDAO dao = CategoryDAO.getInstance();
+    	List<CategoryDTO> list = dao.getShopCategory();
+    	pageContext.setAttribute("List", list);
+    	
+    	
+    	
+    %>
     
 <!DOCTYPE html>
 <html>
@@ -19,7 +29,9 @@
 	
 	}
 	
-	
+	li {
+		list-style-type: none;
+	}
 
 	/********** include end **********/
 
@@ -29,6 +41,7 @@
 		margin: 10px 0px 0px 10px;
 		/*display: flex;*/
 		position: absolute;
+		z-index: 99;
 		
 	}
 	
@@ -65,7 +78,7 @@
 		position: absolute;
 		display: flex;
 		flex-direction: row;
-		line-height: 1.5;
+		line-height: 1.7;
 		display: none;
 		padding: 20px 30px 30px 20px;
 		background: #efdcd5;
@@ -94,7 +107,7 @@
 		position: absolute;
 		display: flex;
 		flex-direction: row;
-		line-height: 1.5;
+		line-height: 1.7;
 		display: none;
 		padding: 20px 30px 30px 20px;
 		background: #a1887f;
@@ -125,7 +138,7 @@
 		position: absolute;
 		display: flex;
 		flex-direction: row;
-		line-height: 1.5;
+		line-height: 1.7;
 		display: none;
 		padding: 20px 30px 30px 20px;
 		background: #607d8b;
@@ -153,7 +166,7 @@
 		position: absolute;
 		display: flex;
 		flex-direction: row;
-		line-height: 1.5;
+		line-height: 1.7;
 		display: none;
 		padding: 20px 30px 30px 20px;
 		background: #ffe0b2;
@@ -182,7 +195,7 @@
 		position: absolute;
 		display: flex;
 		flex-direction: row;
-		line-height: 1.5;
+		line-height: 1.7;
 		display: none;
 		padding: 20px 30px 30px 20px;
 		background: #bdbdbd;
@@ -210,7 +223,7 @@
 		position: absolute;
 		display: flex;
 		flex-direction: row;
-		line-height: 1.5;
+		line-height: 1.7;
 		display: none;
 		padding: 20px 30px 30px 20px;
 		background: #9e9e9e;
@@ -267,11 +280,12 @@
 </head>
 <body>
 	
+	<c:set var="topList" value="${List }"/>
 	
 	<div id="navr">
 		<ul id="navr_ul">
 			<li class="li_wrap">
-				<a href="#" class="categoryName1"><span>Women</span></a>
+				<a href="<%=request.getContextPath() %>/category.do?code=${topList[0].getCategory_code() }" class="categoryName1"><span>Women</span></a>
 				<div class="container1">
 					<div class="dropDown">
 						<ul>
@@ -302,7 +316,7 @@
 				</div>
 			</li>
 			<li>
-				<a href="#" class="categoryName2"><span>Men</span></a>
+				<a href="<%=request.getContextPath() %>/category.do?code=${topList[1].getCategory_code() }" class="categoryName2"><span>Men</span></a>
 				<div class="container2">
 					<div class="dropDown">
 						<ul>
@@ -344,7 +358,7 @@
 				</div>
 			</li>
 			<li>
-				<a href="#" class="categoryName4"><span>Golf</span></a>
+				<a href="<%=request.getContextPath() %>/category.do?code=${topList[2].getCategory_code() }" class="categoryName4"><span>Golf</span></a>
 					<div class="container4">
 						<ul>
 							<li><a href="#"><span>Men</span></a></li>

@@ -22,7 +22,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>A.P.C 공식 온라인몰 </title>
+<title>A.P.C. 아페쎄 코리아 온라인 스토어</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
@@ -250,8 +250,11 @@ $(function(){
 	
 	.cartBtn {
 		cursor: pointer;
+		padding-top: 5px;
 	}
-	
+	.cartBtn:hover {
+		border: 1px solid black;
+	}
 	.popup_close{
 	
 	  text-decoration: none;
@@ -259,8 +262,25 @@ $(function(){
   	  font-size: 0.6em;
   	  margin-top: 5px;
   	  margin-right: 7px;
-}
 	}
+	
+	.colors {
+		display: flex;
+		padding: 0px;
+		list-style-type: none;
+		
+	}
+	
+	.product_content {
+		width: 200px;
+	}
+	
+	.detail_btn {
+		display: flex;
+		flex-direction: row;
+	
+	}
+	
 </style>
 </head>
 <body>
@@ -316,7 +336,7 @@ $(function(){
 		<div class="product_section">
 		
 			<div class="product_section_aside">
-				<hr width="90%">
+				<hr width="250px;">
 			<form id="frm" name="frm" method="post">
 				<input type="hidden" id="p_name" value="${dto.getPname() }">
 				<input type="hidden" id="p_color" value="${dto.getPcolor()}">
@@ -408,11 +428,11 @@ $(function(){
 					<tr>
 						<td colspan="2">
 						
-						
-							<input type="button" class="payBtn"  id="payBtn_css"  value="바로구매" >
-						<label for="menuicon" class="cartBtn" id="cartBtn_css">장바구니</label>
-							<!-- <label class="cartBtn" id="cartBtn_css">장바구니</label> -->
-						
+							<div class="detail_btn">
+								<input type="button" class="payBtn"  id="payBtn_css"  value="바로구매" >
+								<label for="menuicon" class="cartBtn" id="cartBtn_css">장바구니</label>
+								<!-- <label class="cartBtn" id="cartBtn_css">장바구니</label> -->
+							</div>
 						
 						</td>
 					</tr>

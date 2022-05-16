@@ -30,7 +30,7 @@
 		position: absolute;
 		right: 0px;
 		top: 0px;
-	
+		z-index: 2;
 	}
 	
 	#right_menu>ul{
@@ -258,6 +258,12 @@
 		cursor: pointer;
 	}
 	
+	.topMenu_cart_btn:hover {
+		text-decoration: underline;
+		
+	}
+	
+	
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.js"></script>
 
@@ -320,7 +326,7 @@
 	<div id="right_menu">
 		<ul class="right_menu_ul">
 			<li class="cart">
-				<label for="menuicon" class="munubtn close"><img src="images/icon-bag.svg" width="12px"> 장바구니</label>
+				<label for="menuicon" class="munubtn topMenu_cart_btn"><img src="images/icon-bag.svg" width="12px"> 장바구니</label>
 				
 			</li>
 			<li id="login"><a href="<%=request.getContextPath() %>/member/LoginMain.jsp">내계정/로그인</a></li>
