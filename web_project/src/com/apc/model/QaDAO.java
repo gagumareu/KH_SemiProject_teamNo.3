@@ -992,7 +992,6 @@ public class QaDAO {
 				dto.setQa_step(rs.getInt("qa_step"));
 				dto.setQa_indent(rs.getInt("qa_indent"));
 				
-				
 				list.add(dto);
 			}
 			

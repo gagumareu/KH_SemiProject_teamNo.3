@@ -1,7 +1,3 @@
-<
-<%@page import="com.apc.model.ProductDAO"%>
-<%@page import="com.apc.model.ProductDTO"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
@@ -65,38 +61,13 @@ $(document).ready(function() {
 			<div class="slider">
 				<c:set var="list" value="${productList }"/>
 				<c:if test="${!empty list }">
-				<!-- 20220514이슬 수정 : Product이미지 경로 수정  -->
-				<%
-					List<ProductDTO> list = (List<ProductDTO>)request.getAttribute("productList");
-				
-					for(int i =0; i<list.size(); i++){
-						
-						ProductDTO dto = list.get(i);
-						
-						//ProductDTO에 해당하는 이미지를 불러와 대표이미지 설정하기
-						ProductDAO dao = ProductDAO.getInstance();
-						String [] arrImg = dao.getPorudctImg(dto);
-						
-						
-				%>		
-						<div>
-						<a href="<%=request.getContextPath() %>/admin_products_update.do?no=<%=dto.getPno()%>">
-							<img src="<%=request.getContextPath() %>/upload<%=arrImg[0]%>">
-						</a>
-						</div>
-						
-				<% 	}
-				
-  				
-				%>
-				
-					<%-- <c:forEach items="${list }" var="dto">
+					<c:forEach items="${list }" var="dto">
 						<div>
 						<a href="<%=request.getContextPath() %>/admin_products_update.do?no=${dto.getPno() }">
-							<img src="<%=request.getContextPath() %>/image_products${dto.getPimage() }">
+							<img src="<%=request.getContextPath() %>/upload${dto.getPimage() }">
 						</a>
 						</div>
-					</c:forEach> --%>
+					</c:forEach>
 				</c:if>
 
 		</div>
@@ -150,7 +121,7 @@ $(document).ready(function() {
 		  
 		  <div>
 		  <c:set var="list3" value="${qaList }"/>
-				<c:if test="${!empty list2 }">
+				<c:if test="${!empty list3 }">
 				<table class="table table-bordered" align="cneter">
 					<colgroup>
 						<col width="80%">
@@ -179,8 +150,8 @@ $(document).ready(function() {
 			
         </div>      
       </div>
+    </div>
 
     
   </body>
-
 </html>
