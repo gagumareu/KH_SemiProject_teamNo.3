@@ -16,6 +16,12 @@
 	
 	pageContext.setAttribute("arrImg", arrImg);
 	
+	CartDAO semeDao = CartDAO.getInstance();
+	HttpSession semiSession = request.getSession();
+	String id = (String)semiSession.getAttribute("member_id");
+	List<CartDTO> semeList =  semeDao.getSemiCartList(id);
+	request.setAttribute("semiCartList", semeList);
+	
 	
 %>
 <!DOCTYPE html>
@@ -65,7 +71,7 @@
 		
 	}
 	
-	
+
 
 
 </script>
@@ -76,7 +82,6 @@
 
 <script type="text/javascript">
 
-	
 
 
 $(function(){
@@ -116,7 +121,7 @@ $(function(){
 			
 			
 		});
-	
+
 	
 	
 }
@@ -174,8 +179,8 @@ $(function(){
 	}
 	
 	.product_section {
-		height: 100%;
-		margin-bottom: 300px;
+		min-height: 100vh;
+		margin-bottom: 200px;
 	}
 	.product_section_aside {
 		height: 500px;
@@ -197,13 +202,6 @@ $(function(){
 		padding: 10px;
 	}
 	
-	.semiCart_popup {
-		display: none;
-	}
-	
-	.cartBtn {
-		cursor: pointer;
-	}
 </style>
 </head>
 <body>
@@ -355,7 +353,7 @@ $(function(){
 						<a href="#a" class="cartBtn">장바구니</a> -->
 						
 							<input type="button" class="payBtn"  id="payBtn_css"  value="바로구매" >
-							<label for="menuicon" class="cartBtn" id="cartBtn_css">장바구니</label>
+							<input type="button" class="cartBtn" id="cartBtn_css" value="장바구니" onclick="go_cart()"></button>
 						
 						<!-- <input id="go_pay_btn"class="btn btn-dark" type="button" value="바로구매" onclick="go_pay()"> &nbsp;
 						<input id="go_cart_btn" class="btn btn-light" type="button" value="장바구니" onclick="go_cart()"> -->
@@ -389,12 +387,10 @@ $(function(){
 		<div class="pay_dim">
 			
 		</div>
-		<!-- **************레이어 팝업창*********************-->
+		<!-- **************레이어 팝업창*********************              -->
 		
 		
-
-
-
+		
 		
 		<div class="product_section_main">
 			<div class="detail_image">

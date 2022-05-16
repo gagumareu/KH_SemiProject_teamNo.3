@@ -40,8 +40,8 @@ public class semiLoginAction implements Action {
 			MemberDTO dto = dao.getMemberInfo(member_id);
 			session.setAttribute("member_id", dto.getMem_id()); //20220511이슬 수정
 			
-			forward.setRedirect(false);
-			forward.setPath("index.jsp");  // 메인 페이지로 이동
+			forward.setRedirect(true);
+			forward.setPath("semiCartList.do");  // 메인 페이지로 이동
 			
 		}else if(check == -1) {
 			// 비밀번호가 틀린 경우

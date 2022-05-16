@@ -1,3 +1,5 @@
+<%@page import="com.apc.model.CartDTO"%>
+<%@page import="com.apc.model.CartDAO"%>
 <%@page import="com.apc.model.QaCategoryDTO"%>
 <%@page import="com.apc.model.QaCategoryDAO"%>
 <%@page import="com.apc.model.ProductDTO"%>
@@ -12,8 +14,7 @@
 	List<QaDTO> qa = (List<QaDTO>)request.getAttribute("List");
 	
 	pageContext.setAttribute("List", qa);
-
-
+	
 %>
 <!-- 지금은 jsp에서 바로 리스트불러오고 qa_list.do가 jsp페이지이동만하고있음, 병합하면  qa_list.do를 액션으로 다시 잡아줘야함  -->
 <!DOCTYPE html>
