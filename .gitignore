@@ -1,3 +1,5 @@
+controller/*properties
+
 
 # Created by https://www.toptal.com/developers/gitignore/api/eclipse
 # Edit at https://www.toptal.com/developers/gitignore?templates=eclipse
@@ -70,4 +72,4 @@ local.properties
 
 # End of https://www.toptal.com/developers/gitignore/api/eclipse
 
-mapping.properties
+
