@@ -98,7 +98,7 @@
 <body>
 
 	<header>
-	<h1 style="font-size: 50px;"><a href="mainPage.jsp">A.P.C.</a> 
+	<h1 style="font-size: 50px;"><a href="<%=request.getContextPath()%>/index.jsp">A.P.C.</a> 
 	취소/반품조회</h1>
 	</header>
 

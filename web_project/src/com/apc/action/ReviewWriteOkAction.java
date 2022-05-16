@@ -40,7 +40,8 @@ public class ReviewWriteOkAction implements Action {
 		//GET방식으로 넘어온 값 : 제품번호, 아이디
 		 int pno = Integer.parseInt(multi.getParameter("num").trim());
 		 String loginId =multi.getParameter("id").trim();
-		
+		 int order_no = Integer.parseInt(multi.getParameter("order_num"));
+		 
 		//제품에 대한 정보 불러오기
 		ProductDAO pDao =  ProductDAO.getInstance();
 		ProductDTO pDto = pDao.getProductCont(pno);
@@ -90,6 +91,7 @@ public class ReviewWriteOkAction implements Action {
 			dto.setReview_rate(rate);
 			dto.setReview_cont(cont);
 			dto.setReview_pwd(loginPwd); // memberDTO에서 MEMID에 해당하는 비밀번호 넣기
+			dto.setOrderno_fk(order_no);
 			
 			int result = dao.reviewInsert(dto);
 			
@@ -99,7 +101,7 @@ public class ReviewWriteOkAction implements Action {
 		if(result>0) {
 			
 			forward.setRedirect(true);
-			forward.setPath("member/orderView.jsp"); //마이페이지 보여주기
+			forward.setPath("member_orderView.do?id=" + loginId); //마이페이지 보여주기
 		}else {
 			out.println("<script>");
 			out.println("alert('리뷰등록 실패')");

@@ -166,7 +166,38 @@ public class ReviewDAO {
 		return list;
 	}
 
+	public List<ReviewDTO> getRateList(String id) {
 
+		List<ReviewDTO> list = new ArrayList<ReviewDTO>();
+		
+		try {
+			openConn();
+		
+			sql = "select * from apc_review where memid_fk = ?";
+			
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				ReviewDTO dto = new ReviewDTO();
+				
+				dto.setMemid_fk(rs.getString("memid_fk"));
+				dto.setReview_rate(rs.getInt("review_rate"));
+				dto.setOrderno_fk(rs.getInt("orderno_fk"));
+				list.add(dto);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return list;
+	}
 
 
 

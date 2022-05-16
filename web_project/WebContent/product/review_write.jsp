@@ -160,6 +160,7 @@
 		<form method="post" enctype = "multipart/form-data" id="frm"
 			action="<%=request.getContextPath()%>/review_write_ok.do?no=${cont.getOrder_no()}&id=${cont.getOrder_id()}"> <!-- &id=로그인아이디 -->
 		<input type="hidden" id="p_num" value="${cont.getPno_fk() }">
+		<input type="hidden" name="order_num" value="${cont.getOrder_no() }">
 		<c:if test="${!empty cont }">
 		<div class="review_product_info">
 			<table>

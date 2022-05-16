@@ -67,7 +67,7 @@ public class MemberOrderCancelOkAction implements Action {
 		
 		if(result > 0) {
 			forward.setRedirect(true);
-			forward.setPath("member_orderCancelView.do");
+			forward.setPath("member_orderCancelView.do?id="+mem_id);
 		}else {
 			out.println("<script>");
 			out.println("alert('사진 용량이 너무 큽니다.(10MB 이하)')");
