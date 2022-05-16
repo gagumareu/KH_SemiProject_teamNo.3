@@ -20,7 +20,6 @@
       .slider img:active{
          border: none !important;
       }
-
       .slider {
         width: 100%;
         margin-left: 30px;
@@ -34,7 +33,6 @@
 </style>
 
 <script type="text/javascript">
-
 $(document).ready(function() {
     $('.slider').slick( {
       autoplay: true,
@@ -43,8 +41,6 @@ $(document).ready(function() {
       slidesToScroll: 1,
     });
   });
-
-
 </script>
 </head>
 		<input type="hidden" id="path" value="<%=request.getContextPath() %>">

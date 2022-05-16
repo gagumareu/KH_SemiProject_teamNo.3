@@ -59,7 +59,17 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style_products.css">
 <script type="text/javascript">
 
-	
+
+	$(function(){
+		
+		$("#product_img").hover(function(){
+			
+			$("#product_img").
+			
+		});
+		
+		
+	});
 
 </script>
 <style type="text/css">
@@ -77,6 +87,10 @@
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr 1fr;
 	
+	}
+	
+	#img_hover {
+		display:none;
 	}
 	
 </style>
@@ -156,11 +170,10 @@
 				<div class="img_box">
 					<a href="<%=request.getContextPath() %>/product_detail.do?num=<%=product.getPno() %>
 									&color=<%=product.getPcolor()%>&size=<%=product.getPsize()%> ">
-						<img alt="arrImg[0]" src="<%=request.getContextPath() %>/upload/<%= arrImg[0] %> ">
-						<div class="img_overlay">
+						<img id="product_img" alt="arrImg[0]" src="<%=request.getContextPath() %>/upload/<%= arrImg[0] %> ">
+						<img id="img_hover" alt="arrImg[1]" src="<%=request.getContextPath() %>/upload/<%= arrImg[1] %>">
+												
 						
-						
-						</div>
 					</a>						
 				</div>	<!-- class="img_box" --> 					
 							
