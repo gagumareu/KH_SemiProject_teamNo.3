@@ -20,7 +20,7 @@ public class MemberOrderCancelOkAction implements Action {
 		
 		// 첨부파일이 저장될 위치(경로)를 설정.
 		String saveFolder = 
-			"C:\\Users\\ayss3\\Documents\\JSP_PROJECT\\web_project\\WebContent\\upload";
+			"C:\\Users\\JUNGHWAN\\Documents\\SourceTree\\SourceTree_main\\web_project\\WebContent\\upload";
 			
 		// 첨부파일 용량(크기) 제한 - 파일 업로드 최대 크기
 		int fileSize = 50 * 1024 * 1024;  // 10MB
