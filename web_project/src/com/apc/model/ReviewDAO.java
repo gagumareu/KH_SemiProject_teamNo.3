@@ -131,7 +131,7 @@ public class ReviewDAO {
 			sql = "select review_no, pno_fk, r.pname, r.pcolor, r.psize, memid_fk, review_rate, review_cont, review_image, review_pwd, review_date, r.orderno_fk " 
 				+ " from apc_review  r join apc_products p " 
 				+ " on r.pno_fk = p.pno " 
-				+ " where r.pname = ? ";
+				+ " where r.pname = ? order by review_date";
 			
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, name);
