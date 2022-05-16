@@ -285,29 +285,7 @@
 	});
 	
 
-	//20220516 semicart페이지에서 삭제하기 
-	//문제: 개별 카트는 삭제가능하지만 총가격이 업데이트가안됨...
-	function semicart_delete(num){
-		
-		$.ajax({
-			url:"semiCart_delete.do",
-			datatype:"jsp",
-			data: {num:num},
-			ContentType : "application/x-www-form-urlencoded;charset=UTF-8",
-			success:function(data){
-				console.log(data);
-				let name = "semiCart_container"+data;
-				$("."+name).remove();
-				alert("삭제완료");
-			},
-			error:function(data){
-				alert("통신오류");
-			}
-			
-		});
-		
-	}
-	
+
 	
 </script>
 </head>
@@ -352,7 +330,7 @@
 		<c:if test="${!empty list }">
 		<c:forEach items="${list }" var="dto">
 		
-			<div class="semiCart_container${dto.getCart_no() }">
+			<div class="semiCart_container">
 			
 				<div class="semi_image">
 				<a href="<%=request.getContextPath() %>/product_detail.do?num=${dto.getPno_fk() }"><img alt="" src="<%=request.getContextPath()%>/upload/${dto.getCart_pimage() }"></a>
@@ -376,8 +354,7 @@
 						</li>
 						<li class="delete">
 							<a onclick="if(confirm('해당 상품을 쇼핑백에서 삭제하시겠습니까?')){
-											semicart_delete(${dto.getCart_no() });
-										}
+										location.href='<%=request.getContextPath() %>/semiCart_delete.do?num=${dto.getCart_no() }'}
 										else{ return; }" ><div class="delete_btn">X</div></a>
 							
 						</li>

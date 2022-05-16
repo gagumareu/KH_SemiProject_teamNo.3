@@ -22,7 +22,15 @@ public class AdminQaReplyOkAction implements Action {
 		
 		int qa_no = Integer.parseInt(request.getParameter("qa_no").trim());
 		String qa_category = request.getParameter("qa_category").trim();
-		int qa_pno_fk = Integer.parseInt(request.getParameter("qa_pno_fk").trim());
+		
+		int qa_pno_fk = 0;
+		
+		try {
+			qa_pno_fk = Integer.parseInt(request.getParameter("qa_pno_fk").trim());
+		}catch(Exception e){
+			
+		}
+		
 		int qa_group = Integer.parseInt(request.getParameter("qa_group").trim());
 		int qa_step = Integer.parseInt(request.getParameter("qa_step").trim());
 		int qa_indent = Integer.parseInt(request.getParameter("qa_indent").trim());
@@ -36,7 +44,9 @@ public class AdminQaReplyOkAction implements Action {
 		dto.setQa_category(qa_category);
 		dto.setQa_title(reply_title);
 		dto.setQa_cont(reply_content);
-		dto.setQa_pno_fk(qa_pno_fk);
+		if(qa_pno_fk > 0) {
+			dto.setQa_pno_fk(qa_pno_fk);
+		}		
 		dto.setQa_group(qa_group);
 		dto.setQa_step(qa_step);
 		dto.setQa_indent(qa_indent);

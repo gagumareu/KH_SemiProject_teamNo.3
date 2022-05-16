@@ -26,7 +26,7 @@ public class ReviewWriteOkAction implements Action {
 		//review_write.jsp에서 받은 정보를 DB에 저장하는 비즈니스로직
 		
 		//파일 저장경로
-		String saveFolder = "C:\\Users\\ayss3\\Documents\\KH_SemiProjeckt_teamNo.3\\web_project\\WebContent\\upload";
+		String saveFolder = "C:\\Users\\ayss3\\Documents\\JSP_PROJECT\\web_project\\WebContent\\upload";
 		
 		//파일 사이즈
 		int fileSize = 10*1024*1024;

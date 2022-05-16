@@ -1,3 +1,5 @@
+<%@page import="com.apc.model.CartDTO"%>
+<%@page import="com.apc.model.CartDAO"%>
 <%@page import="com.apc.model.CategoryDTO"%>
 <%@page import="com.apc.model.CategoryDAO"%>
 <%@page import="java.util.List"%>
@@ -5,15 +7,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    
-    <%
-    	CategoryDAO dao = CategoryDAO.getInstance();
-    	
-    	List<CategoryDTO> list = dao.getShopCategory();
-    	
-    	pageContext.setAttribute("List", list);
-    %>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ 
+ <%
+  	CategoryDAO dao = CategoryDAO.getInstance();
+  	
+  	List<CategoryDTO> list = dao.getShopCategory();
+  	
+  	pageContext.setAttribute("List", list);
+  	
+  	
+  	// 쇼핑몰 우측 상단 장바구니 구현에 필요한 로직
+	CartDAO semiDao = CartDAO.getInstance();
+  	HttpSession semiSession = request.getSession();
+  	String id = (String)semiSession.getAttribute("member_id");
+	List<CartDTO> semiList = semiDao.getSemiCartList(id);
+  	request.setAttribute("semiCartList", semiList);
+
+  	
+  %>
     
 <!DOCTYPE html>
 <html>
@@ -27,12 +39,54 @@
 		font-size: 60px;
 		font-weight: bold;
 	}
+	
+	
+	
 </style>
 
  <link rel="stylesheet" href="css/style.css">
 
  <link rel="stylesheet" href="css/index.css">
  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+ <script type="text/javascript">
+ 
+
+
+	
+	$(document).ready(function(){  
+  		$(".wCategory").hover(function(){  
+  			 $('.right_image-1').attr('src', 'images/women.jpg'); 
+ 
+  		});  
+  		$(".mCategory").hover(function(){  
+ 			 $('.right_image-1').attr('src', 'images/1mN4TpY4ng.jpg'); 
+
+ 		}); 
+  		$(".dCategory").hover(function(){  
+ 			 $('.right_image-1').attr('src', 'images/denim.jpg'); 
+
+ 		});  
+  		$(".sCategory").hover(function(){  
+ 			 $('.right_image-1').attr('src', 'images/SURPLUS.jpg'); 
+
+ 		}); 
+  		
+  		$(".jCategory").hover(function(){  
+ 			 $('.right_image-1').attr('src', 'images/X JESSICA OGDEN.jpg'); 
+
+ 		}); 
+  		
+  		$(".gCategory").hover(function(){  
+ 			 $('.right_image-1').attr('src', 'images/GOLF2.jpg'); 
+
+ 		}); 
+	});  
+ 	
+ 	
+
+ 
+ </script>
 </head>
 <body>
 
@@ -51,7 +105,7 @@
 					
 					
 					<div id="main_title">
-					A.P.C.
+						A.P.C.
 					</div> 
 					
 					<div>
@@ -63,7 +117,7 @@
 					</div>
 					
 					<div>
-						<a href="#">A.P.C. DENIM</a>
+						<a href="#" class="dCategory">A.P.C. DENIM</a>
 					</div>
 					
 					<div>
@@ -71,11 +125,11 @@
 					</div>
 					
 					<div>
-						<a href="#">A.P.C. SURPLUS</a>
+						<a href="#" class="sCategory">A.P.C. SURPLUS</a>
 					</div>
 					
 					<div>
-						<a href="#">A.P.C. X JESSICA <br>OGDEN</a>
+						<a href="#" class="jCategory">A.P.C. X JESSICA <br>OGDEN</a>
 					</div>
 				</div>
 			</div>
@@ -87,6 +141,8 @@
 				
 			</div> <!-- right_side end -->
 			
+	
+
 	
 		
 	</div> <!-- mainPage_wrapper end   --> 

@@ -1,3 +1,6 @@
+<%@page import="com.apc.model.CartDTO"%>
+<%@page import="java.util.List"%>
+<%@page import="com.apc.model.CartDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -135,9 +138,8 @@
 	<jsp:include page="../include/shop_top.jsp"/>
 	<jsp:include page="../include/shop_top_right.jsp"/>
 
-
-	<div class="myPage_wrapper">
 	
+	<div class="myPage_wrapper">
 	
 		<div class="header_title_nav">
 			<nav>
@@ -149,6 +151,7 @@
 		
 
 		<section class="container">
+		
 			
 			<div class="left_bar">			
 			<jsp:include page="../include/leftLayout.jsp" />

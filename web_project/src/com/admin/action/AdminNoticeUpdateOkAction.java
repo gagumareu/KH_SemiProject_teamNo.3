@@ -22,7 +22,7 @@ public class AdminNoticeUpdateOkAction implements Action {
 		// 공지사항 수정하기
 					
 		String saveFolder = 
-				"C:\\NCS\\workspace(jsp)\\webproject\\WebContent\\upload\\notice";
+				"C:\\Users\\ayss3\\Documents\\JSP_PROJECT\\web_project\\WebContent\\upload\\notice";
 		
 		int fileSize = 10 * 1024 * 1024;
 		

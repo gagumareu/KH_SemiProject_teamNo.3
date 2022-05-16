@@ -16,13 +16,19 @@
 	
 	pageContext.setAttribute("arrImg", arrImg);
 	
+	CartDAO semeDao = CartDAO.getInstance();
+	HttpSession semiSession = request.getSession();
+	String id = (String)semiSession.getAttribute("member_id");
+	List<CartDTO> semeList =  semeDao.getSemiCartList(id);
+	request.setAttribute("semiCartList", semeList);
+	
 	
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>뭐야</title>
+<title>Insert title here</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
@@ -32,69 +38,22 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style_products.css">
 <script type="text/javascript">
-	
-	
-	
-	$(function(){
-		
-		//20220516 카트버튼을 label로 지정해서 click action 설정해줌 
-		$(".cartBtn").click(function(){
-			
-			let pname = $("#p_name").val();
-			let color = $("#p_color").val();
-			let size = $("#p_size").val();
-			let qty = $("#p_qty").val();
-			
-			console.log(pname);
-			console.log(color);
-			console.log(size);
-			console.log(qty);
-			
-			$.ajax({
-				url:"go_cart.do",
-				data: {
-					name:pname,
-					color:color,
-					size:size,
-					qty:qty
-				},
-				type:"post",
-				datatype:"jason",
-					
-				ContentType : "application/x-www-form-urlencoded;charset=UTF-8",
-				success:function(data){
-					if(data>0){
-						location.reload();
-						alert("저장완료");
-	
-					}
-					
-				},
-				error:function(data){
-					alert("통신오류");
-				}
-			});
-			
-		});
-		
-	});
-	
 
-<%-- 	function go_cart(){
+
+	function go_cart(){
 		
-	/* 	let pname = document.getElementById("p_name").value;
+		let pname = document.getElementById("p_name").value;
 		let pcolor = document.getElementById("p_color").value;
-		let psize = document.getElementById("p_size").value; */
+		let psize = document.getElementById("p_size").value;
 		
 		
 		//form(name=frm)의 action경로 지정
 		document.frm.action = "<%=request.getContextPath()%>/go_cart.do?name="+pname+"&color="+pcolor+"&size="+psize ;
-		document.frm.action = "<%=request.getContextPath()%>/go_cart.do" ;
 	
 		//form(frm)에 submit 메서드 호출해 데이터 전달
 		document.frm.submit();
 		
-	} --%>
+	}
 	
 	function go_nonPay(){
 		
@@ -112,7 +71,7 @@
 		
 	}
 	
-	
+
 
 
 </script>
@@ -123,7 +82,6 @@
 
 <script type="text/javascript">
 
-	
 
 
 $(function(){
@@ -163,7 +121,7 @@ $(function(){
 			
 			
 		});
-	
+
 	
 	
 }
@@ -221,8 +179,8 @@ $(function(){
 	}
 	
 	.product_section {
-		height: 100%;
-		margin-bottom: 300px;
+		min-height: 100vh;
+		margin-bottom: 200px;
 	}
 	.product_section_aside {
 		height: 500px;
@@ -244,23 +202,6 @@ $(function(){
 		padding: 10px;
 	}
 	
-	.semiCart_popup {
-		display: none;
-	}
-	
-	.cartBtn {
-		cursor: pointer;
-	}
-	
-	.popup_close{
-	
-	  text-decoration: none;
-   	  color: black;
-  	  font-size: 0.6em;
-  	  margin-top: 5px;
-  	  margin-right: 7px;
-}
-	}
 </style>
 </head>
 <body>
@@ -389,7 +330,7 @@ $(function(){
 					</tr>
 					<tr>
 						<td>수량</td>
-						<td><input type="number" id="p_qty" name="p_qty" value="1"  min="1" max="${dto.getPqty() }"></td>
+						<td><input type="number" name="p_qty" value="1"  min="1" max="${dto.getPqty() }"></td>
 					</tr>
 					<tr>
 						<td>적립금</td>
@@ -408,12 +349,14 @@ $(function(){
 					<tr>
 						<td colspan="2">
 						
+						<!-- <a href="#1" class="payBtn">바로구매</a>
+						<a href="#a" class="cartBtn">장바구니</a> -->
 						
 							<input type="button" class="payBtn"  id="payBtn_css"  value="바로구매" >
-						<label for="menuicon" class="cartBtn" id="cartBtn_css">장바구니</label>
-							<!-- <label class="cartBtn" id="cartBtn_css">장바구니</label> -->
+							<input type="button" class="cartBtn" id="cartBtn_css" value="장바구니" onclick="go_cart()"></button>
 						
-						
+						<!-- <input id="go_pay_btn"class="btn btn-dark" type="button" value="바로구매" onclick="go_pay()"> &nbsp;
+						<input id="go_cart_btn" class="btn btn-light" type="button" value="장바구니" onclick="go_cart()"> -->
 						</td>
 					</tr>
 			</table>
@@ -444,12 +387,10 @@ $(function(){
 		<div class="pay_dim">
 			
 		</div>
-		<!-- **************레이어 팝업창*********************-->
+		<!-- **************레이어 팝업창*********************              -->
 		
 		
-
-
-
+		
 		
 		<div class="product_section_main">
 			<div class="detail_image">

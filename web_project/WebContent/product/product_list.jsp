@@ -1,3 +1,5 @@
+<%@page import="com.apc.model.CartDTO"%>
+<%@page import="com.apc.model.CartDAO"%>
 <%@page import="com.apc.model.CategoryDTO"%>
 <%@page import="com.apc.model.CategoryDAO"%>
 <%@page import="java.util.ArrayList"%>
@@ -43,6 +45,8 @@
 	session.setAttribute("third", third);
 	System.out.println("thrid:"+third);
 	
+	
+		
 
 %>
 <!DOCTYPE html>
@@ -53,9 +57,10 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/main.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style_products.css">
+<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
 <script type="text/javascript">
 
-	
+
 
 </script>
 <style type="text/css">
@@ -73,6 +78,10 @@
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr 1fr;
 	
+	}
+	
+	#img_hover {
+		display:none;
 	}
 	
 </style>
@@ -152,11 +161,10 @@
 				<div class="img_box">
 					<a href="<%=request.getContextPath() %>/product_detail.do?num=<%=product.getPno() %>
 									&color=<%=product.getPcolor()%>&size=<%=product.getPsize()%> ">
-						<img alt="arrImg[0]" src="<%=request.getContextPath() %>/upload/<%= arrImg[0] %> ">
-						<div class="img_overlay">
+						<img class="img<%=product.getPno() %>" alt="arrImg[0]" src="<%=request.getContextPath() %>/upload/<%= arrImg[0] %> ">
 						
+			
 						
-						</div>
 					</a>						
 				</div>	<!-- class="img_box" --> 					
 							

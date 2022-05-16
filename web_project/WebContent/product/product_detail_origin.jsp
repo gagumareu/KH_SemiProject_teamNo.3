@@ -22,7 +22,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>뭐야</title>
+<title>Insert title here</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
@@ -39,62 +39,36 @@
 		
 		//20220516 카트버튼을 label로 지정해서 click action 설정해줌 
 		$(".cartBtn").click(function(){
+			let pname = document.getElementById("p_name").value;
+			let pcolor = document.getElementById("p_color").value;
+			let psize = document.getElementById("p_size").value;
 			
-			let pname = $("#p_name").val();
-			let color = $("#p_color").val();
-			let size = $("#p_size").val();
-			let qty = $("#p_qty").val();
 			
-			console.log(pname);
-			console.log(color);
-			console.log(size);
-			console.log(qty);
-			
-			$.ajax({
-				url:"go_cart.do",
-				data: {
-					name:pname,
-					color:color,
-					size:size,
-					qty:qty
-				},
-				type:"post",
-				datatype:"jason",
-					
-				ContentType : "application/x-www-form-urlencoded;charset=UTF-8",
-				success:function(data){
-					if(data>0){
-						location.reload();
-						alert("저장완료");
-	
-					}
-					
-				},
-				error:function(data){
-					alert("통신오류");
-				}
-			});
+			//form(name=frm)의 action경로 지정
+			document.frm.action = "<%=request.getContextPath()%>/go_cart.do?name="+pname+"&color="+pcolor+"&size="+psize ;
+		
+			//form(frm)에 submit 메서드 호출해 데이터 전달
+			document.frm.submit();
 			
 		});
 		
 	});
 	
 
-<%-- 	function go_cart(){
+	function go_cart(){
 		
-	/* 	let pname = document.getElementById("p_name").value;
+		let pname = document.getElementById("p_name").value;
 		let pcolor = document.getElementById("p_color").value;
-		let psize = document.getElementById("p_size").value; */
+		let psize = document.getElementById("p_size").value;
 		
 		
 		//form(name=frm)의 action경로 지정
 		document.frm.action = "<%=request.getContextPath()%>/go_cart.do?name="+pname+"&color="+pcolor+"&size="+psize ;
-		document.frm.action = "<%=request.getContextPath()%>/go_cart.do" ;
 	
 		//form(frm)에 submit 메서드 호출해 데이터 전달
 		document.frm.submit();
 		
-	} --%>
+	}
 	
 	function go_nonPay(){
 		
@@ -389,7 +363,7 @@ $(function(){
 					</tr>
 					<tr>
 						<td>수량</td>
-						<td><input type="number" id="p_qty" name="p_qty" value="1"  min="1" max="${dto.getPqty() }"></td>
+						<td><input type="number" name="p_qty" value="1"  min="1" max="${dto.getPqty() }"></td>
 					</tr>
 					<tr>
 						<td>적립금</td>
@@ -410,8 +384,7 @@ $(function(){
 						
 						
 							<input type="button" class="payBtn"  id="payBtn_css"  value="바로구매" >
-						<label for="menuicon" class="cartBtn" id="cartBtn_css">장바구니</label>
-							<!-- <label class="cartBtn" id="cartBtn_css">장바구니</label> -->
+							<label for="menuicon" class="cartBtn" id="cartBtn_css">장바구니</label>
 						
 						
 						</td>

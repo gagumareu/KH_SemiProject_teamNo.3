@@ -1,3 +1,5 @@
+<%@page import="com.apc.model.CartDTO"%>
+<%@page import="com.apc.model.CartDAO"%>
 <%@page import="com.apc.model.ProductDAO"%>
 <%@page import="com.apc.model.ProductDTO"%>
 <%@page import="java.util.List"%>
@@ -6,6 +8,8 @@
     
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"  %>
+    
+   
 <!DOCTYPE html>
 <html>
 <head>
