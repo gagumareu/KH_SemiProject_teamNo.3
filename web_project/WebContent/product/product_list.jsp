@@ -84,6 +84,10 @@
 		display:none;
 	}
 	
+	.page_title > ul {
+		margin: 0;
+	}
+	
 </style>
 </head>
 <body>
@@ -157,17 +161,17 @@
 			 }
 		
 		%>	
-					
+			
+			
 				<div class="img_box">
 					<a href="<%=request.getContextPath() %>/product_detail.do?num=<%=product.getPno() %>
 									&color=<%=product.getPcolor()%>&size=<%=product.getPsize()%> ">
 						<img class="img<%=product.getPno() %>" alt="arrImg[0]" src="<%=request.getContextPath() %>/upload/<%= arrImg[0] %> ">
 						
-			
 						
 					</a>						
 				</div>	<!-- class="img_box" --> 					
-							
+						
 		<%}%>
 			</div><!-- class="category_flex" -->
 			</div> <!-- class="category_flex_warpper" -->
