@@ -30,9 +30,11 @@
 
    <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
-      	<a class="navbar-brand" href="<%=request.getContextPath() %>/admin_main.do">
-      		<span class="glyphicon glyphicon-home"></span><span style="font-size:24px;">&nbsp;A.P.C ADMIN PAGE</span>
-      	</a>
+      	
+      		<span class="glyphicon glyphicon-home"></span><span style="font-size:24px;">&nbsp;
+      		<a class="navbar-brand" href="<%=request.getContextPath() %>/index.jsp">A.P.C</a>
+      		<a class="navbar-brand" href="<%=request.getContextPath() %>/admin_main.do">ADMIN PAGE </a></span>
+     
 
 		<ul class="nav navbar-nav navbar-right">
         	<li><a href="#"><span class="glyphicon glyphicon-user"></span>&nbsp;${adminName }님 환영합니다.</a></li>
