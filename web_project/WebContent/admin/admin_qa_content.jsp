@@ -30,7 +30,8 @@
 			<div class="row">
 			  <div align="center">
 			    <div class="thumbnail">
-			      <img width="200px" src="<%=request.getContextPath() %>/image_products/${fileName}" >
+			      <img width="200px" src="<%=request.getContextPath() %>/upload/${fileName}"> 
+
 			      <div class="caption">
 			        <h3>${pDto.getPname() }</h3>
 			        <p>${pDto.getPrice() }</p>
