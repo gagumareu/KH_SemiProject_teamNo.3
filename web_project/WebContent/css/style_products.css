@@ -1,0 +1,339 @@
+@charset "UTF-8";
+	
+	.page_title{
+		margin-top: 50px;
+	font-size: 58px;
+	margin-left: 15px;
+	font-weight: bold;
+	width: 100%;
+ 	   }
+
+
+	.page_title {
+		padding	:0px;
+	}
+	.page_title li{
+		display:inline-block;
+		margin-right:10px;
+	}
+
+	.page_title1{
+		color:black;
+		font-size: 60px;
+		font-weight: bold;
+	}
+	.page_title1 a{
+		text-decoration:none;
+		color: black;
+	}
+	
+	.page_title1 a:hover{
+		color: white;
+		text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+	}
+	.page_title2{
+		color:black;
+		font-size: 60px;
+		font-weight: bold;
+		}
+	.page_title2 a{
+		text-decoration:none;
+		color: black;
+	}
+	
+	.page_title2 a:hover{
+		color: white;
+		text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+	}
+	.page_title3{
+		color:black;
+		font-size: 60px;
+		font-weight: bold;
+		}
+		
+	.page_title3 a{
+		text-decoration:none;
+		color: black;
+	}
+	
+	.page_title3 a:hover{
+		color: white;
+		text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+	}
+	
+	.page_title4{
+		color:black;
+		font-size: 60px;
+		font-weight: bold;
+		}
+	.page_title4 a{
+		text-decoration:none;
+		color: black;
+	}
+	
+	.page_title4 a:hover{
+		color: white;
+		text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+	}
+	.category_wrapper{
+		margin-bottom: 100px;
+	}
+
+    .category_flex{
+		width:100%;
+		height:100%;
+		padding:0px 40px;
+		display:flex;
+		flex-wrap: wrap;
+		flex-direction:row;
+		justify-content: space-evenly;
+		
+	}
+
+	.flex_item{
+		width: 420px;
+		height: 450px;
+		
+		margin: 20px 0px;
+		
+	}
+	
+	.flex_item img{
+		width: 90%;
+		height: 95%;
+		
+	}
+	
+	.img_box{
+		position: relative;
+		width: 100%;
+		height: 100%;
+	}
+	
+	.img_box a{
+		text-decoration: none;
+		font-family: "Arial Black";
+		font-size:1.6em;
+		color:black;
+		
+	}
+	
+	.img_box img{
+		display:block;
+		width:95%;
+		height:95%;
+	}
+	
+	.img_overlay{
+		position:absolute;
+		top:30%;
+		left:28%;
+		width:100%;
+		height:100%;
+		
+		font-family: "Arial Black";
+		font-size:1.6em;
+		color:black;
+	}
+/********* product_detial.jsp 내의 레이어 팝업창 ***************/
+.pay_popup{
+	display: none;
+	
+	position:fixed;
+	left: 40%;
+	top:40%;
+	translate: (-50%, -50%);
+	
+	width:420px;
+	height:170px;
+	border:3px solid #000;
+	box-shadow: 1 1 20px rgb(0,0,0,0.5);
+	background-color:#fff;
+	
+	box-sizing:border-box;
+	text-align: center;
+	padding:30px;
+	z-index:100;
+}
+
+.pay_popup .popup_close {
+	
+	position: absolute;
+	right: 0 ; top:0;
+	width: 20px;
+	height: 20px;
+	background: url(..image/close.png) no-repeat;
+	/* color:transparent; */
+
+}
+
+.pay_dim {
+	display:none;
+	position:fixed;
+	left:0; 
+	top:0;
+	width:100%;
+	height:100%;
+	background-color: rgb(0,0,0,0.5);
+	z-index:99;
+}
+
+.nonmember_btn{
+	
+		width: 110px;
+    	height: 35px;
+  	  border-radius: 0px;
+ 	   background-color: black;
+  	  color: white;
+ 	   font-size: 0.8em;
+	}
+	
+.login_btn{
+	
+		width: 110px;
+    	height: 35px;
+  	  border-radius: 0px;
+ 	   background-color: white;
+  	  color: black;
+ 	   font-size: 0.8em;
+	}
+
+
+
+
+/********* semiCart_popup.jsp 내의 레이어 팝업창 ***************/
+	.semiCart_popup{
+		display: none;
+		
+		position:fixed;
+		left: 40%;
+		top:40%;
+		translate: (-50%, -50%);
+		
+		width:420px;
+		height:170px;
+		border:3px solid #000;
+		box-shadow: 1 1 20px rgb(0,0,0,0.5);
+		background-color:#fff;
+		
+		box-sizing:border-box;
+		text-align: center;
+		padding:30px;
+		z-index:100;
+	}
+
+	.semiCart_popup .semiCart_popup_close {
+		
+		position: absolute;
+		right: 0 ; top:0;
+		width: 20px;
+		height: 20px;
+		background: url(..image/close.png) no-repeat;
+		/* color:transparent; */
+	
+	}
+
+	.cart_dim {
+		display:none;
+		position:fixed;
+		left:0; 
+		top:0;
+		width:100%;
+		height:100%;
+		background-color: rgb(0,0,0,0.5);
+		z-index:99;
+	}
+		
+	.nonmember_btn{
+		
+		width: 110px;
+	    height: 35px;
+	  	border-radius: 0px;
+	 	background-color: black;
+	  	color: white;
+	 	font-size: 0.8em;
+	}
+		
+	.login_btn{
+		
+		width: 110px;
+	    height: 35px;
+	  	border-radius: 0px;
+	 	background-color: white;
+	  	color: black;
+	 	 font-size: 0.8em;
+	}
+		
+/********* product_detail.jsp ***************/
+
+
+
+
+
+
+.product_section{
+	
+	width:100%;
+	display:flex;
+}
+	
+.product_section_aside{
+	width:90%;
+	margin-top:50px;
+	padding:20px;	
+	/* border-top:1px solid #000000; */
+	font-family: "Times New Roman", "나눔고딕";
+	font-size:0.8em;
+}
+
+.product_content {
+	
+	width:100%;
+	
+}
+
+.product_content th{
+	text-align: left;	
+	font-size:1em;
+}
+
+.product_content tr{
+	
+	height:40px;
+	line-height: 1.5;
+	
+}
+
+
+.colors ul{
+	
+	display:flex;
+}
+
+.colors li{
+	margin-right:5px;
+}
+
+.colors span img {
+		width: 25px;
+		height:12px;
+		border:1px solid lightgray;
+	
+}
+
+.extrainfo{
+	
+	color:#808080;
+	font-family: "arial","나눔고딕";
+	
+}
+
+
+
+
+.detail_image img {
+	
+	margin-left:210px;
+	
+}
+

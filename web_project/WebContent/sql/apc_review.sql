@@ -1,0 +1,35 @@
+--------------------------------------------------------
+--  파일이 생성됨 - 월요일-5월-16-2022   
+--------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Table APC_REVIEW
+--------------------------------------------------------
+
+  CREATE TABLE "SEMI"."APC_REVIEW" 
+   (	"REVIEW_NO" NUMBER(7,0), 
+	"PNO_FK" NUMBER(5,0), 
+	"PNAME" VARCHAR2(50 BYTE), 
+	"PSIZE" VARCHAR2(100 BYTE), 
+	"PCOLOR" VARCHAR2(50 BYTE), 
+	"MEMID_FK" VARCHAR2(50 BYTE), 
+	"REVIEW_RATE" NUMBER(5,0), 
+	"REVIEW_CONT" VARCHAR2(1000 BYTE), 
+	"REVIEW_IMAGE" VARCHAR2(100 BYTE), 
+	"REVIEW_PWD" VARCHAR2(50 BYTE), 
+	"REVIEW_DATE" DATE, 
+	"ORDERNO_FK" NUMBER(5,0)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+REM INSERTING into SEMI.APC_REVIEW
+SET DEFINE OFF;
+Insert into SEMI.APC_REVIEW (REVIEW_NO,PNO_FK,PNAME,PSIZE,PCOLOR,MEMID_FK,REVIEW_RATE,REVIEW_CONT,REVIEW_IMAGE,REVIEW_PWD,REVIEW_DATE,ORDERNO_FK) values (1,1,'Quincy Knit Vest (indigo)','XS','INDIGO','funfun',3,'사이즈가 아쉽지만 이뻐요.',null,'1111',to_date('22/05/04','RR/MM/DD'),null);
+Insert into SEMI.APC_REVIEW (REVIEW_NO,PNO_FK,PNAME,PSIZE,PCOLOR,MEMID_FK,REVIEW_RATE,REVIEW_CONT,REVIEW_IMAGE,REVIEW_PWD,REVIEW_DATE,ORDERNO_FK) values (2,1,'Quincy Knit Vest (indigo)','XS','INDIGO','hong',5,'핏이 좋아서 다른 옷이랑 매치하기 좋아요. 추천합니다!!',null,'1111',to_date('22/05/05','RR/MM/DD'),null);
+Insert into SEMI.APC_REVIEW (REVIEW_NO,PNO_FK,PNAME,PSIZE,PCOLOR,MEMID_FK,REVIEW_RATE,REVIEW_CONT,REVIEW_IMAGE,REVIEW_PWD,REVIEW_DATE,ORDERNO_FK) values (3,1,'Quincy Knit Vest (indigo)','XS','INDIGO','choi',5,'원단이 부드러워서 착용감이 좋아요. 만족합니다.',null,'1111',to_date('22/05/06','RR/MM/DD'),null);
+Insert into SEMI.APC_REVIEW (REVIEW_NO,PNO_FK,PNAME,PSIZE,PCOLOR,MEMID_FK,REVIEW_RATE,REVIEW_CONT,REVIEW_IMAGE,REVIEW_PWD,REVIEW_DATE,ORDERNO_FK) values (4,1,'Quincy Knit Vest (indigo)','XS','INDIGO','choi',3,'사이즈가 조금 작아요. 한 치수 크게 사면 좋을것 같아요.',null,'1111',to_date('22/05/07','RR/MM/DD'),null);
+Insert into SEMI.APC_REVIEW (REVIEW_NO,PNO_FK,PNAME,PSIZE,PCOLOR,MEMID_FK,REVIEW_RATE,REVIEW_CONT,REVIEW_IMAGE,REVIEW_PWD,REVIEW_DATE,ORDERNO_FK) values (5,1,'Quincy Knit Vest (indigo)','XS','INDIGO','choi',4,'색감도 이쁘고 무난하게 입기 좋아요.',null,'1111',to_date('22/05/08','RR/MM/DD'),null);
+Insert into SEMI.APC_REVIEW (REVIEW_NO,PNO_FK,PNAME,PSIZE,PCOLOR,MEMID_FK,REVIEW_RATE,REVIEW_CONT,REVIEW_IMAGE,REVIEW_PWD,REVIEW_DATE,ORDERNO_FK) values (6,3,'Sermaise T-Shirts (white)','XS','WHITE','hong',4,'너무이뻐요 찰떡입니다','/review/hong_capri_2.JPG','1111',to_date('22/05/03','RR/MM/DD'),null);
