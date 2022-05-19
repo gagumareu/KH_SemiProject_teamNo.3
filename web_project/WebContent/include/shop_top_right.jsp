@@ -211,7 +211,7 @@
 	.semiCart_sidebar {
 		position: fixed;
 		top: 0;
-		right: -620px;
+		right: -640px;
 		width: 620px;
 		height: 100%;
 		border-left: 1px solid black;
