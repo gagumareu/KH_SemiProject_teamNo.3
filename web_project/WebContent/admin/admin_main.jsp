@@ -43,6 +43,7 @@ $(document).ready(function() {
   });
 </script>
 </head>
+<body>
 		<input type="hidden" id="path" value="<%=request.getContextPath() %>">
 
 
@@ -66,8 +67,8 @@ $(document).ready(function() {
 					</c:forEach>
 				</c:if>
 
+			</div>
 		</div>
-	</div>
 	<br>
 
 	<div class="row">
@@ -146,7 +147,7 @@ $(document).ready(function() {
 			
         </div>      
       </div>
-    </div>
+    
 
     
   </body>
