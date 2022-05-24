@@ -44,6 +44,9 @@
 		
 }
 
+	
+	
+	
 
 </script>
 <style type="text/css">
@@ -138,6 +141,9 @@
 		
 	}
 	
+	a{
+		cursor: pointer;	
+	}
 	
 </style>
 </head>
@@ -243,10 +249,81 @@
 						%>	
 							└ 
 						<% 	}//for문
-						%>	
-						<a href="<%=request.getContextPath() %>/qa_content.do?num=<%=dto.getQa_no()%>&page=${page}">답글:<%=dto.getQa_title() %></a>
+						%>
+						<!-- 답변 글일 경우, -->	
+						<%-- <a class="reply_click<%=dto.getQa_no() %>" href="<%=request.getContextPath() %>/qa_content.do?num=<%=dto.getQa_no()%>&page=${page}">답글:<%=dto.getQa_title() %></a> --%>
+						<a class="reply_click<%=dto.getQa_no() %>" >답글:<%=dto.getQa_title() %></a>
+						
+						<%
+							QaDAO qdao = QaDAO.getInstance();
+							QaDTO qdto = qdao.getQaContent(dto.getQa_group()); //답변글에 대한 원글 정보를 받아옴
+							String writer= qdto.getQa_memid(); //원글 작성자 아이디 
+						%>
+						
+						<script type="text/javascript">
+						$(function(){
+							$(".reply_click<%=dto.getQa_no()%>").click( function(){
+								
+								let page = "<%=request.getAttribute("page")%>";
+								let loginId = "<%=(String)session.getAttribute("member_id")%>";
+								let writer = "<%=writer%>";
+								
+								console.log(loginId);
+								console.log(writer);
+								
+								if(loginId == writer){
+								
+									$(location).attr("href", "<%=request.getContextPath() %>/qa_content.do?num=<%=dto.getQa_no()%>&page="+page);
+									return;
+								
+								}else{
+									alert("게시물에 접근할 수 없습니다.");
+									return;
+								}
+								
+							});
+							
+							});
+						
+						
+						</script>
+						
+						
+						
+						
 						<% }else{%>
-						<a href="<%=request.getContextPath() %>/qa_content.do?num=<%=dto.getQa_no()%>&page=${page}"><%=dto.getQa_title() %></a>
+						<!-- 답변 글이 아닐 경우, -->
+
+						<%-- <a class="board_click" href="<%=request.getContextPath() %>/qa_content.do?num=<%=dto.getQa_no()%>&page=${page}"><%=dto.getQa_title() %></a> --%>
+						<a class="board_click<%=dto.getQa_no() %>" ><%=dto.getQa_title() %></a>
+						
+						<script type="text/javascript">
+							$(function(){
+							$(".board_click<%=dto.getQa_no()%>").click( function(){
+								
+								let page = "<%=request.getAttribute("page")%>";
+								let loginId = "<%=(String)session.getAttribute("member_id")%>";
+								let writer = "<%=dto.getQa_memid()%>";
+								
+								console.log(loginId);
+								console.log(writer);
+								
+								if(loginId == writer){
+								
+									$(location).attr("href", "<%=request.getContextPath() %>/qa_content.do?num=<%=dto.getQa_no()%>&page="+page);
+									return;
+								
+								}else{
+									alert("게시물에 접근할 수 없습니다.");
+									return;
+								}
+								
+							});
+							
+							});
+						
+						</script>
+						
 						<% }%>
 						
 						</td>
