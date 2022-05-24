@@ -1,31 +1,79 @@
--- apc_payment 결제 테이블
+--------------------------------------------------------
+--  파일이 생성됨 - 월요일-5월-16-2022   
+--------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Table APC_PAYMENT
+--------------------------------------------------------
 
-create table apc_payment(
+  CREATE TABLE "SEMI"."APC_PAYMENT" 
+   (	"ORDER_NO" NUMBER(5,0), 
+	"CARTNO_FK" NUMBER(5,0), 
+	"ORDER_ID" VARCHAR2(100 BYTE), 
+	"PNO_FK" NUMBER(5,0), 
+	"PNAME" VARCHAR2(50 BYTE), 
+	"PQTY" NUMBER(5,0), 
+	"PRICE" NUMBER(10,0), 
+	"TRANSCOST" NUMBER(10,0) DEFAULT 0, 
+	"PAYTYPE" NUMBER(1,0), 
+	"ORDERDATE" DATE, 
+	"ORDERNAME" VARCHAR2(50 BYTE), 
+	"ORDERADDR" VARCHAR2(1000 BYTE), 
+	"ORDERPHONE" VARCHAR2(50 BYTE), 
+	"PAY_PIMAGE" VARCHAR2(500 BYTE)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+REM INSERTING into SEMI.APC_PAYMENT
+SET DEFINE OFF;
+Insert into SEMI.APC_PAYMENT (ORDER_NO,CARTNO_FK,ORDER_ID,PNO_FK,PNAME,PQTY,PRICE,TRANSCOST,PAYTYPE,ORDERDATE,ORDERNAME,ORDERADDR,ORDERPHONE,PAY_PIMAGE) values (8,7,'hong',20,'Elisa Cardigan (black)',1,319000,0,2,to_date('22/05/16','RR/MM/DD'),'홍길동','서울시 중구','010-1111-1111','/1WAN0000/Elisa_1b.jpg');
+Insert into SEMI.APC_PAYMENT (ORDER_NO,CARTNO_FK,ORDER_ID,PNO_FK,PNAME,PQTY,PRICE,TRANSCOST,PAYTYPE,ORDERDATE,ORDERNAME,ORDERADDR,ORDERPHONE,PAY_PIMAGE) values (3,3,'funfun',16,'Nacy Skirt (green)',1,319000,0,2,to_date('22/05/08','RR/MM/DD'),'유재석','서울시 서초구','010-2111-1111','/1WAN0000/Nancy_1b.jpg');
+Insert into SEMI.APC_PAYMENT (ORDER_NO,CARTNO_FK,ORDER_ID,PNO_FK,PNAME,PQTY,PRICE,TRANSCOST,PAYTYPE,ORDERDATE,ORDERNAME,ORDERADDR,ORDERPHONE,PAY_PIMAGE) values (9,6,'hong',1,'Quincy Knit Vest (indigo)',1,489000,0,2,to_date('22/05/16','RR/MM/DD'),'홍길동','서울시 중구','010-1111-1111','/3WBK0000/wTshirt1_1.jpg');
+Insert into SEMI.APC_PAYMENT (ORDER_NO,CARTNO_FK,ORDER_ID,PNO_FK,PNAME,PQTY,PRICE,TRANSCOST,PAYTYPE,ORDERDATE,ORDERNAME,ORDERADDR,ORDERPHONE,PAY_PIMAGE) values (1,1,'non0',20,'Elisa Cardigan (black)',1,319000,0,1,to_date('22/05/03','RR/MM/DD'),'김경민','서울특별시 중구','010-1234-1234','/1WAN0000/Elisa_1b.jpg');
+Insert into SEMI.APC_PAYMENT (ORDER_NO,CARTNO_FK,ORDER_ID,PNO_FK,PNAME,PQTY,PRICE,TRANSCOST,PAYTYPE,ORDERDATE,ORDERNAME,ORDERADDR,ORDERPHONE,PAY_PIMAGE) values (4,2,'funfun',18,'Elisa Cardigan (white)',1,319000,0,2,to_date('22/05/08','RR/MM/DD'),'유재석','서울시 서초구','010-2111-1111','/1WAN0000/Elisa_1.jpg');
+Insert into SEMI.APC_PAYMENT (ORDER_NO,CARTNO_FK,ORDER_ID,PNO_FK,PNAME,PQTY,PRICE,TRANSCOST,PAYTYPE,ORDERDATE,ORDERNAME,ORDERADDR,ORDERPHONE,PAY_PIMAGE) values (5,6,'hong',1,'Quincy Knit Vest (indigo)',1,489000,0,2,to_date('22/05/10','RR/MM/DD'),'홍길동','서울시 중구','010-1111-1111','/3WBK0000/wTshirt1_1.jpg');
+Insert into SEMI.APC_PAYMENT (ORDER_NO,CARTNO_FK,ORDER_ID,PNO_FK,PNAME,PQTY,PRICE,TRANSCOST,PAYTYPE,ORDERDATE,ORDERNAME,ORDERADDR,ORDERPHONE,PAY_PIMAGE) values (6,9,'hong',16,'Nacy Skirt (green)',1,319000,0,2,to_date('22/05/13','RR/MM/DD'),'홍길동','서울시 중구','010-1111-1111','/1WAN0000/Nancy_1b.jpg');
+Insert into SEMI.APC_PAYMENT (ORDER_NO,CARTNO_FK,ORDER_ID,PNO_FK,PNAME,PQTY,PRICE,TRANSCOST,PAYTYPE,ORDERDATE,ORDERNAME,ORDERADDR,ORDERPHONE,PAY_PIMAGE) values (7,8,'hong',5,'Sermaise T-Shirts (white)',1,289000,0,2,to_date('22/05/16','RR/MM/DD'),'홍길동','서울시 중구','010-1111-1111','/3WAT0000/wTshirt3_1.jpg');
+Insert into SEMI.APC_PAYMENT (ORDER_NO,CARTNO_FK,ORDER_ID,PNO_FK,PNAME,PQTY,PRICE,TRANSCOST,PAYTYPE,ORDERDATE,ORDERNAME,ORDERADDR,ORDERPHONE,PAY_PIMAGE) values (2,4,'funfun',11,'Marina Short-Sleeve Shirt (beige)',1,229000,0,2,to_date('22/05/08','RR/MM/DD'),'유재석','서울시 서초구','010-2111-1111','/1WAN0000/Marina1_1b.jpg');
+--------------------------------------------------------
+--  DDL for Index SYS_C009682
+--------------------------------------------------------
 
-	order_no number(5) primary key, 				-- 주문번호
-	cartno_fk number(5),							-- 카트번호
-	order_id varchar2(100) not null,				-- 주문아이디(비회원,회원통합관리) 
-	pno_fk number(5) not null,				-- 카테고리 코드
-	pname varchar2(50) not null,					-- 상품명	
-	pqty number(5) not null,						-- 수량
-	price number(10) not null,						-- 가격
-	transcost number(10) default 0,       		-- 배송비
-	paytype number(1) not null check (paytype < 3),  -- 결제타입(0 계좌이체, 1 카드결제)
-	orderdate date not null,						-- 주문날짜
-	ordername varchar2(50) not null,				-- 주문자 이름
-	orderaddr varchar2(1000) not null,				-- 주문자 주소
-	orderphone varchar2(50) not null,				-- 주문자 연락처
-	pay_pimage varchar2(500),						-- 상품 이미지
-	
-	foreign key (category_fk) references apc_category(category_code),
-	foreign key (pno_fk) references apc_product(pno)
-	
-);
+  CREATE UNIQUE INDEX "SEMI"."SYS_C009682" ON "SEMI"."APC_PAYMENT" ("ORDER_NO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  Constraints for Table APC_PAYMENT
+--------------------------------------------------------
 
--- 20220426 : memno외래키 삭제, order_id 추가 / category_no 삭제, category_fk(코드) 외래키참조  / cartno_fk(외래키)추가
--- 20220502 : order_id number(5) - > varchar2(100), category_fk 삭제 -> pno_fk number(5) 수정
--- 20220506 : pay_image 제품 사진 추가, 배송비 default 0 수정
+  ALTER TABLE "SEMI"."APC_PAYMENT" MODIFY ("ORDER_ID" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."APC_PAYMENT" MODIFY ("PNO_FK" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."APC_PAYMENT" MODIFY ("PNAME" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."APC_PAYMENT" MODIFY ("PQTY" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."APC_PAYMENT" MODIFY ("PRICE" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."APC_PAYMENT" MODIFY ("PAYTYPE" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."APC_PAYMENT" MODIFY ("ORDERDATE" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."APC_PAYMENT" MODIFY ("ORDERNAME" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."APC_PAYMENT" MODIFY ("ORDERADDR" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."APC_PAYMENT" MODIFY ("ORDERPHONE" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."APC_PAYMENT" ADD CHECK (paytype < 3) ENABLE;
+  ALTER TABLE "SEMI"."APC_PAYMENT" ADD PRIMARY KEY ("ORDER_NO")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table APC_PAYMENT
+--------------------------------------------------------
 
--- apc_paymnet 데이터 
-insert into apc_payment 
-values(1, 1, 'hong', '3WAT0000', 'Sermaise T-Shirts (white)', 1, 289000, default, 1, sysdate, '홍길동', '서울시 구로구', '010-1111-1111');
+  ALTER TABLE "SEMI"."APC_PAYMENT" ADD FOREIGN KEY ("CARTNO_FK")
+	  REFERENCES "SEMI"."APC_CART" ("CART_NO") ENABLE;
+  ALTER TABLE "SEMI"."APC_PAYMENT" ADD FOREIGN KEY ("PNO_FK")
+	  REFERENCES "SEMI"."APC_PRODUCTS" ("PNO") ENABLE;

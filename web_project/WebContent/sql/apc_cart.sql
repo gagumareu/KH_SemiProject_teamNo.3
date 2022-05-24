@@ -1,24 +1,68 @@
--- apc_cart 테이블 
+--------------------------------------------------------
+--  파일이 생성됨 - 월요일-5월-16-2022   
+--------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Table APC_CART
+--------------------------------------------------------
 
-create table apc_cart (
+  CREATE TABLE "SEMI"."APC_CART" 
+   (	"CART_NO" NUMBER(5,0), 
+	"PNO_FK" NUMBER(5,0), 
+	"CART_MEMID" VARCHAR2(50 BYTE), 
+	"CART_PNAME" VARCHAR2(100 BYTE), 
+	"CART_PQTY" NUMBER(5,0), 
+	"CART_PSIZE" VARCHAR2(100 BYTE), 
+	"CART_PCOLOR" VARCHAR2(50 BYTE), 
+	"CART_PRICE" NUMBER(8,0), 
+	"CART_TRANS" NUMBER(8,0) DEFAULT 0, 
+	"CART_PIMAGE" VARCHAR2(500 BYTE), 
+	"CART_MILEAGE" NUMBER(10,0)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+REM INSERTING into SEMI.APC_CART
+SET DEFINE OFF;
+Insert into SEMI.APC_CART (CART_NO,PNO_FK,CART_MEMID,CART_PNAME,CART_PQTY,CART_PSIZE,CART_PCOLOR,CART_PRICE,CART_TRANS,CART_PIMAGE,CART_MILEAGE) values (1,20,'non0','Elisa Cardigan (black)',1,'M','BLACK',319000,0,'/1WAN0000/Elisa_1b.jpg',9570);
+Insert into SEMI.APC_CART (CART_NO,PNO_FK,CART_MEMID,CART_PNAME,CART_PQTY,CART_PSIZE,CART_PCOLOR,CART_PRICE,CART_TRANS,CART_PIMAGE,CART_MILEAGE) values (5,1,'funfun','Quincy Knit Vest (indigo)',1,'XS','INDIGO',489000,0,'/3WBK0000/wTshirt1_1.jpg',29340);
+Insert into SEMI.APC_CART (CART_NO,PNO_FK,CART_MEMID,CART_PNAME,CART_PQTY,CART_PSIZE,CART_PCOLOR,CART_PRICE,CART_TRANS,CART_PIMAGE,CART_MILEAGE) values (6,1,'hong','Quincy Knit Vest (indigo)',1,'XS','INDIGO',489000,0,'/3WBK0000/wTshirt1_1.jpg',29340);
+Insert into SEMI.APC_CART (CART_NO,PNO_FK,CART_MEMID,CART_PNAME,CART_PQTY,CART_PSIZE,CART_PCOLOR,CART_PRICE,CART_TRANS,CART_PIMAGE,CART_MILEAGE) values (7,20,'hong','Elisa Cardigan (black)',1,'M','BLACK',319000,0,'/1WAN0000/Elisa_1b.jpg',9570);
+Insert into SEMI.APC_CART (CART_NO,PNO_FK,CART_MEMID,CART_PNAME,CART_PQTY,CART_PSIZE,CART_PCOLOR,CART_PRICE,CART_TRANS,CART_PIMAGE,CART_MILEAGE) values (9,16,'hong','Nacy Skirt (green)',1,'M','GREEN',319000,0,'/1WAN0000/Nancy_1b.jpg',9570);
+Insert into SEMI.APC_CART (CART_NO,PNO_FK,CART_MEMID,CART_PNAME,CART_PQTY,CART_PSIZE,CART_PCOLOR,CART_PRICE,CART_TRANS,CART_PIMAGE,CART_MILEAGE) values (8,5,'hong','Sermaise T-Shirts (white)',1,'M','WHITE',289000,0,'/3WAT0000/wTshirt3_1.jpg',17340);
+Insert into SEMI.APC_CART (CART_NO,PNO_FK,CART_MEMID,CART_PNAME,CART_PQTY,CART_PSIZE,CART_PCOLOR,CART_PRICE,CART_TRANS,CART_PIMAGE,CART_MILEAGE) values (2,18,'funfun','Elisa Cardigan (white)',1,'M','WHITE',319000,0,'/1WAN0000/Elisa_1.jpg',9570);
+Insert into SEMI.APC_CART (CART_NO,PNO_FK,CART_MEMID,CART_PNAME,CART_PQTY,CART_PSIZE,CART_PCOLOR,CART_PRICE,CART_TRANS,CART_PIMAGE,CART_MILEAGE) values (3,16,'funfun','Nacy Skirt (green)',1,'M','GREEN',319000,0,'/1WAN0000/Nancy_1b.jpg',9570);
+Insert into SEMI.APC_CART (CART_NO,PNO_FK,CART_MEMID,CART_PNAME,CART_PQTY,CART_PSIZE,CART_PCOLOR,CART_PRICE,CART_TRANS,CART_PIMAGE,CART_MILEAGE) values (4,11,'funfun','Marina Short-Sleeve Shirt (beige)',1,'S','BEIGE',229000,0,'/1WAN0000/Marina1_1b.jpg',6870);
+--------------------------------------------------------
+--  DDL for Index SYS_C009669
+--------------------------------------------------------
 
-	cart_no number(5) primary key,			-- 카트 번호
-	pno_fk number(5) not null,				-- 상품 제품번호            
-	cart_memid varchar2(50) not null,	    -- 카트 사용자 아이디
-	cart_pname varchar2(100) not null,		-- 상품 이름
-	cart_pqty number(5) not null,			-- 상품 수량
-	cart_psize varchar2(100),				-- 상품 규격 
-	cart_pcolor varchar2(50),				-- 상품 색상
-	cart_price number(8) not null,			-- 상품 가격
-	cart_trans number(8) default 0,		-- 배송비
-	cart_pimage varchar2(500),				-- 상품 이미지
-	cart_mileage number(10),				--상품 마일리지
-	foreign key (pno_fk) references apc_products(pno)
-	
-);
+  CREATE UNIQUE INDEX "SEMI"."SYS_C009669" ON "SEMI"."APC_CART" ("CART_NO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  Constraints for Table APC_CART
+--------------------------------------------------------
 
--- 20220426 수정 : memno 참조 -> cart_memid 수정 (외래키 해제)
--- 20220506 수정 : 배송비 default 0 수정
--- 20220508 수정 : cart_mileage 추가 (동찬님)
-insert into apc_cart 
-values(1, 3, 'hong', 'Sermaise T-Shirts (white)', 1, 'XS', 'WHITE', 289000, default, '');
+  ALTER TABLE "SEMI"."APC_CART" MODIFY ("PNO_FK" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."APC_CART" MODIFY ("CART_MEMID" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."APC_CART" MODIFY ("CART_PNAME" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."APC_CART" MODIFY ("CART_PQTY" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."APC_CART" MODIFY ("CART_PRICE" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."APC_CART" ADD PRIMARY KEY ("CART_NO")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table APC_CART
+--------------------------------------------------------
+
+  ALTER TABLE "SEMI"."APC_CART" ADD FOREIGN KEY ("PNO_FK")
+	  REFERENCES "SEMI"."APC_PRODUCTS" ("PNO") ENABLE;

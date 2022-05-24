@@ -135,8 +135,8 @@
 		}
 		.updatePwd_container {
 			display: grid;
-			grid-template-columns: 200px 100%;
-			grid-template-rows: 400px 100%;
+			grid-template-columns: 15% 85%;
+			grid-template-rows: 40% 60%;
 			margin-top: 40px;
 		}
 		

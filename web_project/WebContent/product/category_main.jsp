@@ -98,11 +98,13 @@
 		height:100%;
 		
 		font-family: "Arial Black";
-		font-size:2.3em;
 		color:white;
 		letter-spacing: 3px;	
 	}
-	
+	.img_overlay > p {
+		font-size:2.2em;
+		
+	}
 	.golf_wrapper {
 		display: flex;
 		flex-direction: column;

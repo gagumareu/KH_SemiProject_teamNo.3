@@ -1,25 +1,55 @@
--- apc_member 회원 테이블
+--------------------------------------------------------
+--  파일이 생성됨 - 월요일-5월-16-2022   
+--------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Table APC_MEMBER
+--------------------------------------------------------
 
-create table apc_member (
+  CREATE TABLE "SEMI"."APC_MEMBER" 
+   (	"MEM_ID" VARCHAR2(50 BYTE), 
+	"MEM_PWD" VARCHAR2(100 BYTE), 
+	"MEM_NAME" VARCHAR2(50 BYTE), 
+	"PHONE" VARCHAR2(100 BYTE), 
+	"EMAIL" VARCHAR2(100 BYTE), 
+	"BIRTH" DATE, 
+	"ADDR" VARCHAR2(200 BYTE), 
+	"MEM_MILEAGE" NUMBER(7,0) DEFAULT 0, 
+	"REGDATE" DATE
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+REM INSERTING into SEMI.APC_MEMBER
+SET DEFINE OFF;
+Insert into SEMI.APC_MEMBER (MEM_ID,MEM_PWD,MEM_NAME,PHONE,EMAIL,BIRTH,ADDR,MEM_MILEAGE,REGDATE) values ('hong','1111','홍길동','010-2345-1223','hong@gmail.com',to_date('80/12/19','RR/MM/DD'),'서울시 중구 남대문로 210-20',95160,to_date('22/05/12','RR/MM/DD'));
+Insert into SEMI.APC_MEMBER (MEM_ID,MEM_PWD,MEM_NAME,PHONE,EMAIL,BIRTH,ADDR,MEM_MILEAGE,REGDATE) values ('funfun','1111','유재석','010-2111-1111','fun@gmail.com',to_date('79/08/23','RR/MM/DD'),'서울시 서초구',26010,to_date('22/05/12','RR/MM/DD'));
+Insert into SEMI.APC_MEMBER (MEM_ID,MEM_PWD,MEM_NAME,PHONE,EMAIL,BIRTH,ADDR,MEM_MILEAGE,REGDATE) values ('choi','1111','샤론최','010-3111-1111','choi@gmail.com',to_date('89/05/01','RR/MM/DD'),'경기도 성남시',0,to_date('22/05/12','RR/MM/DD'));
+Insert into SEMI.APC_MEMBER (MEM_ID,MEM_PWD,MEM_NAME,PHONE,EMAIL,BIRTH,ADDR,MEM_MILEAGE,REGDATE) values ('apcceo','1111','김재풍','010-4111-1111','apc@gmail.com',to_date('75/01/13','RR/MM/DD'),'경기도 평택시',0,to_date('22/05/12','RR/MM/DD'));
+Insert into SEMI.APC_MEMBER (MEM_ID,MEM_PWD,MEM_NAME,PHONE,EMAIL,BIRTH,ADDR,MEM_MILEAGE,REGDATE) values ('yoona','abcd1234','김연아','010-2452-1212','yoona@naver.com',to_date('17/10/01','RR/MM/DD'),'서울시 중구 남대문로',0,to_date('22/05/16','RR/MM/DD'));
+--------------------------------------------------------
+--  DDL for Index SYS_C009689
+--------------------------------------------------------
 
-	--mem_no number(5) primary key,			--회원 번호 (생략)
-	mem_id varchar2(50) primary key,		--회원 아이디
-	mem_pwd varchar2(100) not null,			--회원 비밀번호
-	mem_name varchar2(50) not null,			--회원 이름
-	phone varchar2(100) not null,			--연락처
-	email varchar2(100)not null,			--이메일
-	birth date,								--생일
-	addr varchar2(200),						--주소
-	mem_mileage number(7) default 0,		--마일리지
-	regdate date							--회원등록 일자
+  CREATE UNIQUE INDEX "SEMI"."SYS_C009689" ON "SEMI"."APC_MEMBER" ("MEM_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  Constraints for Table APC_MEMBER
+--------------------------------------------------------
 
-);
-
--- 20220426수정: memno삭제, mem_id (primary key)
-
--- apc_member 데이터 
-
-insert into apc_member values('hong', '1111','홍길동','010-1111-1111','hong@gmail.com', '1980-12-19', '서울시 중구', default, sysdate);
-insert into apc_member values('funfun', '1111','유재석','010-2111-1111','fun@gmail.com', '1979-08-23', '서울시 서초구', default, sysdate);
-insert into apc_member values('choi', '1111','샤론최','010-3111-1111','choi@gmail.com', '1989-05-01', '경기도 성남시', default, sysdate);
-insert into apc_member values('apcceo', '1111','김재풍','010-4111-1111','apc@gmail.com', '1975-01-13', '경기도 평택시', default, sysdate);
+  ALTER TABLE "SEMI"."APC_MEMBER" MODIFY ("MEM_PWD" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."APC_MEMBER" MODIFY ("MEM_NAME" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."APC_MEMBER" MODIFY ("PHONE" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."APC_MEMBER" MODIFY ("EMAIL" NOT NULL ENABLE);
+  ALTER TABLE "SEMI"."APC_MEMBER" ADD PRIMARY KEY ("MEM_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;

@@ -1,11 +1,6 @@
-<%@page import="com.apc.model.CartDTO"%>
-<%@page import="java.util.List"%>
-<%@page import="com.apc.model.CartDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,22 +16,7 @@
 			font-family: 나눔고딕;
 		}
 		
-		header a{
-			font-family: Arial;
-		}
-		
-		header a:hover{
-			font-family: Arial;
-			color : white;
-			text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-		}
-		
-		nav{
-			float: left;
-			margin: 10px;
-			font-family: 나눔고딕;
-		}
-		
+
 		section{
 			
 			font-size: 13px;
@@ -94,6 +74,11 @@
 			font-family: 나눔고딕;
 		}
 		
+		div.snow{
+			background-color:snow;
+			text-align:left;
+		}
+		
 		.home_link:hover{
 			font-family: Arial;
 			color : white;
@@ -108,8 +93,8 @@
 		}
 		.contact_container {
 			display: grid;
-			grid-template-columns: 200px 100%;
-			grid-template-rows: 400px 100%;
+			grid-template-columns: 15% 85%;
+			grid-template-rows: 40% 60%;
 			margin-top: 40px;
 		}
 		
@@ -118,20 +103,26 @@
 		}
 		
 		.right_content {
-			grid-column: 2;
+			width: 70%;
+			
 		
 		}
 		.contact_wrapper {
 			display: flex;
 			flex-direction: column;
-			min-height: 100vh;
+			min-height: 100%;
 			margin-left: 15px;
 		}
+		
 		html, body {
 			margin: 0;
 			padding: 0;
 			height: 100%;
 		
+		}
+		
+		input.button {
+			background-color:white;
 		}
 	</style>
 </head>
@@ -143,21 +134,21 @@
 
 	<div class="contact_wrapper">
 	
-	<div class="header_title_nav">
-		<a class="home_link" href="<%=request.getContextPath()%>/index.jsp">A.P.C.</a> 
-		온라인상담
-	</div>
+		<div class="header_title_nav">
+			<a class="home_link" style="font-family: Arial;" href="<%=request.getContextPath()%>/index.jsp">A.P.C.</a> 
+			온라인상담
+		</div>
 
 	
 	
-	<div class="contact_container">
+		<div class="contact_container">
 	
 
-	<div class="left_content">
-		<nav>
-		<jsp:include page="../include/leftLayout.jsp" />
-		</nav>
-	</div>
+		<div class="left_content">
+			<nav>
+			<jsp:include page="../include/leftLayout.jsp" />
+			</nav>
+		</div>
 	
 	
 		<div class="right_content">
@@ -173,6 +164,7 @@
 					<c:set var="date_now" value="${date_now }" />
 					<c:set var="mem" value="${memDTO }" />
 					<c:set var="qList" value="${qaList }"/>
+					<c:set var="reList" value="${replyList }" />
 					
 					<input type="button" value="3개월" class="black" />
 					<input type="button" value="6개월" class="white" />
@@ -187,40 +179,53 @@
 					<br> <br> <br>
 					<hr>
 					<c:forEach items="${qList }" var="qaDTO">
+					<c:set var="a" value="0" />
 					<br>
 						<div class="left">
 							<b>${qaDTO.getQa_title() }</b> <br>
-							<span style="color: gray;">
+							<span style="color: grey;">
 								<c:if test="${qaDTO.getQa_update() == null }" > ${qaDTO.getQa_date() }</c:if>
 								<c:if test="${qaDTO.getQa_update() != null }" > ${qaDTO.getQa_update() }</c:if>
 							</span>
 						</div>
 						<div class="right">
-							<span style="color: red;">
-								<c:if test="${qaDTO.getQa_indent() == 0 }">
+							<span style="color:grey;">
+								<c:forEach items="${reList }" var="reDTO">
+									<c:if test="${reDTO.getQa_group() == qaDTO.getQa_group() }">
+										답변완료
+										<c:set var="a" value="1" />
+									</c:if>
+								</c:forEach>
+							</span>
+							<span style="color:red;">
+								<c:if test="${a == 0}">
 									답변대기
-									<input type="button" value="x"
+									<input type="button" value="x" class="button" 
 											onclick="if(confirm('정말로 삭제하시겠습니까?')){
-												location.href='member_deleteContact.do?no=${qaDTO.getQa_no() }'}
+												location.href='member_deleteContact.do?no=${qaDTO.getQa_no() }&id=${mem.getMem_id() } '}
 												else{ return; }" />
 								</c:if>			
 							</span>
-							<span style="color: gray;">
-								<c:if test="${qaDTO.getQa_indent() != 0 }">답변완료</c:if>			
-							</span>
 						</div>
-					<br><br><br><br>
+						<hr width="100%" color="white">
+						<c:if test="${a == 1}">
+							<div class="snow">
+								<br>admin : <br><br>
+								<c:forEach items="${reList }" var="reDTO">
+									<c:if test="${reDTO.getQa_group() == qaDTO.getQa_group() }">
+										${reDTO.getQa_cont() }<br>&nbsp;
+									</c:if>
+								</c:forEach>
+							</div>
+						</c:if>
+						<br>
 					</c:forEach>
+					<br><br><br><br>
 				</div>
 			</div>
+		</div>
 	</div>
 	
-	</div>
-	
-		<jsp:include page="../include/shop_bottom.jsp"/>
-	
-	
-	
-	
+	<jsp:include page="../include/shop_bottom.jsp"/>
 </body>
 </html>

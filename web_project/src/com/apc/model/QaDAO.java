@@ -768,6 +768,7 @@ public class QaDAO {
 				dto.setQa_cont(rs.getString("qa_cont"));
 				dto.setQa_date(rs.getString("qa_date"));
 				dto.setQa_update(rs.getString("qa_update"));
+				dto.setQa_group(rs.getInt("qa_group"));
 				dto.setQa_indent(rs.getInt("qa_indent"));
 				list.add(dto);
 			}
@@ -1017,6 +1018,8 @@ public class QaDAO {
 		
 		return list;
 	}
+	
+	
 	
 	
 	

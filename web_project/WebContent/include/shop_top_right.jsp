@@ -97,14 +97,6 @@
 		cursor: pointer;
 	
 	}
-
-
-	
-	.semiCart_container {
-		display: flex;
-		flex-direction: column;
-		height: 500px;
-	}
 	
 	
 	.semi_image > a > img {
@@ -115,9 +107,11 @@
 	
 	
 	.semiCart_container {
-		display: grid;
-		grid-template-columns: 15% 15% 70%; 
-	
+		display: flex;
+		flex-direction: row;
+		position: relative;
+		
+		
 		border-bottom: 1px solid gray;
 		text-align: cetner;
 		font-size: 14px;
@@ -126,51 +120,53 @@
 	}
 	
 	.semi_image {
-		width: 70px;
-		grid-column: 1;
+		width: 100px;
 		
 	}
-	.semi_image > a > img {
-		width: 100%;
-	}
+	
 	
 	.semi_name {
-		grid-column: 2;
 		font-size: 10px;
 
 	}
 	
-	.semi_Name_text {
-		padding-top: 20px;
-	
-	}
+
 	.semi_list {
-		display: grid
-		
+		height: 80%;
+		padding-top: 10px;
+		padding-left: 10px;
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+    	justify-content: space-between;
 	}
 	
 	
 	.semi_list > ul > li{
 		width: 100%;
 		list-style:none;
-		display: flex;
-		flex-direction: row;
+		display: table;
 		
 	}
 	.semi_list > ul {
-		display: flex;
+		
+		dispaly: flex;
 		flex-direction: row;
+		justify-content: space-between;
+		padding: 0;
+		margin: 0;
 	}
 	
-	.semiCart_price {
-		grid-column: 3;
-	}
 	
 	.ulList {
 		display: flex;
-		flex-direction: row;
-		padding-top: 18px;
+	    flex-direction: row;
+	    justify-content: space-between;
 	}
+	
+	
+	
+	
 	.sub_text {
 		padding: 20px 0px 0px 0px;
 		font-size: 0.9em;
@@ -215,7 +211,7 @@
 	.semiCart_sidebar {
 		position: fixed;
 		top: 0;
-		right: -620px;
+		right: -640px;
 		width: 620px;
 		height: 100%;
 		border-left: 1px solid black;
@@ -224,6 +220,7 @@
 		background: white;
 		display: flex;
 		flex-direction: column;
+		padding: 10px;
 	}
 	
 	
@@ -241,15 +238,14 @@
 		display: none;
 	}
 	
-	.empty_semiCart {
-	}
-	
+
 	.empty {
 		text-align: center;
-	
+		padding-top: 200px;
 	}
 	.semiCart_wrapper {
-		
+		heigth: 500px;
+		overflow:auto;	
 		margin: 20px 15px;
 		
 	}
@@ -263,7 +259,19 @@
 		
 	}
 	
+	.semiCart_name {
+		font-weight: bold;
+		
+	}
 	
+	.SCQ {
+		color: gray;
+		font-size: 0.5em;
+	}
+	
+	.pinfo {
+		font-size: 0.8em;
+	}
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.js"></script>
 
@@ -315,6 +323,15 @@
 	}
 	
 	
+	
+	$(document).ready(function() { /// Wait till page is loaded
+		   $('.delete_btn').click(function(){
+		      $('.semiCart_container').load('property-detailed.php .semiCart_container', function() {
+		           /// can add another function here
+		      });
+		   });
+		});
+	
 </script>
 </head>
 <body>
@@ -326,7 +343,7 @@
 	<div id="right_menu">
 		<ul class="right_menu_ul">
 			<li class="cart">
-				<label for="menuicon" class="munubtn topMenu_cart_btn"><img src="images/icon-bag.svg" width="12px"> 장바구니</label>
+				<label for="menuicon" class="munubtn topMenu_cart_btn"><img src="<%=request.getContextPath() %>/images/icon-bag.svg" width="12px"> 장바구니</label>
 				
 			</li>
 			<li id="login"><a href="<%=request.getContextPath() %>/member/LoginMain.jsp">내계정/로그인</a></li>
@@ -353,24 +370,36 @@
 	<div class="semiCart_sidebar">
 	
 		<div id="close_btn"><label for="menuicon" class="munubtn close_btn" ><b>X Close</b></label></div>
-		
-		<div class="semiCart_wrapper">
 		<c:if test="${!empty list }">
-		<c:forEach items="${list }" var="dto">
+		<div class="semiCart_wrapper">
 		
-			<div class="semiCart_container${dto.getCart_no() }">
+		<c:forEach items="${list }" var="dto">
+			<div class="semiCart_container">
 			
 				<div class="semi_image">
-				<a href="<%=request.getContextPath() %>/product_detail.do?num=${dto.getPno_fk() }"><img alt="" src="<%=request.getContextPath()%>/upload/${dto.getCart_pimage() }"></a>
-				</div>
-			
-				<div class="semi_Name">	
-					<div class="semi_Name_text">${dto.getCart_pname() }</div>
+					<a href="<%=request.getContextPath() %>/product_detail.do?num=${dto.getPno_fk() }"><img alt="" src="<%=request.getContextPath()%>/upload/${dto.getCart_pimage() }"></a>
 				</div>
 			
 				<div class="semi_list">
 				
 					<ul class="ulList">
+						<li class="semiCart_name">
+							${dto.getCart_pname() }
+						</li>
+						<li>
+							&nbsp;
+						</li>
+						<li>
+							&nbsp;
+						</li>
+						<li class="delete">
+							<a class="delete_btn" onclick="if(confirm('해당 상품을 쇼핑백에서 삭제하시겠습니까?')){
+											semicart_delete(${dto.getCart_no() });
+										}
+										else{ return; }" ><div class="delete_btn">X</div></a>
+						</li>
+					</ul>
+					<ul class="ulList SCQ">
 						<li>
 							SIZE
 						</li>
@@ -380,16 +409,13 @@
 						<li>
 							QTY
 						</li>
-						<li class="delete">
-							<a onclick="if(confirm('해당 상품을 쇼핑백에서 삭제하시겠습니까?')){
-											semicart_delete(${dto.getCart_no() });
-										}
-										else{ return; }" ><div class="delete_btn">X</div></a>
-							
+						<li>
+							&nbsp;
 						</li>
+						
 					</ul>	
 					
-					<ul class="ulList">
+					<ul class="ulList pinfo">
 						<li class="semi_right_side">
 							${dto.getCart_psize() }	
 						</li>
@@ -405,10 +431,11 @@
 					</ul>
 				</div>	
 						
-			</div> <!-- semiCart_container -->
-			
-		</c:forEach>
+		</div> <!-- semiCart_container -->
+		</c:forEach>	
 		
+		
+		</div> <!-- semiCart_wrapper -->
 		<div class="sub_text">
 			A.P.C.KOREA 온라인 스토어는 무료배송 서비스를 제공합니다.(제주, 도서산간 지역도 무료)
 		</div>
@@ -428,13 +455,15 @@
 			<div class="close_btn close_btn"><label for="menuicon" class="munubtn close_btn" >쇼핑계속</label></div>
 		</div>
 
- 	 </c:if>
+ 	
+ 	</c:if>
 	<c:if test="${empty list }">
 		<div class="empty_semiCart">
 		<p class="empty">장바구니가 비었습니다.</p>
 		</div>
 	</c:if>
- 	</div>
+	
+ 	
 	</div> <!-- semiCart_sidebar -->
 	
 	
@@ -442,3 +471,5 @@
 
 </body>
 </html>
+			
+				

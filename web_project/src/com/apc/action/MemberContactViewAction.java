@@ -60,11 +60,13 @@ public class MemberContactViewAction implements Action {
 		
 		QaDAO qaDAO = QaDAO.getInstance();
 		List<QaDTO> list = qaDAO.getContactQaList(mem_id);
+		List<QaDTO> replyList = qaDAO.getContactQaList("관리자");
 		
 		request.setAttribute("date_now", now);
 		request.setAttribute("date_3", date_3);
 		request.setAttribute("memDTO", member);
 		request.setAttribute("qaList", list);
+		request.setAttribute("replyList", replyList);
 		
 		ActionForward forward = new ActionForward();
 		
