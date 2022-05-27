@@ -32,11 +32,16 @@ public class QaUpdateAction implements Action {
 		ProductDAO pdao =  ProductDAO.getInstance();
 		ProductDTO pdto = pdao.getProductCont(dto.getQa_pno_fk());
 		
+		//제품정보가 있으면 
+		if(dto.getQa_pno_fk() != 0) {
 		String[] arrImg = pdao.getPorudctImg(pdto);
+		
+		request.setAttribute("img", arrImg[0]);
+		}
 		
 		request.setAttribute("cont", dto);
 		request.setAttribute("product", pdto);
-		request.setAttribute("img", arrImg[0]);
+		
 		request.setAttribute("page", page);
 		
 		ActionForward forward= new ActionForward();

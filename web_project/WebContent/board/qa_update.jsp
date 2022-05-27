@@ -151,25 +151,7 @@ function qa_update_ok(){
 			</tr>
 		</table>
 		
-		
-<%-- 		<table class="qa_top_table" algin="left">
-			<tr >
-				<td rowspan="2">
-				<img src="<%=request.getContextPath() %>/upload/${fileName}" >
-				</td>
-				<td>
-					<span class="qa_product_name">${pDto.getPname() }</span> <br>
-					<span class="qa_product_price">${pDto.getPrice() }</span>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<button type="button" class="btn btn-outline-dark" onclick="loaction.href='<%=request.getContextPath()%>/product_list.do?num=${pDto.getPno() }'">
-					제품 상세보기
-					</button>
-				</td>
-			</tr>
-		</table> --%>
+
 		</c:if>
 		
 	
@@ -178,7 +160,8 @@ function qa_update_ok(){
 				<tbody>
 					<tr>
 						<td class= "table-light"> 제목 </td>
-						<td><input name="qa_title" value="${cont.getQa_title() }" style="border: none; background: transparent;" size="100"></td>
+						<td><input name="qa_title" value="${cont.getQa_title() }" style="border: none; background: transparent;" size="100"
+							autofocus="autofocus"></td>
 					</tr>
 					<tr>
 						<td class="table-light">작성자</td>
