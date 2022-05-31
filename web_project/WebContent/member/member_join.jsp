@@ -386,11 +386,11 @@
 			<em>*</em>
 			</div>
 			<div class="input">
-			<input class="post" type="text" id="sample6_postcode" placeholder="우편번호">
+			<input class="post" type="text" id="sample6_postcode" name="postnum" placeholder="우편번호">
 			<input class="postBtn" type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-			<input class="post" type="text" id="sample6_address" placeholder="주소" size="46"><br>
-			<input class="post" type="text" id="sample6_detailAddress" placeholder="상세주소">
-			<input class="post" type="text" id="sample6_extraAddress" placeholder="참고항목">
+			<input class="post" type="text" id="sample6_address" name="addr" placeholder="주소" size="46"><br>
+			<input class="post" type="text" id="sample6_detailAddress" name="detail_addr" placeholder="상세주소">
+			<input class="post" type="text" id="sample6_extraAddress" name="ref_addr" placeholder="참고항목">
 			
 			<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 			<script>

@@ -48,7 +48,10 @@ public class semiJoinOkAction implements Action {
 		String phone3 =
 				request.getParameter("phone3").trim();
 		
-		String user_addr = request.getParameter("user_addr").trim();
+//		String user_addr = request.getParameter("user_addr").trim();
+		//Daum주소 API 추가에 따른 수정
+		String user_addr = request.getParameter("postnum").trim()+request.getParameter("addr").trim()
+						+" "+request.getParameter("detail_addr").trim()+request.getParameter("ref_addr").trim();
 		
 		String user_phone =
 				phone1 + "-" + phone2 + "-" + phone3;
