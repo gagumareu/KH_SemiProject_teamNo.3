@@ -281,7 +281,7 @@
 <body>
 	
 	<c:set var="topList" value="${List }"/>
-		
+	
 	<div id="navr">
 		<ul id="navr_ul">
 			<li class="li_wrap">
@@ -289,17 +289,18 @@
 				<div class="container1">
 					<div class="dropDown">
 						<ul>
-						<%
-							CategoryDAO cdao = CategoryDAO.getInstance();
-							List<CategoryDTO> clist = cdao.get3rdCategory(list.get(0).getCategory_code().substring(0,1));
-							
-							for(int i=0; i<clist.size(); i++){
-								
-								CategoryDTO cdto = clist.get(i);
-						%>		
-							<li><a href="<%=request.getContextPath()%>/product_list.do?code=<%=cdto.getCategory_code()%>"><span><%=cdto.getCategory_name().substring(6) %></span></a></li>
-						<%	}
-							%>
+							<li><a href="#"><span>New Arrivals</span></a></li>
+							<li><a href="#"><span>Permanent</span></a></li>
+							<li><a href="#"><span>Dresses</span></a></li>
+							<li><a >Outerwear</a></li>
+							<li><a>Jackets</a></li>
+							<li><a>Jeans</a></li>
+							<li><a>Pants</a></li>
+							<li><a>Skirts, Shors</a></li>
+							<li><a>T-Shirts, Tops</a></li>
+							<li><a>Blouses, Shirts</a></li>
+							<li><a>Knitwear</a></li>
+							<li><a>Sweatshirts</a></li>
 						</ul>
 					</div>
 					<div class="dropDown">
@@ -319,16 +320,19 @@
 				<div class="container2">
 					<div class="dropDown">
 						<ul>
-						<%
-							List<CategoryDTO> clist2 = cdao.get3rdCategory(list.get(1).getCategory_code().substring(0,1));
-							
-							for(int i=0; i<clist2.size(); i++){
-								
-								CategoryDTO cdto2 = clist2.get(i);
-						%>		
-							<li><a href="<%=request.getContextPath()%>/product_list.do?code=<%=cdto2.getCategory_code()%>"><span><%=cdto2.getCategory_name().substring(4) %></span></a></li>
-						<%	}
-							%>
+							<li><a href="#"><span>New Arrivals</span></a></li>
+							<li><a href="#"><span>Coats, Parkas</span></a></li>
+							<li><a href="#"><span>Jackets</span></a></li>
+							<li><a >Trousers, Jeans</a></li>
+							<li><a>Shirts</a></li>
+							<li><a>Knitwear</a></li>
+							<li><a>Cardigans</a></li>
+							<li><a>T-Shirts, Pullovers</a></li>
+							<li><a>Bags</a></li>
+							<li><a>Shoes</a></li>
+							<li><a>Leather Goods</a></li>
+							<li><a>Jewelry</a></li>
+							<li><a>Small Accessories</a></li>
 						</ul>
 					</div>
 					<div class="dropDown">
@@ -357,19 +361,9 @@
 				<a href="<%=request.getContextPath() %>/category.do?code=${topList[2].getCategory_code() }" class="categoryName4"><span>Golf</span></a>
 					<div class="container4">
 						<ul>
-						 <%
-							List<CategoryDTO> clist3 = cdao.get2ndCategory(list.get(2).getCategory_code().substring(0, 1));
-							
-							for(int i=0; i<clist3.size(); i++){
-								
-								CategoryDTO cdto3 = clist3.get(i);
-						%>		
-							<li><a href="<%=request.getContextPath()%>/2nd_category.do?code=<%=cdto3.getCategory_code()%>"><span><%=cdto3.getCategory_name() %></span></a></li>
-						<%	}
-							%> 
-							<!-- <li><a href="#"><span>Men</span></a></li>
+							<li><a href="#"><span>Men</span></a></li>
 							<li><a href="#"><span>Women</span></a></li>
-							<li><a href="#"><span>Ac</span></a></li> -->
+							<li><a href="#"><span>Ac</span></a></li>
 						</ul>
 					</div>
 			</li>
