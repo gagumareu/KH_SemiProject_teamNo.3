@@ -230,7 +230,7 @@ select {
 						<br>
 					</c:forEach>
 				</div>
-				<form method="post" action="<%=request.getContextPath()%>/">
+				<form method="post" action="<%=request.getContextPath()%>/go_pay_fromcart.do">
 					<b>장바구니 결제금액</b>
 					<c:set var="pSum" value="${price_sum }" />
 					<c:set var="mSum" value="${mileage_sum }" />
