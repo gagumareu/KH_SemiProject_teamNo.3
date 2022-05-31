@@ -6,6 +6,7 @@ import java.text.ParseException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.apc.controller.Action;
 import com.apc.controller.ActionForward;
@@ -49,7 +50,7 @@ public class semiJoinOkAction implements Action {
 				request.getParameter("phone3").trim();
 		
 //		String user_addr = request.getParameter("user_addr").trim();
-		//Daum주소 API 추가에 따른 수정
+		//20220531이슬수정 : Daum주소 API 추가에 따른 수정
 		String user_addr = request.getParameter("postnum").trim()+request.getParameter("addr").trim()
 						+" "+request.getParameter("detail_addr").trim()+request.getParameter("ref_addr").trim();
 		
@@ -78,7 +79,11 @@ public class semiJoinOkAction implements Action {
 			
 			int check = dao.joinMember(dto);
 			
+			HttpSession session = request.getSession();
+			
 			if(check > 0) {
+				//20220531이슬 수정 : 회원 가입 완료하면, 로그인된 메인화면으로 이동 
+				session.setAttribute("member_id", userId);
 				forward.setRedirect(false);
 				forward.setPath("index.jsp");
 			}else {
