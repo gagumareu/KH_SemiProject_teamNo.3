@@ -7,6 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>A.P.C. 장바구니</title>
+
+   <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <style>
 a {
 	text-decoration: none;
@@ -138,6 +140,13 @@ select {
 		padding: 0;
 		height: 100%;
 	}
+	
+	.numBox{
+	
+		border: none;
+    	width: 30px;
+	}
+	
 </style>
 
 
@@ -166,6 +175,7 @@ select {
 					<br>
 					<c:forEach items="${cList }" var="cDTO">
 						<input type="hidden" name="id" value="${cDTO.getCart_memid() }" />
+						<input class="cno" type="hidden" name="cno" value="${cDTO.getCart_no() }" />
 						<div class="left2">
 							<a
 								href="<%=request.getContextPath() %>/product_detail.do?num=${cDTO.getPno_fk() }">
@@ -199,17 +209,20 @@ select {
 							</div>
 							<div class="left3">
 								QTY<br>
-								<br> <a style="font-size: 13px"
-									<c:if test="${cDTO.getCart_pqty() != 1}">
-							href="<%=request.getContextPath() %>/cart_qtyDown.do?num=${cDTO.getCart_no() }"
-							</c:if>>-</a>
-								&nbsp;&nbsp;&nbsp;<span style="font-size: 13px;"><b>${cDTO.getCart_pqty() }</b></span>&nbsp;&nbsp;&nbsp;
-								<a style="font-size: 13px"
-									href="<%=request.getContextPath() %>/cart_qtyUp.do?num=${cDTO.getCart_no() }">+</a>
+								<br> 
+								<span class="cart_minus" style="font-size: 13px"> -</span>
+								&nbsp;&nbsp;&nbsp;
+								<%-- <span style="font-size: 13px;"><b>${cDTO.getCart_pqty() }</b></span> --%>
+								<span style="font-size: 13px;"> <input type="number" class="numBox" name="cart_qty" min="1"  value="${cDTO.getCart_pqty() }" readonly disabled/></span>
+								
+								&nbsp;&nbsp;&nbsp;
+								<!-- 비즈니스 로직 처리 삭제 >>> 자바스크립트 및 ajax로 수량변경 구현 -->
+								 <%-- <a class="cart_plus" style="font-size: 13px"
+									href="<%=request.getContextPath() %>/cart_qtyUp.do?num=${cDTO.getCart_no() }">+</a> --%>
+								 <span class="cart_plus" style="font-size: 13px" >+</span> 
 							</div>
 						</div>
 
-						<!-- ajax를 공부하고 다시 봐봐야겠다. ajax로 jsp 페이지 안에서 dao 메서드를 연산이 가능한가를 알아봐야한다. -->
 						<div class="right2">
 							<a class="delete"
 								onclick="if(confirm('해당 상품을 쇼핑백에서 삭제하시겠습니까?')){
@@ -217,11 +230,14 @@ select {
 									else{ return; }">
 								X</a><br>
 							<br> 적립금
+							<span class="totalMileage">
 							<fmt:formatNumber
-								value="${cDTO.getCart_mileage() * cDTO.getCart_pqty() }" />
+								value="${cDTO.getCart_mileage() * cDTO.getCart_pqty() }" /></span>
 							원<br>
-							<br> <b><fmt:formatNumber
-									value="${cDTO.getCart_price() * cDTO.getCart_pqty() }" />원</b>
+							<input class="perMileage" type="hidden" value="${cDTO.getCart_mileage() }">
+							<br> <b><span class="cart_totalPrice"><fmt:formatNumber
+									value="${cDTO.getCart_price() * cDTO.getCart_pqty() }" /></span>원</b>
+							<input class="perPrice" type="hidden" value="${cDTO.getCart_price() }">
 						</div>
 						<br>
 						<br>
@@ -230,6 +246,144 @@ select {
 						<br>
 					</c:forEach>
 				</div>
+				
+				
+						<script type="text/javascript">
+						
+						function payTotal(){
+							 let total = 0;
+							 let mileage = 0;
+							 
+							    for(let j=0;j<$(".numBox").length;j++){
+							    	
+							        total += $(".cart_totalPrice").eq(j).val();
+							        mileage += parseInt($(".cart_totalMileage").eq(j).val());
+							        
+							        console.log("total:"+total);
+							        console.log("total:"+mileage);
+							        
+							    }
+							    
+							    $(".priceSum").text(total.toString()
+							    .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ","));
+
+							    $(".mileageSum").text(total.toString()
+									    .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ","));
+							   
+							
+						}
+						
+						
+
+						for(let i =0; i<$(".numBox").length; i++){
+													
+								$(".cart_plus").eq(i).click(function(){
+								let totalPrice = $(".cart_totalPrice").eq(i);
+								let totalMileage = $(".totalMileage").eq(i);						
+								let productPrice = $(".perPrice").eq(i).val();
+								let productMileage = $(".perMileage").eq(i).val(); 
+														
+								let num = $(".numBox").eq(i).val();
+								let plusNum = Number(num)+1;
+														
+								console.log(i+"번째 num:"+num);
+								console.log(i+"번째 plusNum:"+plusNum);
+								let cnoeq = $(".cno").eq(i).val();
+														
+								$.ajax({
+															
+								type:"post",
+								url:"cart_up.do",
+								datatype : "text",
+								data : {cno : cnoeq},
+								success: function(data){
+																
+								if(data < 1){
+																	
+									alert("재고가 부족합니다.");	
+									$(".numBox").eq(i).val(num);
+																	 
+								}else{
+									 $(".numBox").eq(i).val(plusNum);
+								}
+																
+								} ,
+								error:function(data){
+										alert("통신오류");
+									}
+															
+								});
+													
+														
+							totalPrice.eq(i).text((parseInt(plusNum)*parseInt(productPrice)).toString()
+									  .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ","));
+														
+							totalMileage.eq(i).text((parseInt(plusNum)*parseInt(productMileage)).toString()
+										 .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ","));
+							
+							payTotal();
+														
+							});
+													
+													
+							$(".cart_minus").eq(i).click(function(){
+														
+									 let totalPrice = $(".cart_totalPrice").eq(i);
+									let totalMileage = $(".totalMileage").eq(i);
+									let productPrice = $(".perPrice").eq(i).val();
+									let productMileage = $(".perMileage").eq(i).val(); 
+														
+									let num = $(".numBox").eq(i).val();
+									let minusNum = Number(num)-1;
+														
+									console.log(i+"번째 num:"+num);
+									console.log(i+"번째 plusNum:"+minusNum);
+									console.log(i+"번째 plusNum:"+$(".cno").eq(i).val());
+									let cnoeq = $(".cno").eq(i).val();
+														
+									if(parseInt(minusNum) < 1 ){
+										alert('최소 주문수량은 1개입니다.');
+										$(".numBox").eq(i).val(num);
+															
+									}else{
+										$(".numBox").eq(i).val(minusNum);
+															
+									$.ajax({
+																
+										type:"post",
+										url:"cart_down.do",
+										datatype : "text",
+										data : {cno : cnoeq},
+										success: function(data){
+										if(data>0){
+												console.log("ok");
+										}else{
+												console.log("sql 오류발생");
+										}
+																	
+										} ,
+										error:function(data){
+													alert("통신오류");
+										}
+																
+									});
+															
+									totalPrice.eq(i).text((parseInt(minusNum)*parseInt(productPrice)).toString()
+											 .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ","));
+															
+									totalMileage.eq(i).text((parseInt(minusNum)*parseInt(productMileage)).toString()
+											.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ","));
+															
+									}
+									
+									payTotal();				
+								});
+													
+													
+						}
+						
+						</script>
+				
 				<form method="post" action="<%=request.getContextPath()%>/go_pay_fromcart.do">
 					<b>장바구니 결제금액</b>
 					<c:set var="pSum" value="${price_sum }" />
@@ -246,11 +400,10 @@ select {
 						<br>
 					</div>
 
-					<!-- ajax로 판매가 합산이 가능하지 않을까 기대해보며 넘어간다. -->
 					<div class="right">
-						<b><fmt:formatNumber value="${pSum }" />원</b><br>
+						<span class="priceSum"><b><fmt:formatNumber value="${pSum }" />원</b><br></span>
 						<br>
-						<fmt:formatNumber value="${mSum }" />
+						<span class="mileageSum"><fmt:formatNumber value="${mSum }" /></span>
 						원<br>
 						<br>
 						<fmt:formatNumber value="${tCost }" />
